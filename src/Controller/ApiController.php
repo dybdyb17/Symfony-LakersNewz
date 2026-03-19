@@ -30,13 +30,24 @@ class ApiController extends AbstractController
     ): JsonResponse {
         $data = json_decode($request->getContent(), true);
 
+        $email = $this->sanitize($data['email'] ?? '');
+        $password = $data['password'] ?? '';
+
+        if (!str_contains($email, '@')) {
+            return $this->json(['error' => 'Email invalide'], 400);
+        }
+        if (strlen($password) < 6) {
+            return $this->json(['error' => 'Le mot de passe doit contenir au moins 6 caractères'], 400);
+        }
+
         $user = new User();
-        $user->setEmail($data['email']);
-        $user->setPassword($hasher->hashPassword($user, $data['password']));
-        $user->setPseudo($data['pseudo'] ?? null);
-        $user->setFirstname($data['firstname'] ?? null);
-        $user->setLastname($data['lastname'] ?? null);
+        $user->setEmail($email);
+        $user->setPassword($hasher->hashPassword($user, $password));
+        $user->setPseudo(isset($data['pseudo']) ? $this->sanitize($data['pseudo']) : null);
+        $user->setFirstname(isset($data['firstname']) ? $this->sanitize($data['firstname']) : null);
+        $user->setLastname(isset($data['lastname']) ? $this->sanitize($data['lastname']) : null);
         if (!empty($data['dateNaissance'])) {
+            $data['dateNaissance'] = $this->sanitize($data['dateNaissance']);
             $dateStr = str_replace([' ', '-'], ['', '/'], $data['dateNaissance']);
             $date = \DateTime::createFromFormat('d/m/Y', $dateStr);
             if (!$date) {
@@ -92,18 +103,19 @@ class ApiController extends AbstractController
         $data = json_decode($request->getContent(), true);
 
         if (isset($data['pseudo'])) {
-            $user->setPseudo($data['pseudo']);
+            $user->setPseudo($this->sanitize($data['pseudo']));
         }
         if (isset($data['firstname'])) {
-            $user->setFirstname($data['firstname']);
+            $user->setFirstname($this->sanitize($data['firstname']));
         }
         if (isset($data['lastname'])) {
-            $user->setLastname($data['lastname']);
+            $user->setLastname($this->sanitize($data['lastname']));
         }
         if (isset($data['email'])) {
-            $user->setEmail($data['email']);
+            $user->setEmail($this->sanitize($data['email']));
         }
         if (isset($data['dateNaissance'])) {
+            $data['dateNaissance'] = $this->sanitize($data['dateNaissance']);
             $date = \DateTime::createFromFormat('d/m/Y', $data['dateNaissance']);
             if (!$date) {
                 $date = \DateTime::createFromFormat('Y-m-d', $data['dateNaissance']);
@@ -226,7 +238,7 @@ class ApiController extends AbstractController
         $pari->setUser($user);
 
         if ($estCombine) {
-            $equipes = array_map(fn($s) => $s['equipe'], $selections);
+            $equipes = array_map(fn($s) => $this->sanitize($s['equipe']), $selections);
             $coteCombinee = array_reduce($selections, fn($carry, $s) => $carry * (float) $s['cote'], 1.0);
             $pari->setEquipe(implode(' + ', $equipes));
             $pari->setCote($coteCombinee);
@@ -243,7 +255,7 @@ class ApiController extends AbstractController
                 $em->persist($selection);
             }
         } else {
-            $pari->setEquipe($data['equipe']);
+            $pari->setEquipe($this->sanitize($data['equipe']));
             $pari->setCote((float) $data['cote']);
             $em->persist($pari);
         }
@@ -291,10 +303,10 @@ class ApiController extends AbstractController
         $data = json_decode($request->getContent(), true);
 
         $contact = new Contact();
-        $contact->setNom($data['nom']);
-        $contact->setEmail($data['email']);
-        $contact->setSujet($data['sujet']);
-        $contact->setMessage($data['message']);
+        $contact->setNom($this->sanitize($data['nom']));
+        $contact->setEmail($this->sanitize($data['email']));
+        $contact->setSujet($this->sanitize($data['sujet']));
+        $contact->setMessage($this->sanitize($data['message']));
 
         $em->persist($contact);
         $em->flush();
@@ -316,6 +328,11 @@ class ApiController extends AbstractController
             'dateMatch' => $match->getDateMatch()?->format('Y-m-d H:i'),
             'statut'    => $match->getStatut(),
         ], $matchs));
+    }
+
+    private function sanitize(string $input): string
+    {
+        return strip_tags(trim($input));
     }
 
     private function serializeUser(User $user): array
