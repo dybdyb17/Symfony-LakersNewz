@@ -84,6 +84,7 @@ if (inscriptionForm) {
         localStorage.setItem('lakersNewzSession', JSON.stringify(data));
         inscriptionCard.style.display = 'none';
         successCard.classList.add('show');
+        document.querySelector('#successCard p').textContent = 'Bienvenue ' + prenom;
       } else {
         alert(data.message || 'Erreur lors de l\'inscription');
       }
