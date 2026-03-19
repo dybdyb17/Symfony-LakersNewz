@@ -1,0 +1,344 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body.deposer-page {
+  font-family: 'Exo', sans-serif;
+  background: url(../assets/img/lakersgold.jpg) center/cover fixed no-repeat;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.deposer-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+}
+
+.deposer-close-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #1a1a2e;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.deposer-close-btn:hover { opacity: 0.7; }
+
+.deposer-solde-badge {
+  background: #1a1a2e;
+  color: white;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.deposer-solde-badge i { color: #F8CA23; font-size: 11px; }
+
+.deposer-main {
+  position: relative;
+  z-index: 10;
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 10px 24px 60px;
+}
+
+.deposer-titre {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 24px;
+}
+
+.deposer-bloc {
+  background: #1a1a2e;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.deposer-amount-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.deposer-amount-row input {
+  background: #F8CA23;
+  border: none;
+  border-radius: 10px;
+  font-size: 28px;
+  font-weight: 900;
+  font-family: 'Exo', sans-serif;
+  color: #1a1a2e;
+  width: 140px;
+  text-align: center;
+  padding: 10px 14px;
+  outline: none;
+}
+
+.deposer-currency {
+  font-size: 28px;
+  font-weight: 900;
+  color: #F8CA23;
+}
+
+.deposer-presets {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.dep-preset {
+  background: #F8CA23;
+  color: #1a1a2e;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Exo', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex: 1;
+}
+
+.dep-preset:hover {
+  background: white;
+  color: #1a1a2e;
+}
+
+.dep-preset.active {
+  background: white;
+  color: #1a1a2e;
+  border-color: white;
+}
+
+.deposer-limite {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+}
+
+.deposer-limite strong { color: rgba(255,255,255,0.8); }
+
+.deposer-paiement-bloc {
+  margin-bottom: 20px;
+}
+
+.deposer-paiement-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 10px;
+}
+
+.deposer-carte-option {
+  background: #1a1a2e;
+  border-radius: 16px;
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.deposer-carte-option:hover { background: #252540; }
+
+.carte-option-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.carte-option-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+}
+
+.carte-logos {
+  display: flex;
+  gap: 8px;
+  font-size: 28px;
+}
+
+.carte-logos .fa-cc-visa { color: #1a1f71; background: white; border-radius: 4px; padding: 2px; }
+.carte-logos .fa-cc-mastercard { color: #eb001b; }
+
+.carte-option-limits {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+}
+
+.deposer-carte-form {
+  background: #1a1a2e;
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.carte-form-titre {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.carte-input-group {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.carte-input {
+  width: 100%;
+  background: #F8CA23;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-family: 'Exo', sans-serif;
+  font-weight: 600;
+  color: #1a1a2e;
+  outline: none;
+}
+
+.carte-input::placeholder { color: rgba(26,26,46,0.5); }
+
+.carte-icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(26,26,46,0.4);
+  font-size: 18px;
+}
+
+.carte-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.carte-row .carte-input { margin-bottom: 0; }
+
+.deposer-continuer-btn {
+  width: 100%;
+  background: #552583;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 17px;
+  font-weight: 800;
+  font-family: 'Exo', sans-serif;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: all 0.2s;
+  letter-spacing: 0.3px;
+}
+
+.deposer-continuer-btn:hover { background: #7B2FBE; }
+
+.deposer-fermer-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #e53935;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Exo', sans-serif;
+  cursor: pointer;
+  padding: 8px;
+  transition: opacity 0.2s;
+}
+
+.deposer-fermer-btn:hover { opacity: 0.7; }
+
+.deposer-securise {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(26,26,46,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.deposer-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deposer-confirm-box {
+  background: #1a1a2e;
+  border-radius: 20px;
+  padding: 36px 32px;
+  text-align: center;
+  max-width: 380px;
+  width: 90%;
+}
+
+.confirm-check {
+  font-size: 48px;
+  color: #4CAF50;
+  margin-bottom: 12px;
+}
+
+.confirm-titre {
+  font-size: 22px;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 6px;
+}
+
+.confirm-sous {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 4px;
+}
+
+.confirm-montant {
+  font-size: 28px;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 28px;
+}
+
+.confirm-ok-btn {
+  width: 100%;
+  background: #F8CA23;
+  color: #1a1a2e;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 900;
+  font-family: 'Exo', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.confirm-ok-btn:hover { background: #e5b820; }

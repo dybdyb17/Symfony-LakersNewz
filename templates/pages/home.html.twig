@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lakers Newz - Actualités des Los Angeles Lakers{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+{% endblock %}
+
+{% block body_class %}home-page{% endblock %}
+
+{% block body %}
+<div class="img"></div>
+<main class="home-main">
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-subtitle">Bienvenue sur</span>
+                Lakers Newz
+            </h1>
+            <p class="hero-description">
+                Toute l'actualité des Los Angeles Lakers en temps réel
+            </p>
+            <a href="#news-section" class="hero-cta">
+                <i class="fa-solid fa-arrow-down"></i>
+                Découvrir les news
+            </a>
+        </div>
+    </section>
+
+    <section id="news-section" class="news-section">
+        <div class="news-container">
+            <div class="news-header">
+                <h2><i class="fa-solid fa-newspaper"></i> Dernières actualités</h2>
+                <p>Restez informé des dernières nouvelles des Lakers</p>
+            </div>
+
+            <div class="news-grid">
+                {% if articles is empty %}
+                    <div class="loading-news">
+                        <p>Aucun article pour le moment</p>
+                    </div>
+                {% else %}
+                    {% for article in articles %}
+                        <article class="news-card">
+                            <div class="news-card__image">
+                                <img src="{{ article.image ?? 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&h=600&fit=crop' }}" alt="{{ article.titre }}" loading="lazy">
+                                <span class="news-category {% if article.categorie == 'rumeurs' %}category-rumeurs{% elseif article.categorie == 'interviews' %}category-interviews{% elseif article.categorie == 'analyses' %}category-analyses{% endif %}">{{ article.categorie|default('News')|capitalize }}</span>
+                            </div>
+                            <div class="news-card__content">
+                                <div class="news-card__date">
+                                    <i class="fa-solid fa-calendar"></i>
+                                    {{ article.createdAt|date('d F Y') }}
+                                </div>
+                                <h3 class="news-card__title">{{ article.titre }}</h3>
+                                <p class="news-card__excerpt">{{ article.contenu|length > 150 ? article.contenu|slice(0, 150) ~ '...' : article.contenu }}</p>
+                                <div class="news-card__footer">
+                                    <span class="news-card__author">
+                                        <i class="fa-solid fa-user"></i>
+                                        {{ article.auteur|default('Lakers Newz') }}
+                                    </span>
+                                    <a href="#" class="news-card__read-more">
+                                        Lire la suite
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

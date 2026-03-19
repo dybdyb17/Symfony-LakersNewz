@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Déposer - Lakers Newz</title>
+    <link href="{{ asset('assets/fonts/fontawesome/css/fontawesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/fonts/fontawesome/css/brands.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/fonts/fontawesome/css/solid.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/fonts/fontawesome/css/solid.min.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ asset('assets/icons/favicon.ico') }}" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/deposer.css') }}">
+</head>
+<body class="deposer-page">
+    <div class="deposer-bg-pattern"></div>
+    <header class="deposer-header">
+        <button class="deposer-close-btn" onclick="window.location.href='{{ path('app_paris') }}'"><i class="fa-solid fa-xmark"></i></button>
+        <div class="deposer-header-right">
+            <span class="deposer-solde-badge"><i class="fa-solid fa-plus"></i><span id="soldeBadge">0,00 €</span></span>
+        </div>
+    </header>
+    <main class="deposer-main">
+        <h1 class="deposer-titre">Déposer</h1>
+        <div class="deposer-bloc">
+            <div class="deposer-amount-row">
+                <input type="number" id="montantInput" value="0" min="0" max="5000">
+                <span class="deposer-currency">€</span>
+            </div>
+            <div class="deposer-presets">
+                <button class="dep-preset" data-amount="10">10 €</button>
+                <button class="dep-preset" data-amount="20">20 €</button>
+                <button class="dep-preset" data-amount="50">50 €</button>
+                <button class="dep-preset" data-amount="100">100 €</button>
+            </div>
+            <p class="deposer-limite">Tu peux encore déposer jusqu'à <strong>5000 €</strong></p>
+        </div>
+        <div class="deposer-paiement-bloc">
+            <p class="deposer-paiement-label">Moyen de paiement</p>
+            <div class="deposer-carte-option" id="carteOption">
+                <div class="carte-option-top">
+                    <span class="carte-option-label">Carte bancaire</span>
+                    <div class="carte-logos"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i></div>
+                </div>
+                <div class="carte-option-limits"><span>min 11 €</span><span>Max 50 000 €</span></div>
+            </div>
+            <div class="deposer-carte-form" id="carteForm" style="display:none;">
+                <p class="carte-form-titre">Ajoute ta carte bancaire</p>
+                <div class="carte-input-group">
+                    <input type="text" id="carteNumero" placeholder="Numéro de carte" maxlength="19" class="carte-input">
+                    <i class="fa-solid fa-credit-card carte-icon"></i>
+                </div>
+                <div class="carte-row">
+                    <input type="text" id="carteExpiry" placeholder="Date d'expiration" maxlength="5" class="carte-input">
+                    <input type="text" id="carteCVV" placeholder="CVV" maxlength="3" class="carte-input">
+                </div>
+                <button class="deposer-continuer-btn" id="validerCarteBtn">Continuer</button>
+                <button class="deposer-fermer-btn" id="fermerCarteBtn">Fermer</button>
+            </div>
+        </div>
+        <button class="deposer-continuer-btn" id="continuerBtn">Continuer</button>
+        <p class="deposer-securise"><i class="fa-solid fa-lock"></i> Paiement sécurisé</p>
+    </main>
+    <div class="deposer-confirm-overlay" id="confirmOverlay" style="display:none;">
+        <div class="deposer-confirm-box">
+            <div class="confirm-check"><i class="fa-solid fa-circle-check"></i></div>
+            <p class="confirm-titre">Dépôt confirmé</p>
+            <p class="confirm-sous">Montant du Dépôt</p>
+            <p class="confirm-montant" id="confirmMontant">0,00 €</p>
+            <button class="confirm-ok-btn" id="confirmOkBtn">OK</button>
+        </div>
+    </div>
+    <script src="{{ asset('js/deposer.js') }}"></script>
+</body>
+</html>

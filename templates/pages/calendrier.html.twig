@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+{% block title %}Lakers Newz - Calendrier{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/schedule.css') }}">{% endblock %}
+{% block body_class %}calendrier-page{% endblock %}
+{% block body %}
+<main class="calendar-main">
+    <section class="calendar-hero">
+        <div class="calendar-hero__overlay">
+            <span class="calendar-hero__label"><i class="fa-solid fa-calendar"></i> Calendrier NBA</span>
+            <h1>Lakers 2025/2026</h1>
+            <p>Retrouver les 82 matchs de la saison régulière des Los Angeles Lakers.</p>
+        </div>
+    </section>
+    <section class="calendar-card">
+        <header class="calendar-card__header">
+            <div>
+                <h2>Programme de la saison</h2>
+                <p class="calendar-card__subtitle">Du 22 octobre 2025 au 13 avril 2026</p>
+            </div>
+            <div class="calendar-filters">
+                <label class="filter">
+                    <span>Mois</span>
+                    <select name="month" id="month-filter">
+                        <option value="all">Tous</option>
+                        <option value="octobre">Octobre</option>
+                        <option value="novembre">Novembre</option>
+                        <option value="decembre">Décembre</option>
+                        <option value="janvier">Janvier</option>
+                        <option value="fevrier">Février</option>
+                        <option value="mars">Mars</option>
+                        <option value="avril">Avril</option>
+                    </select>
+                </label>
+            </div>
+        </header>
+        <div class="calendar-table__wrapper">
+            <table class="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Heure (PT)</th>
+                        <th>Adversaire</th>
+                        <th>Lieu</th>
+                        <th>Résultat</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+{% endblock %}
+{% block javascripts %}<script defer src="{{ asset('js/script.js') }}"></script>{% endblock %}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lakers Newz{% endblock %}</title>
+    <link href="{{ asset('assets/fonts/fontawesome/css/fontawesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/fonts/fontawesome/css/brands.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/fonts/fontawesome/css/solid.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/fonts/fontawesome/css/solid.min.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ asset('assets/icons/favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+
+    {% include 'partials/_navbar.html.twig' %}
+
+    <button class="burger-btn">
+        <i class="fa-regular fa-bars"></i>
+    </button>
+
+    {% include 'partials/_sidebar.html.twig' %}
+
+    {% block body %}{% endblock %}
+
+    {% include 'partials/_footer.html.twig' %}
+
+    <script src="{{ asset('js/script.js') }}"></script>
+    {% block javascripts %}{% endblock %}
+</body>
+</html>

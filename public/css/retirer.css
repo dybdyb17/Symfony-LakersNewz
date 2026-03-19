@@ -1,0 +1,39 @@
+.retirer-icon-error {
+  font-size: 48px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.retirer-icon-img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.retirer-titre-error {
+  color: white !important;
+}
+
+.retirer-sous-error {
+  color: rgba(255,255,255,0.6) !important;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.retirer-ok-btn {
+  background: #F8CA23 !important;
+  color: #1a1a2e !important;
+}
+
+.retirer-ok-btn:hover {
+  background: #e5b820 !important;
+}
+
+@media (min-width: 768px) {
+  .retirer-page .deposer-close-btn {
+    font-size: 22px;
+  }
+}

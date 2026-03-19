@@ -1,0 +1,310 @@
+body.home-page .img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  animation: changeBackground 8s infinite;
+  z-index: -1;
+}
+
+body.home-page .img::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+@keyframes changeBackground {
+  0%    { background-image: url('../assets/img/luka.pnk.jpg'); }
+  33%   { background-image: url('../assets/img/lakeflow.jpg'); }
+  66%   { background-image: url('../assets/img/sports-lebron_james-american-basketball-nba-453617.jpeg'); }
+  100%  { background-image: url('../assets/img/dean-bennett-nFjLHE4vmn4-unsplash.jpg'); }
+}
+
+.home-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 2rem 4rem;
+  position: relative;
+}
+
+.hero-content {
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero-subtitle {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #fdb927;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.hero-title {
+  font-size: 5rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.8);
+  line-height: 1.2;
+}
+
+.hero-description {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.hero-cta {
+  background: linear-gradient(135deg, #552583, #fdb927);
+  color: white;
+  border: none;
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  box-shadow: 0 10px 30px rgba(253, 185, 39, 0.4);
+}
+
+.hero-cta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(253, 185, 39, 0.6);
+}
+
+.hero-cta i {
+  animation: bounce 2s infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+.news-section {
+  background: linear-gradient(180deg, rgba(253,185,39, 1.0) 0%, rgba(78, 4, 147, 0.98) 100%);
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.news-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.news-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: white;
+}
+
+.news-header h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #010101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.news-header p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.news-card {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(253, 185, 39, 0.2);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-card:hover {
+  transform: translateY(-8px);
+  border-color: #fdb927;
+  box-shadow: 0 15px 40px rgba(253, 185, 39, 0.3);
+}
+
+.news-card__image {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+
+.news-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-card__image img {
+  transform: scale(1.1);
+}
+
+.news-category {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(253, 185, 39, 0.9);
+  color: #000;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.news-category.category-rumeurs {
+  background: rgba(255, 99, 71, 0.9);
+  color: #fff;
+}
+
+.news-category.category-interviews {
+  background: rgba(138, 43, 226, 0.9);
+  color: #fff;
+}
+
+.news-category.category-analyses {
+  background: rgba(30, 144, 255, 0.9);
+  color: #fff;
+}
+
+.news-card__content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-card__date {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.news-card__title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.news-card__excerpt {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.news-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.news-card__author {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.news-card__read-more {
+  color: #fdb927;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: gap 0.3s ease;
+}
+
+.news-card:hover .news-card__read-more {
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .hero-description {
+    font-size: 1.2rem;
+  }
+
+  .news-header h2 {
+    font-size: 2rem;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-cta {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+}

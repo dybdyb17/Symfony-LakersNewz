@@ -1,0 +1,319 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #17408B;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+   
+body.roster-page {
+  background: url(../assets/img/lakersgold.jpg) center/cover fixed no-repeat;
+  background-attachment: fixed;
+  color: white;
+}
+
+.roster-main {
+  padding: 120px 2rem 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.roster-hero {
+  background: linear-gradient(135deg, rgba(85, 37, 131, 0.9), rgba(253, 185, 39, 0.3)),
+              url('../assets/img/dean-bennett-nFjLHE4vmn4-unsplash.jpg') center/cover no-repeat;
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(253, 185, 39, 0.3);
+}
+
+.roster-hero__content h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #fdb927;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.roster-hero__content p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.roster-filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.position-btn {
+  background: rgba(85, 37, 131, 0.5);
+  border: 2px solid rgba(253, 185, 39, 0.3);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.position-btn:hover {
+  background: rgba(85, 37, 131, 0.8);
+  border-color: #fdb927;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(253, 185, 39, 0.4);
+}
+
+.position-btn.active {
+  background: linear-gradient(135deg, #552583, #fdb927);
+  border-color: #fdb927;
+  box-shadow: 0 5px 20px rgba(253, 185, 39, 0.5);
+}
+
+.loading-roster {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  gap: 1rem;
+}
+
+.loading-roster i {
+  font-size: 3rem;
+  color: #fdb927;
+}
+
+.loading-roster p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.roster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.player-card {
+  background: linear-gradient(135deg, rgba(85, 37, 131, 0.9), rgba(23, 64, 139, 0.9));
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(253, 185, 39, 0.2);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.player-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #552583, #fdb927, #552583);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.player-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: #fdb927;
+  box-shadow: 0 15px 40px rgba(253, 185, 39, 0.4);
+}
+
+.player-card:hover::before {
+  opacity: 1;
+}
+
+.player-card__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.player-jersey {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fdb927;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.player-position {
+  background: rgba(253, 185, 39, 0.2);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #fdb927;
+  border: 1px solid rgba(253, 185, 39, 0.4);
+}
+
+.player-card__image {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(85, 37, 131, 0.3), rgba(0, 0, 0, 0.6));
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.player-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.3s ease;
+}
+
+.player-card:hover .player-card__image img {
+  transform: scale(1.1);
+}
+
+.player-card__info {
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.player-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.player-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(253, 185, 39, 0.3);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+}
+
+.stat-item i {
+  color: #fdb927;
+  font-size: 1.2rem;
+}
+
+.stat-item span {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.player-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.detail-row .label {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.detail-row .value {
+  color: #fdb927;
+  font-weight: 600;
+}
+
+.no-players,
+.error-roster {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(85, 37, 131, 0.3);
+  border-radius: 12px;
+  border: 2px dashed rgba(253, 185, 39, 0.3);
+}
+
+.no-players p,
+.error-roster p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+  .roster-main {
+    padding: 100px 1rem 2rem;
+  }
+
+  .roster-hero__content h1 {
+    font-size: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .roster-hero__content p {
+    font-size: 1rem;
+  }
+
+  .roster-filters {
+    flex-direction: column;
+  }
+
+  .position-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .roster-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .player-card__image {
+    height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .roster-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .player-name {
+    font-size: 1.1rem;
+  }
+}

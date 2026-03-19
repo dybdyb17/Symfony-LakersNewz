@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+{% block title %}S'inscrire - Lakers Newz{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/auth.css') }}">{% endblock %}
+{% block body_class %}auth-page inscription-page{% endblock %}
+{% block body %}
+<main class="auth-main">
+    <div class="auth-left">
+        <div class="auth-card" id="inscriptionCard">
+            <div class="auth-header">
+                <h1>S'inscrire</h1>
+                <p>Créer votre compte</p>
+            </div>
+            <form class="auth-form" id="inscriptionForm">
+                <div class="form-group">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" name="prenom" placeholder="Entre ton prénom" required>
+                </div>
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" placeholder="Entre ton nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="pseudo">Pseudo</label>
+                    <input type="text" id="pseudo" name="pseudo" placeholder="Entre ton pseudo" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Adresse mail</label>
+                    <input type="email" id="email" name="email" placeholder="Entre ton email" required>
+                </div>
+                <div class="form-group">
+                    <label for="dateNaissance">Date de naissance</label>
+                    <input type="text" id="dateNaissance" name="dateNaissance" placeholder="JJ / MM / AAAA" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" name="password" placeholder="••••••••••••" required>
+                        <button type="button" class="toggle-password"><i class="fa-solid fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmer Mot de passe</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••••••" required>
+                        <button type="button" class="toggle-password"><i class="fa-solid fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="form-checkboxes">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" id="age18" name="age18" required>
+                        <span class="checkmark"></span>
+                        <span class="checkbox-label">Je certifie avoir 18 ans ou plus</span>
+                    </label>
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" id="conditions" name="conditions" required>
+                        <span class="checkmark"></span>
+                        <span class="checkbox-label">J'accepte les conditions d'utilisation</span>
+                    </label>
+                </div>
+                <button type="submit" class="auth-btn">S'inscrire</button>
+            </form>
+            <div class="auth-footer">
+                <p>Avez vous un compte? <a href="{{ path('app_login') }}">Se connecter</a></p>
+            </div>
+        </div>
+        <div class="success-card" id="successCard">
+            <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+            <h2>Inscription réussie !</h2>
+            <p>Bienvenue sur Lakers Newz. Votre compte a été créé avec succès.</p>
+            <a href="{{ path('app_paris') }}" class="auth-btn success-btn">Accéder aux paris</a>
+        </div>
+    </div>
+    <div class="auth-right">
+        <img src="{{ asset('assets/img/dean-bennett-nFjLHE4vmn4-unsplash.jpg') }}" alt="Kobe Bryant Mural" class="auth-image">
+    </div>
+</main>
+{% endblock %}
+{% block javascripts %}<script src="{{ asset('js/auth.js') }}"></script>{% endblock %}

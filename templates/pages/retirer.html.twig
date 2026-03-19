@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retirer - Lakers Newz</title>
+    <link href="{{ asset('assets/fonts/fontawesome/css/fontawesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/fonts/fontawesome/css/brands.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/fonts/fontawesome/css/solid.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/fonts/fontawesome/css/solid.min.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ asset('assets/icons/favicon.ico') }}" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/deposer.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/retirer.css') }}">
+</head>
+<body class="deposer-page retirer-page">
+    <div class="deposer-bg-pattern"></div>
+    <header class="deposer-header">
+        <button class="deposer-close-btn" id="closeBtn"><i class="fa-solid fa-xmark"></i></button>
+        <div class="deposer-header-right">
+            <span class="deposer-solde-badge"><i class="fa-solid fa-plus"></i><span id="soldeBadge">0,00 €</span></span>
+        </div>
+    </header>
+    <main class="deposer-main" id="mainContent">
+        <h1 class="deposer-titre">Retirer</h1>
+        <div class="deposer-bloc">
+            <div class="deposer-amount-row">
+                <input type="number" id="montantInput" value="0" min="0">
+                <span class="deposer-currency">€</span>
+            </div>
+            <div class="deposer-presets">
+                <button class="dep-preset" data-amount="10">10 €</button>
+                <button class="dep-preset" data-amount="20">20 €</button>
+                <button class="dep-preset" data-amount="50">50 €</button>
+                <button class="dep-preset" data-amount="100">100 €</button>
+            </div>
+            <p class="deposer-limite">Minimum de retrait : <strong>10 €</strong></p>
+        </div>
+        <div class="deposer-paiement-bloc">
+            <p class="deposer-paiement-label">Moyen de retrait</p>
+            <div class="deposer-carte-option">
+                <div class="carte-option-top">
+                    <span class="carte-option-label">Carte bancaire</span>
+                    <div class="carte-logos"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i></div>
+                </div>
+                <div class="carte-option-limits"><span>min 10 €</span><span>Max 50 000 €</span></div>
+            </div>
+        </div>
+        <button class="deposer-continuer-btn" id="retirerBtn">Retirer</button>
+        <p class="deposer-securise"><i class="fa-solid fa-lock"></i> Transaction sécurisée</p>
+    </main>
+    <div class="deposer-confirm-overlay" id="soldeInsuffisantOverlay" style="display:none;">
+        <div class="deposer-confirm-box">
+            <div class="retirer-icon-error">
+                <img src="{{ asset('assets/img/icon-insuffisant.png') }}" alt="" class="retirer-icon-img" onerror="this.style.display='none'; document.getElementById('iconFallback').style.display='flex'">
+                <div id="iconFallback" style="display:none; font-size:40px;">⚔️</div>
+            </div>
+            <p class="confirm-titre retirer-titre-error">Solde insuffisant</p>
+            <p class="confirm-sous retirer-sous-error">Pour retirer de l'argent, votre solde doit être supérieur à 10€</p>
+            <button class="confirm-ok-btn retirer-ok-btn" id="okInsuffisantBtn">OK</button>
+        </div>
+    </div>
+    <div class="deposer-confirm-overlay" id="retraitConfirmeOverlay" style="display:none;">
+        <div class="deposer-confirm-box">
+            <div class="confirm-check"><i class="fa-solid fa-circle-check"></i></div>
+            <p class="confirm-titre">Retrait confirmé</p>
+            <p class="confirm-sous">Montant du retrait</p>
+            <p class="confirm-montant" id="confirmMontant">0,00 €</p>
+            <button class="confirm-ok-btn" id="confirmOkBtn">OK</button>
+        </div>
+    </div>
+    <script src="{{ asset('js/retirer.js') }}"></script>
+</body>
+</html>

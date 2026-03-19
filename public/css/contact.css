@@ -1,0 +1,424 @@
+/* ========================================
+   CONTACT PAGE - Lakers Newz
+   Design basé sur les maquettes Figma
+   ======================================== */
+
+body.contact-page {
+  background: #1a1a2e;
+  color: white;
+  min-height: 100vh;
+}
+
+/* ========================================
+   MAIN CONTAINER
+   ======================================== */
+
+.contact-main {
+  padding: 100px 20px 40px;
+  min-height: calc(100vh - 200px);
+}
+
+.contact-container {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   HEADER - Icône + Titre
+   ======================================== */
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.contact-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-icon i {
+  font-size: 40px;
+  color: #fdb927;
+}
+
+.contact-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fdb927;
+  margin: 0;
+}
+
+/* ========================================
+   FORMULAIRE CARD
+   ======================================== */
+
+.contact-form-card {
+  background: #552583;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+.contact-form-card h2 {
+  color: #fdb927;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* ========================================
+   FORM INPUTS
+   ======================================== */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: #fdb927;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 18px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #666;
+  opacity: 1;
+}
+
+.form-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 40px;
+}
+
+.form-group select option {
+  background: #fdb927;
+  color: #333;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(253, 185, 39, 0.5);
+}
+
+/* ========================================
+   BOUTON SUBMIT
+   ======================================== */
+
+.submit-btn {
+  width: 100%;
+  background: #fdb927;
+  color: #552583;
+  border: none;
+  border-radius: 25px;
+  padding: 15px 25px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background: #e5a620;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(253, 185, 39, 0.4);
+}
+
+.submit-btn i {
+  font-size: 18px;
+}
+
+/* ========================================
+   MESSAGE DE SUCCÈS
+   ======================================== */
+
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.form-success.show {
+  display: block;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(76, 175, 80, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.success-icon i {
+  font-size: 40px;
+  color: #4CAF50;
+}
+
+.form-success p {
+  font-size: 18px;
+  color: #4CAF50;
+  margin-bottom: 25px;
+}
+
+.btn-back-home {
+  display: inline-block;
+  background: #4CAF50;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.btn-back-home:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   INFORMATIONS CARD
+   ======================================== */
+
+.contact-info-card {
+  background: #552583;
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.contact-info-card h2 {
+  color: #fdb927;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* ========================================
+   INFO ITEMS
+   ======================================== */
+
+.info-item {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  align-items: flex-start;
+}
+
+.info-icon {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  background: rgba(253, 185, 39, 0.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-icon i {
+  color: #fdb927;
+  font-size: 18px;
+}
+
+.info-content h3 {
+  color: #fdb927;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.info-content p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ========================================
+   RÉSEAUX SOCIAUX
+   ======================================== */
+
+.social-section {
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-section h3 {
+  color: #fdb927;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-icon {
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: #fdb927;
+  color: #552583;
+  transform: translateY(-3px);
+}
+
+/* ========================================
+   RESPONSIVE - TABLETTE (768px)
+   ======================================== */
+
+@media (min-width: 768px) {
+  .contact-container {
+    max-width: 700px;
+  }
+
+  .contact-header h1 {
+    font-size: 36px;
+  }
+
+  .contact-form-card,
+  .contact-info-card {
+    padding: 35px;
+  }
+
+  .contact-form-card h2,
+  .contact-info-card h2 {
+    font-size: 24px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 18px 22px;
+    font-size: 17px;
+  }
+}
+
+/* ========================================
+   RESPONSIVE - DESKTOP (1024px+)
+   ======================================== */
+
+@media (min-width: 1024px) {
+  .contact-main {
+    padding: 120px 40px 60px;
+  }
+
+  .contact-container {
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 30px;
+  }
+
+  .contact-header {
+    grid-column: 1 / -1;
+    margin-bottom: 10px;
+  }
+
+  .contact-header h1 {
+    font-size: 42px;
+  }
+
+  .contact-icon i {
+    font-size: 50px;
+  }
+
+  .contact-form-card {
+    grid-column: 1;
+    margin-bottom: 0;
+  }
+
+  .contact-info-card {
+    grid-column: 2;
+  }
+
+  .contact-form-card,
+  .contact-info-card {
+    padding: 40px;
+    border-radius: 25px;
+  }
+
+  .info-item {
+    padding: 18px;
+  }
+
+  .social-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+  }
+}
+
+/* ========================================
+   RESPONSIVE - GRAND ÉCRAN (1440px+)
+   ======================================== */
+
+@media (min-width: 1440px) {
+  .contact-container {
+    max-width: 1200px;
+  }
+
+  .contact-form-card,
+  .contact-info-card {
+    padding: 50px;
+  }
+}

@@ -1,0 +1,21 @@
+<aside class="sidebar">
+    <button class="close-btn">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+    <nav class="nav">
+        <ul>
+            <li><a class="{{ app.request.attributes.get('_route') == 'app_home' ? 'active' : '' }}" href="{{ path('app_home') }}"><i class="fa-solid fa-basketball"></i>News</a></li>
+            <li><a class="{{ app.request.attributes.get('_route') == 'app_calendrier' ? 'active' : '' }}" href="{{ path('app_calendrier') }}"><i class="fa-solid fa-calendar"></i>Calendrier</a></li>
+            <li><a class="{{ app.request.attributes.get('_route') == 'app_classement' ? 'active' : '' }}" href="{{ path('app_classement') }}"><i class="fa-solid fa-ranking-star"></i>Classement</a></li>
+            <li><a class="{{ app.request.attributes.get('_route') == 'app_roster' ? 'active' : '' }}" href="{{ path('app_roster') }}"><i class="fa-solid fa-star"></i>Roster</a></li>
+            {% if app.user %}
+                <li><a class="{{ app.request.attributes.get('_route') == 'app_paris' ? 'active' : '' }}" href="{{ path('app_paris') }}"><i class="fa-solid fa-dice"></i>Paris</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div class="sidebar-footer">
+        <a href="{{ path('app_home') }}" class="footer-logo">
+            <img src="{{ asset('assets/img/Los_Angeles_Lakers_logo.svg.png') }}" alt="Logo Lakers">
+        </a>
+    </div>
+</aside>

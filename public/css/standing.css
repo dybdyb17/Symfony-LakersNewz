@@ -1,0 +1,247 @@
+body.classement-page {
+  background-image: url("../assets/img/lakersgold.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: white;
+  font-family: "Arial", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.classement-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 140px 2rem 4rem;
+  width: 100%;
+}
+
+.classement-card {
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 1400px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+  border: 2px solid rgba(253, 185, 39, 0.3);
+}
+
+.classement-card h1 {
+  text-align: center;
+  color: #fcd34d;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.9);
+  font-weight: 800;
+}
+
+.conference-filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.conf-btn {
+  background: rgba(85, 37, 131, 0.6);
+  border: 2px solid rgba(253, 185, 39, 0.3);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.conf-btn:hover {
+  background: rgba(85, 37, 131, 0.9);
+  border-color: #fcd34d;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(253, 185, 39, 0.4);
+}
+
+.conf-btn.active {
+  background: linear-gradient(135deg, #552583, #fcd34d);
+  border-color: #fcd34d;
+  box-shadow: 0 5px 20px rgba(253, 185, 39, 0.5);
+}
+
+.classement-table__wrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 0.95rem;
+  background-color: rgba(20, 20, 40, 0.7);
+}
+
+.standings-table thead {
+  background: linear-gradient(135deg, rgba(85, 37, 131, 0.95), rgba(253, 185, 39, 0.2));
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.standings-table th {
+  padding: 1rem 0.8rem;
+  color: #fcd34d;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-bottom: 3px solid #fcd34d;
+  white-space: nowrap;
+}
+
+.standings-table td {
+  padding: 1rem 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.standings-table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.standings-table tr:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.standings-table tbody tr:hover {
+  background-color: rgba(253, 185, 39, 0.15);
+  transform: scale(1.01);
+  transition: all 0.2s ease;
+}
+
+.standings-table tr.lakers-row {
+  background: linear-gradient(90deg, rgba(85, 37, 131, 0.4), rgba(253, 185, 39, 0.2)) !important;
+  border-left: 4px solid #fcd34d;
+  font-weight: 600;
+}
+
+.standings-table tr.lakers-row:hover {
+  background: linear-gradient(90deg, rgba(85, 37, 131, 0.6), rgba(253, 185, 39, 0.3)) !important;
+  box-shadow: 0 0 20px rgba(253, 185, 39, 0.4);
+}
+
+.team-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-start;
+  padding-left: 1rem;
+}
+
+.team-logo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid rgba(253, 185, 39, 0.5);
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.rank-cell {
+  font-weight: bold;
+  color: #fcd34d;
+}
+
+.team-name-cell {
+  text-align: left;
+}
+
+.lakers-name {
+  font-weight: bold;
+  color: #fcd34d;
+}
+
+.error-cell {
+  padding: 2rem !important;
+  text-align: center;
+  color: #ff6b6b;
+}
+
+.loading-row td {
+  padding: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .classement-card {
+    max-width: 95%;
+  }
+
+  .standings-table {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .classement-main {
+    padding: 120px 1rem 2rem;
+  }
+
+  .classement-card {
+    padding: 1.5rem;
+  }
+
+  .classement-card h1 {
+    font-size: 1.8rem;
+  }
+
+  .conference-filters {
+    flex-direction: column;
+  }
+
+  .conf-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .standings-table th,
+  .standings-table td {
+    padding: 0.6rem 0.4rem;
+    font-size: 0.75rem;
+  }
+
+  .team-logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .team-cell {
+    gap: 8px;
+    padding-left: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .classement-card h1 {
+    font-size: 1.5rem;
+  }
+
+  .standings-table th,
+  .standings-table td {
+    padding: 0.5rem 0.3rem;
+    font-size: 0.7rem;
+  }
+
+  .team-logo {
+    width: 24px;
+    height: 24px;
+  }
+}

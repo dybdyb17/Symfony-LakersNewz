@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block title %}Classement NBA 2025/2026{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/standing.css') }}">{% endblock %}
+{% block body_class %}classement-page{% endblock %}
+{% block body %}
+<main class="classement-main">
+    <section class="classement-card">
+        <h1>Classement NBA 2025/2026</h1>
+        <div class="conference-filters">
+            <button class="conf-btn active" data-conf="all">Toutes les équipes</button>
+            <button class="conf-btn" data-conf="west">Conférence Ouest</button>
+            <button class="conf-btn" data-conf="east">Conférence Est</button>
+        </div>
+        <div id="standings-error" class="error-message"></div>
+        <div class="classement-table__wrapper">
+            <table class="standings-table">
+                <thead>
+                    <tr>
+                        <th>#</th><th>Équipe</th><th>W</th><th>L</th><th>PCT</th><th>GB</th><th>HOME</th><th>AWAY</th><th>PPG</th><th>OPP PPG</th><th>DIFF</th><th>STRK</th><th>L10</th>
+                    </tr>
+                </thead>
+                <tbody id="nba-standings-body">
+                    <tr class="loading-row">
+                        <td colspan="13">
+                            <div class="loading-spinner">
+                                <i class="fa-solid fa-spinner fa-spin"></i>
+                                <p>Chargement du classement...</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+{% endblock %}
+{% block javascripts %}<script defer src="{{ asset('js/standings.js') }}"></script>{% endblock %}

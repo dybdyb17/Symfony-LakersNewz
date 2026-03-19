@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - Lakers Newz</title>
+    <link href="{{ asset('assets/fonts/fontawesome/css/fontawesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/fonts/fontawesome/css/brands.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/fonts/fontawesome/css/solid.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/fonts/fontawesome/css/solid.min.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ asset('assets/icons/favicon.ico') }}" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/profil.css') }}">
+</head>
+<body class="profil-page">
+    <div class="profil-bg-pattern"></div>
+    <div class="profil-view" id="profilView">
+        <header class="profil-header">
+            <h1 class="profil-header-titre">Profil</h1>
+            <button class="profil-close-btn" onclick="window.location.href='{{ path('app_paris') }}'"><i class="fa-solid fa-xmark"></i></button>
+        </header>
+        <div class="profil-hero">
+            <div class="profil-avatar-wrap"><div class="profil-avatar"></div></div>
+            <div class="profil-identity"><p class="profil-pseudo" id="profilPseudo">utilisateur</p></div>
+            <div class="profil-solde-wrap">
+                <p class="profil-solde-label">Solde disponible</p>
+                <p class="profil-solde-montant" id="profilSolde">0,00 €</p>
+            </div>
+        </div>
+        <hr class="profil-divider">
+        <div class="profil-actions">
+            <button class="profil-action-card" id="deposerBtn"><i class="fa-solid fa-money-bill-transfer"></i><span>Déposer</span></button>
+            <button class="profil-action-card" id="retirerBtn"><i class="fa-solid fa-money-bill-transfer"></i><span>Retirer</span></button>
+        </div>
+        <button class="profil-info-btn" id="infoPersoBtn"><i class="fa-solid fa-circle-user"></i> Info personelle</button>
+        <button class="profil-disconnect-btn" id="deconnecterBtn">Se déconnecter</button>
+    </div>
+    <div class="profil-view" id="infoPersoView" style="display:none;">
+        <header class="profil-header">
+            <h1 class="profil-header-titre">Info perso</h1>
+            <button class="profil-back-btn" id="backBtn"><i class="fa-solid fa-chevron-left"></i></button>
+        </header>
+        <div class="info-section">
+            <h2 class="info-section-titre">Mon identité</h2>
+            <div class="info-table">
+                <div class="info-row"><span class="info-label">Civilité</span><span class="info-value" id="infoCivilite">Monsieur</span></div>
+                <div class="info-row"><span class="info-label">Nom</span><span class="info-value" id="infoNom">—</span></div>
+                <div class="info-row"><span class="info-label">Prénom</span><span class="info-value" id="infoPrenom">—</span></div>
+                <div class="info-row"><span class="info-label">Date de naissance</span><span class="info-value" id="infoDdn">—</span></div>
+                <div class="info-row"><span class="info-label">Lieu de naissance</span><span class="info-value" id="infoLieu">—</span></div>
+            </div>
+        </div>
+        <div class="info-section">
+            <h2 class="info-section-titre">Mes informations de contact</h2>
+            <div class="info-table">
+                <div class="info-row"><span class="info-label">Email</span><span class="info-value" id="infoEmail">—</span></div>
+                <div class="info-row"><span class="info-label">Téléphone</span><span class="info-value" id="infoTel">—</span></div>
+            </div>
+        </div>
+        <button class="profil-info-btn" id="modifierBtn">Modifier mes informations</button>
+        <button class="profil-cloture-btn" id="clotureBtn">Clôturer mon compte</button>
+    </div>
+    <div class="cloture-overlay" id="clotureOverlay" style="display:none;">
+        <div class="cloture-modal">
+            <h2>Clôturer mon compte</h2>
+            <p>Êtes-vous sûr de vouloir clôturer votre compte ? Cette action est irréversible.</p>
+            <button class="cloture-confirm-btn" id="clotureConfirmBtn">Confirmer</button>
+            <button class="cloture-cancel-btn" id="clotureCancelBtn">Annuler</button>
+        </div>
+    </div>
+    <script src="{{ asset('js/profil.js') }}"></script>
+</body>
+</html>
