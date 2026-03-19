@@ -57,6 +57,12 @@ class ApiController extends AbstractController
                 $user->setDateNaissance($date);
             }
         }
+        if (!empty($data['telephone'])) {
+            $user->setTelephone($this->sanitize($data['telephone']));
+        }
+        if (!empty($data['lieuNaissance'])) {
+            $user->setLieuNaissance($this->sanitize($data['lieuNaissance']));
+        }
 
         $em->persist($user);
         $em->flush();
@@ -88,6 +94,9 @@ class ApiController extends AbstractController
     public function profil(int $id): JsonResponse
     {
         $user = $this->getUser();
+        if (!$user) {
+            return $this->json(['error' => 'Non authentifié'], 401);
+        }
 
         return $this->json($this->serializeUser($user));
     }
@@ -99,6 +108,9 @@ class ApiController extends AbstractController
         int $id
     ): JsonResponse {
         $user = $this->getUser();
+        if (!$user) {
+            return $this->json(['error' => 'Non authentifié'], 401);
+        }
 
         $data = json_decode($request->getContent(), true);
 
@@ -124,6 +136,12 @@ class ApiController extends AbstractController
                 $user->setDateNaissance($date);
             }
         }
+        if (isset($data['telephone'])) {
+            $user->setTelephone($this->sanitize($data['telephone']));
+        }
+        if (isset($data['lieuNaissance'])) {
+            $user->setLieuNaissance($this->sanitize($data['lieuNaissance']));
+        }
 
         $em->flush();
 
@@ -136,6 +154,9 @@ class ApiController extends AbstractController
         int $id
     ): JsonResponse {
         $user = $this->getUser();
+        if (!$user) {
+            return $this->json(['error' => 'Non authentifié'], 401);
+        }
 
         $transactions = $em->getRepository(Transaction::class)->findBy(['user' => $user]);
         foreach ($transactions as $transaction) {
@@ -163,6 +184,9 @@ class ApiController extends AbstractController
         EntityManagerInterface $em
     ): JsonResponse {
         $user = $this->getUser();
+        if (!$user) {
+            return $this->json(['error' => 'Non authentifié'], 401);
+        }
 
         $data = json_decode($request->getContent(), true);
         $montant = (float) $data['montant'];
@@ -189,6 +213,9 @@ class ApiController extends AbstractController
         EntityManagerInterface $em
     ): JsonResponse {
         $user = $this->getUser();
+        if (!$user) {
+            return $this->json(['error' => 'Non authentifié'], 401);
+        }
 
         $data = json_decode($request->getContent(), true);
         $montant = (float) $data['montant'];
@@ -219,6 +246,9 @@ class ApiController extends AbstractController
         EntityManagerInterface $em
     ): JsonResponse {
         $user = $this->getUser();
+        if (!$user) {
+            return $this->json(['error' => 'Non authentifié'], 401);
+        }
 
         $data = json_decode($request->getContent(), true);
         $mise = (float) $data['mise'];
@@ -273,6 +303,9 @@ class ApiController extends AbstractController
     public function mesParis(PariRepository $pariRepository): JsonResponse
     {
         $user = $this->getUser();
+        if (!$user) {
+            return $this->json(['error' => 'Non authentifié'], 401);
+        }
         $paris = $pariRepository->findBy(['user' => $user]);
 
         return $this->json(array_map([$this, 'serializePari'], $paris));
@@ -338,13 +371,16 @@ class ApiController extends AbstractController
     private function serializeUser(User $user): array
     {
         return [
-            'id'        => $user->getId(),
-            'email'     => $user->getEmail(),
-            'pseudo'    => $user->getPseudo(),
-            'firstname' => $user->getFirstname(),
-            'lastname'  => $user->getLastname(),
-            'solde'     => $user->getSolde(),
-            'createdAt' => $user->getCreatedAt()?->format('Y-m-d H:i:s'),
+            'id'            => $user->getId(),
+            'email'         => $user->getEmail(),
+            'pseudo'        => $user->getPseudo(),
+            'firstname'     => $user->getFirstname(),
+            'lastname'      => $user->getLastname(),
+            'solde'         => $user->getSolde(),
+            'dateNaissance' => $user->getDateNaissance()?->format('d/m/Y'),
+            'telephone'     => $user->getTelephone(),
+            'lieuNaissance' => $user->getLieuNaissance(),
+            'createdAt'     => $user->getCreatedAt()?->format('Y-m-d H:i:s'),
         ];
     }
 

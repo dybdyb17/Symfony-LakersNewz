@@ -18,8 +18,8 @@ security:
             pattern: ^/api/(register|login|articles|contact|matchs)$
             stateless: true
             security: false
-        main:
-            pattern: ^/api
+        api:
+            pattern: ^/api/admin
             stateless: true
             provider: app_user_provider
             jwt: ~
@@ -27,13 +27,19 @@ security:
             pattern: ^/
             provider: app_user_provider
             lazy: true
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                default_target_path: /
+                username_parameter: email
+                password_parameter: password
             logout:
                 path: app_logout
+                target: /
 
     # Note: Only the *first* matching rule is applied
     access_control:
         - { path: ^/api/admin, roles: ROLE_ADMIN }
-        - { path: ^/api/(deposer|retirer|pari|profil|mes-paris), roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/, roles: PUBLIC_ACCESS }
 
 when@test:

@@ -1,9 +1,8 @@
 
-let session = JSON.parse(localStorage.getItem('lakersNewzSession')) ||
-              JSON.parse(sessionStorage.getItem('lakersNewzSession')) || null;
+let session = window.isLoggedIn ? { id: window.userId, solde: window.userSolde, pseudo: window.userPseudo, email: window.userEmail, firstname: window.userFirstname, lastname: window.userLastname, isLoggedIn: true } : null;
 
 function afficherProfil(data) {
-  const pseudo = data.pseudo || data.nom || data.prenom || 'Utilisateur';
+  const pseudo = data.pseudo || data.lastname || data.firstname || 'Utilisateur';
   const solde = (data.solde || 0).toFixed(2).replace('.', ',') + ' €';
 
   document.getElementById('profilPseudo').textContent = pseudo;
@@ -11,8 +10,8 @@ function afficherProfil(data) {
 
   const avatarDiv = document.querySelector('.profil-avatar');
   if (avatarDiv) {
-    const prenom = data.prenom || data.firstname || '';
-    const nom = data.nom || data.lastname || '';
+    const prenom = data.firstname || data.prenom || '';
+    const nom = data.lastname || data.nom || '';
     let initiales;
     if (prenom || nom) {
       initiales = ((prenom[0] || '') + (nom[0] || '')).toUpperCase();
@@ -26,8 +25,8 @@ function afficherProfil(data) {
   }
 
   document.getElementById('infoCivilite').textContent = data.civilite || 'Monsieur';
-  document.getElementById('infoNom').textContent = data.nom || '—';
-  document.getElementById('infoPrenom').textContent = data.prenom || '—';
+  document.getElementById('infoNom').textContent = data.lastname || data.nom || '—';
+  document.getElementById('infoPrenom').textContent = data.firstname || data.prenom || '—';
   document.getElementById('infoDdn').textContent = data.dateNaissance || '—';
   document.getElementById('infoLieu').textContent = data.lieuNaissance || '—';
   document.getElementById('infoEmail').textContent = data.email || '—';
@@ -35,7 +34,7 @@ function afficherProfil(data) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  if (!session || !session.isLoggedIn) {
+  if (!window.isLoggedIn) {
     window.location.href = '/connexion';
     return;
   }
@@ -43,20 +42,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   afficherProfil(session);
 
   try {
-    const response = await fetch(`http://127.0.0.1:8000/api/profil/${session.id}`, {
-      headers: { 'Authorization': 'Bearer ' + session.token },
-    });
+    const response = await fetch(`http://127.0.0.1:8000/api/profil/${session.id}`);
 
     if (!response.ok) return;
 
     const data = await response.json();
 
     Object.assign(session, data);
-    localStorage.setItem('lakersNewzSession', JSON.stringify(session));
-
     afficherProfil(session);
   } catch (err) {
-    // Affichage déjà fait avec les données localStorage
+    // Affichage déjà fait avec les données window
   }
 });
 
@@ -79,16 +74,17 @@ document.getElementById('backBtn')?.addEventListener('click', () => {
 });
 
 document.getElementById('deconnecterBtn')?.addEventListener('click', () => {
-  localStorage.removeItem('lakersNewzSession');
-  sessionStorage.removeItem('lakersNewzSession');
-  window.location.href = '/';
+  window.location.href = '/deconnexion';
 });
 
 const editableFields = [
-  { spanId: 'infoNom',     apiKey: 'lastname' },
-  { spanId: 'infoPrenom',  apiKey: 'firstname' },
-  { spanId: 'infoEmail',   apiKey: 'email' },
+  { spanId: 'infoNom',      apiKey: 'lastname' },
+  { spanId: 'infoPrenom',   apiKey: 'firstname' },
+  { spanId: 'infoEmail',    apiKey: 'email' },
   { spanId: 'profilPseudo', apiKey: 'pseudo' },
+  { spanId: 'infoDdn',      apiKey: 'dateNaissance' },
+  { spanId: 'infoTel',      apiKey: 'telephone' },
+  { spanId: 'infoLieu',     apiKey: 'lieuNaissance' },
 ];
 
 let modeEdition = false;
@@ -126,33 +122,14 @@ document.getElementById('modifierBtn')?.addEventListener('click', async () => {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + session.token,
         },
         body: JSON.stringify(body),
       });
 
       if (!response.ok) throw new Error();
 
-      // Mettre à jour la session
-      if (body.lastname)  session.nom    = body.lastname;
-      if (body.firstname) session.prenom = body.firstname;
-      if (body.email)     session.email  = body.email;
-      if (body.pseudo)    session.pseudo = body.pseudo;
-      localStorage.setItem('lakersNewzSession', JSON.stringify(session));
-
-      // Repasser en lecture seule
-      editableFields.forEach(({ spanId }) => {
-        const span = document.getElementById(spanId);
-        const input = span?.querySelector('input');
-        if (input) span.textContent = input.value || '—';
-      });
-
-      // Mettre à jour le pseudo affiché dans le hero
-      document.getElementById('profilPseudo').textContent = session.pseudo || session.nom || 'Utilisateur';
-
-      btn.textContent = 'Modifier mes informations';
-      modeEdition = false;
       alert('Profil mis à jour avec succès');
+      window.location.reload();
     } catch {
       alert('Erreur lors de la mise à jour');
     }
@@ -171,13 +148,10 @@ document.getElementById('clotureConfirmBtn')?.addEventListener('click', async ()
   try {
     const response = await fetch(`http://127.0.0.1:8000/api/profil/${session.id}`, {
       method: 'DELETE',
-      headers: { 'Authorization': 'Bearer ' + session.token },
     });
     if (!response.ok) throw new Error();
   } catch {
-    // fallback : on supprime quand même en local
+    // fallback
   }
-  localStorage.removeItem('lakersNewzSession');
-  sessionStorage.removeItem('lakersNewzSession');
   window.location.href = '/inscription';
 });

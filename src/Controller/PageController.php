@@ -49,12 +49,6 @@ class PageController extends AbstractController
         return $this->render('pages/inscription.html.twig');
     }
 
-    #[Route('/connexion', name: 'app_login')]
-    public function login(): Response
-    {
-        return $this->render('pages/connexion.html.twig');
-    }
-
     #[Route('/profil', name: 'app_profil')]
     public function profil(): Response
     {
@@ -79,8 +73,4 @@ class PageController extends AbstractController
         return $this->render('pages/contact.html.twig');
     }
 
-    #[Route('/deconnexion', name: 'app_logout')]
-    public function logout(): void
-    {
-    }
 }

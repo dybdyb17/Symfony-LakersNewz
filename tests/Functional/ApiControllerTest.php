@@ -98,11 +98,11 @@ class ApiControllerTest extends WebTestCase
             'password' => 'test123456',
         ]);
 
-        $token = $this->loginAndGetToken($client, 'depot-test@lakers.com', 'test123456');
+        $em = static::getContainer()->get('doctrine')->getManager();
+        $user = $em->getRepository(\App\Entity\User::class)->findOneBy(['email' => 'depot-test@lakers.com']);
+        $client->loginUser($user, 'web');
 
-        $this->jsonRequest($client, 'POST', '/api/deposer', [
-            'montant' => 100,
-        ], $token);
+        $this->jsonRequest($client, 'POST', '/api/deposer', ['montant' => 100]);
 
         $this->assertResponseStatusCodeSame(200);
 
@@ -119,11 +119,11 @@ class ApiControllerTest extends WebTestCase
             'password' => 'test123456',
         ]);
 
-        $token = $this->loginAndGetToken($client, 'retrait-test@lakers.com', 'test123456');
+        $em = static::getContainer()->get('doctrine')->getManager();
+        $user = $em->getRepository(\App\Entity\User::class)->findOneBy(['email' => 'retrait-test@lakers.com']);
+        $client->loginUser($user, 'web');
 
-        $this->jsonRequest($client, 'POST', '/api/retirer', [
-            'montant' => 500,
-        ], $token);
+        $this->jsonRequest($client, 'POST', '/api/retirer', ['montant' => 500]);
 
         $this->assertResponseStatusCodeSame(400);
     }
@@ -196,16 +196,16 @@ class ApiControllerTest extends WebTestCase
         $data = json_decode($client->getResponse()->getContent(), true);
         $userId = $data['id'];
 
-        $token = $this->loginAndGetToken($client, 'delete-test@lakers.com', 'test123456');
+        $em = static::getContainer()->get('doctrine')->getManager();
+        $user = $em->getRepository(\App\Entity\User::class)->findOneBy(['email' => 'delete-test@lakers.com']);
+        $client->loginUser($user, 'web');
 
-        $client->request('DELETE', '/api/profil/' . $userId, [], [], [
-            'HTTP_AUTHORIZATION' => 'Bearer ' . $token,
-        ]);
+        $client->request('DELETE', '/api/profil/' . $userId, [], [], ['CONTENT_TYPE' => 'application/json']);
         $this->assertResponseStatusCodeSame(200);
 
-        $client->request('GET', '/api/profil/' . $userId, [], [], [
-            'HTTP_AUTHORIZATION' => 'Bearer ' . $token,
-        ]);
+        // Efface la session pour simuler une requête anonyme
+        $client->getCookieJar()->clear();
+        $client->request('GET', '/api/profil/' . $userId, [], [], ['CONTENT_TYPE' => 'application/json']);
         $this->assertResponseStatusCodeSame(401);
     }
 

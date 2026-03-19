@@ -1,7 +1,5 @@
-let session = JSON.parse(localStorage.getItem('lakersNewzSession')) ||
-              JSON.parse(sessionStorage.getItem('lakersNewzSession')) || null;
-
-let solde = session?.solde || 0;
+let session = window.isLoggedIn ? { id: window.userId, solde: window.userSolde, isLoggedIn: true } : null;
+let solde = window.userSolde || 0;
 let montantSelectionne = 0;
 
 function updateSoldeBadge() {
@@ -9,15 +7,6 @@ function updateSoldeBadge() {
   if (badge) badge.textContent = solde.toFixed(2).replace('.', ',') + ' €';
 }
 
-function saveSolde() {
-  if (!session) return;
-  session.solde = solde;
-  if (localStorage.getItem('lakersNewzSession')) {
-    localStorage.setItem('lakersNewzSession', JSON.stringify(session));
-  } else {
-    sessionStorage.setItem('lakersNewzSession', JSON.stringify(session));
-  }
-}
 
 document.querySelectorAll('.dep-preset').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -49,8 +38,7 @@ document.getElementById('retirerBtn')?.addEventListener('click', async () => {
     return;
   }
 
-  const sessionData = JSON.parse(localStorage.getItem('lakersNewzSession')) || null;
-  if (!sessionData || !sessionData.id) {
+  if (!window.isLoggedIn || !window.userId) {
     alert('Session invalide. Veuillez vous reconnecter.');
     window.location.href = '/connexion';
     return;
@@ -61,7 +49,6 @@ document.getElementById('retirerBtn')?.addEventListener('click', async () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + sessionData.token,
       },
       body: JSON.stringify({ montant })
     });
@@ -74,8 +61,6 @@ document.getElementById('retirerBtn')?.addEventListener('click', async () => {
     }
 
     solde = data.solde;
-    sessionData.solde = data.solde;
-    localStorage.setItem('lakersNewzSession', JSON.stringify(sessionData));
     updateSoldeBadge();
 
     const confirmMontant = document.getElementById('confirmMontant');
@@ -100,7 +85,7 @@ document.getElementById('closeBtn')?.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (!session || !session.isLoggedIn) {
+  if (!window.isLoggedIn) {
     window.location.href = '/connexion';
     return;
   }

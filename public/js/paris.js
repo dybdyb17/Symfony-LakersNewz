@@ -1,5 +1,5 @@
-let session = null;
-let solde = 0;
+let session = window.isLoggedIn ? { id: window.userId, solde: window.userSolde, pseudo: window.userPseudo, email: window.userEmail, isLoggedIn: true } : null;
+let solde = window.userSolde || 0;
 let selections = [];
 let tabActif = 'simple';
 const HISTORIQUE_KEY = 'lakersNewz_paris';
@@ -27,7 +27,6 @@ async function envoyerParisAPI(paris) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + session.token,
       },
       body: JSON.stringify(body),
     });
@@ -710,9 +709,7 @@ async function renderMesParis(filtre) {
   let historique = [];
   if (session && session.id) {
     try {
-      const res = await fetch(`${API_URL}/api/mes-paris`, {
-        headers: { 'Authorization': 'Bearer ' + session.token },
-      });
+      const res = await fetch(`${API_URL}/api/mes-paris`);
       if (!res.ok) throw new Error('API error');
       historique = await res.json();
     } catch {
@@ -812,9 +809,7 @@ document.getElementById('mesParisProfil')?.addEventListener('click', () => {
 });
 
 document.getElementById('deconnecterBtn')?.addEventListener('click', () => {
-  localStorage.removeItem('lakersNewzSession');
-  sessionStorage.removeItem('lakersNewzSession');
-  window.location.href = '/';
+  window.location.href = '/deconnexion';
 });
 
 document.getElementById('soldeBtn')?.addEventListener('click', () => {
@@ -909,16 +904,6 @@ document.getElementById('continuerRetirerBtn')?.addEventListener('click', () => 
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  session = JSON.parse(localStorage.getItem('lakersNewzSession')) ||
-            JSON.parse(sessionStorage.getItem('lakersNewzSession')) || null;
-
-  if (!session || !session.isLoggedIn) {
-    alert('Vous devez être connecté pour accéder aux paris !');
-    window.location.href = '/connexion';
-    return;
-  }
-
-  solde = session.solde || 0;
   updateSoldeUI();
   chargerMatchs();
 });

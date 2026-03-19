@@ -323,3 +323,19 @@ body.profil-page {
 }
 
 .cloture-cancel-btn:hover { color: white; }
+.info-edit-input {
+    width: 100%;
+    background: #F8CA23;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Exo', sans-serif;
+    color: #1a1a2e;
+    outline: none;
+}
+
+.info-edit-input::placeholder {
+    color: rgba(26,26,46,0.5);
+}

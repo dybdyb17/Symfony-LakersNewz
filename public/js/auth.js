@@ -30,6 +30,8 @@ if (inscriptionForm) {
     const pseudo = document.getElementById('pseudo').value.trim();
     const email = document.getElementById('email').value.trim();
     const dateNaissance = document.getElementById('dateNaissance').value.trim();
+    const telephone = document.getElementById('telephone').value.trim();
+    const lieuNaissance = document.getElementById('lieuNaissance').value.trim();
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
     const age18 = document.getElementById('age18').checked;
@@ -70,7 +72,9 @@ if (inscriptionForm) {
           pseudo,
           firstname: prenom,
           lastname: nom,
-          dateNaissance: dateNaissance
+          dateNaissance: dateNaissance,
+          telephone: telephone,
+          lieuNaissance: lieuNaissance
         })
       });
 

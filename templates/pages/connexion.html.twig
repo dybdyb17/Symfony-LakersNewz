@@ -10,10 +10,17 @@
                 <h1>Se connecter</h1>
                 <p>Entre ton adresse mail et mot de passe</p>
             </div>
-            <form class="auth-form" id="connexionForm">
+
+            {% if error %}
+                <div style="background: #e53935; color: white; padding: 12px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-weight: 600;">
+                    Email ou mot de passe incorrect
+                </div>
+            {% endif %}
+
+            <form class="auth-form" method="post" action="{{ path('app_login') }}">
                 <div class="form-group">
                     <label for="email">Adresse e-mail</label>
-                    <input type="email" id="email" name="email" placeholder="Entre ton adresse mail" required>
+                    <input type="email" id="email" name="email" value="{{ last_username }}" placeholder="Entre ton adresse mail" required>
                 </div>
                 <div class="form-group">
                     <div class="label-row">
@@ -27,7 +34,7 @@
                 </div>
                 <div class="form-checkboxes">
                     <label class="checkbox-wrapper">
-                        <input type="checkbox" id="remember" name="remember">
+                        <input type="checkbox" id="remember" name="_remember_me">
                         <span class="checkmark"></span>
                         <span class="checkbox-label">Me souvenir</span>
                     </label>
@@ -44,4 +51,22 @@
     </div>
 </main>
 {% endblock %}
-{% block javascripts %}<script src="{{ asset('js/auth.js') }}"></script>{% endblock %}
+{% block javascripts %}
+<script>
+document.querySelectorAll('.toggle-password').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const input = this.parentElement.querySelector('input');
+        const icon = this.querySelector('i');
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        } else {
+            input.type = 'password';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        }
+    });
+});
+</script>
+{% endblock %}

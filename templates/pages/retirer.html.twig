@@ -70,6 +70,15 @@
             <button class="confirm-ok-btn" id="confirmOkBtn">OK</button>
         </div>
     </div>
+    <script>
+        window.isLoggedIn = {{ app.user ? 'true' : 'false' }};
+        window.userPseudo = '{{ app.user ? app.user.pseudo|e('js') : '' }}';
+        window.userId = {{ app.user ? app.user.id : 'null' }};
+        window.userSolde = {{ app.user ? app.user.solde : '0' }};
+        window.userEmail = '{{ app.user ? app.user.email|e('js') : '' }}';
+        window.userFirstname = '{{ app.user ? app.user.firstname|e('js') : '' }}';
+        window.userLastname = '{{ app.user ? app.user.lastname|e('js') : '' }}';
+    </script>
     <script src="{{ asset('js/retirer.js') }}"></script>
 </body>
 </html>

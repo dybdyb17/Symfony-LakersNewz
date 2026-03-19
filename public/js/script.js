@@ -45,10 +45,7 @@ function updateDropdownMenu() {
   const dropdownMenu = document.querySelector('.dropdown-menu');
   if (!dropdownMenu) return;
 
-  const session = JSON.parse(localStorage.getItem('lakersNewzSession')) || 
-                  JSON.parse(sessionStorage.getItem('lakersNewzSession'));
-  
-  const isLoggedIn = session && session.isLoggedIn;
+  const isLoggedIn = window.isLoggedIn || false;
 
   if (isLoggedIn) {
     dropdownMenu.innerHTML = `
@@ -86,20 +83,14 @@ function updateDropdownMenu() {
 }
 
 function logout() {
-  localStorage.removeItem('lakersNewzSession');
-  sessionStorage.removeItem('lakersNewzSession');
-  updateDropdownMenu();
-  window.location.href = '/';
+  window.location.href = '/deconnexion';
 }
 
 function updateSidebar() {
   const navList = document.querySelector('.sidebar .nav ul');
   if (!navList) return;
 
-  const session = JSON.parse(localStorage.getItem('lakersNewzSession')) || 
-                  JSON.parse(sessionStorage.getItem('lakersNewzSession'));
-  
-  const isLoggedIn = session && session.isLoggedIn;
+  const isLoggedIn = window.isLoggedIn || false;
 
   const currentPath = window.location.pathname;
 
@@ -121,26 +112,9 @@ function updateSidebar() {
   }
 }
 
-function checkParisAccess() {
-  const currentPath = window.location.pathname;
-
-  if (currentPath === '/paris') {
-    const session = JSON.parse(localStorage.getItem('lakersNewzSession')) || 
-                    JSON.parse(sessionStorage.getItem('lakersNewzSession'));
-    
-    const isLoggedIn = session && session.isLoggedIn;
-    
-    if (!isLoggedIn) {
-      alert('Vous devez être connecté pour accéder aux paris !');
-      window.location.href = '/connexion';
-    }
-  }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   updateDropdownMenu();
   updateSidebar();
-  checkParisAccess();
 });
 
 
