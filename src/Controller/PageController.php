@@ -66,36 +66,22 @@ class PageController extends AbstractController
     #[Route('/contact', name: 'app_contact')]
     public function contact(Request $request, EntityManagerInterface $em): Response
     {
+        $contact = new \App\Entity\Contact();
+        $form = $this->createForm(\App\Form\ContactFormType::class, $contact);
+        $form->handleRequest($request);
+
         $success = false;
-        $error = null;
 
-        if ($request->isMethod('POST')) {
-            $nom = strip_tags(trim($request->request->get('name', '')));
-            $email = strip_tags(trim($request->request->get('email', '')));
-            $sujet = strip_tags(trim($request->request->get('subject', '')));
-            $message = strip_tags(trim($request->request->get('message', '')));
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($contact);
+            $em->flush();
 
-            if (empty($nom) || empty($email) || empty($sujet) || empty($message)) {
-                $error = 'Tous les champs sont obligatoires';
-            } elseif (!str_contains($email, '@')) {
-                $error = 'Email invalide';
-            } else {
-                $contact = new \App\Entity\Contact();
-                $contact->setNom($nom);
-                $contact->setEmail($email);
-                $contact->setSujet($sujet);
-                $contact->setMessage($message);
-
-                $em->persist($contact);
-                $em->flush();
-
-                $success = true;
-            }
+            $success = true;
         }
 
         return $this->render('pages/contact.html.twig', [
+            'contactForm' => $form,
             'success' => $success,
-            'error' => $error,
         ]);
     }
 

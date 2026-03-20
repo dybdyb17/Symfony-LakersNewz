@@ -19,36 +19,33 @@
                     <a href="{{ path('app_home') }}" class="btn-back-home">Retourner à la page d'accueil</a>
                 </div>
             {% else %}
-                {% if error %}
-                    <div style="background: #e53935; color: white; padding: 12px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-weight: 600;">
-                        {{ error }}
-                    </div>
-                {% endif %}
+                {{ form_start(contactForm, {'attr': {'class': 'contact-form'}}) }}
 
-                <form class="contact-form" method="post" action="{{ path('app_contact') }}">
                     <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="entre ton nom" required>
+                        {{ form_widget(contactForm.nom) }}
+                        {{ form_errors(contactForm.nom) }}
                     </div>
+
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="email" required>
+                        {{ form_widget(contactForm.email) }}
+                        {{ form_errors(contactForm.email) }}
                     </div>
+
                     <div class="form-group">
-                        <select id="subject" name="subject" required>
-                            <option value="" disabled selected>choisir un sujet</option>
-                            <option value="question">Question générale</option>
-                            <option value="suggestion">Suggestion</option>
-                            <option value="bug">Signaler un bug</option>
-                            <option value="partenariat">Partenariat</option>
-                            <option value="autre">Autre</option>
-                        </select>
+                        {{ form_widget(contactForm.sujet) }}
+                        {{ form_errors(contactForm.sujet) }}
                     </div>
+
                     <div class="form-group">
-                        <textarea id="message" name="message" rows="5" placeholder="message" required></textarea>
+                        {{ form_widget(contactForm.message) }}
+                        {{ form_errors(contactForm.message) }}
                     </div>
+
                     <button type="submit" class="submit-btn">
                         <i class="fa-solid fa-paper-plane"></i> Envoyer le message
                     </button>
-                </form>
+
+                {{ form_end(contactForm) }}
             {% endif %}
         </div>
         <div class="contact-info-card">
