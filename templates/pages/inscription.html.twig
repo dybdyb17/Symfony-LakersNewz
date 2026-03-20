@@ -5,82 +5,110 @@
 {% block body %}
 <main class="auth-main">
     <div class="auth-left">
-        <div class="auth-card" id="inscriptionCard">
-            <div class="auth-header">
-                <h1>S'inscrire</h1>
-                <p>Créer votre compte</p>
+        {% if success %}
+            <div class="success-card show">
+                <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+                <h2 style="color: #4CAF50;">Compte créé avec succès</h2>
+                <p>Bienvenue {{ prenom }}</p>
+                <a href="{{ path('app_login') }}" class="auth-btn success-btn">Se connecter</a>
             </div>
-            <form class="auth-form" id="inscriptionForm">
-                <div class="form-group">
-                    <label for="prenom">Prénom</label>
-                    <input type="text" id="prenom" name="prenom" placeholder="Entre ton prénom" required>
+        {% else %}
+            <div class="auth-card" id="inscriptionCard">
+                <div class="auth-header">
+                    <h1>S'inscrire</h1>
+                    <p>Créer votre compte</p>
                 </div>
-                <div class="form-group">
-                    <label for="nom">Nom</label>
-                    <input type="text" id="nom" name="nom" placeholder="Entre ton nom" required>
-                </div>
-                <div class="form-group">
-                    <label for="pseudo">Pseudo</label>
-                    <input type="text" id="pseudo" name="pseudo" placeholder="Entre ton pseudo" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Adresse mail</label>
-                    <input type="email" id="email" name="email" placeholder="Entre ton email" required>
-                </div>
-                <div class="form-group">
-                    <label for="dateNaissance">Date de naissance</label>
-                    <input type="text" id="dateNaissance" name="dateNaissance" placeholder="JJ / MM / AAAA" required>
-                </div>
-                <div class="form-group">
-                    <label for="telephone">Numéro de téléphone</label>
-                    <input type="tel" id="telephone" name="telephone" placeholder="06 XX XX XX XX">
-                </div>
-                <div class="form-group">
-                    <label for="lieuNaissance">Lieu de naissance</label>
-                    <input type="text" id="lieuNaissance" name="lieuNaissance" placeholder="Entre ton lieu de naissance">
-                </div>
-                <div class="form-group">
-                    <label for="password">Mot de passe</label>
-                    <div class="password-wrapper">
-                        <input type="password" id="password" name="password" placeholder="••••••••••••" required>
-                        <button type="button" class="toggle-password"><i class="fa-solid fa-eye"></i></button>
+
+                {% if error %}
+                    <div style="background: #e53935; color: white; padding: 12px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-weight: 600;">
+                        {{ error }}
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="confirmPassword">Confirmer Mot de passe</label>
-                    <div class="password-wrapper">
-                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••••••" required>
-                        <button type="button" class="toggle-password"><i class="fa-solid fa-eye"></i></button>
+                {% endif %}
+
+                <form class="auth-form" method="post" action="{{ path('app_register') }}">
+                    <div class="form-group">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" id="prenom" name="prenom" placeholder="Entre ton prénom" required>
                     </div>
+                    <div class="form-group">
+                        <label for="nom">Nom</label>
+                        <input type="text" id="nom" name="nom" placeholder="Entre ton nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pseudo">Pseudo</label>
+                        <input type="text" id="pseudo" name="pseudo" placeholder="Entre ton pseudo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Adresse mail</label>
+                        <input type="email" id="email" name="email" placeholder="Entre ton email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateNaissance">Date de naissance</label>
+                        <input type="text" id="dateNaissance" name="dateNaissance" placeholder="JJ / MM / AAAA" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone">Numéro de téléphone</label>
+                        <input type="tel" id="telephone" name="telephone" placeholder="06 XX XX XX XX">
+                    </div>
+                    <div class="form-group">
+                        <label for="lieuNaissance">Lieu de naissance</label>
+                        <input type="text" id="lieuNaissance" name="lieuNaissance" placeholder="Entre ton lieu de naissance">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" name="password" placeholder="••••••••••••" required>
+                            <button type="button" class="toggle-password"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmer Mot de passe</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••••••" required>
+                            <button type="button" class="toggle-password"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="form-checkboxes">
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" id="age18" name="age18" required>
+                            <span class="checkmark"></span>
+                            <span class="checkbox-label">Je certifie avoir 18 ans ou plus</span>
+                        </label>
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" id="conditions" name="conditions" required>
+                            <span class="checkmark"></span>
+                            <span class="checkbox-label">J'accepte les conditions d'utilisation</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="auth-btn">S'inscrire</button>
+                </form>
+                <div class="auth-footer">
+                    <p>Avez vous un compte? <a href="{{ path('app_login') }}">Se connecter</a></p>
                 </div>
-                <div class="form-checkboxes">
-                    <label class="checkbox-wrapper">
-                        <input type="checkbox" id="age18" name="age18" required>
-                        <span class="checkmark"></span>
-                        <span class="checkbox-label">Je certifie avoir 18 ans ou plus</span>
-                    </label>
-                    <label class="checkbox-wrapper">
-                        <input type="checkbox" id="conditions" name="conditions" required>
-                        <span class="checkmark"></span>
-                        <span class="checkbox-label">J'accepte les conditions d'utilisation</span>
-                    </label>
-                </div>
-                <button type="submit" class="auth-btn">S'inscrire</button>
-            </form>
-            <div class="auth-footer">
-                <p>Avez vous un compte? <a href="{{ path('app_login') }}">Se connecter</a></p>
             </div>
-        </div>
-        <div class="success-card" id="successCard">
-            <div class="success-icon"><i class="fa-solid fa-check"></i></div>
-            <h2 style="color: #4CAF50;">Compte créé avec succès</h2>
-            <p>Bienvenue</p>
-            <a href="{{ path('app_login') }}" class="auth-btn success-btn">Se connecter</a>
-        </div>
+        {% endif %}
     </div>
     <div class="auth-right">
         <img src="{{ asset('assets/img/dean-bennett-nFjLHE4vmn4-unsplash.jpg') }}" alt="Kobe Bryant Mural" class="auth-image">
     </div>
 </main>
 {% endblock %}
-{% block javascripts %}<script src="{{ asset('js/auth.js') }}"></script>{% endblock %}
+{% block javascripts %}
+<script>
+document.querySelectorAll('.toggle-password').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const input = this.parentElement.querySelector('input');
+        const icon = this.querySelector('i');
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    });
+});
+</script>
+{% endblock %}

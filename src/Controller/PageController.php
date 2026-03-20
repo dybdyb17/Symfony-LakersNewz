@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Repository\ArticleRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -43,12 +45,6 @@ class PageController extends AbstractController
         return $this->render('pages/paris.html.twig');
     }
 
-    #[Route('/inscription', name: 'app_register')]
-    public function register(): Response
-    {
-        return $this->render('pages/inscription.html.twig');
-    }
-
     #[Route('/profil', name: 'app_profil')]
     public function profil(): Response
     {
@@ -68,9 +64,39 @@ class PageController extends AbstractController
     }
 
     #[Route('/contact', name: 'app_contact')]
-    public function contact(): Response
+    public function contact(Request $request, EntityManagerInterface $em): Response
     {
-        return $this->render('pages/contact.html.twig');
+        $success = false;
+        $error = null;
+
+        if ($request->isMethod('POST')) {
+            $nom = strip_tags(trim($request->request->get('name', '')));
+            $email = strip_tags(trim($request->request->get('email', '')));
+            $sujet = strip_tags(trim($request->request->get('subject', '')));
+            $message = strip_tags(trim($request->request->get('message', '')));
+
+            if (empty($nom) || empty($email) || empty($sujet) || empty($message)) {
+                $error = 'Tous les champs sont obligatoires';
+            } elseif (!str_contains($email, '@')) {
+                $error = 'Email invalide';
+            } else {
+                $contact = new \App\Entity\Contact();
+                $contact->setNom($nom);
+                $contact->setEmail($email);
+                $contact->setSujet($sujet);
+                $contact->setMessage($message);
+
+                $em->persist($contact);
+                $em->flush();
+
+                $success = true;
+            }
+        }
+
+        return $this->render('pages/contact.html.twig', [
+            'success' => $success,
+            'error' => $error,
+        ]);
     }
 
 }
