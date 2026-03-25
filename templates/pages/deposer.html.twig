@@ -15,71 +15,81 @@
 </head>
 <body class="deposer-page">
     <div class="deposer-bg-pattern"></div>
+
     <header class="deposer-header">
         <button class="deposer-close-btn" onclick="window.location.href='{{ path('app_paris') }}'"><i class="fa-solid fa-xmark"></i></button>
         <div class="deposer-header-right">
-            <span class="deposer-solde-badge"><i class="fa-solid fa-plus"></i><span id="soldeBadge">0,00 €</span></span>
+            <span class="deposer-solde-badge">
+                <i class="fa-solid fa-plus"></i>
+                <span>{{ solde|number_format(2, ',', ' ') }} €</span>
+            </span>
         </div>
     </header>
+
     <main class="deposer-main">
         <h1 class="deposer-titre">Déposer</h1>
-        <div class="deposer-bloc">
-            <div class="deposer-amount-row">
-                <input type="number" id="montantInput" value="0" min="0" max="5000">
-                <span class="deposer-currency">€</span>
-            </div>
-            <div class="deposer-presets">
-                <button class="dep-preset" data-amount="10">10 €</button>
-                <button class="dep-preset" data-amount="20">20 €</button>
-                <button class="dep-preset" data-amount="50">50 €</button>
-                <button class="dep-preset" data-amount="100">100 €</button>
-            </div>
-            <p class="deposer-limite">Tu peux encore déposer jusqu'à <strong>5000 €</strong></p>
-        </div>
-        <div class="deposer-paiement-bloc">
-            <p class="deposer-paiement-label">Moyen de paiement</p>
-            <div class="deposer-carte-option" id="carteOption">
-                <div class="carte-option-top">
-                    <span class="carte-option-label">Carte bancaire</span>
-                    <div class="carte-logos"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i></div>
+
+        {% if success %}
+            <div class="deposer-confirm-overlay" style="display:flex;">
+                <div class="deposer-confirm-box">
+                    <div class="confirm-check"><i class="fa-solid fa-circle-check"></i></div>
+                    <p class="confirm-titre">Dépôt confirmé</p>
+                    <p class="confirm-sous">Montant du Dépôt</p>
+                    <p class="confirm-montant">{{ montant|number_format(2, ',', ' ') }} €</p>
+                    <a href="{{ path('app_paris') }}" class="confirm-ok-btn" style="display:block; text-align:center; text-decoration:none;">OK</a>
                 </div>
-                <div class="carte-option-limits"><span>min 11 €</span><span>Max 50 000 €</span></div>
             </div>
-            <div class="deposer-carte-form" id="carteForm" style="display:none;">
-                <p class="carte-form-titre">Ajoute ta carte bancaire</p>
-                <div class="carte-input-group">
-                    <input type="text" id="carteNumero" placeholder="Numéro de carte" maxlength="19" class="carte-input">
-                    <i class="fa-solid fa-credit-card carte-icon"></i>
-                </div>
-                <div class="carte-row">
-                    <input type="text" id="carteExpiry" placeholder="Date d'expiration" maxlength="5" class="carte-input">
-                    <input type="text" id="carteCVV" placeholder="CVV" maxlength="3" class="carte-input">
-                </div>
-                <button class="deposer-continuer-btn" id="validerCarteBtn">Continuer</button>
-                <button class="deposer-fermer-btn" id="fermerCarteBtn">Fermer</button>
+        {% endif %}
+
+        {% for message in app.flashes('error') %}
+            <div style="background: #e53935; color: white; padding: 12px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-weight: 600;">
+                {{ message }}
             </div>
-        </div>
-        <button class="deposer-continuer-btn" id="continuerBtn">Continuer</button>
-        <p class="deposer-securise"><i class="fa-solid fa-lock"></i> Paiement sécurisé</p>
+        {% endfor %}
+
+        <form method="post" action="{{ path('app_deposer') }}">
+            <div class="deposer-bloc">
+                <div class="deposer-amount-row">
+                    <input type="number" id="montantInput" name="montant" value="0" min="0" max="5000">
+                    <span class="deposer-currency">€</span>
+                </div>
+                <div class="deposer-presets">
+                    <button type="button" class="dep-preset" data-amount="10">10 €</button>
+                    <button type="button" class="dep-preset" data-amount="20">20 €</button>
+                    <button type="button" class="dep-preset" data-amount="50">50 €</button>
+                    <button type="button" class="dep-preset" data-amount="100">100 €</button>
+                </div>
+                <p class="deposer-limite">Tu peux encore déposer jusqu'à <strong>5000 €</strong></p>
+            </div>
+
+            <div class="deposer-paiement-bloc">
+                <p class="deposer-paiement-label">Moyen de paiement</p>
+                <div class="deposer-carte-option">
+                    <div class="carte-option-top">
+                        <span class="carte-option-label">Carte bancaire</span>
+                        <div class="carte-logos">
+                            <i class="fa-brands fa-cc-visa"></i>
+                            <i class="fa-brands fa-cc-mastercard"></i>
+                        </div>
+                    </div>
+                    <div class="carte-option-limits">
+                        <span>min 11 €</span>
+                        <span>Max 50 000 €</span>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="deposer-continuer-btn">Continuer</button>
+            <p class="deposer-securise"><i class="fa-solid fa-lock"></i> Paiement sécurisé</p>
+        </form>
     </main>
-    <div class="deposer-confirm-overlay" id="confirmOverlay" style="display:none;">
-        <div class="deposer-confirm-box">
-            <div class="confirm-check"><i class="fa-solid fa-circle-check"></i></div>
-            <p class="confirm-titre">Dépôt confirmé</p>
-            <p class="confirm-sous">Montant du Dépôt</p>
-            <p class="confirm-montant" id="confirmMontant">0,00 €</p>
-            <button class="confirm-ok-btn" id="confirmOkBtn">OK</button>
-        </div>
-    </div>
+
     <script>
-        window.isLoggedIn = {{ app.user ? 'true' : 'false' }};
-        window.userPseudo = '{{ app.user ? app.user.pseudo|e('js') : '' }}';
-        window.userId = {{ app.user ? app.user.id : 'null' }};
-        window.userSolde = {{ app.user ? app.user.solde : '0' }};
-        window.userEmail = '{{ app.user ? app.user.email|e('js') : '' }}';
-        window.userFirstname = '{{ app.user ? app.user.firstname|e('js') : '' }}';
-        window.userLastname = '{{ app.user ? app.user.lastname|e('js') : '' }}';
+    document.querySelectorAll('.dep-preset').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.getElementById('montantInput').value = btn.dataset.amount;
+        });
+    });
     </script>
-    <script src="{{ asset('js/deposer.js') }}"></script>
 </body>
 </html>

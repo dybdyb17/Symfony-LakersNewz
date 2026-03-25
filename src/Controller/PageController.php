@@ -52,9 +52,41 @@ class PageController extends AbstractController
     }
 
     #[Route('/deposer', name: 'app_deposer')]
-    public function deposer(): Response
+    public function deposer(Request $request, EntityManagerInterface $em): Response
     {
-        return $this->render('pages/deposer.html.twig');
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        $success = false;
+        $montant = 0;
+
+        if ($request->isMethod('POST')) {
+            $montant = (float) $request->request->get('montant', 0);
+
+            if ($montant <= 0) {
+                $this->addFlash('error', 'Le montant doit être supérieur à 0');
+            } else {
+                $user->setSolde($user->getSolde() + $montant);
+
+                $transaction = new \App\Entity\Transaction();
+                $transaction->setType('depot');
+                $transaction->setMontant($montant);
+                $transaction->setUser($user);
+
+                $em->persist($transaction);
+                $em->flush();
+
+                $success = true;
+            }
+        }
+
+        return $this->render('pages/deposer.html.twig', [
+            'success' => $success,
+            'montant' => $montant,
+            'solde' => $user->getSolde(),
+        ]);
     }
 
     #[Route('/retirer', name: 'app_retirer')]

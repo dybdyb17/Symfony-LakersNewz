@@ -10,9 +10,7 @@ use App\Entity\User;
 use App\Repository\ArticleRepository;
 use App\Repository\MatchNbaRepository;
 use App\Repository\PariRepository;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -70,24 +68,23 @@ class ApiController extends AbstractController
         return $this->json($this->serializeUser($user), 201);
     }
 
-    #[Route('/login', methods: ['POST'])]
-    public function login(
+    #[Route('/contact', methods: ['POST'])]
+    public function contact(
         Request $request,
-        UserPasswordHasherInterface $hasher,
-        UserRepository $userRepository,
-        JWTTokenManagerInterface $jwtManager
+        EntityManagerInterface $em
     ): JsonResponse {
         $data = json_decode($request->getContent(), true);
 
-        $user = $userRepository->findOneBy(['email' => $data['email']]);
+        $contact = new Contact();
+        $contact->setNom($this->sanitize($data['nom']));
+        $contact->setEmail($this->sanitize($data['email']));
+        $contact->setSujet($this->sanitize($data['sujet']));
+        $contact->setMessage($this->sanitize($data['message']));
 
-        if (!$user || !$hasher->isPasswordValid($user, $data['password'])) {
-            return $this->json(['error' => 'Identifiants invalides'], 401);
-        }
+        $em->persist($contact);
+        $em->flush();
 
-        $token = $jwtManager->create($user);
-
-        return $this->json(['token' => $token, ...$this->serializeUser($user)]);
+        return $this->json(['message' => 'Message envoyé avec succès'], 201);
     }
 
     #[Route('/profil/{id}', methods: ['GET'])]
@@ -326,25 +323,6 @@ class ApiController extends AbstractController
             'createdAt' => $article->getCreatedAt()?->format('Y-m-d H:i:s'),
             'updatedAt' => $article->getUpdatedAt()?->format('Y-m-d H:i:s'),
         ], $articles));
-    }
-
-    #[Route('/contact', methods: ['POST'])]
-    public function contact(
-        Request $request,
-        EntityManagerInterface $em
-    ): JsonResponse {
-        $data = json_decode($request->getContent(), true);
-
-        $contact = new Contact();
-        $contact->setNom($this->sanitize($data['nom']));
-        $contact->setEmail($this->sanitize($data['email']));
-        $contact->setSujet($this->sanitize($data['sujet']));
-        $contact->setMessage($this->sanitize($data['message']));
-
-        $em->persist($contact);
-        $em->flush();
-
-        return $this->json(['message' => 'Message envoyé avec succès'], 201);
     }
 
     #[Route('/matchs', methods: ['GET'])]

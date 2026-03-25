@@ -6,33 +6,16 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ApiControllerTest extends WebTestCase
 {
-    private function jsonRequest($client, string $method, string $uri, array $data, ?string $token = null): void
+    private function jsonRequest($client, string $method, string $uri, array $data): void
     {
-        $headers = ['CONTENT_TYPE' => 'application/json'];
-        if ($token) {
-            $headers['HTTP_AUTHORIZATION'] = 'Bearer ' . $token;
-        }
-
         $client->request(
             $method,
             $uri,
             [],
             [],
-            $headers,
+            ['CONTENT_TYPE' => 'application/json'],
             json_encode($data)
         );
-    }
-
-    private function loginAndGetToken($client, string $email, string $password): string
-    {
-        $this->jsonRequest($client, 'POST', '/api/login', [
-            'email'    => $email,
-            'password' => $password,
-        ]);
-
-        $data = json_decode($client->getResponse()->getContent(), true);
-
-        return $data['token'] ?? '';
     }
 
     public function testRegister(): void
@@ -54,41 +37,6 @@ class ApiControllerTest extends WebTestCase
         $this->assertEquals('FuncTester', $data['pseudo']);
     }
 
-    public function testLoginSuccess(): void
-    {
-        $client = static::createClient();
-
-        $this->jsonRequest($client, 'POST', '/api/register', [
-            'email'    => 'login-test@lakers.com',
-            'password' => 'test123456',
-            'pseudo'   => 'LoginTester',
-        ]);
-
-        $this->jsonRequest($client, 'POST', '/api/login', [
-            'email'    => 'login-test@lakers.com',
-            'password' => 'test123456',
-        ]);
-
-        $this->assertResponseStatusCodeSame(200);
-
-        $data = json_decode($client->getResponse()->getContent(), true);
-        $this->assertEquals('login-test@lakers.com', $data['email']);
-        $this->assertArrayHasKey('token', $data);
-        $this->assertNotEmpty($data['token']);
-    }
-
-    public function testLoginFail(): void
-    {
-        $client = static::createClient();
-
-        $this->jsonRequest($client, 'POST', '/api/login', [
-            'email'    => 'nexistepas@lakers.com',
-            'password' => 'wrong',
-        ]);
-
-        $this->assertResponseStatusCodeSame(401);
-    }
-
     public function testDeposer(): void
     {
         $client = static::createClient();
@@ -100,7 +48,7 @@ class ApiControllerTest extends WebTestCase
 
         $em = static::getContainer()->get('doctrine')->getManager();
         $user = $em->getRepository(\App\Entity\User::class)->findOneBy(['email' => 'depot-test@lakers.com']);
-        $client->loginUser($user, 'web');
+        $client->loginUser($user, 'main');
 
         $this->jsonRequest($client, 'POST', '/api/deposer', ['montant' => 100]);
 
@@ -121,7 +69,7 @@ class ApiControllerTest extends WebTestCase
 
         $em = static::getContainer()->get('doctrine')->getManager();
         $user = $em->getRepository(\App\Entity\User::class)->findOneBy(['email' => 'retrait-test@lakers.com']);
-        $client->loginUser($user, 'web');
+        $client->loginUser($user, 'main');
 
         $this->jsonRequest($client, 'POST', '/api/retirer', ['montant' => 500]);
 
@@ -148,12 +96,13 @@ class ApiControllerTest extends WebTestCase
         );
         $em->clear();
 
-        $token = $this->loginAndGetToken($client, 'admin-test@lakers.com', 'test123456');
+        $user = $em->getRepository(\App\Entity\User::class)->find($userId);
+        $client->loginUser($user, 'main');
 
         $this->jsonRequest($client, 'POST', '/api/admin/articles', [
             'titre'   => 'Test Article PHPUnit',
             'contenu' => 'Contenu de test PHPUnit',
-        ], $token);
+        ]);
 
         $this->assertResponseStatusCodeSame(201);
 
@@ -167,7 +116,8 @@ class ApiControllerTest extends WebTestCase
 
         $client->request('GET', '/api/admin/users');
 
-        $this->assertResponseStatusCodeSame(401);
+        // With session-based auth (form_login), unauthenticated access redirects to login
+        $this->assertResponseStatusCodeSame(302);
     }
 
     public function testContact(): void
@@ -198,7 +148,7 @@ class ApiControllerTest extends WebTestCase
 
         $em = static::getContainer()->get('doctrine')->getManager();
         $user = $em->getRepository(\App\Entity\User::class)->findOneBy(['email' => 'delete-test@lakers.com']);
-        $client->loginUser($user, 'web');
+        $client->loginUser($user, 'main');
 
         $client->request('DELETE', '/api/profil/' . $userId, [], [], ['CONTENT_TYPE' => 'application/json']);
         $this->assertResponseStatusCodeSame(200);
