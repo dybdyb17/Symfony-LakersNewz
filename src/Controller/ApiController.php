@@ -2,11 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Contact;
 use App\Entity\Pari;
 use App\Entity\Selection;
-use App\Entity\Transaction;
-use App\Entity\User;
 use App\Repository\ArticleRepository;
 use App\Repository\MatchNbaRepository;
 use App\Repository\PariRepository;
@@ -14,229 +11,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/api')]
 class ApiController extends AbstractController
 {
-    #[Route('/register', methods: ['POST'])]
-    public function register(
-        Request $request,
-        UserPasswordHasherInterface $hasher,
-        EntityManagerInterface $em
-    ): JsonResponse {
-        $data = json_decode($request->getContent(), true);
-
-        $email = $this->sanitize($data['email'] ?? '');
-        $password = $data['password'] ?? '';
-
-        if (!str_contains($email, '@')) {
-            return $this->json(['error' => 'Email invalide'], 400);
-        }
-        if (strlen($password) < 6) {
-            return $this->json(['error' => 'Le mot de passe doit contenir au moins 6 caractères'], 400);
-        }
-
-        $user = new User();
-        $user->setEmail($email);
-        $user->setPassword($hasher->hashPassword($user, $password));
-        $user->setPseudo(isset($data['pseudo']) ? $this->sanitize($data['pseudo']) : null);
-        $user->setFirstname(isset($data['firstname']) ? $this->sanitize($data['firstname']) : null);
-        $user->setLastname(isset($data['lastname']) ? $this->sanitize($data['lastname']) : null);
-        if (!empty($data['dateNaissance'])) {
-            $data['dateNaissance'] = $this->sanitize($data['dateNaissance']);
-            $dateStr = str_replace([' ', '-'], ['', '/'], $data['dateNaissance']);
-            $date = \DateTime::createFromFormat('d/m/Y', $dateStr);
-            if (!$date) {
-                $date = \DateTime::createFromFormat('Y-m-d', $data['dateNaissance']);
-            }
-            if ($date) {
-                $user->setDateNaissance($date);
-            }
-        }
-        if (!empty($data['telephone'])) {
-            $user->setTelephone($this->sanitize($data['telephone']));
-        }
-        if (!empty($data['lieuNaissance'])) {
-            $user->setLieuNaissance($this->sanitize($data['lieuNaissance']));
-        }
-
-        $em->persist($user);
-        $em->flush();
-
-        return $this->json($this->serializeUser($user), 201);
-    }
-
-    #[Route('/contact', methods: ['POST'])]
-    public function contact(
-        Request $request,
-        EntityManagerInterface $em
-    ): JsonResponse {
-        $data = json_decode($request->getContent(), true);
-
-        $contact = new Contact();
-        $contact->setNom($this->sanitize($data['nom']));
-        $contact->setEmail($this->sanitize($data['email']));
-        $contact->setSujet($this->sanitize($data['sujet']));
-        $contact->setMessage($this->sanitize($data['message']));
-
-        $em->persist($contact);
-        $em->flush();
-
-        return $this->json(['message' => 'Message envoyé avec succès'], 201);
-    }
-
-    #[Route('/profil/{id}', methods: ['GET'])]
-    public function profil(int $id): JsonResponse
-    {
-        $user = $this->getUser();
-        if (!$user) {
-            return $this->json(['error' => 'Non authentifié'], 401);
-        }
-
-        return $this->json($this->serializeUser($user));
-    }
-
-    #[Route('/profil/{id}', methods: ['PUT'])]
-    public function updateProfil(
-        Request $request,
-        EntityManagerInterface $em,
-        int $id
-    ): JsonResponse {
-        $user = $this->getUser();
-        if (!$user) {
-            return $this->json(['error' => 'Non authentifié'], 401);
-        }
-
-        $data = json_decode($request->getContent(), true);
-
-        if (isset($data['pseudo'])) {
-            $user->setPseudo($this->sanitize($data['pseudo']));
-        }
-        if (isset($data['firstname'])) {
-            $user->setFirstname($this->sanitize($data['firstname']));
-        }
-        if (isset($data['lastname'])) {
-            $user->setLastname($this->sanitize($data['lastname']));
-        }
-        if (isset($data['email'])) {
-            $user->setEmail($this->sanitize($data['email']));
-        }
-        if (isset($data['dateNaissance'])) {
-            $data['dateNaissance'] = $this->sanitize($data['dateNaissance']);
-            $date = \DateTime::createFromFormat('d/m/Y', $data['dateNaissance']);
-            if (!$date) {
-                $date = \DateTime::createFromFormat('Y-m-d', $data['dateNaissance']);
-            }
-            if ($date) {
-                $user->setDateNaissance($date);
-            }
-        }
-        if (isset($data['telephone'])) {
-            $user->setTelephone($this->sanitize($data['telephone']));
-        }
-        if (isset($data['lieuNaissance'])) {
-            $user->setLieuNaissance($this->sanitize($data['lieuNaissance']));
-        }
-
-        $em->flush();
-
-        return $this->json($this->serializeUser($user));
-    }
-
-    #[Route('/profil/{id}', methods: ['DELETE'])]
-    public function deleteProfil(
-        EntityManagerInterface $em,
-        int $id
-    ): JsonResponse {
-        $user = $this->getUser();
-        if (!$user) {
-            return $this->json(['error' => 'Non authentifié'], 401);
-        }
-
-        $transactions = $em->getRepository(Transaction::class)->findBy(['user' => $user]);
-        foreach ($transactions as $transaction) {
-            $em->remove($transaction);
-        }
-
-        $paris = $em->getRepository(Pari::class)->findBy(['user' => $user]);
-        foreach ($paris as $pari) {
-            $selections = $em->getRepository(Selection::class)->findBy(['pari' => $pari]);
-            foreach ($selections as $selection) {
-                $em->remove($selection);
-            }
-            $em->remove($pari);
-        }
-
-        $em->remove($user);
-        $em->flush();
-
-        return $this->json(['message' => 'Compte supprimé avec succès']);
-    }
-
-    #[Route('/deposer', methods: ['POST'])]
-    public function deposer(
-        Request $request,
-        EntityManagerInterface $em
-    ): JsonResponse {
-        $user = $this->getUser();
-        if (!$user) {
-            return $this->json(['error' => 'Non authentifié'], 401);
-        }
-
-        $data = json_decode($request->getContent(), true);
-        $montant = (float) $data['montant'];
-
-        $user->setSolde($user->getSolde() + $montant);
-
-        $transaction = new Transaction();
-        $transaction->setType('depot');
-        $transaction->setMontant($montant);
-        $transaction->setUser($user);
-
-        $em->persist($transaction);
-        $em->flush();
-
-        return $this->json([
-            'message' => 'Dépôt effectué',
-            'solde' => $user->getSolde(),
-        ]);
-    }
-
-    #[Route('/retirer', methods: ['POST'])]
-    public function retirer(
-        Request $request,
-        EntityManagerInterface $em
-    ): JsonResponse {
-        $user = $this->getUser();
-        if (!$user) {
-            return $this->json(['error' => 'Non authentifié'], 401);
-        }
-
-        $data = json_decode($request->getContent(), true);
-        $montant = (float) $data['montant'];
-
-        if ($user->getSolde() < $montant) {
-            return $this->json(['error' => 'Solde insuffisant'], 400);
-        }
-
-        $user->setSolde($user->getSolde() - $montant);
-
-        $transaction = new Transaction();
-        $transaction->setType('retrait');
-        $transaction->setMontant($montant);
-        $transaction->setUser($user);
-
-        $em->persist($transaction);
-        $em->flush();
-
-        return $this->json([
-            'message' => 'Retrait effectué',
-            'solde' => $user->getSolde(),
-        ]);
-    }
-
     #[Route('/pari', methods: ['POST'])]
     public function placerPari(
         Request $request,
@@ -344,22 +123,6 @@ class ApiController extends AbstractController
     private function sanitize(string $input): string
     {
         return strip_tags(trim($input));
-    }
-
-    private function serializeUser(User $user): array
-    {
-        return [
-            'id'            => $user->getId(),
-            'email'         => $user->getEmail(),
-            'pseudo'        => $user->getPseudo(),
-            'firstname'     => $user->getFirstname(),
-            'lastname'      => $user->getLastname(),
-            'solde'         => $user->getSolde(),
-            'dateNaissance' => $user->getDateNaissance()?->format('d/m/Y'),
-            'telephone'     => $user->getTelephone(),
-            'lieuNaissance' => $user->getLieuNaissance(),
-            'createdAt'     => $user->getCreatedAt()?->format('Y-m-d H:i:s'),
-        ];
     }
 
     private function serializePari(Pari $pari): array

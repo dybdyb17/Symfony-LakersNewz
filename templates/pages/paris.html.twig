@@ -16,7 +16,7 @@
     <div class="paris-actions">
         <button class="solde-btn" id="soldeBtn">
             <i class="fa-solid fa-plus"></i>
-            <span id="soldeDisplay">0,00 €</span>
+            <span id="soldeDisplay">{% if user %}{{ user.solde|number_format(2, ',', ' ') }} €{% else %}0,00 €{% endif %}</span>
         </button>
         <button class="panier-btn" id="panierBtn"><i class="fa-solid fa-cart-shopping"></i><span class="panier-count" id="panierCount">0</span></button>
         <button class="profil-btn" id="profilBtn"><i class="fa-solid fa-user"></i></button>
@@ -63,7 +63,7 @@
         <div class="mes-paris-header">
             <h1>Mes paris</h1>
             <div class="mes-paris-actions">
-                <button class="solde-btn"><i class="fa-solid fa-plus"></i><span id="mesParisSolde">0,00 €</span></button>
+                <button class="solde-btn"><i class="fa-solid fa-plus"></i><span id="mesParisSolde">{% if user %}{{ user.solde|number_format(2, ',', ' ') }} €{% else %}0,00 €{% endif %}</span></button>
                 <button class="mp-back-btn" id="closeMesParis"><i class="fa-solid fa-chevron-left"></i></button>
                 <button class="profil-btn"><i class="fa-solid fa-user"></i></button>
             </div>

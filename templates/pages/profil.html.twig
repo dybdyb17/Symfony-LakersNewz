@@ -15,69 +15,168 @@
 </head>
 <body class="profil-page">
     <div class="profil-bg-pattern"></div>
+
     <div class="profil-view" id="profilView">
         <header class="profil-header">
             <h1 class="profil-header-titre">Profil</h1>
             <button class="profil-close-btn" onclick="window.location.href='{{ path('app_paris') }}'"><i class="fa-solid fa-xmark"></i></button>
         </header>
+
         <div class="profil-hero">
-            <div class="profil-avatar-wrap"><div class="profil-avatar"></div></div>
-            <div class="profil-identity"><p class="profil-pseudo" id="profilPseudo">utilisateur</p></div>
+            <div class="profil-avatar-wrap">
+                <div class="profil-avatar">
+                    {% set initiales = (user.firstname|default('')|first ~ user.lastname|default('')|first)|upper %}
+                    {% if initiales is not empty %}
+                        {{ initiales }}
+                    {% else %}
+                        <i class="fa-solid fa-user"></i>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="profil-identity">
+                <p class="profil-pseudo">{{ user.pseudo ?? 'Utilisateur' }}</p>
+            </div>
             <div class="profil-solde-wrap">
                 <p class="profil-solde-label">Solde disponible</p>
-                <p class="profil-solde-montant" id="profilSolde">0,00 €</p>
+                <p class="profil-solde-montant">{{ user.solde|number_format(2, ',', ' ') }} €</p>
             </div>
         </div>
+
         <hr class="profil-divider">
+
+        {% for message in app.flashes('success') %}
+            <div style="background: #4CAF50; color: white; padding: 12px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-weight: 600;">
+                {{ message }}
+            </div>
+        {% endfor %}
+
         <div class="profil-actions">
-            <button class="profil-action-card" id="deposerBtn"><i class="fa-solid fa-money-bill-transfer"></i><span>Déposer</span></button>
-            <button class="profil-action-card" id="retirerBtn"><i class="fa-solid fa-money-bill-transfer"></i><span>Retirer</span></button>
+            <a href="{{ path('app_deposer') }}" class="profil-action-card">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+                <span>Déposer</span>
+            </a>
+            <a href="{{ path('app_retirer') }}" class="profil-action-card">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+                <span>Retirer</span>
+            </a>
         </div>
-        <button class="profil-info-btn" id="infoPersoBtn"><i class="fa-solid fa-circle-user"></i> Info personelle</button>
-        <button class="profil-disconnect-btn" id="deconnecterBtn">Se déconnecter</button>
+
+        <button class="profil-info-btn" onclick="document.getElementById('profilView').style.display='none'; document.getElementById('infoPersoView').style.display='block';">
+            <i class="fa-solid fa-circle-user"></i> Info personnelle
+        </button>
+
+        <a href="{{ path('app_logout') }}" class="profil-disconnect-btn" style="display:block; text-align:center; text-decoration:none;">Se déconnecter</a>
     </div>
+
     <div class="profil-view" id="infoPersoView" style="display:none;">
         <header class="profil-header">
             <h1 class="profil-header-titre">Info perso</h1>
-            <button class="profil-back-btn" id="backBtn"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="profil-back-btn" onclick="document.getElementById('infoPersoView').style.display='none'; document.getElementById('profilView').style.display='block';"><i class="fa-solid fa-chevron-left"></i></button>
         </header>
-        <div class="info-section">
-            <h2 class="info-section-titre">Mon identité</h2>
-            <div class="info-table">
-                <div class="info-row"><span class="info-label">Civilité</span><span class="info-value" id="infoCivilite">Monsieur</span></div>
-                <div class="info-row"><span class="info-label">Nom</span><span class="info-value" id="infoNom">—</span></div>
-                <div class="info-row"><span class="info-label">Prénom</span><span class="info-value" id="infoPrenom">—</span></div>
-                <div class="info-row"><span class="info-label">Date de naissance</span><span class="info-value" id="infoDdn">—</span></div>
-                <div class="info-row"><span class="info-label">Lieu de naissance</span><span class="info-value" id="infoLieu">—</span></div>
+
+        <!-- MODE LECTURE -->
+        <div id="modeLecture">
+            <div class="info-section">
+                <h2 class="info-section-titre">Mon identité</h2>
+                <div class="info-table">
+                    <div class="info-row">
+                        <span class="info-label">Civilité</span>
+                        <span class="info-value">Monsieur</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Nom</span>
+                        <span class="info-value">{{ user.lastname ?? '—' }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Prénom</span>
+                        <span class="info-value">{{ user.firstname ?? '—' }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Pseudo</span>
+                        <span class="info-value">{{ user.pseudo ?? '—' }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Date de naissance</span>
+                        <span class="info-value">{{ user.dateNaissance ? user.dateNaissance|date('d/m/Y') : '—' }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Lieu de naissance</span>
+                        <span class="info-value">{{ user.lieuNaissance ?? '—' }}</span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="info-section">
-            <h2 class="info-section-titre">Mes informations de contact</h2>
-            <div class="info-table">
-                <div class="info-row"><span class="info-label">Email</span><span class="info-value" id="infoEmail">—</span></div>
-                <div class="info-row"><span class="info-label">Téléphone</span><span class="info-value" id="infoTel">—</span></div>
+
+            <div class="info-section">
+                <h2 class="info-section-titre">Mes informations de contact</h2>
+                <div class="info-table">
+                    <div class="info-row">
+                        <span class="info-label">Email</span>
+                        <span class="info-value">{{ user.email ?? '—' }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Téléphone</span>
+                        <span class="info-value">{{ user.telephone ?? '—' }}</span>
+                    </div>
+                </div>
             </div>
+
+            <button class="profil-info-btn" onclick="document.getElementById('modeLecture').style.display='none'; document.getElementById('modeEdition').style.display='block';">
+                Modifier mes informations
+            </button>
+
+            <form method="post" action="{{ path('app_profil_supprimer') }}" onsubmit="return confirm('Êtes-vous sûr de vouloir clôturer votre compte ? Cette action est irréversible.');">
+                <button type="submit" class="profil-cloture-btn">Clôturer mon compte</button>
+            </form>
         </div>
-        <button class="profil-info-btn" id="modifierBtn">Modifier mes informations</button>
-        <button class="profil-cloture-btn" id="clotureBtn">Clôturer mon compte</button>
-    </div>
-    <div class="cloture-overlay" id="clotureOverlay" style="display:none;">
-        <div class="cloture-modal">
-            <h2>Clôturer mon compte</h2>
-            <p>Êtes-vous sûr de vouloir clôturer votre compte ? Cette action est irréversible.</p>
-            <button class="cloture-confirm-btn" id="clotureConfirmBtn">Confirmer</button>
-            <button class="cloture-cancel-btn" id="clotureCancelBtn">Annuler</button>
+
+        <!-- MODE EDITION -->
+        <div id="modeEdition" style="display:none;">
+            <form method="post" action="{{ path('app_profil_modifier') }}">
+                <div class="info-section">
+                    <h2 class="info-section-titre">Mon identité</h2>
+                    <div class="info-table">
+                        <div class="info-row">
+                            <span class="info-label">Nom</span>
+                            <input type="text" name="lastname" value="{{ user.lastname }}" class="info-edit-input">
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Prénom</span>
+                            <input type="text" name="firstname" value="{{ user.firstname }}" class="info-edit-input">
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Pseudo</span>
+                            <input type="text" name="pseudo" value="{{ user.pseudo }}" class="info-edit-input">
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Date de naissance</span>
+                            <input type="date" name="dateNaissance" value="{{ user.dateNaissance ? user.dateNaissance|date('Y-m-d') : '' }}" class="info-edit-input">
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Lieu de naissance</span>
+                            <input type="text" name="lieuNaissance" value="{{ user.lieuNaissance }}" class="info-edit-input">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h2 class="info-section-titre">Mes informations de contact</h2>
+                    <div class="info-table">
+                        <div class="info-row">
+                            <span class="info-label">Email</span>
+                            <input type="email" name="email" value="{{ user.email }}" class="info-edit-input">
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Téléphone</span>
+                            <input type="tel" name="telephone" value="{{ user.telephone }}" class="info-edit-input">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="profil-info-btn">
+                    <i class="fa-solid fa-floppy-disk"></i> Enregistrer
+                </button>
+            </form>
         </div>
     </div>
-    <script>
-        window.isLoggedIn = {{ app.user ? 'true' : 'false' }};
-        window.userPseudo = '{{ app.user ? app.user.pseudo|e('js') : '' }}';
-        window.userId = {{ app.user ? app.user.id : 'null' }};
-        window.userSolde = {{ app.user ? app.user.solde : '0' }};
-        window.userEmail = '{{ app.user ? app.user.email|e('js') : '' }}';
-        window.userFirstname = '{{ app.user ? app.user.firstname|e('js') : '' }}';
-        window.userLastname = '{{ app.user ? app.user.lastname|e('js') : '' }}';
-    </script>
-    <script src="{{ asset('js/profil.js') }}"></script>
 </body>
 </html>
