@@ -60,7 +60,7 @@ class PageController extends AbstractController
         ]);
     }
 
-    #[Route('/profil/modifier', name: 'app_profil_modifier', methods: ['POST'])]
+    #[Route('/profil/modifier', name: 'app_profil_modifier', methods: ['GET', 'POST'])]
     public function profilModifier(Request $request, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
@@ -68,28 +68,20 @@ class PageController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        $user->setFirstname(strip_tags(trim($request->request->get('firstname', ''))));
-        $user->setLastname(strip_tags(trim($request->request->get('lastname', ''))));
-        $user->setEmail(strip_tags(trim($request->request->get('email', ''))));
-        $user->setPseudo(strip_tags(trim($request->request->get('pseudo', ''))));
-        $user->setTelephone(strip_tags(trim($request->request->get('telephone', ''))));
-        $user->setLieuNaissance(strip_tags(trim($request->request->get('lieuNaissance', ''))));
+        $form = $this->createForm(\App\Form\ProfilFormType::class, $user);
+        $form->handleRequest($request);
 
-        $dateNaissance = strip_tags(trim($request->request->get('dateNaissance', '')));
-        if (!empty($dateNaissance)) {
-            $date = \DateTime::createFromFormat('Y-m-d', $dateNaissance);
-            if (!$date) {
-                $date = \DateTime::createFromFormat('d/m/Y', $dateNaissance);
-            }
-            if ($date) {
-                $user->setDateNaissance($date);
-            }
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->flush();
+
+            $this->addFlash('success', 'Profil mis à jour avec succès');
+            return $this->redirectToRoute('app_profil');
         }
 
-        $em->flush();
-
-        $this->addFlash('success', 'Profil mis à jour avec succès');
-        return $this->redirectToRoute('app_profil');
+        return $this->render('pages/profil_modifier.html.twig', [
+            'profilForm' => $form,
+            'user' => $user,
+        ]);
     }
 
     #[Route('/profil/supprimer', name: 'app_profil_supprimer', methods: ['POST'])]

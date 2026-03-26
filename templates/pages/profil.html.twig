@@ -120,63 +120,13 @@
                 </div>
             </div>
 
-            <button class="profil-info-btn" onclick="document.getElementById('modeLecture').style.display='none'; document.getElementById('modeEdition').style.display='block';">
-                Modifier mes informations
-            </button>
+            <a href="{{ path('app_profil_modifier') }}" class="profil-info-btn">Modifier mes informations</a>
 
             <form method="post" action="{{ path('app_profil_supprimer') }}" onsubmit="return confirm('Êtes-vous sûr de vouloir clôturer votre compte ? Cette action est irréversible.');">
                 <button type="submit" class="profil-cloture-btn">Clôturer mon compte</button>
             </form>
         </div>
 
-        <!-- MODE EDITION -->
-        <div id="modeEdition" style="display:none;">
-            <form method="post" action="{{ path('app_profil_modifier') }}">
-                <div class="info-section">
-                    <h2 class="info-section-titre">Mon identité</h2>
-                    <div class="info-table">
-                        <div class="info-row">
-                            <span class="info-label">Nom</span>
-                            <input type="text" name="lastname" value="{{ user.lastname }}" class="info-edit-input">
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">Prénom</span>
-                            <input type="text" name="firstname" value="{{ user.firstname }}" class="info-edit-input">
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">Pseudo</span>
-                            <input type="text" name="pseudo" value="{{ user.pseudo }}" class="info-edit-input">
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">Date de naissance</span>
-                            <input type="date" name="dateNaissance" value="{{ user.dateNaissance ? user.dateNaissance|date('Y-m-d') : '' }}" class="info-edit-input">
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">Lieu de naissance</span>
-                            <input type="text" name="lieuNaissance" value="{{ user.lieuNaissance }}" class="info-edit-input">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-section">
-                    <h2 class="info-section-titre">Mes informations de contact</h2>
-                    <div class="info-table">
-                        <div class="info-row">
-                            <span class="info-label">Email</span>
-                            <input type="email" name="email" value="{{ user.email }}" class="info-edit-input">
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">Téléphone</span>
-                            <input type="tel" name="telephone" value="{{ user.telephone }}" class="info-edit-input">
-                        </div>
-                    </div>
-                </div>
-
-                <button type="submit" class="profil-info-btn">
-                    <i class="fa-solid fa-floppy-disk"></i> Enregistrer
-                </button>
-            </form>
-        </div>
     </div>
 </body>
 </html>
