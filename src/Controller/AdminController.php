@@ -96,8 +96,8 @@ class AdminController extends AbstractController
         $data = json_decode($request->getContent(), true);
 
         $match = new MatchNba();
-        $match->setTeam1($this->sanitize($data['team1']));
-        $match->setTeam2($this->sanitize($data['team2']));
+        $match->setTeam1($data['team1']);
+        $match->setTeam2($data['team2']);
         $match->setCote1((float) $data['cote1']);
         $match->setCote2((float) $data['cote2']);
         $match->setDateMatch(\DateTime::createFromFormat('Y-m-d H:i', $data['dateMatch']) ?: null);
@@ -208,16 +208,16 @@ class AdminController extends AbstractController
         $data = json_decode($request->getContent(), true);
 
         $article = new Article();
-        $article->setTitre($this->sanitize($data['titre']));
-        $article->setContenu($this->sanitize($data['contenu']));
+        $article->setTitre($data['titre']);
+        $article->setContenu($data['contenu']);
         if (isset($data['categorie'])) {
-            $article->setCategorie($this->sanitize($data['categorie']));
+            $article->setCategorie($data['categorie']);
         }
         if (isset($data['image'])) {
-            $article->setImage($this->sanitize($data['image']));
+            $article->setImage($data['image']);
         }
         if (isset($data['auteur'])) {
-            $article->setAuteur($this->sanitize($data['auteur']));
+            $article->setAuteur($data['auteur']);
         }
 
         $em->persist($article);
@@ -237,19 +237,19 @@ class AdminController extends AbstractController
         $data = json_decode($request->getContent(), true);
 
         if (isset($data['titre'])) {
-            $article->setTitre($this->sanitize($data['titre']));
+            $article->setTitre($data['titre']);
         }
         if (isset($data['contenu'])) {
-            $article->setContenu($this->sanitize($data['contenu']));
+            $article->setContenu($data['contenu']);
         }
         if (isset($data['categorie'])) {
-            $article->setCategorie($this->sanitize($data['categorie']));
+            $article->setCategorie($data['categorie']);
         }
         if (isset($data['image'])) {
-            $article->setImage($this->sanitize($data['image']));
+            $article->setImage($data['image']);
         }
         if (isset($data['auteur'])) {
-            $article->setAuteur($this->sanitize($data['auteur']));
+            $article->setAuteur($data['auteur']);
         }
 
         $article->setUpdatedAt(new \DateTime());
@@ -271,11 +271,6 @@ class AdminController extends AbstractController
         $em->flush();
 
         return $this->json(['message' => 'Article supprimé avec succès']);
-    }
-
-    private function sanitize(string $input): string
-    {
-        return strip_tags(trim($input));
     }
 
     private function serializeArticle(Article $article): array
