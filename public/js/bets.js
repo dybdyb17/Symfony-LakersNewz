@@ -367,7 +367,7 @@ async function renderMesParis(filtre) {
 
 document.getElementById('profilBtn')?.addEventListener('click', () => { window.location.href = '/profil'; });
 document.getElementById('soldeBtn')?.addEventListener('click', () => { window.location.href = '/deposer'; });
-document.getElementById('deconnecterBtn')?.addEventListener('click', () => { window.location.href = '/deconnexion'; });
+document.getElementById('deconnecterBtn')?.addEventListener('click', () => { window.location.href = '/logout'; });
 
 document.addEventListener('DOMContentLoaded', () => {
   chargerMatchs();

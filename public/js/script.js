@@ -65,11 +65,11 @@ function updateDropdownMenu() {
     `;
   } else {
     dropdownMenu.innerHTML = `
-      <a href="/inscription" class="dropdown-item">
+      <a href="/register" class="dropdown-item">
         <i class="fa-solid fa-user-plus"></i>
         <span>S'inscrire</span>
       </a>
-      <a href="/connexion" class="dropdown-item">
+      <a href="/login" class="dropdown-item">
         <i class="fa-solid fa-right-to-bracket"></i>
         <span>Se connecter</span>
       </a>
@@ -83,7 +83,7 @@ function updateDropdownMenu() {
 }
 
 function logout() {
-  window.location.href = '/deconnexion';
+  window.location.href = '/logout';
 }
 
 function updateSidebar() {

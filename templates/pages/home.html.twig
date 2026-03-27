@@ -44,7 +44,11 @@
                         <article class="news-card">
                             <div class="news-card__image">
                                 <img src="{{ article.image ?? 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&h=600&fit=crop' }}" alt="{{ article.titre }}" loading="lazy">
-                                <span class="news-category {% if article.categorie == 'rumeurs' %}category-rumeurs{% elseif article.categorie == 'interviews' %}category-interviews{% elseif article.categorie == 'analyses' %}category-analyses{% endif %}">{{ article.categorie|default('News')|capitalize }}</span>
+                                <span class="news-category {% if article.categorie == 'rumeurs' %}category-rumeurs
+                                {% elseif article.categorie == 'interviews' %}category-interviews
+                                {% elseif article.categorie == 'analyses' %}category-analyses
+                                {% endif %}">{{ article.categorie|default('News')|capitalize }}
+                                </span>
                             </div>
                             <div class="news-card__content">
                                 <div class="news-card__date">

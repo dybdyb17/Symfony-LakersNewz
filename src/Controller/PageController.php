@@ -24,13 +24,13 @@ class PageController extends AbstractController
     #[Route('/calendrier', name: 'app_calendrier')]
     public function calendrier(): Response
     {
-        return $this->render('pages/calendrier.html.twig');
+        return $this->render('pages/schedule.html.twig');
     }
 
     #[Route('/classement', name: 'app_classement')]
     public function classement(): Response
     {
-        return $this->render('pages/classement.html.twig');
+        return $this->render('pages/standing.html.twig');
     }
 
     #[Route('/roster', name: 'app_roster')]
@@ -42,7 +42,7 @@ class PageController extends AbstractController
     #[Route('/paris', name: 'app_paris')]
     public function paris(): Response
     {
-        return $this->render('pages/paris.html.twig', [
+        return $this->render('pages/bets.html.twig', [
             'user' => $this->getUser(),
         ]);
     }
@@ -55,7 +55,7 @@ class PageController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        return $this->render('pages/profil.html.twig', [
+        return $this->render('pages/profile.html.twig', [
             'user' => $user,
         ]);
     }
@@ -68,7 +68,7 @@ class PageController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        $form = $this->createForm(\App\Form\ProfilFormType::class, $user);
+        $form = $this->createForm(\App\Form\ProfileFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -78,7 +78,7 @@ class PageController extends AbstractController
             return $this->redirectToRoute('app_profil');
         }
 
-        return $this->render('pages/profil_modifier.html.twig', [
+        return $this->render('pages/profile_edit.html.twig', [
             'profilForm' => $form,
             'user' => $user,
         ]);
@@ -146,7 +146,7 @@ class PageController extends AbstractController
             }
         }
 
-        return $this->render('pages/deposer.html.twig', [
+        return $this->render('pages/deposit.html.twig', [
             'success' => $success,
             'montant' => $montant,
             'solde' => $user->getSolde(),
@@ -189,7 +189,7 @@ class PageController extends AbstractController
             }
         }
 
-        return $this->render('pages/retirer.html.twig', [
+        return $this->render('pages/withdraw.html.twig', [
             'success' => $success,
             'insuffisant' => $insuffisant,
             'montant' => $montant,

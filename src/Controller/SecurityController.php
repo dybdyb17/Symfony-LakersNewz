@@ -12,7 +12,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class SecurityController extends AbstractController
 {
-    #[Route('/connexion', name: 'app_login')]
+    #[Route('/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
@@ -22,18 +22,18 @@ class SecurityController extends AbstractController
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('pages/connexion.html.twig', [
+        return $this->render('pages/login.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error,
         ]);
     }
 
-    #[Route('/deconnexion', name: 'app_logout')]
+    #[Route('/logout', name: 'app_logout')]
     public function logout(): void
     {
     }
 
-    #[Route('/inscription', name: 'app_register')]
+    #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $hasher, EntityManagerInterface $em): Response
     {
         if ($this->getUser()) {
@@ -58,7 +58,7 @@ class SecurityController extends AbstractController
             $prenom = $user->getFirstname();
         }
 
-        return $this->render('pages/inscription.html.twig', [
+        return $this->render('pages/register.html.twig', [
             'registrationForm' => $form,
             'success' => $success,
             'prenom' => $prenom,
