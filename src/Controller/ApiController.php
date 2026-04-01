@@ -39,7 +39,6 @@ class ApiController extends AbstractController
         $selections = $data['selections'] ?? [];
         $estCombine = !empty($selections);
 
-        // Enregistrer le match en base si il n'existe pas
         if (!$estCombine && isset($data['match'])) {
             $matchData = $data['match'];
             $existingMatch = $em->getRepository(MatchNba::class)->findOneBy([
@@ -58,7 +57,6 @@ class ApiController extends AbstractController
             }
         }
 
-        // Pour les paris combinés, enregistrer chaque match
         if ($estCombine && isset($data['matchs'])) {
             foreach ($data['matchs'] as $matchData) {
                 $existingMatch = $em->getRepository(MatchNba::class)->findOneBy([

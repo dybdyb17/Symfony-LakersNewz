@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block title %}Admin - Articles{% endblock %}
+{% block body_class %}admin-page{% endblock %}
+{% block body %}
+<main style="padding: 120px 20px 40px; max-width: 1200px; margin: 0 auto;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h1 style="color: white; font-size: 28px;">Gestion des articles</h1>
+        <div>
+            <a href="{{ path('admin_matchs_index') }}" style="background: #552583; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; margin-right: 10px;">Matchs</a>
+            <a href="{{ path('admin_articles_new') }}" style="background: #4CAF50; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700;">+ Nouvel article</a>
+        </div>
+    </div>
+
+    {% for message in app.flashes('success') %}
+        <div style="background: #4CAF50; color: white; padding: 12px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-weight: 600;">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div style="background: rgba(0,0,0,0.6); border-radius: 16px; overflow: hidden;">
+        <table style="width: 100%; border-collapse: collapse; color: white;">
+            <thead>
+                <tr style="background: rgba(85,37,131,0.8);">
+                    <th style="padding: 12px; text-align: left;">Titre</th>
+                    <th style="padding: 12px; text-align: center;">Catégorie</th>
+                    <th style="padding: 12px; text-align: center;">Auteur</th>
+                    <th style="padding: 12px; text-align: center;">Date</th>
+                    <th style="padding: 12px; text-align: center;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for article in articles %}
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 12px;">{{ article.titre }}</td>
+                        <td style="padding: 12px; text-align: center;">{{ article.categorie ?? '—' }}</td>
+                        <td style="padding: 12px; text-align: center;">{{ article.auteur ?? 'Lakers Newz' }}</td>
+                        <td style="padding: 12px; text-align: center;">{{ article.createdAt ? article.createdAt|date('d/m/Y') : '—' }}</td>
+                        <td style="padding: 12px; text-align: center;">
+                            <a href="{{ path('admin_articles_edit', {id: article.id}) }}" style="background: #FDB927; color: #1a1a2e; padding: 6px 12px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 13px;">Modifier</a>
+                            <form method="post" action="{{ path('admin_articles_delete', {id: article.id}) }}" style="display: inline;" onsubmit="return confirm('Supprimer cet article ?');">
+                                <button type="submit" style="background: #e53935; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px;">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5" style="padding: 20px; text-align: center; color: rgba(255,255,255,0.5);">Aucun article</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+{% endblock %}
