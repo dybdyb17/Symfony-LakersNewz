@@ -1,17 +1,8 @@
-/* ========================================
-   CONTACT PAGE - Lakers Newz
-   Design basé sur les maquettes Figma
-   ======================================== */
-
 body.contact-page {
   background: #1a1a2e;
   color: white;
   min-height: 100vh;
 }
-
-/* ========================================
-   MAIN CONTAINER
-   ======================================== */
 
 .contact-main {
   padding: 100px 20px 40px;
@@ -22,10 +13,6 @@ body.contact-page {
   max-width: 480px;
   margin: 0 auto;
 }
-
-/* ========================================
-   HEADER - Icône + Titre
-   ======================================== */
 
 .contact-header {
   text-align: center;
@@ -53,10 +40,6 @@ body.contact-page {
   margin: 0;
 }
 
-/* ========================================
-   FORMULAIRE CARD
-   ======================================== */
-
 .contact-form-card {
   background: #552583;
   border-radius: 20px;
@@ -70,10 +53,6 @@ body.contact-page {
   font-weight: 700;
   margin-bottom: 20px;
 }
-
-/* ========================================
-   FORM INPUTS
-   ======================================== */
 
 .contact-form {
   display: flex;
@@ -131,10 +110,6 @@ body.contact-page {
   box-shadow: 0 0 0 3px rgba(253, 185, 39, 0.5);
 }
 
-/* ========================================
-   BOUTON SUBMIT
-   ======================================== */
-
 .submit-btn {
   width: 100%;
   background: #fdb927;
@@ -162,10 +137,6 @@ body.contact-page {
 .submit-btn i {
   font-size: 18px;
 }
-
-/* ========================================
-   MESSAGE DE SUCCÈS
-   ======================================== */
 
 .form-success {
   display: none;
@@ -216,10 +187,6 @@ body.contact-page {
   transform: translateY(-2px);
 }
 
-/* ========================================
-   INFORMATIONS CARD
-   ======================================== */
-
 .contact-info-card {
   background: #552583;
   border-radius: 20px;
@@ -232,10 +199,6 @@ body.contact-page {
   font-weight: 700;
   margin-bottom: 20px;
 }
-
-/* ========================================
-   INFO ITEMS
-   ======================================== */
 
 .info-item {
   display: flex;
@@ -277,10 +240,6 @@ body.contact-page {
   margin: 0;
 }
 
-/* ========================================
-   RÉSEAUX SOCIAUX
-   ======================================== */
-
 .social-section {
   text-align: center;
   margin-top: 25px;
@@ -321,9 +280,6 @@ body.contact-page {
   transform: translateY(-3px);
 }
 
-/* ========================================
-   RESPONSIVE - TABLETTE (768px)
-   ======================================== */
 
 @media (min-width: 768px) {
   .contact-container {
@@ -352,9 +308,6 @@ body.contact-page {
   }
 }
 
-/* ========================================
-   RESPONSIVE - DESKTOP (1024px+)
-   ======================================== */
 
 @media (min-width: 1024px) {
   .contact-main {
@@ -407,10 +360,6 @@ body.contact-page {
     font-size: 22px;
   }
 }
-
-/* ========================================
-   RESPONSIVE - GRAND ÉCRAN (1440px+)
-   ======================================== */
 
 @media (min-width: 1440px) {
   .contact-container {

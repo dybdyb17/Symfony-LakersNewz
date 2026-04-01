@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\MatchNba;
 use App\Entity\Pari;
 use App\Entity\Selection;
 use App\Repository\ArticleRepository;
@@ -37,6 +38,45 @@ class ApiController extends AbstractController
 
         $selections = $data['selections'] ?? [];
         $estCombine = !empty($selections);
+
+        // Enregistrer le match en base si il n'existe pas
+        if (!$estCombine && isset($data['match'])) {
+            $matchData = $data['match'];
+            $existingMatch = $em->getRepository(MatchNba::class)->findOneBy([
+                'team1' => $matchData['team1'],
+                'team2' => $matchData['team2'],
+                'statut' => 'a_venir',
+            ]);
+            if (!$existingMatch) {
+                $match = new MatchNba();
+                $match->setTeam1($matchData['team1']);
+                $match->setTeam2($matchData['team2']);
+                $match->setCote1((float) ($matchData['cote1'] ?? $data['cote']));
+                $match->setCote2((float) ($matchData['cote2'] ?? $data['cote']));
+                $match->setStatut('a_venir');
+                $em->persist($match);
+            }
+        }
+
+        // Pour les paris combinés, enregistrer chaque match
+        if ($estCombine && isset($data['matchs'])) {
+            foreach ($data['matchs'] as $matchData) {
+                $existingMatch = $em->getRepository(MatchNba::class)->findOneBy([
+                    'team1' => $matchData['team1'],
+                    'team2' => $matchData['team2'],
+                    'statut' => 'a_venir',
+                ]);
+                if (!$existingMatch) {
+                    $match = new MatchNba();
+                    $match->setTeam1($matchData['team1']);
+                    $match->setTeam2($matchData['team2']);
+                    $match->setCote1((float) ($matchData['cote1'] ?? 1.50));
+                    $match->setCote2((float) ($matchData['cote2'] ?? 1.50));
+                    $match->setStatut('a_venir');
+                    $em->persist($match);
+                }
+            }
+        }
 
         $pari = new Pari();
         $pari->setMise($mise);

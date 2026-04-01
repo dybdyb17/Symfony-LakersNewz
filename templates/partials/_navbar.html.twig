@@ -27,6 +27,13 @@
                         <i class="fa-solid fa-circle-check"></i>
                         <span>Vous êtes connecté</span>
                     </div>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('admin_matchs_index') }}" class="dropdown-item">
+                            <i class="fa-solid fa-shield"></i>
+                            <span>Admin</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    {% endif %}
                     <a href="{{ path('app_logout') }}" class="dropdown-item">
                         <i class="fa-solid fa-right-from-bracket"></i>
                         <span>Se déconnecter</span>

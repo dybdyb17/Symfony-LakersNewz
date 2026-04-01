@@ -267,6 +267,16 @@ document.getElementById('parierBtn')?.addEventListener('click', async () => {
     const body = { equipe: pari.equipe, cote: pari.cote, mise: pari.mise };
     if (tabActif === 'combine') {
       body.selections = selections.map(sel => ({ equipe: sel.teamName, cote: sel.cote }));
+      body.matchs = selections.map(sel => {
+        const parts = sel.matchLabel.split(' - ');
+        return { team1: parts[0]?.trim(), team2: parts[1]?.trim(), cote1: sel.cote, cote2: sel.cote };
+      });
+    } else {
+      const sel = selections.find(s => s.teamName === pari.equipe);
+      if (sel) {
+        const parts = sel.matchLabel.split(' - ');
+        body.match = { team1: parts[0]?.trim(), team2: parts[1]?.trim(), cote1: pari.cote, cote2: pari.cote };
+      }
     }
     try {
       const res = await fetch(`${API_URL}/api/pari`, {

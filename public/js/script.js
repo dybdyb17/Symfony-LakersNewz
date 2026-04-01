@@ -41,81 +41,9 @@ if (settingsBtn && settingsDropdown) {
 }
 
 
-function updateDropdownMenu() {
-  const dropdownMenu = document.querySelector('.dropdown-menu');
-  if (!dropdownMenu) return;
-
-  const isLoggedIn = window.isLoggedIn || false;
-
-  if (isLoggedIn) {
-    dropdownMenu.innerHTML = `
-      <div class="dropdown-item user-status">
-        <i class="fa-solid fa-circle-check"></i>
-        <span>Vous êtes connecté</span>
-      </div>
-      <button class="dropdown-item" onclick="logout()">
-        <i class="fa-solid fa-right-from-bracket"></i>
-        <span>Se déconnecter</span>
-      </button>
-      <div class="dropdown-divider"></div>
-      <a href="/contact" class="dropdown-item">
-        <i class="fa-solid fa-envelope"></i>
-        <span>Contact</span>
-      </a>
-    `;
-  } else {
-    dropdownMenu.innerHTML = `
-      <a href="/register" class="dropdown-item">
-        <i class="fa-solid fa-user-plus"></i>
-        <span>S'inscrire</span>
-      </a>
-      <a href="/login" class="dropdown-item">
-        <i class="fa-solid fa-right-to-bracket"></i>
-        <span>Se connecter</span>
-      </a>
-      <div class="dropdown-divider"></div>
-      <a href="/contact" class="dropdown-item">
-        <i class="fa-solid fa-envelope"></i>
-        <span>Contact</span>
-      </a>
-    `;
-  }
-}
-
 function logout() {
   window.location.href = '/logout';
 }
-
-function updateSidebar() {
-  const navList = document.querySelector('.sidebar .nav ul');
-  if (!navList) return;
-
-  const isLoggedIn = window.isLoggedIn || false;
-
-  const currentPath = window.location.pathname;
-
-  if (isLoggedIn) {
-    navList.innerHTML = `
-      <li><a href="/" class="${currentPath === '/' ? 'active' : ''}"><i class="fa-solid fa-basketball"></i>News</a></li>
-      <li><a href="/calendrier" class="${currentPath === '/calendrier' ? 'active' : ''}"><i class="fa-solid fa-calendar"></i>Calendrier</a></li>
-      <li><a href="/classement" class="${currentPath === '/classement' ? 'active' : ''}"><i class="fa-solid fa-ranking-star"></i>Classement</a></li>
-      <li><a href="/roster" class="${currentPath === '/roster' ? 'active' : ''}"><i class="fa-solid fa-star"></i>Roster</a></li>
-      <li><a href="/paris" class="${currentPath === '/paris' ? 'active' : ''}"><i class="fa-solid fa-dice"></i>Paris</a></li>
-    `;
-  } else {
-    navList.innerHTML = `
-      <li><a href="/" class="${currentPath === '/' ? 'active' : ''}"><i class="fa-solid fa-basketball"></i>News</a></li>
-      <li><a href="/calendrier" class="${currentPath === '/calendrier' ? 'active' : ''}"><i class="fa-solid fa-calendar"></i>Calendrier</a></li>
-      <li><a href="/classement" class="${currentPath === '/classement' ? 'active' : ''}"><i class="fa-solid fa-ranking-star"></i>Classement</a></li>
-      <li><a href="/roster" class="${currentPath === '/roster' ? 'active' : ''}"><i class="fa-solid fa-star"></i>Roster</a></li>
-    `;
-  }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  updateDropdownMenu();
-  updateSidebar();
-});
 
 
 function normalize(text) {
