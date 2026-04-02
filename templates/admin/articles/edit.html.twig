@@ -1,43 +1,22 @@
 {% extends 'base.html.twig' %}
 {% block title %}Admin - Modifier article{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/admin.css') }}">{% endblock %}
 {% block body_class %}admin-page{% endblock %}
 {% block body %}
-<main style="padding: 120px 20px 40px; max-width: 600px; margin: 0 auto;">
-    <h1 style="color: white; font-size: 28px; margin-bottom: 20px;">Modifier l'article</h1>
+<main class="admin-main admin-main--narrow">
+    <h1 class="admin-title">Modifier l'article</h1>
 
-    <div style="background: rgba(0,0,0,0.6); border-radius: 16px; padding: 30px;">
-        {{ form_start(form, {'attr': {'style': 'display: flex; flex-direction: column; gap: 15px;'}}) }}
-
-            <div>
-                {{ form_label(form.titre, null, {'label_attr': {'style': 'color: white; font-weight: 600; display: block; margin-bottom: 5px;'}}) }}
-                {{ form_widget(form.titre, {'attr': {'style': 'width: 100%; padding: 12px; border-radius: 8px; border: none; font-size: 15px;'}}) }}
-            </div>
-
-            <div>
-                {{ form_label(form.contenu, null, {'label_attr': {'style': 'color: white; font-weight: 600; display: block; margin-bottom: 5px;'}}) }}
-                {{ form_widget(form.contenu, {'attr': {'style': 'width: 100%; padding: 12px; border-radius: 8px; border: none; font-size: 15px;'}}) }}
-            </div>
-
-            <div>
-                {{ form_label(form.categorie, null, {'label_attr': {'style': 'color: white; font-weight: 600; display: block; margin-bottom: 5px;'}}) }}
-                {{ form_widget(form.categorie, {'attr': {'style': 'width: 100%; padding: 12px; border-radius: 8px; border: none; font-size: 15px;'}}) }}
-            </div>
-
-            <div>
-                {{ form_label(form.image, null, {'label_attr': {'style': 'color: white; font-weight: 600; display: block; margin-bottom: 5px;'}}) }}
-                {{ form_widget(form.image, {'attr': {'style': 'width: 100%; padding: 12px; border-radius: 8px; border: none; font-size: 15px;'}}) }}
-            </div>
-
-            <div>
-                {{ form_label(form.auteur, null, {'label_attr': {'style': 'color: white; font-weight: 600; display: block; margin-bottom: 5px;'}}) }}
-                {{ form_widget(form.auteur, {'attr': {'style': 'width: 100%; padding: 12px; border-radius: 8px; border: none; font-size: 15px;'}}) }}
-            </div>
-
-            <button type="submit" style="background: #FDB927; color: #1a1a2e; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 10px;">Enregistrer les modifications</button>
-
+    <div class="admin-form-card">
+        {{ form_start(form, {'attr': {'class': 'admin-form'}}) }}
+            <div>{{ form_label(form.titre) }}{{ form_widget(form.titre) }}</div>
+            <div>{{ form_label(form.contenu) }}{{ form_widget(form.contenu) }}</div>
+            <div>{{ form_label(form.categorie) }}{{ form_widget(form.categorie) }}</div>
+            <div>{{ form_label(form.image) }}{{ form_widget(form.image) }}</div>
+            <div>{{ form_label(form.auteur) }}{{ form_widget(form.auteur) }}</div>
+            <button type="submit" class="admin-btn-submit admin-btn-submit--edit">Enregistrer les modifications</button>
         {{ form_end(form) }}
     </div>
 
-    <a href="{{ path('admin_articles_index') }}" style="color: #FDB927; display: block; text-align: center; margin-top: 20px; text-decoration: none;">← Retour à la liste</a>
+    <a href="{{ path('admin_articles_index') }}" class="admin-back-link">← Retour à la liste</a>
 </main>
 {% endblock %}

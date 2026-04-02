@@ -1,31 +1,31 @@
 {% extends 'base.html.twig' %}
 {% block title %}Admin - Résultat du match{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/admin.css') }}">{% endblock %}
 {% block body_class %}admin-page{% endblock %}
 {% block body %}
-<main style="padding: 120px 20px 40px; max-width: 600px; margin: 0 auto;">
-    <h1 style="color: white; font-size: 28px; margin-bottom: 20px;">Résultat du match</h1>
+<main class="admin-main admin-main--narrow">
+    <h1 class="admin-title">Résultat du match</h1>
 
-    <div style="background: rgba(0,0,0,0.6); border-radius: 16px; padding: 30px; text-align: center;">
-        <p style="color: white; font-size: 22px; font-weight: 700; margin-bottom: 5px;">{{ match.team1 }}</p>
-        <p style="color: #FDB927; font-size: 16px; margin-bottom: 5px;">VS</p>
-        <p style="color: white; font-size: 22px; font-weight: 700; margin-bottom: 20px;">{{ match.team2 }}</p>
+    <div class="admin-resultat-box">
+        <p class="admin-resultat-team">{{ match.team1 }}</p>
+        <p class="admin-resultat-vs">VS</p>
+        <p class="admin-resultat-team">{{ match.team2 }}</p>
 
-        <form method="post" action="{{ path('admin_matchs_resultat', {id: match.id}) }}" style="display: flex; flex-direction: column; gap: 15px;">
-            <div style="display: flex; gap: 15px; justify-content: center;">
+        <form method="post" action="{{ path('admin_matchs_resultat', {id: match.id}) }}" class="admin-form">
+            <div class="admin-score-row">
                 <div>
-                    <label style="color: rgba(255,255,255,0.7); font-size: 14px; display: block; margin-bottom: 5px;">Score {{ match.team1 }}</label>
-                    <input type="number" name="scoreTeam1" value="0" min="0" style="width: 80px; padding: 12px; border-radius: 8px; border: none; font-size: 20px; text-align: center; font-weight: 700;">
+                    <span class="admin-score-label">Score {{ match.team1 }}</span>
+                    <input type="number" name="scoreTeam1" value="0" min="0" class="admin-score-input">
                 </div>
                 <div>
-                    <label style="color: rgba(255,255,255,0.7); font-size: 14px; display: block; margin-bottom: 5px;">Score {{ match.team2 }}</label>
-                    <input type="number" name="scoreTeam2" value="0" min="0" style="width: 80px; padding: 12px; border-radius: 8px; border: none; font-size: 20px; text-align: center; font-weight: 700;">
+                    <span class="admin-score-label">Score {{ match.team2 }}</span>
+                    <input type="number" name="scoreTeam2" value="0" min="0" class="admin-score-input">
                 </div>
             </div>
-
-            <button type="submit" style="background: #4CAF50; color: white; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 10px;">Valider le résultat</button>
+            <button type="submit" class="admin-btn-submit">Valider le résultat</button>
         </form>
     </div>
 
-    <a href="{{ path('admin_matchs_index') }}" style="color: #FDB927; display: block; text-align: center; margin-top: 20px; text-decoration: none;">← Retour à la liste</a>
+    <a href="{{ path('admin_matchs_index') }}" class="admin-back-link">← Retour à la liste</a>
 </main>
 {% endblock %}

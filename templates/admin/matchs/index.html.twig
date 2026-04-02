@@ -1,71 +1,67 @@
 {% extends 'base.html.twig' %}
 {% block title %}Admin - Matchs{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/admin.css') }}">{% endblock %}
 {% block body_class %}admin-page{% endblock %}
 {% block body %}
-<main style="padding: 120px 20px 40px; max-width: 1200px; margin: 0 auto;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h1 style="color: white; font-size: 28px;">Gestion des matchs</h1>
-        <div>
-            <a href="{{ path('admin_articles_index') }}" style="background: #552583; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; margin-right: 10px;">Articles</a>
-            <a href="{{ path('admin_matchs_new') }}" style="background: #4CAF50; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700;">+ Nouveau match</a>
-        </div>
+<main class="admin-main">
+    <div class="admin-header">
+        <h1 class="admin-title">Gestion des matchs</h1>
+        <a href="{{ path('admin_matchs_new') }}" class="admin-btn-new">+ Nouveau match</a>
     </div>
 
+    {% include 'admin/_nav.html.twig' %}
+
     {% for message in app.flashes('success') %}
-        <div style="background: #4CAF50; color: white; padding: 12px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-weight: 600;">
-            {{ message }}
-        </div>
+        <div class="admin-flash-success">{{ message }}</div>
     {% endfor %}
 
-    <div style="background: rgba(0,0,0,0.6); border-radius: 16px; overflow: hidden;">
-        <table style="width: 100%; border-collapse: collapse; color: white;">
+    <div class="admin-table-wrapper">
+        <table class="admin-table">
             <thead>
-                <tr style="background: rgba(85,37,131,0.8);">
-                    <th style="padding: 12px; text-align: left;">Équipe 1</th>
-                    <th style="padding: 12px; text-align: left;">Équipe 2</th>
-                    <th style="padding: 12px; text-align: center;">Cotes</th>
-                    <th style="padding: 12px; text-align: center;">Date</th>
-                    <th style="padding: 12px; text-align: center;">Statut</th>
-                    <th style="padding: 12px; text-align: center;">Score</th>
-                    <th style="padding: 12px; text-align: center;">Actions</th>
+                <tr>
+                    <th>Équipe 1</th>
+                    <th>Équipe 2</th>
+                    <th class="center">Cotes</th>
+                    <th class="center">Date</th>
+                    <th class="center">Statut</th>
+                    <th class="center">Score</th>
+                    <th class="center">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for match in matchs %}
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding: 12px;">{{ match.team1 }}</td>
-                        <td style="padding: 12px;">{{ match.team2 }}</td>
-                        <td style="padding: 12px; text-align: center;">{{ match.cote1 }} / {{ match.cote2 }}</td>
-                        <td style="padding: 12px; text-align: center;">{{ match.dateMatch ? match.dateMatch|date('d/m/Y H:i') : '—' }}</td>
-                        <td style="padding: 12px; text-align: center;">
+                    <tr>
+                        <td>{{ match.team1 }}</td>
+                        <td>{{ match.team2 }}</td>
+                        <td class="center">{{ match.cote1 }} / {{ match.cote2 }}</td>
+                        <td class="center">{{ match.dateMatch ? match.dateMatch|date('d/m/Y H:i') : '—' }}</td>
+                        <td class="center">
                             {% if match.statut == 'termine' %}
-                                <span style="background: #4CAF50; padding: 4px 10px; border-radius: 12px; font-size: 13px;">Terminé</span>
+                                <span class="admin-badge admin-badge--green">Terminé</span>
                             {% elseif match.statut == 'en_cours' %}
-                                <span style="background: #FF9800; padding: 4px 10px; border-radius: 12px; font-size: 13px;">En cours</span>
+                                <span class="admin-badge admin-badge--orange">En cours</span>
                             {% else %}
-                                <span style="background: #2196F3; padding: 4px 10px; border-radius: 12px; font-size: 13px;">À venir</span>
+                                <span class="admin-badge admin-badge--blue">À venir</span>
                             {% endif %}
                         </td>
-                        <td style="padding: 12px; text-align: center;">
+                        <td class="center">
                             {% if match.scoreTeam1 is not null %}
                                 {{ match.scoreTeam1 }} - {{ match.scoreTeam2 }}
                             {% else %}
                                 —
                             {% endif %}
                         </td>
-                        <td style="padding: 12px; text-align: center;">
+                        <td class="center">
                             {% if match.statut != 'termine' %}
-                                <a href="{{ path('admin_matchs_resultat', {id: match.id}) }}" style="background: #FDB927; color: #1a1a2e; padding: 6px 12px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 13px;">Résultat</a>
+                                <a href="{{ path('admin_matchs_resultat', {id: match.id}) }}" class="admin-btn-resultat">Résultat</a>
                             {% endif %}
                             <form method="post" action="{{ path('admin_matchs_delete', {id: match.id}) }}" style="display: inline;" onsubmit="return confirm('Supprimer ce match ?');">
-                                <button type="submit" style="background: #e53935; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px;">Supprimer</button>
+                                <button type="submit" class="admin-btn-delete">Supprimer</button>
                             </form>
                         </td>
                     </tr>
                 {% else %}
-                    <tr>
-                        <td colspan="7" style="padding: 20px; text-align: center; color: rgba(255,255,255,0.5);">Aucun match</td>
-                    </tr>
+                    <tr><td colspan="7" class="empty-row">Aucun match</td></tr>
                 {% endfor %}
             </tbody>
         </table>

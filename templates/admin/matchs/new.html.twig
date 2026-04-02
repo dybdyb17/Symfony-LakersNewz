@@ -1,44 +1,39 @@
 {% extends 'base.html.twig' %}
 {% block title %}Admin - Nouveau match{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/admin.css') }}">{% endblock %}
 {% block body_class %}admin-page{% endblock %}
 {% block body %}
-<main style="padding: 120px 20px 40px; max-width: 600px; margin: 0 auto;">
-    <h1 style="color: white; font-size: 28px; margin-bottom: 20px;">Créer un match</h1>
+<main class="admin-main admin-main--narrow">
+    <h1 class="admin-title">Créer un match</h1>
 
-    <div style="background: rgba(0,0,0,0.6); border-radius: 16px; padding: 30px;">
-        {{ form_start(form, {'attr': {'style': 'display: flex; flex-direction: column; gap: 15px;'}}) }}
-
+    <div class="admin-form-card">
+        {{ form_start(form, {'attr': {'class': 'admin-form'}}) }}
             <div>
-                {{ form_label(form.team1, null, {'label_attr': {'style': 'color: white; font-weight: 600; display: block; margin-bottom: 5px;'}}) }}
-                {{ form_widget(form.team1, {'attr': {'style': 'width: 100%; padding: 12px; border-radius: 8px; border: none; font-size: 15px;'}}) }}
+                {{ form_label(form.team1) }}
+                {{ form_widget(form.team1) }}
             </div>
-
             <div>
-                {{ form_label(form.team2, null, {'label_attr': {'style': 'color: white; font-weight: 600; display: block; margin-bottom: 5px;'}}) }}
-                {{ form_widget(form.team2, {'attr': {'style': 'width: 100%; padding: 12px; border-radius: 8px; border: none; font-size: 15px;'}}) }}
+                {{ form_label(form.team2) }}
+                {{ form_widget(form.team2) }}
             </div>
-
-            <div style="display: flex; gap: 15px;">
-                <div style="flex: 1;">
-                    {{ form_label(form.cote1, null, {'label_attr': {'style': 'color: white; font-weight: 600; display: block; margin-bottom: 5px;'}}) }}
-                    {{ form_widget(form.cote1, {'attr': {'style': 'width: 100%; padding: 12px; border-radius: 8px; border: none; font-size: 15px;'}}) }}
+            <div class="form-row">
+                <div>
+                    {{ form_label(form.cote1) }}
+                    {{ form_widget(form.cote1) }}
                 </div>
-                <div style="flex: 1;">
-                    {{ form_label(form.cote2, null, {'label_attr': {'style': 'color: white; font-weight: 600; display: block; margin-bottom: 5px;'}}) }}
-                    {{ form_widget(form.cote2, {'attr': {'style': 'width: 100%; padding: 12px; border-radius: 8px; border: none; font-size: 15px;'}}) }}
+                <div>
+                    {{ form_label(form.cote2) }}
+                    {{ form_widget(form.cote2) }}
                 </div>
             </div>
-
             <div>
-                {{ form_label(form.dateMatch, null, {'label_attr': {'style': 'color: white; font-weight: 600; display: block; margin-bottom: 5px;'}}) }}
-                {{ form_widget(form.dateMatch, {'attr': {'style': 'width: 100%; padding: 12px; border-radius: 8px; border: none; font-size: 15px;'}}) }}
+                {{ form_label(form.dateMatch) }}
+                {{ form_widget(form.dateMatch) }}
             </div>
-
-            <button type="submit" style="background: #4CAF50; color: white; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 10px;">Créer le match</button>
-
+            <button type="submit" class="admin-btn-submit">Créer le match</button>
         {{ form_end(form) }}
     </div>
 
-    <a href="{{ path('admin_matchs_index') }}" style="color: #FDB927; display: block; text-align: center; margin-top: 20px; text-decoration: none;">← Retour à la liste</a>
+    <a href="{{ path('admin_matchs_index') }}" class="admin-back-link">← Retour à la liste</a>
 </main>
 {% endblock %}
