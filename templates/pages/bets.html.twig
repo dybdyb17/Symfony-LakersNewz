@@ -11,205 +11,205 @@
     <img src="{{ asset('assets/img/message_prevention.png') }}" alt="Message de prévention jeu responsable">
 </div>
 
-<div class="paris-subheader">
-    <h1 class="paris-title">Pariez sur la NBA</h1>
+<div class="paris-sous-barre">
+    <h1 class="paris-titre">Pariez sur la NBA</h1>
     <div class="paris-actions">
-        <button class="solde-btn" id="soldeBtn">
+        <button class="solde-bouton" id="soldeBtn">
             <i class="fa-solid fa-plus"></i>
             <span id="soldeDisplay">{% if user %}{{ user.solde|number_format(2, ',', ' ') }} €{% else %}0,00 €{% endif %}</span>
         </button>
-        <button class="panier-btn" id="panierBtn"><i class="fa-solid fa-cart-shopping"></i><span class="panier-count" id="panierCount">0</span></button>
-        <button class="profil-btn" id="profilBtn"><i class="fa-solid fa-user"></i></button>
+        <button class="panier-bouton" id="panierBtn"><i class="fa-solid fa-cart-shopping"></i><span class="panier-compteur" id="panierCount">0</span></button>
+        <button class="profil-bouton" id="profilBtn"><i class="fa-solid fa-user"></i></button>
     </div>
 </div>
 
-<main class="paris-main">
-    <section class="matchs-section">
+<main class="paris-principal">
+    <section class="matchs-zone">
         <div id="matchs-container">
-            <div class="loading-matchs"><i class="fa-solid fa-spinner fa-spin"></i><p>Chargement des matchs...</p></div>
+            <div class="matchs-chargement"><i class="fa-solid fa-spinner fa-spin"></i><p>Chargement des matchs...</p></div>
         </div>
     </section>
-    <aside class="coupon-sidebar" id="couponSidebar">
-        <div class="coupon-header">
-            <span class="coupon-count" id="couponCount">0 sélection</span>
-            <button class="coupon-options-btn"><i class="fa-solid fa-ellipsis"></i></button>
+    <aside class="coupon-panneau" id="couponSidebar">
+        <div class="coupon-entete">
+            <span class="coupon-compteur" id="couponCount">0 sélection</span>
+            <button class="coupon-options-bouton"><i class="fa-solid fa-ellipsis"></i></button>
         </div>
-        <div class="coupon-empty" id="couponEmpty">
-            <div class="coupon-empty-icon">🏀</div>
-            <p class="coupon-empty-title">Placer un nouveau paris</p>
-            <p class="coupon-empty-sub">On croise les doigts pour toi !</p>
+        <div class="coupon-vide" id="couponEmpty">
+            <div class="coupon-vide-icone">🏀</div>
+            <p class="coupon-vide-titre">Placer un nouveau paris</p>
+            <p class="coupon-vide-sous">On croise les doigts pour toi !</p>
         </div>
         <div class="coupon-selections" id="couponSelections" style="display:none;">
-            <div class="coupon-tabs">
-                <button class="coupon-tab active" data-tab="simple">Simple</button>
-                <button class="coupon-tab" data-tab="combine">Combiné</button>
+            <div class="coupon-onglets">
+                <button class="coupon-onglet active" data-tab="simple">Simple</button>
+                <button class="coupon-onglet" data-tab="combine">Combiné</button>
             </div>
-            <div class="coupon-items" id="couponItems"></div>
+            <div class="coupon-elements" id="couponItems"></div>
             <div class="coupon-combine-mise" id="combineMise" style="display:none;">
-                <input type="number" class="mise-input" id="combineMiseInput" placeholder="Mise" min="1">
+                <input type="number" class="mise-champ" id="combineMiseInput" placeholder="Mise" min="1">
                 <span>€</span>
                 <span class="combine-cote" id="combineCote">1.00</span>
             </div>
         </div>
-        <div class="coupon-footer">
-            <div class="coupon-gains"><span>Gains possibles</span><span class="gains-amount" id="gainsAmount">0,00 €</span></div>
-            <button class="parier-main-btn" id="parierBtn">Parier</button>
+        <div class="coupon-pied">
+            <div class="coupon-gains"><span>Gains possibles</span><span class="gains-montant" id="gainsAmount">0,00 €</span></div>
+            <button class="parier-bouton-principal" id="parierBtn">Parier</button>
         </div>
     </aside>
 </main>
 
-<div class="mes-paris-overlay" id="mesParis" style="display:none;">
-    <div class="mes-paris-inner">
-        <div class="mes-paris-header">
+<div class="mes-paris-fond" id="mesParis" style="display:none;">
+    <div class="mes-paris-interieur">
+        <div class="mes-paris-entete">
             <h1>Mes paris</h1>
             <div class="mes-paris-actions">
-                <button class="solde-btn"><i class="fa-solid fa-plus"></i><span id="mesParisSolde">{% if user %}{{ user.solde|number_format(2, ',', ' ') }} €{% else %}0,00 €{% endif %}</span></button>
-                <button class="mp-back-btn" id="closeMesParis"><i class="fa-solid fa-chevron-left"></i></button>
-                <button class="profil-btn"><i class="fa-solid fa-user"></i></button>
+                <button class="solde-bouton"><i class="fa-solid fa-plus"></i><span id="mesParisSolde">{% if user %}{{ user.solde|number_format(2, ',', ' ') }} €{% else %}0,00 €{% endif %}</span></button>
+                <button class="mp-bouton-retour" id="closeMesParis"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="profil-bouton"><i class="fa-solid fa-user"></i></button>
             </div>
         </div>
-        <div class="mes-paris-tabs">
-            <button class="mp-tab active" data-filter="en_cours">Paris en cours</button>
-            <button class="mp-tab" data-filter="perdu">Perdu</button>
-            <button class="mp-tab" data-filter="gagne">Gagné</button>
+        <div class="mes-paris-onglets">
+            <button class="mp-onglet active" data-filter="en_cours">Paris en cours</button>
+            <button class="mp-onglet" data-filter="perdu">Perdu</button>
+            <button class="mp-onglet" data-filter="gagne">Gagné</button>
         </div>
-        <div class="mes-paris-list" id="mesParisList"></div>
-        <div class="mes-paris-empty" id="mesPariEmpty" style="display:none;">
+        <div class="mes-paris-liste" id="mesParisList"></div>
+        <div class="mes-paris-vide" id="mesPariEmpty" style="display:none;">
             <i class="fa-solid fa-basketball"></i>
             <p>Vous n'avez actuellement<br>aucun paris en cours</p>
-            <button class="voir-paris-btn" id="voirTousParis">Voir tous les paris</button>
+            <button class="voir-paris-bouton" id="voirTousParis">Voir tous les paris</button>
         </div>
     </div>
 </div>
 
-<div class="modal-overlay" id="profilModal">
-    <div class="modal profil-modal">
-        <button class="modal-close" id="closeProfilModal"><i class="fa-solid fa-xmark"></i></button>
+<div class="modale-fond" id="profilModal">
+    <div class="modale profil-modale">
+        <button class="modale-fermer" id="closeProfilModal"><i class="fa-solid fa-xmark"></i></button>
         <div class="profil-avatar"><i class="fa-solid fa-user"></i></div>
         <p class="profil-pseudo" id="profilPseudo">utilisateur</p>
-        <p class="profil-solde-label">Solde disponible</p>
+        <p class="profil-solde-libelle">Solde disponible</p>
         <p class="profil-solde" id="profilSolde">0,00 €</p>
-        <div class="profil-btns">
-            <button class="profil-action-btn" id="openDeposerBtn"><i class="fa-solid fa-money-bill-wave"></i>Déposer</button>
-            <button class="profil-action-btn" id="openRetirerBtn"><i class="fa-solid fa-hand-holding-dollar"></i>Retirer</button>
+        <div class="profil-boutons">
+            <button class="profil-action-bouton" id="openDeposerBtn"><i class="fa-solid fa-money-bill-wave"></i>Déposer</button>
+            <button class="profil-action-bouton" id="openRetirerBtn"><i class="fa-solid fa-hand-holding-dollar"></i>Retirer</button>
         </div>
-        <button class="profil-info-btn" id="mesParisProfil"><i class="fa-solid fa-list-check"></i> Mes paris</button>
-        <button class="profil-disconnect-btn" id="deconnecterBtn">Se déconnecter</button>
+        <button class="profil-info-bouton" id="mesParisProfil"><i class="fa-solid fa-list-check"></i> Mes paris</button>
+        <button class="profil-deconnexion-bouton" id="deconnecterBtn">Se déconnecter</button>
     </div>
 </div>
 
-<div class="modal-overlay" id="deposerModal">
-    <div class="modal deposer-modal">
-        <button class="modal-close" id="closeDeposerModal"><i class="fa-solid fa-xmark"></i></button>
-        <h2 class="modal-title">Déposer</h2>
-        <div class="deposer-amount-box"><input type="number" id="deposerMontant" value="0" min="0"><span>€</span></div>
-        <div class="deposer-presets">
-            <button class="preset-btn" data-amount="10">10 €</button>
-            <button class="preset-btn" data-amount="20">20 €</button>
-            <button class="preset-btn" data-amount="50">50 €</button>
-            <button class="preset-btn" data-amount="100">100 €</button>
+<div class="modale-fond" id="deposerModal">
+    <div class="modale deposer-modal">
+        <button class="modale-fermer" id="closeDeposerModal"><i class="fa-solid fa-xmark"></i></button>
+        <h2 class="modale-titre">Déposer</h2>
+        <div class="deposer-montant-case"><input type="number" id="deposerMontant" value="0" min="0"><span>€</span></div>
+        <div class="deposer-valeurs-rapides">
+            <button class="valeur-rapide-bouton" data-amount="10">10 €</button>
+            <button class="valeur-rapide-bouton" data-amount="20">20 €</button>
+            <button class="valeur-rapide-bouton" data-amount="50">50 €</button>
+            <button class="valeur-rapide-bouton" data-amount="100">100 €</button>
         </div>
-        <p class="deposer-hint">Tu peux encore déposer jusqu'à <strong>5000 €</strong></p>
-        <p class="paiement-label">Moyen de paiement</p>
-        <div class="paiement-option-box"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i> Carte bancaire</div>
-        <div class="carte-form" id="carteForm" style="display:none;">
+        <p class="deposer-conseil">Tu peux encore déposer jusqu'à <strong>5000 €</strong></p>
+        <p class="paiement-libelle">Moyen de paiement</p>
+        <div class="paiement-option-case"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i> Carte bancaire</div>
+        <div class="carte-formulaire" id="carteForm" style="display:none;">
             <h3>Ajoute ta carte bancaire</h3>
-            <input type="text" class="carte-input" id="carteNumero" placeholder="Numéro de carte" maxlength="19">
-            <div class="carte-row">
-                <input type="text" class="carte-input" id="carteExpiry" placeholder="Date d'expiration" maxlength="5">
-                <input type="text" class="carte-input" id="carteCVV" placeholder="CVV" maxlength="3">
+            <input type="text" class="carte-champ" id="carteNumero" placeholder="Numéro de carte" maxlength="19">
+            <div class="carte-ligne">
+                <input type="text" class="carte-champ" id="carteExpiry" placeholder="Date d'expiration" maxlength="5">
+                <input type="text" class="carte-champ" id="carteCVV" placeholder="CVV" maxlength="3">
             </div>
-            <button class="continuer-btn" id="validerCarteBtn">Continuer</button>
-            <button class="annuler-btn" id="annulerCarteBtn">Annuler</button>
+            <button class="continuer-bouton" id="validerCarteBtn">Continuer</button>
+            <button class="annuler-bouton" id="annulerCarteBtn">Annuler</button>
         </div>
-        <button class="continuer-btn" id="continuerDeposerBtn">Continuer</button>
-        <p class="securise-txt"><i class="fa-solid fa-lock"></i> Paiement sécurisé</p>
+        <button class="continuer-bouton" id="continuerDeposerBtn">Continuer</button>
+        <p class="securise-texte"><i class="fa-solid fa-lock"></i> Paiement sécurisé</p>
     </div>
 </div>
 
-<div class="modal-overlay" id="deposerConfirmModal">
-    <div class="modal confirm-modal">
-        <div class="confirm-icon success-icon"><i class="fa-solid fa-circle-check"></i></div>
+<div class="modale-fond" id="deposerConfirmModal">
+    <div class="modale confirmation-modale">
+        <div class="confirmation-icone succes-icone"><i class="fa-solid fa-circle-check"></i></div>
         <h2>Dépôt confirmé</h2>
-        <p class="confirm-amount" id="deposerConfirmAmount">0,00 €</p>
-        <button class="ok-btn" id="okDeposerBtn">OK</button>
+        <p class="confirmation-montant" id="deposerConfirmAmount">0,00 €</p>
+        <button class="ok-bouton" id="okDeposerBtn">OK</button>
     </div>
 </div>
 
-<div class="modal-overlay" id="retirerModal">
-    <div class="modal deposer-modal">
-        <button class="modal-close" id="closeRetirerModal"><i class="fa-solid fa-xmark"></i></button>
-        <h2 class="modal-title">Retirer</h2>
-        <div class="deposer-amount-box"><input type="number" id="retirerMontant" value="0" min="0"><span>€</span></div>
-        <div class="deposer-presets">
-            <button class="preset-btn retirer-preset" data-amount="10">10 €</button>
-            <button class="preset-btn retirer-preset" data-amount="20">20 €</button>
-            <button class="preset-btn retirer-preset" data-amount="50">50 €</button>
-            <button class="preset-btn retirer-preset" data-amount="100">100 €</button>
+<div class="modale-fond" id="retirerModal">
+    <div class="modale deposer-modal">
+        <button class="modale-fermer" id="closeRetirerModal"><i class="fa-solid fa-xmark"></i></button>
+        <h2 class="modale-titre">Retirer</h2>
+        <div class="deposer-montant-case"><input type="number" id="retirerMontant" value="0" min="0"><span>€</span></div>
+        <div class="deposer-valeurs-rapides">
+            <button class="valeur-rapide-bouton retirer-preset" data-amount="10">10 €</button>
+            <button class="valeur-rapide-bouton retirer-preset" data-amount="20">20 €</button>
+            <button class="valeur-rapide-bouton retirer-preset" data-amount="50">50 €</button>
+            <button class="valeur-rapide-bouton retirer-preset" data-amount="100">100 €</button>
         </div>
-        <button class="continuer-btn" id="continuerRetirerBtn">Continuer</button>
+        <button class="continuer-bouton" id="continuerRetirerBtn">Continuer</button>
     </div>
 </div>
 
-<div class="modal-overlay" id="depotNecessaireModal">
-    <div class="modal depot-necessaire-modal">
+<div class="modale-fond" id="depotNecessaireModal">
+    <div class="modale depot-necessaire-modale">
         <h2 class="depot-titre">Dépôt nécessaire</h2>
         <p class="depot-texte">Le montant de ta mise est supérieur à ton solde.<br>Souhaites-tu effectuer un dépôt ?</p>
-        <button class="depot-faire-btn" id="depotFaireBtn">Faire un Dépôt</button>
-        <button class="depot-plus-tard-btn" id="depotPlusTardBtn">Plus tard</button>
+        <button class="depot-faire-bouton" id="depotFaireBtn">Faire un Dépôt</button>
+        <button class="depot-plus-tard-bouton" id="depotPlusTardBtn">Plus tard</button>
     </div>
 </div>
 
-<div class="modal-overlay" id="retirerConfirmModal">
-    <div class="modal confirm-modal">
-        <div class="confirm-icon success-icon"><i class="fa-solid fa-circle-check"></i></div>
+<div class="modale-fond" id="retirerConfirmModal">
+    <div class="modale confirmation-modale">
+        <div class="confirmation-icone succes-icone"><i class="fa-solid fa-circle-check"></i></div>
         <h2>Retrait confirmé</h2>
-        <p class="confirm-amount" id="retirerConfirmAmount">0,00 €</p>
-        <button class="ok-btn" id="okRetirerBtn">OK</button>
+        <p class="confirmation-montant" id="retirerConfirmAmount">0,00 €</p>
+        <button class="ok-bouton" id="okRetirerBtn">OK</button>
     </div>
 </div>
 
-<div class="modal-overlay" id="pariBetModal">
-    <div class="modal confirm-modal">
-        <div class="confirm-icon success-icon"><i class="fa-solid fa-circle-check"></i></div>
+<div class="modale-fond" id="pariBetModal">
+    <div class="modale confirmation-modale">
+        <div class="confirmation-icone succes-icone"><i class="fa-solid fa-circle-check"></i></div>
         <h2>Pari enregistré !</h2>
-        <p class="confirm-text" id="pariBetText">Votre pari a bien été pris en compte.</p>
-        <button class="ok-btn" id="okPariBetBtn">OK</button>
+        <p class="confirmation-texte" id="pariBetText">Votre pari a bien été pris en compte.</p>
+        <button class="ok-bouton" id="okPariBetBtn">OK</button>
     </div>
 </div>
 
-<div class="mobile-parier-bar" id="mobilePariBar" style="display:none;">
-    <div class="mobile-parier-bar-left">
-        <span class="mobile-parier-bar-teams" id="mobilePariTeams">—</span>
-        <span class="mobile-parier-bar-detail" id="mobilePariDetail">Combiné (0)</span>
+<div class="mobile-parier-barre" id="mobilePariBar" style="display:none;">
+    <div class="mobile-parier-barrere-gauche">
+        <span class="mobile-parier-barrere-equipes" id="mobilePariTeams">—</span>
+        <span class="mobile-parier-barre-detail" id="mobilePariDetail">Combiné (0)</span>
     </div>
-    <div class="mobile-parier-bar-cote" id="mobilePariCote">—</div>
+    <div class="mobile-parier-barre-cote" id="mobilePariCote">—</div>
 </div>
 
-<div class="mobile-coupon-view" id="mobileCouponView" style="display:none;">
-    <div class="mcv-bg-pattern"></div>
-    <div class="mcv-header">
+<div class="mobile-coupon-vue" id="mobileCouponView" style="display:none;">
+    <div class="mcv-fond-motif"></div>
+    <div class="mcv-entete">
         <span class="mcv-solde" id="mcvSolde">+ 0,00 €</span>
-        <button class="mcv-close" id="mcvClose"><i class="fa-solid fa-chevron-right"></i></button>
+        <button class="mcv-fermer" id="mcvClose"><i class="fa-solid fa-chevron-right"></i></button>
     </div>
-    <div class="mcv-tabs">
-        <button class="mcv-tab" id="mcvTabSimple" data-tab="simple">Simple</button>
-        <button class="mcv-tab mcv-tab--active" id="mcvTabCombine" data-tab="combine">Combiné</button>
+    <div class="mcv-onglets">
+        <button class="mcv-onglet" id="mcvTabSimple" data-tab="simple">Simple</button>
+        <button class="mcv-onglet mcv-onglet--actif" id="mcvTabCombine" data-tab="combine">Combiné</button>
     </div>
-    <div class="mcv-list" id="mcvList"></div>
-    <div class="mcv-footer">
-        <div class="mcv-mise-row mcv-mise-global">
-            <input type="number" class="mcv-mise-input" id="mcvMise" placeholder="0" min="0" value="0">
+    <div class="mcv-liste" id="mcvList"></div>
+    <div class="mcv-pied">
+        <div class="mcv-mise-ligne mcv-mise-global">
+            <input type="number" class="mcv-mise-champ" id="mcvMise" placeholder="0" min="0" value="0">
             <span class="mcv-euro">€</span>
-            <button class="mcv-parier-btn" id="mcvPariBtn"><span id="mcvPariMontant">Parier</span></button>
+            <button class="mcv-parier-bouton" id="mcvPariBtn"><span id="mcvPariMontant">Parier</span></button>
             <div class="mcv-cote-badge" id="mcvCoteBadge">—</div>
         </div>
-        <div class="mcv-mise-row mcv-parier-simple-row" style="display:none;">
-            <button class="mcv-parier-btn mcv-parier-simple-btn" id="mcvPariSimpleBtn"><span id="mcvPariMontantSimple">Parier</span></button>
+        <div class="mcv-mise-ligne mcv-parier-simple-ligne" style="display:none;">
+            <button class="mcv-parier-bouton mcv-parier-simple-bouton" id="mcvPariSimpleBtn"><span id="mcvPariMontantSimple">Parier</span></button>
         </div>
-        <div class="mcv-gains-row">
+        <div class="mcv-gains-ligne">
             <span>Gains possibles</span>
-            <span class="mcv-gains-amount" id="mcvGains">0,00 €</span>
+            <span class="mcv-gains-montant" id="mcvGains">0,00 €</span>
         </div>
     </div>
 </div>

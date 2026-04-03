@@ -17,9 +17,9 @@
 <body class="deposer-page retirer-page">
     <div class="deposer-bg-pattern"></div>
 
-    <header class="deposer-header">
-        <button class="deposer-close-btn" onclick="window.location.href='{{ path('app_paris') }}'"><i class="fa-solid fa-xmark"></i></button>
-        <div class="deposer-header-right">
+    <header class="deposer-entete">
+        <button class="deposer-bouton-fermer" onclick="window.location.href='{{ path('app_paris') }}'"><i class="fa-solid fa-xmark"></i></button>
+        <div class="deposer-entete-right">
             <span class="deposer-solde-badge">
                 <i class="fa-solid fa-plus"></i>
                 <span>{{ solde|number_format(2, ',', ' ') }} €</span>
@@ -27,28 +27,28 @@
         </div>
     </header>
 
-    <main class="deposer-main">
+    <main class="deposer-principal">
         <h1 class="deposer-titre">Retirer</h1>
 
         {% if success %}
-            <div class="deposer-confirm-overlay" style="display:flex;">
-                <div class="deposer-confirm-box">
+            <div class="deposer-confirmation-fond" style="display:flex;">
+                <div class="deposer-confirmation-boite">
                     <div class="confirm-check"><i class="fa-solid fa-circle-check"></i></div>
                     <p class="confirm-titre">Retrait confirmé</p>
                     <p class="confirm-sous">Montant du retrait</p>
                     <p class="confirm-montant">{{ montant|number_format(2, ',', ' ') }} €</p>
-                    <a href="{{ path('app_paris') }}" class="confirm-ok-btn" style="display:block; text-align:center; text-decoration:none;">OK</a>
+                    <a href="{{ path('app_paris') }}" class="confirm-ok-bouton" style="display:block; text-align:center; text-decoration:none;">OK</a>
                 </div>
             </div>
         {% endif %}
 
         {% if insuffisant %}
-            <div class="deposer-confirm-overlay" style="display:flex;">
-                <div class="deposer-confirm-box">
+            <div class="deposer-confirmation-fond" style="display:flex;">
+                <div class="deposer-confirmation-boite">
                     <div class="retirer-icon-error" style="font-size:40px;">⚔️</div>
                     <p class="confirm-titre retirer-titre-error">Solde insuffisant</p>
                     <p class="confirm-sous retirer-sous-error">Pour retirer de l'argent, votre solde doit être supérieur à 10€</p>
-                    <a href="{{ path('app_retirer') }}" class="confirm-ok-btn retirer-ok-btn" style="display:block; text-align:center; text-decoration:none;">OK</a>
+                    <a href="{{ path('app_retirer') }}" class="confirm-ok-bouton retirer-ok-bouton" style="display:block; text-align:center; text-decoration:none;">OK</a>
                 </div>
             </div>
         {% endif %}
@@ -61,45 +61,45 @@
 
         <form method="post" action="{{ path('app_retirer') }}">
             <div class="deposer-bloc">
-                <div class="deposer-amount-row">
+                <div class="deposer-montant-ligne">
                     <input type="number" id="montantInput" name="montant" value="0" min="0">
-                    <span class="deposer-currency">€</span>
+                    <span class="deposer-devise">€</span>
                 </div>
-                <div class="deposer-presets">
-                    <button type="button" class="dep-preset" data-amount="10">10 €</button>
-                    <button type="button" class="dep-preset" data-amount="20">20 €</button>
-                    <button type="button" class="dep-preset" data-amount="50">50 €</button>
-                    <button type="button" class="dep-preset" data-amount="100">100 €</button>
+                <div class="deposer-valeurs-rapides">
+                    <button type="button" class="dep-valeur" data-amount="10">10 €</button>
+                    <button type="button" class="dep-valeur" data-amount="20">20 €</button>
+                    <button type="button" class="dep-valeur" data-amount="50">50 €</button>
+                    <button type="button" class="dep-valeur" data-amount="100">100 €</button>
                 </div>
                 <p class="deposer-limite">Minimum de retrait : <strong>10 €</strong></p>
             </div>
 
             <div class="deposer-paiement-bloc">
-                <p class="deposer-paiement-label">Moyen de retrait</p>
+                <p class="deposer-paiement-libelle">Moyen de retrait</p>
                 <div class="deposer-carte-option">
-                    <div class="carte-option-top">
-                        <span class="carte-option-label">Carte bancaire</span>
+                    <div class="carte-option-haut">
+                        <span class="carte-option-libelle">Carte bancaire</span>
                         <div class="carte-logos">
                             <i class="fa-brands fa-cc-visa"></i>
                             <i class="fa-brands fa-cc-mastercard"></i>
                         </div>
                     </div>
-                    <div class="carte-option-limits">
+                    <div class="carte-option-limites">
                         <span>min 10 €</span>
                         <span>Max 50 000 €</span>
                     </div>
                 </div>
             </div>
 
-            <button type="submit" class="deposer-continuer-btn">Retirer</button>
+            <button type="submit" class="deposer-continuer-bouton">Retirer</button>
             <p class="deposer-securise"><i class="fa-solid fa-lock"></i> Transaction sécurisée</p>
         </form>
     </main>
 
     <script>
-    document.querySelectorAll('.dep-preset').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.getElementById('montantInput').value = btn.dataset.amount;
+    document.querySelectorAll('.dep-valeur').forEach(bouton => {
+        bouton.addEventListener('click', () => {
+            document.getElementById('montantInput').value = bouton.dataset.amount;
         });
     });
     </script>

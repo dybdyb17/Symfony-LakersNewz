@@ -1,25 +1,25 @@
-const burgerBtn = document.querySelector('.burger-btn');
-const sidebar = document.querySelector('.sidebar');
-const closeBtn = document.querySelector('.close-btn');
+const burgerBtn = document.querySelector('.bouton-menu');
+const menuLateral = document.querySelector('.menu-lateral');
+const closeBtn = document.querySelector('.bouton-fermer');
 
-if (burgerBtn && sidebar) {
+if (burgerBtn && menuLateral) {
   burgerBtn.addEventListener('click', () => {
-    sidebar.classList.add('open');
+    menuLateral.classList.add('open');
     burgerBtn.classList.add('active');
   });
 }
 
-if (closeBtn && sidebar) {
+if (closeBtn && menuLateral) {
   closeBtn.addEventListener('click', () => {
-    sidebar.classList.remove('open');
+    menuLateral.classList.remove('open');
     burgerBtn.classList.remove('active');
   });
 }
 
 
-const settingsDropdown = document.querySelector('.settings-dropdown');
-const settingsBtn = document.querySelector('.settings-btn');
-const dropdownMenu = document.querySelector('.dropdown-menu');
+const settingsDropdown = document.querySelector('.reglages-menu');
+const settingsBtn = document.querySelector('.bouton-reglages');
+const dropdownMenu = document.querySelector('.sous-menu');
 
 if (settingsBtn && settingsDropdown) {
   settingsBtn.addEventListener('click', (e) => {
@@ -51,7 +51,7 @@ function normalize(text) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const tbody = document.querySelector('.calendar-table tbody');
+  const tbody = document.querySelector('.calendrier-tableau tbody');
   const monthSelect = document.querySelector('select:nth-of-type(1)');
   let allMatches = [];
 
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </td>
           <td>${m.venue}</td>
           <td>
-            <span class="result ${m.resultLetter === 'W' ? 'win' : m.resultLetter === 'L' ? 'loss' : ''}">
+            <span class="resultat ${m.resultLetter === 'W' ? 'victoire' : m.resultLetter === 'L' ? 'defaite' : ''}">
               ${m.score} ${m.resultLetter}
             </span>
           </td>

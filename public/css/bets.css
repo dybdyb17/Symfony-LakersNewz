@@ -27,30 +27,30 @@ body.paris-page {
   font-family: 'Exo', sans-serif;
 }
 
-body.paris-page .topbar {
+body.paris-page .barre-nav {
   top: 44px !important;
   z-index: 1900 !important;
 }
 
-body.paris-page .burger-btn {
+body.paris-page .bouton-menu {
   top: calc(44px + 56px + 14px) !important;
   z-index: 1800 !important;
 }
 
-body.paris-page .sidebar {
+body.paris-page .menu-lateral {
   top: calc(44px + 56px) !important;
   height: calc(100vh - 44px - 56px) !important;
   z-index: 1850 !important;
 }
 
-body.paris-page .burger-btn.active {
+body.paris-page .bouton-menu.active {
   display: none;
 }
 
 /* BARRE SOUS LA TOPBAR      */
 /* (solde, panier, profil)   */
 
-.paris-subheader {
+.paris-sous-barre {
   position: fixed;
   top: 100px;
   left: 0;
@@ -64,7 +64,7 @@ body.paris-page .burger-btn.active {
   border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 
-.paris-title {
+.paris-titre {
   font-size: 22px;
   font-weight: 800;
   color: #FDB927;
@@ -80,7 +80,7 @@ body.paris-page .burger-btn.active {
   flex-shrink: 0;
 }
 
-.solde-btn {
+.solde-bouton {
   background: #333;
   border: none;
   color: white;
@@ -95,17 +95,17 @@ body.paris-page .burger-btn.active {
   transition: background 0.2s;
 }
 
-.solde-btn i {
+.solde-bouton i {
     color: #FDB927;
     font-size: 11px;
 }
 
-.solde-btn:hover {
+.solde-bouton:hover {
     background: #444;
 }
 
-.panier-btn,
-.profil-btn {
+.panier-bouton,
+.profil-bouton {
   background: none;
   border: none;
   color: #FDB927;
@@ -115,7 +115,7 @@ body.paris-page .burger-btn.active {
   padding: 4px;
 }
 
-.panier-count {
+.panier-compteur {
   position: absolute;
   top: -4px;
   right: -6px;
@@ -131,14 +131,14 @@ body.paris-page .burger-btn.active {
   justify-content: center;
 }
 
-.panier-count.show {
+.panier-compteur.show {
     display: flex;
 }
 
 /* CONTENU PRINCIPAL */
-/* (matchs + coupon sidebar) */
+/* (matchs + coupon menu-lateral) */
 
-.paris-main {
+.paris-principal {
   display: flex;
   gap: 20px;
   padding: 192px 24px 60px 24px;
@@ -147,7 +147,7 @@ body.paris-page .burger-btn.active {
   align-items: flex-start;
 }
 
-.matchs-section {
+.matchs-zone {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -160,7 +160,7 @@ body.paris-page .burger-btn.active {
   flex-direction: column;
   gap: 16px;
 }
-.loading-matchs {
+.matchs-chargement {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -169,34 +169,34 @@ body.paris-page .burger-btn.active {
   color: rgba(255,255,255,0.8);
 }
 
-.loading-matchs i {
+.matchs-chargement i {
     font-size: 2rem;
     color: #FDB927;
 }
 
 /* CARTES DES MATCHS*/
 
-.match-card {
+.match-carte {
   background: rgba(248, 202, 35, 0.95);
   border-radius: 10px;
   padding: 16px 20px;
   color: #111;
 }
 
-.match-card-top {
+.match-carte-haut {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 14px;
 }
 
-.match-card-date {
+.match-carte-date {
   font-size: 13px;
   color: rgba(0,0,0,0.55);
   font-weight: 500;
 }
 
-.match-card-live {
+.match-carte-live {
   background: #2a2a3e;
   color: #FDB927;
   border-radius: 6px;
@@ -206,7 +206,7 @@ body.paris-page .burger-btn.active {
   letter-spacing: 1px;
 }
 
-.match-card-teams {
+.match-carte-equipes {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -214,7 +214,7 @@ body.paris-page .burger-btn.active {
   gap: 10px;
 }
 
-.match-team {
+.match-equipe {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -223,7 +223,7 @@ body.paris-page .burger-btn.active {
   min-width: 0;
 }
 
-.match-team-logo {
+.match-equipe-logo {
   width: 58px;
   height: 58px;
   background: rgba(143, 34, 211, 0.85);
@@ -237,13 +237,13 @@ body.paris-page .burger-btn.active {
   aspect-ratio: 1/1;
 }
 
-.match-team-logo img {
+.match-equipe-logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.match-team-name {
+.match-equipe-nom {
   font-size: 14px;
   font-weight: 700;
   color: #111;
@@ -259,7 +259,7 @@ body.paris-page .burger-btn.active {
   padding: 0 16px;
 }
 
-.match-card-cotes {
+.match-carte-cotes {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -267,7 +267,7 @@ body.paris-page .burger-btn.active {
 
 /* BOUTONS DE COTES          */
 
-.cote-btn {
+.cote-bouton {
   flex: 1;
   background: rgba(78, 42, 132, 0.80);
   color: #F8CA23;
@@ -286,17 +286,17 @@ body.paris-page .burger-btn.active {
   justify-content: center;
 }
 
-.cote-btn:hover {
+.cote-bouton:hover {
     background: rgba(143, 34, 211, 0.85);
 }
 
-.cote-btn.selected {
+.cote-bouton.selected {
   background: #1a1a2e;
   color: #F8CA23;
   border: 2px solid #F8CA23;
 }
 
-.voir-options-btn {
+.options-bouton {
   font-size: 11px;
   color: rgba(0,0,0,0.5);
   cursor: pointer;
@@ -308,13 +308,13 @@ body.paris-page .burger-btn.active {
   flex-shrink: 0;
 }
 
-.voir-options-btn:hover {
+.options-bouton:hover {
     color: #552583; text-decoration: underline;
 }
 
 
 /* coupon sur le coté (ordi)  */
-.coupon-sidebar {
+.coupon-panneau {
   width: 320px;
   flex-shrink: 0;
   background: white;
@@ -330,7 +330,7 @@ body.paris-page .burger-btn.active {
   color: #111;
 }
 
-.coupon-header {
+.coupon-entete {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -338,11 +338,11 @@ body.paris-page .burger-btn.active {
   border-bottom: 1px solid #eee;
 }
 
-.coupon-count {
+.coupon-compteur {
     font-size: 14px; font-weight: 700;
 }
 
-.coupon-options-btn {
+.coupon-options-bouton {
   background: none;
   border: none;
   cursor: pointer;
@@ -350,7 +350,7 @@ body.paris-page .burger-btn.active {
   font-size: 16px;
 }
 
-.coupon-empty {
+.coupon-vide {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -361,27 +361,27 @@ body.paris-page .burger-btn.active {
   gap: 8px;
 }
 
-.coupon-empty-icon {
+.coupon-vide-icone {
     font-size: 36px; opacity: 0.3;
 }
 
-.coupon-empty-title {
+.coupon-vide-titre {
     font-size: 14px;
     font-weight: 700;
     color: #555;
 }
 
-.coupon-empty-sub {
+.coupon-vide-sous {
     font-size: 12px;
     color: #aaa;
 }
 
-.coupon-tabs {
+.coupon-onglets {
   display: flex;
   border-bottom: 1px solid #eee;
 }
 
-.coupon-tab {
+.coupon-onglet {
   flex: 1;
   padding: 10px;
   background: none;
@@ -394,7 +394,7 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.coupon-tab.active {
+.coupon-onglet.active {
     color: #552583;
     border-bottom-color: #552583;
 }
@@ -406,7 +406,7 @@ body.paris-page .burger-btn.active {
   flex-direction: column;
 }
 
-.coupon-items {
+.coupon-elements {
   padding: 8px;
   display: flex;
   flex-direction: column;
@@ -415,9 +415,9 @@ body.paris-page .burger-btn.active {
   overflow-y: auto;
 }
 
-/* Un coupon-item = un match selectionne dans le coupon */
+/* Un coupon-element = un match selectionne dans le coupon */
 
-.coupon-item {
+.coupon-element {
   background: #f5f5f5;
   border-radius: 8px;
   padding: 10px;
@@ -425,21 +425,21 @@ body.paris-page .burger-btn.active {
   border: 1px solid #eee;
 }
 
-.coupon-item-header {
+.coupon-element-entete {
   display: flex;
   align-items: flex-start;
   margin-bottom: 2px;
   gap: 4px;
 }
 
-.coupon-item-match {
+.coupon-element-match {
     font-size: 10px;
     color: #999;
     /* flex: 1 = prend tout l'espace restant */
     flex: 1;
 }
 
-.coupon-item-cote {
+.coupon-element-cote {
   background: #FDB927;
   color: #111;
   font-weight: 800;
@@ -449,7 +449,7 @@ body.paris-page .burger-btn.active {
   flex-shrink: 0;
 }
 
-.coupon-item-remove {
+.coupon-element-supprimer {
   background: none;
   border: none;
   cursor: pointer;
@@ -460,30 +460,30 @@ body.paris-page .burger-btn.active {
   flex-shrink: 0;
 }
 
-.coupon-item-remove:hover {
+.coupon-element-supprimer:hover {
     color: #e53935;
 }
 
-.coupon-item-team {
+.coupon-element-equipe {
     font-size: 13px;
     font-weight: 700;
     color: #111;
     margin-bottom: 2px;
 }
 
-.coupon-item-type {
+.coupon-element-type {
     font-size: 11px;
     color: #888;
     margin-bottom: 6px;
 }
 
-.coupon-item-mise-row {
+.coupon-element-mise-ligne {
   display: flex;
   gap: 4px;
   align-items: center;
 }
 
-.coupon-item-mise {
+.coupon-element-mise {
   flex: 1;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -494,11 +494,11 @@ body.paris-page .burger-btn.active {
   outline: none;
 }
 
-.coupon-item-mise:focus {
+.coupon-element-mise:focus {
     border-color: #552583;
 }
 
-.coupon-item-currency {
+.coupon-element-devise {
     font-size: 12px;
     color: #aaa;
 }
@@ -511,7 +511,7 @@ body.paris-page .burger-btn.active {
   border-top: 1px solid #eee;
 }
 
-.mise-input {
+.mise-champ {
   flex: 1;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -521,7 +521,7 @@ body.paris-page .burger-btn.active {
   color: #111;
 }
 
-.mise-input:focus {
+.mise-champ:focus {
     border-color: #552583;
 }
 
@@ -534,7 +534,7 @@ body.paris-page .burger-btn.active {
   font-size: 13px;
 }
 
-.coupon-footer {
+.coupon-pied {
   border-top: 1px solid #eee;
   padding: 12px 14px;
   background: white;
@@ -548,13 +548,13 @@ body.paris-page .burger-btn.active {
   font-size: 13px;
 }
 
-.gains-amount {
+.gains-montant {
     font-weight: 800;
     font-size: 15px;
     color: #111;
 }
 
-.parier-main-btn {
+.parier-bouton-principal {
   width: 100%;
   background: #FDB927;
   color: #111;
@@ -567,14 +567,14 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.parier-main-btn:hover {
+.parier-bouton-principal:hover {
     background: #e5a620;
 }
 
 
 
 /* Mes paris (OVERLAY) */
-.mes-paris-overlay {
+.mes-paris-fond {
   position: fixed;
   /* inset: 0 = raccourci pour top/right/bottom/left: 0 (ça prend tout l'ecran) */
   inset: 0;
@@ -583,21 +583,21 @@ body.paris-page .burger-btn.active {
   overflow-y: auto;
 }
 
-.mes-paris-inner {
+.mes-paris-interieur {
   max-width: 800px;
   margin: 0 auto;
   padding: 24px 20px;
   min-height: 100vh;
 }
 
-.mes-paris-header {
+.mes-paris-entete {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 20px;
 }
 
-.mes-paris-header h1 {
+.mes-paris-entete h1 {
   font-size: 28px;
   font-weight: 900;
   color: #1a1a2e;
@@ -609,7 +609,7 @@ body.paris-page .burger-btn.active {
   gap: 14px;
 }
 
-.mp-back-btn {
+.mp-bouton-retour {
   background: none;
   border: none;
   font-size: 22px;
@@ -617,7 +617,7 @@ body.paris-page .burger-btn.active {
   color: #1a1a2e;
 }
 
-.mes-paris-tabs {
+.mes-paris-onglets {
   display: flex;
   gap: 10px;
   justify-content: center;
@@ -628,7 +628,7 @@ body.paris-page .burger-btn.active {
 
 /* mp = page mes paris avec gagné et terminée */
 
-.mp-tab {
+.mp-onglet {
   background: rgba(0,0,0,0.1);
   border: 2px solid transparent;
   border-radius: 25px;
@@ -640,27 +640,27 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.mp-tab.active {
+.mp-onglet.active {
   background: #1a1a2e;
   color: white;
 }
-.mp-tab:hover:not(.active) {
+.mp-onglet:hover:not(.active) {
   border-color: #1a1a2e;
 }
 
-.mes-paris-list {
+.mes-paris-liste {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.mes-paris-card {
+.mes-paris-carte {
   background: #1a1a2e;
   border-radius: 12px;
   overflow: hidden;
 }
 
-.mes-paris-item {
+.mes-paris-element {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -668,40 +668,40 @@ body.paris-page .burger-btn.active {
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 
-.mes-paris-item:last-child {
+.mes-paris-element:last-child {
   border-bottom: none;
 }
-.mes-paris-item-left {
+.mes-paris-element-gauche {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
-.mes-paris-item-match {
+.mes-paris-element-match {
   font-size: 11px;
   color: rgba(255,255,255,0.4);
 }
-.mes-paris-item-team {
+.mes-paris-element-equipe {
   font-size: 17px;
   font-weight: 900;
   color: white;
 }
-.mes-paris-item-team.gagne {
+.mes-paris-element-equipe.gagne {
   color: #4CAF50;
 }
-.mes-paris-item-team.perdu {
+.mes-paris-element-equipe.perdu {
   color: #e53935;
 }
-.mes-paris-item-type {
+.mes-paris-element-type {
   font-size: 11px;
   color: rgba(255,255,255,0.5);
 }
-.mes-paris-item-cote {
+.mes-paris-element-cote {
   font-size: 17px;
   font-weight: 900;
   color: white;
 }
 
-.mes-paris-empty {
+.mes-paris-vide {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -711,18 +711,18 @@ body.paris-page .burger-btn.active {
   text-align: center;
 }
 
-.mes-paris-empty i {
+.mes-paris-vide i {
   font-size: 50px;
   color: rgba(0,0,0,0.2);
 }
-.mes-paris-empty p {
+.mes-paris-vide p {
   font-size: 18px;
   font-weight: 700;
   color: #1a1a2e;
   line-height: 1.5;
 }
 
-.voir-paris-btn {
+.voir-paris-bouton {
   background: #e53935;
   color: white;
   border: none;
@@ -733,13 +733,13 @@ body.paris-page .burger-btn.active {
   cursor: pointer;
 }
 
-.voir-paris-btn:hover {
+.voir-paris-bouton:hover {
   background: #c62828;
 }
 
 /* MODALS (POPUPS)*/
 
-.modal-overlay {
+.modale-fond {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.65);
@@ -749,11 +749,11 @@ body.paris-page .burger-btn.active {
   justify-content: center;
 }
 
-.modal-overlay.show {
+.modale-fond.show {
   display: flex;
 }
 
-.modal {
+.modale {
   background: #FDB927;
   border-radius: 18px;
   padding: 28px 24px;
@@ -764,7 +764,7 @@ body.paris-page .burger-btn.active {
   overflow-y: auto;
 }
 
-.modal-close {
+.modale-fermer {
   position: absolute;
   top: 12px;
   left: 14px;
@@ -775,7 +775,7 @@ body.paris-page .burger-btn.active {
   color: #333;
 }
 
-.modal-title {
+.modale-titre {
   font-size: 22px;
   font-weight: 800;
   color: #111;
@@ -783,7 +783,7 @@ body.paris-page .burger-btn.active {
   text-align: center;
 }
 
-.deposer-amount-box {
+.deposer-montant-case {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -794,7 +794,7 @@ body.paris-page .burger-btn.active {
   gap: 8px;
 }
 
-.deposer-amount-box input {
+.deposer-montant-case input {
   background: none;
   border: none;
   font-size: 26px;
@@ -805,13 +805,13 @@ body.paris-page .burger-btn.active {
   outline: none;
 }
 
-.deposer-amount-box span {
+.deposer-montant-case span {
   font-size: 18px;
   color: white;
   font-weight: 700;
 }
 
-.deposer-presets {
+.deposer-valeurs-rapides {
   display: flex;
   gap: 8px;
   justify-content: center;
@@ -819,7 +819,7 @@ body.paris-page .burger-btn.active {
   flex-wrap: wrap;
 }
 
-.preset-btn {
+.valeur-rapide-bouton {
   background: #1a1a2e;
   color: white;
   border: none;
@@ -831,24 +831,24 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.preset-btn:hover, .preset-btn.active {
+.valeur-rapide-bouton:hover, .valeur-rapide-bouton.active {
   background: #552583;
 }
 
-.deposer-hint {
+.deposer-conseil {
   text-align: center;
   font-size: 12px;
   color: #555;
   margin-bottom: 14px;
 }
-.paiement-label {
+.paiement-libelle {
   font-size: 13px;
   font-weight: 600;
   color: #333;
   margin-bottom: 8px;
 }
 
-.paiement-option-box {
+.paiement-option-case {
   background: #1a1a2e;
   color: white;
   border-radius: 10px;
@@ -861,24 +861,24 @@ body.paris-page .burger-btn.active {
   margin-bottom: 12px;
 }
 
-.paiement-option-box i {
+.paiement-option-case i {
   font-size: 22px;
 }
 
-.carte-form {
+.carte-formulaire {
   background: #1a1a2e;
   border-radius: 10px;
   padding: 14px;
   margin-bottom: 10px;
 }
 
-.carte-form h3 {
+.carte-formulaire h3 {
   color: white;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
-.carte-input {
+.carte-champ {
   width: 100%;
   background: #FDB927;
   border: none;
@@ -892,12 +892,12 @@ body.paris-page .burger-btn.active {
   box-sizing: border-box;
 }
 
-.carte-row {
+.carte-ligne {
   display: flex;
   gap: 8px;
 }
 
-.continuer-btn {
+.continuer-bouton {
   width: 100%;
   background: #552583;
   color: white;
@@ -911,11 +911,11 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.continuer-btn:hover {
+.continuer-bouton:hover {
   background: #7B2FBE;
 }
 
-.annuler-btn {
+.annuler-bouton {
   width: 100%;
   background: transparent;
   color: #e53935;
@@ -926,7 +926,7 @@ body.paris-page .burger-btn.active {
   padding: 6px;
 }
 
-.securise-txt {
+.securise-texte {
   text-align: center;
   font-size: 11px;
   color: #777;
@@ -939,7 +939,7 @@ body.paris-page .burger-btn.active {
 
 /* Modal quand le solde est insuffisant pour parier */
 
-.depot-necessaire-modal {
+.depot-necessaire-modale {
   background: #1a1a2e;
   border-radius: 16px;
   padding: 32px 28px;
@@ -961,7 +961,7 @@ body.paris-page .burger-btn.active {
   line-height: 1.6;
 }
 
-.depot-faire-btn {
+.depot-faire-bouton {
   width: 100%;
   background: #F8CA23;
   color: #111;
@@ -976,11 +976,11 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.depot-faire-btn:hover {
+.depot-faire-bouton:hover {
   background: #e5b820;
 }
 
-.depot-plus-tard-btn {
+.depot-plus-tard-bouton {
   background: none;
   border: none;
   color: rgba(255,255,255,0.6);
@@ -993,14 +993,14 @@ body.paris-page .burger-btn.active {
   transition: color 0.2s;
 }
 
-.depot-plus-tard-btn:hover {
+.depot-plus-tard-bouton:hover {
   color: white;
 }
 
 
 /* confirmation réussir ou échec*/
 
-.confirm-icon {
+.confirmation-icone {
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -1010,44 +1010,44 @@ body.paris-page .burger-btn.active {
   margin: 0 auto 16px;
 }
 
-.success-icon {
+.succes-icone {
   background: rgba(76,175,80,0.2);
 }
-.success-icon i {
+.succes-icone i {
   font-size: 36px;
   color: #4CAF50;
 }
-.error-icon {
+.erreur-icone {
   background: rgba(229,57,53,0.15);
 }
-.error-icon i {
+.erreur-icone i {
   font-size: 36px;
   color: #e53935;
 }
 
-.confirm-modal h2 {
+.confirmation-modale h2 {
   font-size: 20px;
   font-weight: 800;
   color: #111;
   margin-bottom: 8px;
 }
-.error-title {
+.erreur-titre {
   color: #c62828;
 }
-.confirm-amount {
+.confirmation-montant {
   font-size: 26px;
   font-weight: 900;
   color: #552583;
   margin-bottom: 18px;
 }
-.confirm-text {
+.confirmation-texte {
   font-size: 13px;
   color: #444;
   margin-bottom: 18px;
   line-height: 1.5;
 }
 
-.ok-btn {
+.ok-bouton {
   background: #552583;
   color: white;
   border: none;
@@ -1059,13 +1059,13 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.ok-btn:hover {
+.ok-bouton:hover {
   background: #7B2FBE;
 }
 
-/* profil du modal */
+/* profil du modale */
 
-.profil-modal {
+.profil-modale {
   text-align: center;
   max-width: 360px;
 }
@@ -1089,7 +1089,7 @@ body.paris-page .burger-btn.active {
   color: #111;
   margin-bottom: 2px;
 }
-.profil-solde-label {
+.profil-solde-libelle {
   font-size: 12px;
   color: #666;
 }
@@ -1100,13 +1100,13 @@ body.paris-page .burger-btn.active {
   margin-bottom: 14px;
 }
 
-.profil-btns {
+.profil-boutons {
   display: flex;
   gap: 10px;
   margin-bottom: 10px;
 }
 
-.profil-action-btn {
+.profil-action-bouton {
   flex: 1;
   background: #1a1a2e;
   color: #FDB927;
@@ -1123,14 +1123,14 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.profil-action-btn i {
+.profil-action-bouton i {
   font-size: 18px;
 }
-.profil-action-btn:hover {
+.profil-action-bouton:hover {
   background: #2a2a4e;
 }
 
-.profil-info-btn {
+.profil-info-bouton {
   width: 100%;
   background: #1a1a2e;
   color: white;
@@ -1148,11 +1148,11 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.profil-info-btn:hover {
+.profil-info-bouton:hover {
   background: #2a2a4e;
 }
 
-.profil-disconnect-btn {
+.profil-deconnexion-bouton {
   width: 100%;
   background: #e53935;
   color: white;
@@ -1165,17 +1165,17 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.profil-disconnect-btn:hover {
+.profil-deconnexion-bouton:hover {
   background: #c62828;
 }
 
 /* version mobile */
 
-.mobile-parier-bar {
+.mobile-parier-barre {
   display: none;
 }
 
-.mobile-coupon-view {
+.mobile-coupon-vue {
   display: none;
 }
 
@@ -1183,7 +1183,7 @@ body.paris-page .burger-btn.active {
 
 @media (max-width: 900px) {
 
-  .mobile-parier-bar {
+  .mobile-parier-barre {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -1199,7 +1199,7 @@ body.paris-page .burger-btn.active {
     box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
   }
 
-  .mobile-parier-bar-left {
+  .mobile-parier-barrere-gauche {
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -1207,7 +1207,7 @@ body.paris-page .burger-btn.active {
     min-width: 0;
   }
 
-  .mobile-parier-bar-teams {
+  .mobile-parier-barrere-equipes {
     font-size: 13px;
     font-weight: 800;
     color: #1a1a2e;
@@ -1217,13 +1217,13 @@ body.paris-page .burger-btn.active {
     text-overflow: ellipsis;
   }
 
-  .mobile-parier-bar-detail {
+  .mobile-parier-barre-detail {
     font-size: 12px;
     color: rgba(26,26,46,0.6);
     font-family: 'Exo', sans-serif;
   }
 
-  .mobile-parier-bar-cote {
+  .mobile-parier-barre-cote {
     background: #552583;
     color: white;
     font-weight: 900;
@@ -1234,11 +1234,11 @@ body.paris-page .burger-btn.active {
     flex-shrink: 0;
   }
 
-  .paris-main {
+  .paris-principal {
     padding-bottom: 90px;
   }
 
-  .mobile-coupon-view {
+  .mobile-coupon-vue {
     position: fixed;
     inset: 0;
     background: #F8CA23;
@@ -1249,7 +1249,7 @@ body.paris-page .burger-btn.active {
     overflow: hidden;
   }
 
-  .mcv-bg-pattern {
+  .mcv-fond-motif {
     position: absolute;
     inset: 0;
     background-image: url('./assets/img/Los_Angeles_Lakers_logo.svg.png');
@@ -1261,7 +1261,7 @@ body.paris-page .burger-btn.active {
   }
 
   /* mcv = mobile coupon view (coupon en plein ecran sur mobile) */
-  .mcv-header {
+  .mcv-entete {
     position: relative;
     z-index: 1;
     display: flex;
@@ -1279,7 +1279,7 @@ body.paris-page .burger-btn.active {
     font-weight: 700;
   }
 
-  .mcv-close {
+  .mcv-fermer {
     background: none;
     border: none;
     font-size: 22px;
@@ -1288,7 +1288,7 @@ body.paris-page .burger-btn.active {
     padding: 4px;
   }
 
-  .mcv-tabs {
+  .mcv-onglets {
     position: relative;
     z-index: 1;
     display: flex;
@@ -1296,7 +1296,7 @@ body.paris-page .burger-btn.active {
     padding: 0 20px 16px;
   }
 
-  .mcv-tab {
+  .mcv-onglet {
     flex: 1;
     background: #d4a820;
     border: 3px solid transparent;
@@ -1310,13 +1310,13 @@ body.paris-page .burger-btn.active {
     transition: all 0.2s;
   }
 
-  .mcv-tab--active {
+  .mcv-onglet--actif {
     background: #1a1a2e;
     color: #F8CA23;
     border: 3px solid #5aaaff;
   }
 
-  .mcv-list {
+  .mcv-liste {
     position: relative;
     z-index: 1;
     flex: 1;
@@ -1327,7 +1327,7 @@ body.paris-page .burger-btn.active {
     gap: 2px;
   }
 
-  .mcv-item {
+  .mcv-element {
     background: #1a1a2e;
     border-radius: 0;
     padding: 14px 16px;
@@ -1338,18 +1338,18 @@ body.paris-page .burger-btn.active {
     border-bottom: 1px solid rgba(255,255,255,0.07);
   }
 
-  .mcv-item:first-child {
+  .mcv-element:first-child {
     border-radius: 12px 12px 0 0;
   }
-  .mcv-item:last-child {
+  .mcv-element:last-child {
     border-radius: 0 0 12px 12px;
     border-bottom: none;
   }
-  .mcv-item:only-child {
+  .mcv-element:only-child {
     border-radius: 12px;
   }
 
-  .mcv-item-left {
+  .mcv-element-gauche {
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -1357,7 +1357,7 @@ body.paris-page .burger-btn.active {
     min-width: 0;
   }
 
-  .mcv-item-match {
+  .mcv-element-match {
     font-size: 11px;
     color: rgba(255,255,255,0.45);
     display: flex;
@@ -1365,31 +1365,31 @@ body.paris-page .burger-btn.active {
     gap: 6px;
   }
 
-  .mcv-item-match i {
+  .mcv-element-match i {
     font-size: 12px;
     color: rgba(255,255,255,0.3);
   }
 
-  .mcv-item-team {
+  .mcv-element-equipe {
     font-size: 18px;
     font-weight: 900;
     color: white;
     text-transform: uppercase;
   }
 
-  .mcv-item-type {
+  .mcv-element-type {
     font-size: 11px;
     color: rgba(255,255,255,0.45);
   }
 
-  .mcv-item-right {
+  .mcv-element-droite {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 4px;
   }
 
-  .mcv-item-remove {
+  .mcv-element-supprimer {
     background: none;
     border: none;
     color: rgba(255,255,255,0.5);
@@ -1399,32 +1399,32 @@ body.paris-page .burger-btn.active {
     line-height: 1;
   }
 
-  .mcv-item-remove:hover {
+  .mcv-element-supprimer:hover {
     color: #e53935;
   }
 
-  .mcv-item-cote {
+  .mcv-element-cote {
     font-size: 16px;
     font-weight: 800;
     color: white;
   }
 
   /* Footer */
-  .mcv-footer {
+  .mcv-pied {
     position: relative;
     z-index: 1;
     padding: 14px 16px 16px;
     background: #1a1a2e;
   }
 
-  .mcv-mise-row {
+  .mcv-mise-ligne {
     display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 10px;
   }
 
-  .mcv-mise-input {
+  .mcv-mise-champ {
     width: 80px;
     background: #e8e8e8;
     border: none;
@@ -1445,7 +1445,7 @@ body.paris-page .burger-btn.active {
     color: white;
   }
 
-  .mcv-parier-btn {
+  .mcv-parier-bouton {
     flex: 1;
     background: #F8CA23;
     color: #1a1a2e;
@@ -1460,7 +1460,7 @@ body.paris-page .burger-btn.active {
     text-align: center;
   }
 
-  .mcv-parier-btn:hover {
+  .mcv-parier-bouton:hover {
     background: #e5b820;
   }
 
@@ -1475,7 +1475,7 @@ body.paris-page .burger-btn.active {
     font-family: 'Exo', sans-serif;
   }
 
-  .mcv-gains-row {
+  .mcv-gains-ligne {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1484,7 +1484,7 @@ body.paris-page .burger-btn.active {
     font-weight: 600;
   }
 
-  .mcv-gains-amount {
+  .mcv-gains-montant {
     font-size: 16px;
     font-weight: 900;
     color: white;
@@ -1496,17 +1496,17 @@ body.paris-page .burger-btn.active {
     overflow: hidden;
   }
 
-  .mcv-item--combine {
+  .mcv-element--combine {
     border-radius: 0;
     border-bottom: 1px solid rgba(255,255,255,0.08);
     padding: 14px 16px;
   }
 
-  .mcv-item--combine:last-child {
+  .mcv-element--combine:last-child {
     border-bottom: none;
   }
 
-  .mcv-item--simple {
+  .mcv-element--simple {
     background: #1a1a2e;
     border-radius: 12px;
     margin-bottom: 10px;
@@ -1515,22 +1515,22 @@ body.paris-page .burger-btn.active {
     gap: 0;
   }
 
-  .mcv-item--simple .mcv-item-left {
+  .mcv-element--simple .mcv-element-gauche {
     width: 100%;
     margin-bottom: 6px;
   }
 
-  .mcv-item--simple .mcv-item-right {
+  .mcv-element--simple .mcv-element-droite {
     position: absolute;
     right: 16px;
     top: 14px;
   }
 
-  .mcv-item--simple {
+  .mcv-element--simple {
     position: relative;
   }
 
-  .mcv-item-mise-row {
+  .mcv-element-mise-ligne {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1539,7 +1539,7 @@ body.paris-page .burger-btn.active {
     border-top: 1px solid rgba(255,255,255,0.08);
   }
 
-  .mcv-item-mise-input {
+  .mcv-element-mise-champ {
     width: 80px;
     background: rgba(255,255,255,0.1);
     border: none;
@@ -1553,41 +1553,41 @@ body.paris-page .burger-btn.active {
     text-align: center;
   }
 
-  .mcv-item-mise-input::placeholder {
+  .mcv-element-mise-champ::placeholder {
     color: rgba(255,255,255,0.3);
   }
 
-  .mcv-item-mise-euro {
+  .mcv-element-mise-euro {
     font-size: 14px;
     color: rgba(255,255,255,0.5);
     font-weight: 600;
   }
 
-  .mcv-parier-simple-row {
+  .mcv-parier-simple-ligne {
     width: 100%;
     margin-bottom: 10px;
   }
 
-  .mcv-parier-simple-btn {
+  .mcv-parier-simple-bouton {
     width: 100%;
   }
 }
 
 @media (max-width: 900px) {
-  .coupon-sidebar {
+  .coupon-panneau {
     display: none;
   }
-  .paris-main {
+  .paris-principal {
     padding-left: 16px;
     padding-right: 16px;
   }
 }
 
 @media (max-width: 768px) {
-  .paris-subheader {
+  .paris-sous-barre {
     padding: 12px 16px 12px 60px;
   }
-  .paris-title {
+  .paris-titre {
     font-size: 16px;
   }
   .responsible-banner {
@@ -1596,7 +1596,7 @@ body.paris-page .burger-btn.active {
   .responsible-banner__text {
     font-size: 10px;
   }
-  .match-team-logo {
+  .match-equipe-logo {
     width: 50px;
     height: 50px;
   }

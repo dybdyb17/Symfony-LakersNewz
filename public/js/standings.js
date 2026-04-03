@@ -1,7 +1,7 @@
 ;(() => {
   const tbody = document.getElementById("nba-standings-body");
   const errBox = document.getElementById("standings-error");
-  const confButtons = document.querySelectorAll(".conf-btn");
+  const confButtons = document.querySelectorAll(".conf-bouton");
   
   if (!tbody) return;
 
@@ -26,7 +26,7 @@
       errBox.classList.add("show");
       errBox.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${msg}`;
     }
-    tbody.innerHTML = `<tr><td colspan="13" class="error-cell"> ${msg}</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="13" class="erreur-cellule"> ${msg}</td></tr>`;
   };
 
   const getConference = (teamName) => {
@@ -125,15 +125,15 @@
       const pctStr = (team.pct * 100 / 100).toFixed(3).slice(1);
       
       const isLakers = team.name.toLowerCase().includes("lakers");
-      const rowClass = isLakers ? 'lakers-row' : '';
+      const rowClass = isLakers ? 'lakers-ligne' : '';
 
       const tr = document.createElement("tr");
       tr.className = rowClass;
       tr.innerHTML = `
         <td style="font-weight: bold; color: #fcd34d;">${i + 1}</td>
         <td style="text-align: left;">
-          <div class="team-cell">
-            ${team.logo ? `<img src="${team.logo}" alt="${team.name}" class="team-logo">` : ''}
+          <div class="equipe-cellule">
+            ${team.logo ? `<img src="${team.logo}" alt="${team.name}" class="equipe-logo">` : ''}
             <span style="${isLakers ? 'font-weight: bold; color: #fcd34d;' : ''}">${team.name}</span>
           </div>
         </td>
@@ -162,11 +162,11 @@
     }
   };
 
-  confButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
+  confButtons.forEach(bouton => {
+    bouton.addEventListener("click", () => {
       confButtons.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      currentFilter = btn.dataset.conf;
+      bouton.classList.add("active");
+      currentFilter = bouton.dataset.conf;
       filterTeams(currentFilter);
     });
   });

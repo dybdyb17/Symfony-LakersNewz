@@ -17,7 +17,7 @@ main {
   flex: 1;
 }
 
-.topbar {
+.barre-nav {
   position: fixed;
   top: 0;
   left: 0;
@@ -32,12 +32,12 @@ main {
   z-index: 1000;
 }
 
-.top-links {
+.nav-liens {
   display: flex;
   gap: 10px;
 }
 
-.btn {
+.bouton {
   padding: 6px 14px;
   border-radius: 4px;
   font-size: 14px;
@@ -46,18 +46,18 @@ main {
   font-weight: bold;
 }
 
-.btn-gold {
+.bouton-or {
   background-color: #FDB927;
 }
-.btn-purple {
+.bouton-violet {
   background-color: #940ad3;
   color: #222;
 }
-.btn-black {
+.bouton-noir {
   background-color: #000000;
 }
 
-.top-logo {
+.nav-logo {
   display: block;
   margin: auto;
   justify-content: center;
@@ -65,17 +65,17 @@ main {
   flex: 0;
 }
 
-.site-name {
+.nom-site {
   font-size: 22px;
   font-weight: bold;
 }
 
-.top-actions {
+.nav-actions {
   display: flex;
   gap: 15px;
 }
 
-.top-actions button {
+.nav-actions button {
   background: none;
   border: 1px solid transparent;
   padding: 6px;
@@ -85,11 +85,11 @@ main {
   cursor: pointer;
 }
 
-.top-actions button:hover {
+.nav-actions button:hover {
   border-color: #555;
 }
 
-.burger-btn {
+.bouton-menu {
   position: fixed;
   top: 70px;
   left: 20px;
@@ -101,11 +101,11 @@ main {
   color: white;
 }
 
-.burger-btn.active i {
+.bouton-menu.active i {
   color: white;
 }
 
-.sidebar {
+.menu-lateral {
   position: fixed;
   top: 56px;
   left: -260px;
@@ -120,21 +120,21 @@ main {
   z-index: 999;
 }
 
-.sidebar.open {
+.menu-lateral.open {
   left: 0;
 }
 
-.sidebar .nav ul {
+.menu-lateral .nav ul {
   list-style: none;
   padding: 0;
   margin-top: 70px;
 }
 
-.sidebar .nav li {
+.menu-lateral .nav li {
   margin: 75px 0;
 }
 
-.sidebar .nav a {
+.menu-lateral .nav a {
   color: white;
   text-decoration: none;
   font-size: 30px;
@@ -143,35 +143,35 @@ main {
   gap: 10px;
 }
 
-.sidebar .nav a:hover {
+.menu-lateral .nav a:hover {
   color: #f4db1d;
 }
 
-.sidebar .nav a.active {
+.menu-lateral .nav a.active {
   color: #fdb927;
   font-weight: 600;
 }
 
-.sidebar-footer {
+.menu-lateral-pied {
   margin-top: auto;
   text-align: center;
 }
 
-.sidebar-footer img {
+.menu-lateral-pied img {
   width: 150px;
   opacity: 0.8;
 }
 
-.footer-logo img {
+.logo-pied img {
   width: 120px;
   transition: transform 0.3s ease;
 }
 
-.footer-logo img:hover {
+.logo-pied img:hover {
   transform: scale(1.05);
 }
 
-.close-btn {
+.bouton-fermer {
   background: none;
   border: none;
   color: white;
@@ -181,11 +181,11 @@ main {
   margin-left: auto;
 }
 
-.settings-dropdown {
+.reglages-menu {
   position: relative;
 }
 
-.settings-btn {
+.bouton-reglages {
   background: none;
   border: 1px solid transparent;
   padding: 6px;
@@ -196,12 +196,12 @@ main {
   transition: all 0.3s ease;
 }
 
-.settings-btn:hover {
+.bouton-reglages:hover {
   border-color: #555;
   transform: rotate(45deg);
 }
 
-.dropdown-menu {
+.sous-menu {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
@@ -218,7 +218,7 @@ main {
   overflow: hidden;
 }
 
-.dropdown-menu::before {
+.sous-menu::before {
   content: '';
   position: absolute;
   top: -8px;
@@ -230,13 +230,13 @@ main {
   border-bottom: 8px solid rgba(253, 185, 39, 0.3);
 }
 
-.settings-dropdown.active .dropdown-menu {
+.reglages-menu.active .sous-menu {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
-.dropdown-item {
+.sous-menu-element {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -252,39 +252,39 @@ main {
   transition: all 0.2s ease;
 }
 
-.dropdown-item:hover {
+.sous-menu-element:hover {
   background: rgba(253, 185, 39, 0.15);
   color: #fdb927;
 }
 
-.dropdown-item.user-status {
+.sous-menu-element.statut-utilisateur {
   color: #4CAF50;
   cursor: default;
 }
 
-.dropdown-item.user-status:hover {
+.sous-menu-element.statut-utilisateur:hover {
   background: transparent;
   color: #4CAF50;
 }
 
-.dropdown-item i {
+.sous-menu-element i {
   font-size: 18px;
   width: 20px;
   text-align: center;
 }
 
-.dropdown-divider {
+.sous-menu-separateur {
   height: 1px;
   background: rgba(253, 185, 39, 0.2);
   margin: 8px 0;
 }
 
-.settings-dropdown.active .settings-btn {
+.reglages-menu.active .bouton-reglages {
   border-color: #fdb927;
   color: #fdb927;
 }
 
-.site-footer {
+.pied-site {
   background-color: #4e2a84;
   color: #fff;
   font-size: 0.85rem;
@@ -292,7 +292,7 @@ main {
   margin-top: auto;
 }
 
-.site-footer .footer-menu {
+.pied-site .pied-navigation {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -301,38 +301,38 @@ main {
   border-bottom: 2px solid #d1a040;
 }
 
-.site-footer .fan-logo img {
+.pied-site .fan-logo img {
   height: 40px;
   margin-bottom: 1rem;
 }
 
-.site-footer .columns {
+.pied-site .colonnes {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
 }
 
-.site-footer .col {
+.pied-site .colonne {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   text-align: center;
 }
 
-.site-footer .col a {
+.pied-site .colonne a {
   color: #fff;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
-.site-footer .col a:hover {
+.pied-site .colonne a:hover {
   color: #fcd34d;
   text-decoration: underline;
 }
 
-.site-footer .footer-bottom {
+.pied-site .pied-bas {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 1rem;
   text-align: center;
@@ -340,7 +340,7 @@ main {
   line-height: 1.4;
 }
 
-.error-message {
+.message-erreur {
   display: none;
   background: rgba(255, 0, 0, 0.2);
   padding: 1rem;
@@ -349,28 +349,28 @@ main {
   color: #ff6b6b;
 }
 
-.error-message.show {
+.message-erreur.show {
   display: block;
 }
 
-.loading-spinner {
+.chargement-icone {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
 
-.loading-spinner i {
+.chargement-icone i {
   font-size: 2rem;
   color: #fcd34d;
 }
 
-.loading-spinner p {
+.chargement-icone p {
   margin: 0;
   color: rgba(255, 255, 255, 0.8);
 }
 
-.main-content {
+.contenu-principal {
   padding-top: 120px;
   padding-left: 20px;
   padding-right: 20px;
@@ -378,26 +378,26 @@ main {
 }
 
 @media (max-width: 768px) {
-  .dropdown-menu {
+  .sous-menu {
     right: -10px;
     min-width: 180px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .top-logo {
+  .nav-logo {
     display: none;
   }
 
-  .topbar {
+  .barre-nav {
     justify-content: flex-start;
   }
 
-  .top-links {
+  .nav-liens {
     gap: 6px;
   }
 
-  .top-links .btn {
+  .nav-liens .bouton {
     padding: 4px 10px;
     font-size: 12px;
   }

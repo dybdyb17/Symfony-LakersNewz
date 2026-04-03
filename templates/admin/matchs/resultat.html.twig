@@ -3,29 +3,29 @@
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/admin.css') }}">{% endblock %}
 {% block body_class %}admin{% endblock %}
 {% block body %}
-<main class="admin-page admin-page-small">
+<main class="admin-page admin-page-petite">
     <h1 class="admin-titre">Résultat du match</h1>
 
-    <div class="admin-resultat-box">
-        <p class="admin-resultat-team">{{ match.team1 }}</p>
+    <div class="admin-resultat-conteneur">
+        <p class="admin-resultat-equipe">{{ match.team1 }}</p>
         <p class="admin-resultat-vs">VS</p>
-        <p class="admin-resultat-team">{{ match.team2 }}</p>
+        <p class="admin-resultat-equipe">{{ match.team2 }}</p>
 
-        <form method="post" action="{{ path('admin_matchs_resultat', {id: match.id}) }}" class="admin-form">
-            <div class="admin-score-row">
+        <form method="post" action="{{ path('admin_matchs_resultat', {id: match.id}) }}" class="admin-formulaire">
+            <div class="admin-score-ligne">
                 <div>
-                    <span class="admin-score-label">Score {{ match.team1 }}</span>
-                    <input type="number" name="scoreTeam1" value="0" min="0" class="admin-score-input">
+                    <span class="admin-score-libelle">Score {{ match.team1 }}</span>
+                    <input type="number" name="scoreTeam1" value="0" min="0" class="admin-score-champ">
                 </div>
                 <div>
-                    <span class="admin-score-label">Score {{ match.team2 }}</span>
-                    <input type="number" name="scoreTeam2" value="0" min="0" class="admin-score-input">
+                    <span class="admin-score-libelle">Score {{ match.team2 }}</span>
+                    <input type="number" name="scoreTeam2" value="0" min="0" class="admin-score-champ">
                 </div>
             </div>
-            <button type="submit" class="admin-btn-ok">Valider le résultat</button>
+            <button type="submit" class="admin-bouton-valider">Valider le résultat</button>
         </form>
     </div>
 
-    <a href="{{ path('admin_matchs_index') }}" class="admin-back">← Retour à la liste</a>
+    <a href="{{ path('admin_matchs_index') }}" class="admin-retour">← Retour à la liste</a>
 </main>
 {% endblock %}

@@ -19,13 +19,13 @@ main {
 
 /* page roster     */
 
-body.roster-page {
+body.effectif-page {
   background: url(../assets/img/lakersgold.jpg) center/cover fixed no-repeat;
   background-attachment: fixed;
   color: white;
 }
 
-.roster-main {
+.effectif-principal {
   padding: 120px 2rem 4rem;
   max-width: 1400px;
   margin: 0 auto;
@@ -36,7 +36,7 @@ body.roster-page {
 
 /* heroooo (le bandeau du haut avec kobe    */
 
-.roster-hero {
+.effectif-bandeau {
   background: linear-gradient(135deg, rgba(85, 37, 131, 0.9), rgba(253, 185, 39, 0.3)),
               url('../assets/img/dean-bennett-nFjLHE4vmn4-unsplash.jpg') center/cover no-repeat;
   border-radius: 20px;
@@ -46,7 +46,7 @@ body.roster-page {
   border: 2px solid rgba(253, 185, 39, 0.3);
 }
 
-.roster-hero-content h1 {
+.effectif-bandeau-contenu h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
   color: #fdb927;
@@ -56,21 +56,21 @@ body.roster-page {
   gap: 1rem;
 }
 
-.roster-hero-content p {
+.effectif-bandeau-contenu p {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.9);
 }
 
 /* filtre par poste*/
 
-.roster-filters {
+.effectif-filtres {
   display: flex;
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
-.position-btn {
+.bouton-poste {
   background: rgba(85, 37, 131, 0.5);
   border: 2px solid rgba(253, 185, 39, 0.3);
   color: white;
@@ -85,19 +85,19 @@ body.roster-page {
   gap: 0.5rem;
 }
 
-.position-btn:hover {
+.bouton-poste:hover {
   background: rgba(85, 37, 131, 0.8);
   border-color: #fdb927;
   box-shadow: 0 5px 15px rgba(253, 185, 39, 0.4);
 }
 
-.position-btn.active {
+.bouton-poste.active {
   background: linear-gradient(135deg, #552583, #fdb927);
   border-color: #fdb927;
   box-shadow: 0 5px 20px rgba(253, 185, 39, 0.5);
 }
 
-.loading-roster {
+.effectif-chargement {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -106,12 +106,12 @@ body.roster-page {
   gap: 1rem;
 }
 
-.loading-roster i {
+.effectif-chargement i {
   font-size: 3rem;
   color: #fdb927;
 }
 
-.loading-roster p {
+.effectif-chargement p {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
 }
@@ -120,7 +120,7 @@ body.roster-page {
 
 /* auto-fill = ça remplit la ligne avec autant de colonnes que possible */
 /* minmax(280px, 1fr) = chaque colonne fait minimum 280px */
-.roster-grid {
+.effectif-grille {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2rem;
@@ -130,7 +130,7 @@ body.roster-page {
 /* les cartes des joueurs */
 
 
-.player-card {
+.joueur-carte {
   background: linear-gradient(135deg, rgba(85, 37, 131, 0.9), rgba(23, 64, 139, 0.9));
   border-radius: 16px;
   overflow: hidden;
@@ -140,25 +140,25 @@ body.roster-page {
   position: relative;
 }
 
-.player-card:hover {
+.joueur-carte:hover {
   border-color: #fdb927;
   box-shadow: 0 15px 40px rgba(253, 185, 39, 0.4);
 }
 
-.player-card-header {
+.joueur-carte-entete {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
   background: rgba(0, 0, 0, 0.3);
 }
 
-.player-jersey {
+.joueur-maillot {
   font-size: 1.5rem;
   font-weight: 800;
   color: #fdb927;
 }
 
-.player-position {
+.joueur-poste {
   background: rgba(253, 185, 39, 0.2);
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
@@ -168,7 +168,7 @@ body.roster-page {
   border: 1px solid rgba(253, 185, 39, 0.4);
 }
 
-.player-card-image {
+.joueur-carte-image {
   width: 100%;
   height: 280px;
   overflow: hidden;
@@ -178,7 +178,7 @@ body.roster-page {
   justify-content: center;
 }
 
-.player-card-image img {
+.joueur-carte-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -187,12 +187,12 @@ body.roster-page {
 }
 
 
-.player-card-info {
+.joueur-carte-info {
   padding: 1.5rem;
   background: rgba(0, 0, 0, 0.4);
 }
 
-.player-name {
+.joueur-nom {
   font-size: 1.3rem;
   font-weight: 700;
   color: #fff;
@@ -200,7 +200,7 @@ body.roster-page {
   text-align: center;
 }
 
-.player-stats {
+.joueur-stats {
   display: flex;
   justify-content: space-around;
   margin-bottom: 1rem;
@@ -208,7 +208,7 @@ body.roster-page {
   border-bottom: 1px solid rgba(253, 185, 39, 0.3);
 }
 
-.stat-item {
+.stat-element {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -216,42 +216,42 @@ body.roster-page {
   font-size: 0.85rem;
 }
 
-.stat-item i {
+.stat-element i {
   color: #fdb927;
   font-size: 1.2rem;
 }
 
-.stat-item span {
+.stat-element span {
   color: rgba(255, 255, 255, 0.9);
   font-weight: 600;
 }
 
-.player-details {
+.joueur-details {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.detail-row {
+.detail-ligne {
   display: flex;
   justify-content: space-between;
   font-size: 0.9rem;
 }
 
-.detail-row .label {
+.detail-ligne .label {
   color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
 }
 
-.detail-row .value {
+.detail-ligne .value {
   color: #fdb927;
   font-weight: 600;
 }
 
 /* messages d'erreur */
 
-.no-players,
-.error-roster {
+.aucun-joueur,
+.erreur-effectif {
   /* 1 / -1 = prend toute la largeur du grid */
   grid-column: 1 / -1;
   text-align: center;
@@ -261,8 +261,8 @@ body.roster-page {
   border: 2px dashed rgba(253, 185, 39, 0.3);
 }
 
-.no-players p,
-.error-roster p {
+.aucun-joueur p,
+.erreur-effectif p {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -270,45 +270,45 @@ body.roster-page {
 /* le responsive */
 
 @media (max-width: 768px) {
-  .roster-main {
+  .effectif-principal {
     padding: 100px 1rem 2rem;
   }
 
-  .roster-hero-content h1 {
+  .effectif-bandeau-contenu h1 {
     font-size: 2rem;
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  .roster-hero-content p {
+  .effectif-bandeau-contenu p {
     font-size: 1rem;
   }
 
-  .roster-filters {
+  .effectif-filtres {
     flex-direction: column;
   }
 
-  .position-btn {
+  .bouton-poste {
     width: 100%;
     justify-content: center;
   }
 
-  .roster-grid {
+  .effectif-grille {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
   }
 
-  .player-card-image {
+  .joueur-carte-image {
     height: 240px;
   }
 }
 
 @media (max-width: 480px) {
-  .roster-grid {
+  .effectif-grille {
     grid-template-columns: 1fr;
   }
 
-  .player-name {
+  .joueur-nom {
     font-size: 1.1rem;
   }
 }

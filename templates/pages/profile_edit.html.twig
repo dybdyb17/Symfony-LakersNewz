@@ -14,57 +14,57 @@
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
 </head>
 <body class="profil-page">
-    <div class="profil-bg-pattern"></div>
+    <div class="profil-fond-motif"></div>
 
-    <div class="profil-view">
-        <header class="profil-header">
-            <h1 class="profil-header-titre">Modifier mes informations</h1>
-            <button class="profil-back-btn" onclick="window.location.href='{{ path('app_profil') }}'"><i class="fa-solid fa-chevron-left"></i></button>
+    <div class="profil-vue">
+        <header class="profil-entete">
+            <h1 class="profil-entete-titre">Modifier mes informations</h1>
+            <button class="profil-bouton-retour" onclick="window.location.href='{{ path('app_profil') }}'"><i class="fa-solid fa-chevron-left"></i></button>
         </header>
 
-        {{ form_start(profilForm, {'attr': {'class': 'info-section'}}) }}
+        {{ form_start(profilForm, {'attr': {'class': 'info-zone'}}) }}
 
-            <div class="info-section">
-                <h2 class="info-section-titre">Mon identité</h2>
-                <div class="info-table">
-                    <div class="info-row">
-                        <span class="info-label">{{ form_label(profilForm.lastname) }}</span>
-                        {{ form_widget(profilForm.lastname, {'attr': {'class': 'info-edit-input'}}) }}
+            <div class="info-zone">
+                <h2 class="info-zone-titre">Mon identité</h2>
+                <div class="info-tableau">
+                    <div class="info-ligne">
+                        <span class="info-libelle">{{ form_label(profilForm.lastname) }}</span>
+                        {{ form_widget(profilForm.lastname, {'attr': {'class': 'info-modifier-champ'}}) }}
                     </div>
-                    <div class="info-row">
-                        <span class="info-label">{{ form_label(profilForm.firstname) }}</span>
-                        {{ form_widget(profilForm.firstname, {'attr': {'class': 'info-edit-input'}}) }}
+                    <div class="info-ligne">
+                        <span class="info-libelle">{{ form_label(profilForm.firstname) }}</span>
+                        {{ form_widget(profilForm.firstname, {'attr': {'class': 'info-modifier-champ'}}) }}
                     </div>
-                    <div class="info-row">
-                        <span class="info-label">{{ form_label(profilForm.pseudo) }}</span>
-                        {{ form_widget(profilForm.pseudo, {'attr': {'class': 'info-edit-input'}}) }}
+                    <div class="info-ligne">
+                        <span class="info-libelle">{{ form_label(profilForm.pseudo) }}</span>
+                        {{ form_widget(profilForm.pseudo, {'attr': {'class': 'info-modifier-champ'}}) }}
                     </div>
-                    <div class="info-row">
-                        <span class="info-label">{{ form_label(profilForm.dateNaissance) }}</span>
-                        {{ form_widget(profilForm.dateNaissance, {'attr': {'class': 'info-edit-input'}}) }}
+                    <div class="info-ligne">
+                        <span class="info-libelle">{{ form_label(profilForm.dateNaissance) }}</span>
+                        {{ form_widget(profilForm.dateNaissance, {'attr': {'class': 'info-modifier-champ'}}) }}
                     </div>
-                    <div class="info-row">
-                        <span class="info-label">{{ form_label(profilForm.lieuNaissance) }}</span>
-                        {{ form_widget(profilForm.lieuNaissance, {'attr': {'class': 'info-edit-input'}}) }}
+                    <div class="info-ligne">
+                        <span class="info-libelle">{{ form_label(profilForm.lieuNaissance) }}</span>
+                        {{ form_widget(profilForm.lieuNaissance, {'attr': {'class': 'info-modifier-champ'}}) }}
                     </div>
                 </div>
             </div>
 
-            <div class="info-section">
-                <h2 class="info-section-titre">Mes informations de contact</h2>
-                <div class="info-table">
-                    <div class="info-row">
-                        <span class="info-label">{{ form_label(profilForm.email) }}</span>
-                        {{ form_widget(profilForm.email, {'attr': {'class': 'info-edit-input'}}) }}
+            <div class="info-zone">
+                <h2 class="info-zone-titre">Mes informations de contact</h2>
+                <div class="info-tableau">
+                    <div class="info-ligne">
+                        <span class="info-libelle">{{ form_label(profilForm.email) }}</span>
+                        {{ form_widget(profilForm.email, {'attr': {'class': 'info-modifier-champ'}}) }}
                     </div>
-                    <div class="info-row">
-                        <span class="info-label">{{ form_label(profilForm.telephone) }}</span>
-                        {{ form_widget(profilForm.telephone, {'attr': {'class': 'info-edit-input'}}) }}
+                    <div class="info-ligne">
+                        <span class="info-libelle">{{ form_label(profilForm.telephone) }}</span>
+                        {{ form_widget(profilForm.telephone, {'attr': {'class': 'info-modifier-champ'}}) }}
                     </div>
                 </div>
             </div>
 
-            <button type="submit" class="profil-info-btn">
+            <button type="submit" class="profil-info-bouton">
                 <i class="fa-solid fa-floppy-disk"></i> Enregistrer
             </button>
 

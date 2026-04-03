@@ -4,11 +4,11 @@
     margin: 0 auto;
 }
 
-.admin-page-small {
+.admin-page-petite {
     max-width: 600px;
 }
 
-.admin-top {
+.admin-haut {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,7 +27,7 @@
     flex-wrap: wrap;
 }
 
-.admin-nav-link {
+.admin-nav-lien {
     background: #552583;
     color: white;
     padding: 8px 16px;
@@ -37,12 +37,12 @@
     font-size: 14px;
 }
 
-.admin-nav-link.active {
+.admin-nav-lien.active {
     background: #FDB927;
     color: #1a1a2e;
 }
 
-.admin-btn-new {
+.admin-bouton-nouveau {
     background: #4CAF50;
     color: white;
     padding: 10px 20px;
@@ -51,7 +51,7 @@
     font-weight: 700;
 }
 
-.admin-btn-edit {
+.admin-bouton-modifier {
     background: #FDB927;
     color: #1a1a2e;
     padding: 6px 12px;
@@ -61,7 +61,7 @@
     font-size: 13px;
 }
 
-.admin-btn-delete {
+.admin-bouton-supprimer {
     background: #e53935;
     color: white;
     border: none;
@@ -71,7 +71,7 @@
     font-size: 13px;
 }
 
-.admin-btn-ok {
+.admin-bouton-valider {
     background: #4CAF50;
     color: white;
     border: none;
@@ -84,12 +84,12 @@
     width: 100%;
 }
 
-.admin-btn-ok-edit {
+.admin-bouton-valider-modifier {
     background: #FDB927;
     color: #1a1a2e;
 }
 
-.admin-btn-resultat {
+.admin-bouton-resultat {
     background: #FDB927;
     color: #1a1a2e;
     padding: 6px 12px;
@@ -99,41 +99,41 @@
     font-size: 13px;
 }
 
-.admin-table-box {
+.admin-tableauau-conteneur {
     background: rgba(0, 0, 0, 0.6);
     border-radius: 16px;
     overflow: hidden;
 }
 
-.admin-table {
+.admin-tableau {
     width: 100%;
     border-collapse: collapse;
     color: white;
 }
 
-.admin-table thead tr {
+.admin-tableau thead tr {
     background: rgba(85, 37, 131, 0.8);
 }
 
-.admin-table th {
+.admin-tableau th {
     padding: 12px;
     text-align: left;
 }
 
-.admin-table th.center {
+.admin-tableau th.center {
     text-align: center;
 }
 
-.admin-table td {
+.admin-tableau td {
     padding: 12px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.admin-table td.center {
+.admin-tableau td.center {
     text-align: center;
 }
 
-.admin-table .empty {
+.admin-tableau .vide {
     padding: 20px;
     text-align: center;
     color: rgba(255, 255, 255, 0.5);
@@ -145,41 +145,41 @@
     font-size: 13px;
 }
 
-.badge-green {
+.badge-vert {
   background: #4CAF50;
 }
-.badge-red {
+.badge-rouge {
   background: #e53935;
 }
 .badge-orange {
   background: #FF9800;
 }
-.badge-blue {
+.badge-bleu {
   background: #2196F3;
 }
 
-.admin-form-box {
+.admin-formulaireulaire-conteneur {
     background: rgba(0, 0, 0, 0.6);
     border-radius: 16px;
     padding: 30px;
 }
 
-.admin-form {
+.admin-formulaire {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.admin-form label {
+.admin-formulaire label {
     color: white;
     font-weight: 600;
     display: block;
     margin-bottom: 5px;
 }
 
-.admin-form input,
-.admin-form select,
-.admin-form textarea {
+.admin-formulaire input,
+.admin-formulaire select,
+.admin-formulaire textarea {
     width: 100%;
     padding: 12px;
     border-radius: 8px;
@@ -187,16 +187,16 @@
     font-size: 15px;
 }
 
-.admin-form .form-row {
+.admin-formulaire .formulaire-ligne {
     display: flex;
     gap: 15px;
 }
 
-.admin-form .form-row div {
+.admin-formulaire .formulaire-ligne div {
     flex: 1;
 }
 
-.admin-back {
+.admin-retour {
     color: #FDB927;
     display: block;
     text-align: center;
@@ -204,7 +204,7 @@
     text-decoration: none;
 }
 
-.admin-success {
+.admin-succes {
     background: #4CAF50;
     color: white;
     padding: 12px;
@@ -214,14 +214,14 @@
     font-weight: 600;
 }
 
-.admin-resultat-box {
+.admin-resultat-conteneur {
     background: rgba(0, 0, 0, 0.6);
     border-radius: 16px;
     padding: 30px;
     text-align: center;
 }
 
-.admin-resultat-team {
+.admin-resultat-equipe {
     color: white;
     font-size: 22px;
     font-weight: 700;
@@ -234,7 +234,7 @@
     margin-bottom: 5px;
 }
 
-.admin-score-input {
+.admin-score-champ {
     width: 80px;
     padding: 12px;
     border-radius: 8px;
@@ -244,14 +244,14 @@
     font-weight: 700;
 }
 
-.admin-score-label {
+.admin-score-libelle {
     color: rgba(255, 255, 255, 0.7);
     font-size: 14px;
     display: block;
     margin-bottom: 5px;
 }
 
-.admin-score-row {
+.admin-score-ligne {
     display: flex;
     gap: 15px;
     justify-content: center;

@@ -3,72 +3,72 @@
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/contact.css') }}">{% endblock %}
 {% block body_class %}contact-page{% endblock %}
 {% block body %}
-<main class="contact-main">
-    <div class="contact-container">
-        <div class="contact-header">
-            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+<main class="contact-principal">
+    <div class="contact-conteneur">
+        <div class="contact-entete">
+            <div class="contact-icone"><i class="fa-solid fa-envelope"></i></div>
             <h1>Contacte moi</h1>
         </div>
-        <div class="contact-form-card">
+        <div class="contact-formulaireulaire-carte">
             <h2>Formulaire de contact</h2>
 
             {% if success %}
-                <div class="form-success show">
-                    <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+                <div class="formulaire-succes show">
+                    <div class="succes-icone"><i class="fa-solid fa-circle-check"></i></div>
                     <p>Merci ! Votre message a été envoyé avec succès.</p>
-                    <a href="{{ path('app_home') }}" class="btn-back-home">Retourner à la page d'accueil</a>
+                    <a href="{{ path('app_home') }}" class="bouton-retour-accueil">Retourner à la page d'accueil</a>
                 </div>
             {% else %}
-                {{ form_start(contactForm, {'attr': {'class': 'contact-form'}}) }}
+                {{ form_start(contactForm, {'attr': {'class': 'contact-formulaire'}}) }}
 
-                    <div class="form-group">
+                    <div class="formulaire-groupe">
                         {{ form_widget(contactForm.nom) }}
                         {{ form_errors(contactForm.nom) }}
                     </div>
 
-                    <div class="form-group">
+                    <div class="formulaire-groupe">
                         {{ form_widget(contactForm.email) }}
                         {{ form_errors(contactForm.email) }}
                     </div>
 
-                    <div class="form-group">
+                    <div class="formulaire-groupe">
                         {{ form_widget(contactForm.sujet) }}
                         {{ form_errors(contactForm.sujet) }}
                     </div>
 
-                    <div class="form-group">
+                    <div class="formulaire-groupe">
                         {{ form_widget(contactForm.message) }}
                         {{ form_errors(contactForm.message) }}
                     </div>
 
-                    <button type="submit" class="submit-btn">
+                    <button type="submit" class="bouton-envoyer">
                         <i class="fa-solid fa-paper-plane"></i> Envoyer le message
                     </button>
 
                 {{ form_end(contactForm) }}
             {% endif %}
         </div>
-        <div class="contact-info-card">
+        <div class="contact-info-carte">
             <h2>Informations</h2>
-            <div class="info-item">
-                <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
-                <div class="info-content"><h3>email</h3><p>dybrilboudiaf14@gmail.com</p></div>
+            <div class="info-element">
+                <div class="info-icone"><i class="fa-solid fa-envelope"></i></div>
+                <div class="info-contenu"><h3>email</h3><p>dybrilboudiaf14@gmail.com</p></div>
             </div>
-            <div class="info-item">
-                <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
-                <div class="info-content"><h3>Téléphone</h3><p>0627962735</p></div>
+            <div class="info-element">
+                <div class="info-icone"><i class="fa-solid fa-phone"></i></div>
+                <div class="info-contenu"><h3>Téléphone</h3><p>0627962735</p></div>
             </div>
-            <div class="info-item">
-                <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
-                <div class="info-content"><h3>Adresse</h3><p>62 avenue du merlan<br>13014 Marseille, France</p></div>
+            <div class="info-element">
+                <div class="info-icone"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="info-contenu"><h3>Adresse</h3><p>62 avenue du merlan<br>13014 Marseille, France</p></div>
             </div>
             <div class="social-section">
                 <h3>Suis moi</h3>
-                <div class="social-icons">
-                    <a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                <div class="social-iconees">
+                    <a href="#" class="social-icone"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="social-icone"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-icone"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-icone"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </div>
         </div>

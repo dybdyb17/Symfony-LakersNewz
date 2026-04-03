@@ -8,7 +8,7 @@ body.profil-page {
   overflow-x: hidden;
 }
 
-.profil-bg-pattern {
+.profil-fond-motif {
   position: fixed;
   inset: 0;
   background-size: 180px;
@@ -18,7 +18,7 @@ body.profil-page {
   z-index: 0;
 }
 
-.profil-view {
+.profil-vue {
   position: relative;
   z-index: 10;
   max-width: 860px;
@@ -27,21 +27,21 @@ body.profil-page {
   min-height: 100vh;
 }
 
-.profil-header {
+.profil-entete {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 40px;
 }
 
-.profil-header-titre {
+.profil-entete-titre {
   font-size: 28px;
   font-weight: 900;
   color: #1a1a2e;
 }
 
-.profil-close-btn,
-.profil-back-btn {
+.profil-bouton-fermer,
+.profil-bouton-retour {
   background: none;
   border: none;
   font-size: 28px;
@@ -55,19 +55,19 @@ body.profil-page {
   transition: opacity 0.2s;
 }
 
-.profil-close-btn:hover,
-.profil-back-btn:hover {
+.profil-bouton-fermer:hover,
+.profil-bouton-retour:hover {
   opacity: 0.6;
 }
 
-.profil-hero {
+.profil-bandeau {
   display: flex;
   align-items: center;
   gap: 32px;
   margin-bottom: 32px;
 }
 
-.profil-avatar-wrap {
+.profil-avatar-conteneur {
   flex-shrink: 0;
 }
 
@@ -91,7 +91,7 @@ body.profil-page {
   object-fit: cover;
 }
 
-.profil-identity {
+.profil-identite {
   flex: 1;
 }
 
@@ -101,12 +101,12 @@ body.profil-page {
   color: #1a1a2e;
 }
 
-.profil-solde-wrap {
+.profil-solde-conteneur {
   text-align: right;
   flex-shrink: 0;
 }
 
-.profil-solde-label {
+.profil-solde-libelle {
   font-size: 14px;
   color: rgba(26,26,46,0.6);
   margin-bottom: 2px;
@@ -118,7 +118,7 @@ body.profil-page {
   color: #1a1a2e;
 }
 
-.profil-divider {
+.profil-separateur {
   border: none;
   border-top: 1px solid rgba(26,26,46,0.2);
   margin-bottom: 36px;
@@ -131,7 +131,7 @@ body.profil-page {
   margin-bottom: 24px;
 }
 
-.profil-action-card {
+.profil-action-carte {
   background: #1a1a2e;
   border: none;
   border-radius: 14px;
@@ -147,22 +147,22 @@ body.profil-page {
   font-family: 'Exo', sans-serif;
 }
 
-.profil-action-card i {
+.profil-action-carte i {
   font-size: 32px;
 }
 
-.profil-action-card span {
+.profil-action-carte span {
   font-size: 18px;
   font-weight: 700;
   color: white;
 }
 
-.profil-action-card:hover {
+.profil-action-carte:hover {
   background: #2a2a4e;
   transform: translateY(-2px);
 }
 
-.profil-info-btn {
+.profil-info-bouton {
   width: 100%;
   background: #1a1a2e;
   border: none;
@@ -180,16 +180,16 @@ body.profil-page {
   transition: all 0.2s;
 }
 
-.profil-info-btn i {
+.profil-info-bouton i {
   font-size: 20px;
   color: #F8CA23;
 }
 
-.profil-info-btn:hover {
+.profil-info-bouton:hover {
   background: #2a2a4e;
 }
 
-.profil-disconnect-btn {
+.profil-deconnexion-bouton {
   width: 100%;
   background: #e53935;
   border: none;
@@ -203,28 +203,28 @@ body.profil-page {
   transition: all 0.2s;
 }
 
-.profil-disconnect-btn:hover {
+.profil-deconnexion-bouton:hover {
   background: #c62828;
 }
 
-.info-section {
+.info-zone {
   margin-bottom: 32px;
 }
 
-.info-section-titre {
+.info-zone-titre {
   font-size: 20px;
   font-weight: 800;
   color: #1a1a2e;
   margin-bottom: 14px;
 }
 
-.info-table {
+.info-tableau {
   background: #1a1a2e;
   border-radius: 14px;
   overflow: hidden;
 }
 
-.info-row {
+.info-ligne {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -232,24 +232,24 @@ body.profil-page {
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-.info-row:last-child {
+.info-ligne:last-child {
   border-bottom: none;
 }
 
-.info-label {
+.info-libelle {
   font-size: 15px;
   font-weight: 600;
   color: white;
 }
 
-.info-value {
+.info-valeur {
   font-size: 15px;
   font-weight: 600;
   color: rgba(255,255,255,0.7);
   text-align: right;
 }
 
-.profil-cloture-btn {
+.profil-cloture-bouton {
   width: 100%;
   max-width: 420px;
   display: block;
@@ -266,11 +266,11 @@ body.profil-page {
   transition: all 0.2s;
 }
 
-.profil-cloture-btn:hover {
+.profil-cloture-bouton:hover {
   background: #c62828;
 }
 
-.cloture-overlay {
+.cloture-fond {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.7);
@@ -280,7 +280,7 @@ body.profil-page {
   justify-content: center;
 }
 
-.cloture-modal {
+.cloture-modale {
   background: #1a1a2e;
   border-radius: 20px;
   padding: 36px 32px;
@@ -289,21 +289,21 @@ body.profil-page {
   text-align: center;
 }
 
-.cloture-modal h2 {
+.cloture-modale h2 {
   font-size: 22px;
   font-weight: 900;
   color: white;
   margin-bottom: 12px;
 }
 
-.cloture-modal p {
+.cloture-modale p {
   font-size: 14px;
   color: rgba(255,255,255,0.6);
   margin-bottom: 28px;
   line-height: 1.6;
 }
 
-.cloture-confirm-btn {
+.cloture-confirmation-bouton {
   width: 100%;
   background: #e53935;
   border: none;
@@ -318,11 +318,11 @@ body.profil-page {
   transition: all 0.2s;
 }
 
-.cloture-confirm-btn:hover {
+.cloture-confirmation-bouton:hover {
   background: #c62828;
 }
 
-.cloture-cancel-btn {
+.cloture-annuler-bouton {
   background: none;
   border: none;
   color: rgba(255,255,255,0.5);
@@ -334,10 +334,10 @@ body.profil-page {
   padding: 4px;
 }
 
-.cloture-cancel-btn:hover {
+.cloture-annuler-bouton:hover {
   color: white;
 }
-.info-edit-input {
+.info-modifier-champ {
     width: 100%;
     background: #F8CA23;
     border: none;
@@ -350,6 +350,6 @@ body.profil-page {
     outline: none;
 }
 
-.info-edit-input::placeholder {
+.info-modifier-champ::placeholder {
     color: rgba(26,26,46,0.5);
 }

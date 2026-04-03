@@ -8,7 +8,7 @@ body.deposer-page {
   overflow-x: hidden;
 }
 
-.deposer-header {
+.deposer-entete {
   position: relative;
   z-index: 10;
   display: flex;
@@ -17,7 +17,7 @@ body.deposer-page {
   padding: 20px 24px;
 }
 
-.deposer-close-btn {
+.deposer-bouton-fermer {
   background: none;
   border: none;
   font-size: 28px;
@@ -31,7 +31,7 @@ body.deposer-page {
   transition: opacity 0.2s;
 }
 
-.deposer-close-btn:hover {
+.deposer-bouton-fermer:hover {
   opacity: 0.7;
 }
 
@@ -52,7 +52,7 @@ body.deposer-page {
   font-size: 11px;
 }
 
-.deposer-main {
+.deposer-principal {
   position: relative;
   z-index: 10;
   max-width: 540px;
@@ -74,7 +74,7 @@ body.deposer-page {
   margin-bottom: 20px;
 }
 
-.deposer-amount-row {
+.deposer-montant-ligne {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,7 +82,7 @@ body.deposer-page {
   margin-bottom: 20px;
 }
 
-.deposer-amount-row input {
+.deposer-montant-ligne input {
   background: #F8CA23;
   border: none;
   border-radius: 10px;
@@ -96,20 +96,20 @@ body.deposer-page {
   outline: none;
 }
 
-.deposer-currency {
+.deposer-devise {
   font-size: 28px;
   font-weight: 900;
   color: #F8CA23;
 }
 
-.deposer-presets {
+.deposer-valeurs-rapides {
   display: flex;
   gap: 10px;
   justify-content: center;
   margin-bottom: 16px;
 }
 
-.dep-preset {
+.dep-valeur {
   background: #F8CA23;
   color: #1a1a2e;
   border: 2px solid transparent;
@@ -123,12 +123,12 @@ body.deposer-page {
   flex: 1;
 }
 
-.dep-preset:hover {
+.dep-valeur:hover {
   background: white;
   color: #1a1a2e;
 }
 
-.dep-preset.active {
+.dep-valeur.active {
   background: white;
   color: #1a1a2e;
   border-color: white;
@@ -148,7 +148,7 @@ body.deposer-page {
   margin-bottom: 20px;
 }
 
-.deposer-paiement-label {
+.deposer-paiement-libelle {
   font-size: 15px;
   font-weight: 700;
   color: #1a1a2e;
@@ -167,14 +167,14 @@ body.deposer-page {
   background: #252540;
 }
 
-.carte-option-top {
+.carte-option-haut {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
 }
 
-.carte-option-label {
+.carte-option-libelle {
   font-size: 15px;
   font-weight: 700;
   color: white;
@@ -196,33 +196,33 @@ body.deposer-page {
 .carte-logos .fa-cc-mastercard
 { color: #eb001b; }
 
-.carte-option-limits {
+.carte-option-limites {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
   color: rgba(255,255,255,0.4);
 }
 
-.deposer-carte-form {
+.deposer-carte-formulaireulaire {
   background: #1a1a2e;
   border-radius: 16px;
   padding: 20px;
   margin-top: 10px;
 }
 
-.carte-form-titre {
+.carte-formulaireulaire-titre {
   font-size: 16px;
   font-weight: 700;
   color: white;
   margin-bottom: 16px;
 }
 
-.carte-input-group {
+.carte-champ-groupe {
   position: relative;
   margin-bottom: 12px;
 }
 
-.carte-input {
+.carte-champ {
   width: 100%;
   background: #F8CA23;
   border: none;
@@ -235,11 +235,11 @@ body.deposer-page {
   outline: none;
 }
 
-.carte-input::placeholder {
+.carte-champ::placeholder {
   color: rgba(26,26,46,0.5);
 }
 
-.carte-icon {
+.carte-icone {
   position: absolute;
   right: 14px;
   top: 50%;
@@ -248,17 +248,17 @@ body.deposer-page {
   font-size: 18px;
 }
 
-.carte-row {
+.carte-ligne {
   display: flex;
   gap: 12px;
   margin-bottom: 12px;
 }
 
-.carte-row .carte-input {
+.carte-ligne .carte-champ {
   margin-bottom: 0;
 }
 
-.deposer-continuer-btn {
+.deposer-continuer-bouton {
   width: 100%;
   background: #552583;
   color: white;
@@ -274,11 +274,11 @@ body.deposer-page {
   letter-spacing: 0.3px;
 }
 
-.deposer-continuer-btn:hover {
+.deposer-continuer-bouton:hover {
   background: #7B2FBE;
 }
 
-.deposer-fermer-btn {
+.deposer-fermer-bouton {
   width: 100%;
   background: none;
   border: none;
@@ -291,7 +291,7 @@ body.deposer-page {
   transition: opacity 0.2s;
 }
 
-.deposer-fermer-btn:hover {
+.deposer-fermer-bouton:hover {
   opacity: 0.7;
 }
 
@@ -306,7 +306,7 @@ body.deposer-page {
   margin-top: 16px;
 }
 
-.deposer-confirm-overlay {
+.deposer-confirmation-fond {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.75);
@@ -316,7 +316,7 @@ body.deposer-page {
   justify-content: center;
 }
 
-.deposer-confirm-box {
+.deposer-confirmation-boite {
   background: #1a1a2e;
   border-radius: 20px;
   padding: 36px 32px;
@@ -351,7 +351,7 @@ body.deposer-page {
   margin-bottom: 28px;
 }
 
-.confirm-ok-btn {
+.confirm-ok-bouton {
   width: 100%;
   background: #F8CA23;
   color: #1a1a2e;
@@ -365,6 +365,6 @@ body.deposer-page {
   transition: all 0.2s;
 }
 
-.confirm-ok-btn:hover {
+.confirm-ok-bouton:hover {
   background: #e5b820;
 }

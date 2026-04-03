@@ -1,7 +1,7 @@
 ;(() => {
-  const rosterGrid = document.getElementById("roster-grid");
-  const errorBox = document.getElementById("roster-error");
-  const positionBtns = document.querySelectorAll(".position-btn");
+  const rosterGrid = document.getElementById("effectif-grille");
+  const errorBox = document.getElementById("effectif-erreur");
+  const positionBtns = document.querySelectorAll(".bouton-poste");
 
   if (!rosterGrid) return;
 
@@ -14,7 +14,7 @@
       errorBox.classList.add("show");
       errorBox.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${msg}`;
     }
-    rosterGrid.innerHTML = `<div class="error-roster"><p> ${msg}</p></div>`;
+    rosterGrid.innerHTML = `<div class="erreur-effectif"><p> ${msg}</p></div>`;
   };
 
   const parsePlayers = (data) => {
@@ -64,40 +64,40 @@
 
   const createPlayerCard = (player) => {
     return `
-      <div class="player-card" data-position="${player.position}">
-        <div class="player-card-header">
-          <span class="player-jersey">#${player.jersey}</span>
-          <span class="player-position">${player.position}</span>
+      <div class="joueur-carte" data-position="${player.position}">
+        <div class="joueur-carte-entete">
+          <span class="joueur-maillot">#${player.jersey}</span>
+          <span class="joueur-poste">${player.position}</span>
         </div>
 
-        <div class="player-card-image">
+        <div class="joueur-carte-image">
           <img src="${player.headshot}" alt="${player.name}" loading="lazy">
         </div>
 
-        <div class="player-card-info">
-          <h3 class="player-name">${player.name}</h3>
+        <div class="joueur-carte-info">
+          <h3 class="joueur-nom">${player.name}</h3>
 
-          <div class="player-stats">
-            <div class="stat-item">
+          <div class="joueur-stats">
+            <div class="stat-element">
               <i class="fa-solid fa-calendar"></i>
               <span>${player.age} ans</span>
             </div>
-            <div class="stat-item">
+            <div class="stat-element">
               <i class="fa-solid fa-ruler-vertical"></i>
               <span>${player.height}</span>
             </div>
-            <div class="stat-item">
+            <div class="stat-element">
               <i class="fa-solid fa-weight-scale"></i>
               <span>${player.weight}</span>
             </div>
           </div>
 
-          <div class="player-details">
-            <div class="detail-row">
+          <div class="joueur-details">
+            <div class="detail-ligne">
               <span class="label">College:</span>
               <span class="value">${player.college}</span>
             </div>
-            <div class="detail-row">
+            <div class="detail-ligne">
               <span class="label">Expérience:</span>
               <span class="value">${player.experience}</span>
             </div>
@@ -109,7 +109,7 @@
 
   const renderPlayers = (players) => {
     if (!players || players.length === 0) {
-      rosterGrid.innerHTML = '<div class="no-players"><p>Aucun joueur trouvé</p></div>';
+      rosterGrid.innerHTML = '<div class="aucun-joueur"><p>Aucun joueur trouvé</p></div>';
       return;
     }
 
@@ -125,11 +125,11 @@
     }
   };
 
-  positionBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
+  positionBtns.forEach(bouton => {
+    bouton.addEventListener("click", () => {
       positionBtns.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      currentFilter = btn.dataset.position;
+      bouton.classList.add("active");
+      currentFilter = bouton.dataset.position;
       filterPlayers(currentFilter);
     });
   });

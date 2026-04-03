@@ -1,10 +1,10 @@
-body.auth-page {
+body.page-auth {
   background: #552583;
   color: #333;
   min-height: 100vh;
 }
 
-.auth-main {
+.auth-principal {
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 56px);
@@ -22,7 +22,7 @@ body.auth-page {
   display: none;
 }
 
-.auth-card {
+.auth-carte {
   background: #fdb927;
   border-radius: 20px;
   padding: 30px 25px;
@@ -32,60 +32,60 @@ body.auth-page {
   margin: 0 auto;
 }
 
-.auth-header {
+.auth-entete {
   text-align: center;
   margin-bottom: 25px;
 }
 
-.auth-header h1 {
+.auth-entete h1 {
   font-size: 32px;
   font-weight: 800;
   color: #552583;
   margin-bottom: 8px;
 }
 
-.auth-header p {
+.auth-entete p {
   font-size: 14px;
   color: #555;
 }
 
-.auth-form {
+.auth-formulaire {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
-.form-group {
+.formulaire-groupe {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.form-group label {
+.formulaire-groupe label {
   font-size: 14px;
   font-weight: 600;
   color: #333;
 }
 
-.label-row {
+.libelle-ligne {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.forgot-password {
+.mdp-oublie {
   font-size: 12px;
   color: #552583;
   text-decoration: none;
 }
 
-.forgot-password:hover {
+.mdp-oublie:hover {
   text-decoration: underline;
 }
 
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="password"] {
+.formulaire-groupe input[type="text"],
+.formulaire-groupe input[type="email"],
+.formulaire-groupe input[type="password"] {
   width: 100%;
   background: #fff;
   border: 2px solid #e8e8e8;
@@ -97,25 +97,25 @@ body.auth-page {
   transition: all 0.3s ease;
 }
 
-.form-group input::placeholder {
+.formulaire-groupe input::placeholder {
   color: #999;
 }
 
-.form-group input:focus {
+.formulaire-groupe input:focus {
   outline: none;
   border-color: #552583;
   box-shadow: 0 0 0 3px rgba(85, 37, 131, 0.2);
 }
 
-.password-wrapper {
+.mdp-conteneur {
   position: relative;
 }
 
-.password-wrapper input {
+.mdp-conteneur input {
   padding-right: 50px;
 }
 
-.toggle-password {
+.bouton-voir-mdp {
   position: absolute;
   right: 15px;
   top: 50%;
@@ -128,18 +128,18 @@ body.auth-page {
   font-size: 16px;
 }
 
-.toggle-password:hover {
+.bouton-voir-mdp:hover {
   color: #552583;
 }
 
-.form-checkboxes {
+.formulaire-cases {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-top: 5px;
 }
 
-.form-checkboxes label {
+.formulaire-cases label {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -148,14 +148,14 @@ body.auth-page {
   cursor: pointer;
 }
 
-.form-checkboxes input[type="checkbox"] {
+.formulaire-cases input[type="checkbox"] {
   width: 18px;
   height: 18px;
   cursor: pointer;
   accent-color: #552583;
 }
 
-.auth-btn {
+.auth-bouton {
   width: 100%;
   background: #552583;
   color: white;
@@ -172,32 +172,32 @@ body.auth-page {
   display: block;
 }
 
-.auth-btn:hover {
+.auth-bouton:hover {
   background: #6b2d9e;
   opacity: 0.9;
 }
 
-.auth-footer {
+.auth-pied {
   text-align: center;
   margin-top: 20px;
 }
 
-.auth-footer p {
+.auth-pied p {
   font-size: 14px;
   color: #555;
 }
 
-.auth-footer a {
+.auth-pied a {
   color: #552583;
   font-weight: 600;
   text-decoration: none;
 }
 
-.auth-footer a:hover {
+.auth-pied a:hover {
   text-decoration: underline;
 }
 
-.success-card {
+.succes-carte {
   display: none;
   background: #552583;
   border-radius: 20px;
@@ -209,11 +209,11 @@ body.auth-page {
   margin: 0 auto;
 }
 
-.success-card.show {
+.succes-carte.show {
   display: block;
 }
 
-.success-icon {
+.succes-icone {
   width: 80px;
   height: 80px;
   background: rgba(76, 175, 80, 0.2);
@@ -224,24 +224,24 @@ body.auth-page {
   margin: 0 auto 20px;
 }
 
-.success-icon i {
+.succes-icone i {
   font-size: 40px;
   color: #4CAF50;
 }
 
-.success-card h2 {
+.succes-carte h2 {
   font-size: 22px;
   color: #4CAF50;
   margin-bottom: 10px;
 }
 
-.success-card p {
+.succes-carte p {
   font-size: 15px;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 25px;
 }
 
-.success-card .success-btn {
+.succes-carte .succes-bouton {
   background: #4CAF50;
   max-width: 220px;
   margin: 0 auto;
@@ -252,36 +252,36 @@ body.auth-page {
     padding: 30px 40px;
   }
 
-  .auth-card {
+  .auth-carte {
     padding: 35px 30px;
     max-width: 550px;
   }
 
-  .auth-header h1 {
+  .auth-entete h1 {
     font-size: 38px;
   }
 
-  .auth-header p {
+  .auth-entete p {
     font-size: 16px;
   }
 
-  .form-group label {
+  .formulaire-groupe label {
     font-size: 15px;
   }
 
-  .form-group input {
+  .formulaire-groupe input {
     padding: 16px 20px;
     font-size: 16px;
   }
 }
 
 @media (min-width: 1024px) {
-  .auth-page {
+  .page-auth {
     position: relative;
     min-height: 100vh;
   }
 
-  .auth-page .site-footer {
+  .page-auth .pied-site {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -289,7 +289,7 @@ body.auth-page {
     z-index: 100;
   }
 
-  .auth-main {
+  .auth-principal {
     flex-direction: row;
     min-height: calc(100vh - 56px);
     position: relative;
@@ -321,42 +321,42 @@ body.auth-page {
     object-position: center;
   }
 
-  .auth-card {
+  .auth-carte {
     max-width: 100%;
     padding: 25px;
     margin: 0;
     margin-top: 20px;
   }
 
-  .auth-header h1 {
+  .auth-entete h1 {
     font-size: 32px;
   }
 
-  .auth-header p {
+  .auth-entete p {
     font-size: 14px;
   }
 
-  .auth-form {
+  .auth-formulaire {
     gap: 14px;
   }
 
-  .form-group label {
+  .formulaire-groupe label {
     font-size: 13px;
   }
 
-  .form-group input {
+  .formulaire-groupe input {
     padding: 12px 15px;
     font-size: 14px;
   }
 
-  .auth-btn {
+  .auth-bouton {
     padding: 14px;
     font-size: 15px;
   }
 }
 
 @media (min-width: 1440px) {
-  .auth-page .site-footer {
+  .page-auth .pied-site {
     width: 40%;
   }
 
@@ -371,16 +371,16 @@ body.auth-page {
     max-width: 60%;
   }
 
-  .auth-card {
+  .auth-carte {
     padding: 30px;
     margin-top: 30px;
   }
 
-  .auth-header h1 {
+  .auth-entete h1 {
     font-size: 36px;
   }
 
-  .form-group input {
+  .formulaire-groupe input {
     padding: 14px 18px;
     font-size: 15px;
   }

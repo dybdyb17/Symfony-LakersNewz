@@ -12,16 +12,16 @@ body.calendrier-page::before {
   z-index: -1;
 }
 
-body.calendrier-page .topbar {
+body.calendrier-page .barre-nav {
   background: rgba(0, 0, 0, 0.65);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-body.calendrier-page .burger-btn {
+body.calendrier-page .bouton-menu {
   color: #f5f5f5;
 }
 
-.calendar-main {
+.calendrier-principal {
   padding: 120px 32px 64px;
   max-width: 1200px;
   width: 100%;
@@ -31,7 +31,7 @@ body.calendrier-page .burger-btn {
   gap: 32px;
 }
 
-.calendar-hero {
+.calendrier-bandeau {
   position: relative;
   background: linear-gradient(135deg, rgba(84, 37, 131, 0.9), rgba(253, 185, 39, 0.2)),
               url('../assets/img/dean-bennett-nFjLHE4vmn4-unsplash.jpg') center/cover no-repeat;
@@ -41,14 +41,14 @@ body.calendrier-page .burger-btn {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
 }
 
-.calendar-hero-overlay {
+.calendrier-bandeau-fond {
   max-width: 560px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.calendar-hero-label {
+.calendrier-bandeau-etiquette {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -61,19 +61,19 @@ body.calendrier-page .burger-btn {
   font-weight: 600;
 }
 
-.calendar-hero h1 {
+.calendrier-bandeau h1 {
   font-size: 48px;
   font-weight: 800;
   line-height: 1.15;
 }
 
-.calendar-hero p {
+.calendrier-bandeau p {
   font-size: 18px;
   color: rgba(245, 245, 245, 0.85);
   line-height: 1.6;
 }
 
-.calendar-card {
+.calendrier-carte {
   background: rgba(12, 12, 26, 0.82);
   border-radius: 20px;
   padding: 32px;
@@ -81,7 +81,7 @@ body.calendrier-page .burger-btn {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.calendar-card-header {
+.calendrier-carte-entete {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -90,21 +90,21 @@ body.calendrier-page .burger-btn {
   margin-bottom: 28px;
 }
 
-.calendar-card-header h2 {
+.calendrier-carte-entete h2 {
   font-size: 28px;
   margin-bottom: 4px;
 }
 
-.calendar-card-subtitle {
+.calendrier-carte-sous-titre {
   color: rgba(245, 245, 245, 0.7);
 }
 
-.calendar-filters {
+.calendrier-filtres {
   display: flex;
   gap: 16px;
 }
 
-.filter {
+.filtre {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -112,7 +112,7 @@ body.calendrier-page .burger-btn {
   color: rgba(245, 245, 245, 0.75);
 }
 
-.filter select {
+.filtre select {
   background: rgba(0, 0, 0, 0.45);
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: #f5f5f5;
@@ -122,13 +122,13 @@ body.calendrier-page .burger-btn {
   cursor: pointer;
 }
 
-.filter select:focus {
+.filtre select:focus {
   outline: none;
   border-color: #fdb927;
   box-shadow: 0 0 0 2px rgba(253, 185, 39, 0.25);
 }
 
-.calendar-table-wrapper {
+.calendrier-tableau-conteneur {
   width: 100%;
   display: block;
   max-height: none;
@@ -136,14 +136,14 @@ body.calendrier-page .burger-btn {
   overflow-y: visible;
 }
 
-.calendar-table {
+.calendrier-tableau {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
   min-width: unset;
 }
 
-.calendar-table thead th {
+.calendrier-tableau thead th {
   text-align: left;
   background: rgba(253, 185, 39, 0.08);
   color: #fdb927;
@@ -153,43 +153,43 @@ body.calendrier-page .burger-btn {
   border-bottom: 2px solid rgba(253, 185, 39, 0.35);
 }
 
-.calendar-table tbody tr {
+.calendrier-tableau tbody tr {
   transition: background 0.2s ease;
   background: rgba(255, 255, 255, 0.02);
 }
 
-.calendar-table tbody tr:nth-child(even) {
+.calendrier-tableau tbody tr:nth-child(even) {
   background: rgba(255, 255, 255, 0.04);
 }
 
-.calendar-table tbody tr:hover {
+.calendrier-tableau tbody tr:hover {
   background: rgba(253, 185, 39, 0.12);
 }
 
-.calendar-table td {
+.calendrier-tableau td {
   padding: 16px 18px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 15px;
   color: rgba(245, 245, 245, 0.85);
 }
 
-.calendar-day {
+.calendrier-jour {
   font-weight: 600;
   display: block;
 }
 
-.calendar-time {
+.calendrier-heure {
   font-weight: 500;
 }
 
-.calendar-matchup {
+.calendrier-confrontation {
   display: inline-flex;
   align-items: center;
   gap: 12px;
   font-weight: 600;
 }
 
-.calendar-status {
+.calendrier-statut {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -203,7 +203,7 @@ body.calendrier-page .burger-btn {
   font-size: 14px;
 }
 
-.calendar-table img.logo {
+.calendrier-tableau img.logo {
   width: 24px;
   height: 24px;
   vertical-align: middle;
@@ -211,81 +211,81 @@ body.calendrier-page .burger-btn {
   margin-right: 8px;
 }
 
-.result {
+.resultat {
   font-weight: 600;
 }
 
-.result.pending {
+.resultat.en-attente {
   color: rgba(245, 245, 245, 0.6);
 }
 
-.result.win {
+.resultat.victoire {
   color: #66ff99;
 }
 
-.result.loss {
+.resultat.defaite {
   color: #ff7a7a;
 }
 
 @media (max-width: 1024px) {
-  .calendar-main {
+  .calendrier-principal {
     padding: 110px 20px 48px;
   }
 
-  .calendar-hero {
+  .calendrier-bandeau {
     padding: 48px 32px;
   }
 }
 
 @media (max-width: 768px) {
-  .calendar-hero {
+  .calendrier-bandeau {
     padding: 40px 24px;
   }
 
-  .calendar-hero h1 {
+  .calendrier-bandeau h1 {
     font-size: 36px;
   }
 
-  .calendar-card {
+  .calendrier-carte {
     padding: 24px 20px;
   }
 
-  .calendar-card-header {
+  .calendrier-carte-entete {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .calendar-filters {
+  .calendrier-filtres {
     width: 100%;
     flex-wrap: wrap;
   }
 
-  .filter {
+  .filtre {
     flex: 1 1 140px;
   }
 }
 
 @media (max-width: 600px) {
-  .calendar-table {
+  .calendrier-tableau {
     min-width: 100%;
   }
 
-  .calendar-table thead {
+  .calendrier-tableau thead {
     display: none;
   }
 
-  .calendar-table tr {
+  .calendrier-tableau tr {
     display: grid;
     gap: 8px 16px;
     padding: 18px 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .calendar-table td {
+  .calendrier-tableau td {
     padding: 0;
   }
 
-  .calendar-table td::before {
+  .calendrier-tableau td::before {
     content: attr(data-label);
     display: block;
     font-size: 12px;
@@ -294,7 +294,7 @@ body.calendrier-page .burger-btn {
     margin-bottom: 4px;
   }
 
-  .calendar-matchup {
+  .calendrier-confrontation {
     justify-content: flex-start;
   }
 }

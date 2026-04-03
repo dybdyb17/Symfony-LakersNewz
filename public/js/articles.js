@@ -72,25 +72,25 @@ function buildCard(article) {
     : (article.contenu || '');
 
   const card = document.createElement('article');
-  card.className = 'news-card';
+  card.className = 'actualite-carte';
   card.innerHTML = `
-    <div class="news-card__image">
+    <div class="actualite-carte-image">
       <img src="${imgSrc}" alt="${article.titre || ''}" loading="lazy">
       <span class="news-category ${categorieClass}">${article.categorie || 'News'}</span>
     </div>
-    <div class="news-card__content">
-      <div class="news-card__date">
+    <div class="actualite-carte-contenu">
+      <div class="actualite-carte-date">
         <i class="fa-solid fa-calendar"></i>
         ${formatDate(article.createdAt)}
       </div>
-      <h3 class="news-card__title">${article.titre || ''}</h3>
-      <p class="news-card__excerpt">${excerpt}</p>
-      <div class="news-card__footer">
-        <span class="news-card__author">
+      <h3 class="actualite-carte-titre">${article.titre || ''}</h3>
+      <p class="actualite-carte-extrait">${excerpt}</p>
+      <div class="actualite-carte-pied">
+        <span class="actualite-carte-auteur">
           <i class="fa-solid fa-user"></i>
           ${article.auteur || 'Lakers Newz'}
         </span>
-        <a href="#" class="news-card__read-more">
+        <a href="#" class="actualite-carte-lire-plus">
           Lire la suite
           <i class="fa-solid fa-arrow-right"></i>
         </a>
@@ -101,7 +101,7 @@ function buildCard(article) {
 }
 
 function renderArticles(articles) {
-  const grid = document.querySelector('.news-grid');
+  const grid = document.querySelector('.actualites-grille');
   if (!grid) return;
   grid.innerHTML = '';
   articles.forEach(article => grid.appendChild(buildCard(article)));

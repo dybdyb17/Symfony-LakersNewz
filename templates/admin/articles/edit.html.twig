@@ -3,20 +3,20 @@
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/admin.css') }}">{% endblock %}
 {% block body_class %}admin{% endblock %}
 {% block body %}
-<main class="admin-page admin-page-small">
+<main class="admin-page admin-page-petite">
     <h1 class="admin-titre">Modifier l'article</h1>
 
-    <div class="admin-form-box">
-        {{ form_start(form, {'attr': {'class': 'admin-form'}}) }}
+    <div class="admin-formulaireulaire-conteneur">
+        {{ form_start(form, {'attr': {'class': 'admin-formulaire'}}) }}
             <div>{{ form_label(form.titre) }}{{ form_widget(form.titre) }}</div>
             <div>{{ form_label(form.contenu) }}{{ form_widget(form.contenu) }}</div>
             <div>{{ form_label(form.categorie) }}{{ form_widget(form.categorie) }}</div>
             <div>{{ form_label(form.image) }}{{ form_widget(form.image) }}</div>
             <div>{{ form_label(form.auteur) }}{{ form_widget(form.auteur) }}</div>
-            <button type="submit" class="admin-btn-ok admin-btn-ok-edit">Enregistrer les modifications</button>
+            <button type="submit" class="admin-bouton-valider admin-bouton-valider-modifier">Enregistrer les modifications</button>
         {{ form_end(form) }}
     </div>
 
-    <a href="{{ path('admin_articles_index') }}" class="admin-back">← Retour à la liste</a>
+    <a href="{{ path('admin_articles_index') }}" class="admin-retour">← Retour à la liste</a>
 </main>
 {% endblock %}

@@ -1,24 +1,24 @@
 {% extends 'base.html.twig' %}
 {% block title %}Roster 2025/2026 - Los Angeles Lakers{% endblock %}
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/roster.css') }}">{% endblock %}
-{% block body_class %}roster-page{% endblock %}
+{% block body_class %}effectif-page{% endblock %}
 {% block body %}
-<main class="roster-main">
-    <section class="roster-hero">
-        <div class="roster-hero-content">
+<main class="effectif-principal">
+    <section class="effectif-bandeau">
+        <div class="effectif-bandeau-contenu">
             <h1><i class="fa-solid fa-users"></i> Effectif 2025/2026</h1>
             <p>Découvrez tous les joueurs des Los Angeles Lakers</p>
         </div>
     </section>
-    <section class="roster-filters">
-        <button class="position-btn active" data-position="all"><i class="fa-solid fa-layer-group"></i> Tous</button>
-        <button class="position-btn" data-position="G"><i class="fa-solid fa-basketball"></i> Guards</button>
-        <button class="position-btn" data-position="F"><i class="fa-solid fa-running"></i> Forwards</button>
-        <button class="position-btn" data-position="C"><i class="fa-solid fa-hands"></i> Centers</button>
+    <section class="effectif-filtres">
+        <button class="bouton-poste active" data-position="all"><i class="fa-solid fa-layer-group"></i> Tous</button>
+        <button class="bouton-poste" data-position="G"><i class="fa-solid fa-basketball"></i> Guards</button>
+        <button class="bouton-poste" data-position="F"><i class="fa-solid fa-running"></i> Forwards</button>
+        <button class="bouton-poste" data-position="C"><i class="fa-solid fa-hands"></i> Centers</button>
     </section>
-    <div id="roster-error" class="error-message"></div>
-    <section class="roster-grid" id="roster-grid">
-        <div class="loading-roster">
+    <div id="effectif-erreur" class="message-erreur"></div>
+    <section class="effectif-grille" id="effectif-grille">
+        <div class="effectif-chargement">
             <i class="fa-solid fa-spinner fa-spin"></i>
             <p>Chargement de l'effectif...</p>
         </div>

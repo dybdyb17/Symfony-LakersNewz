@@ -3,11 +3,11 @@
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/admin.css') }}">{% endblock %}
 {% block body_class %}admin{% endblock %}
 {% block body %}
-<main class="admin-page admin-page-small">
+<main class="admin-page admin-page-petite">
     <h1 class="admin-titre">Créer un match</h1>
 
-    <div class="admin-form-box">
-        {{ form_start(form, {'attr': {'class': 'admin-form'}}) }}
+    <div class="admin-formulaireulaire-conteneur">
+        {{ form_start(form, {'attr': {'class': 'admin-formulaire'}}) }}
             <div>
                 {{ form_label(form.team1) }}
                 {{ form_widget(form.team1) }}
@@ -16,7 +16,7 @@
                 {{ form_label(form.team2) }}
                 {{ form_widget(form.team2) }}
             </div>
-            <div class="form-row">
+            <div class="formulaire-ligne">
                 <div>
                     {{ form_label(form.cote1) }}
                     {{ form_widget(form.cote1) }}
@@ -30,10 +30,10 @@
                 {{ form_label(form.dateMatch) }}
                 {{ form_widget(form.dateMatch) }}
             </div>
-            <button type="submit" class="admin-btn-ok">Créer le match</button>
+            <button type="submit" class="admin-bouton-valider">Créer le match</button>
         {{ form_end(form) }}
     </div>
 
-    <a href="{{ path('admin_matchs_index') }}" class="admin-back">← Retour à la liste</a>
+    <a href="{{ path('admin_matchs_index') }}" class="admin-retour">← Retour à la liste</a>
 </main>
 {% endblock %}

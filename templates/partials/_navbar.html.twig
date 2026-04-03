@@ -1,55 +1,55 @@
-<header class="topbar">
-    <div class="top-links">
-        <a href="https://www.ticketmaster.com/los-angeles-lakers-tickets/artist/805962" class="btn btn-gold">Billeterie</a>
-        <a href="https://www.nbastore.eu/fr/los-angeles-lakers/t-25031846+z-9030758-2040509788" class="btn btn-purple">#Boutique</a>
-        <a href="https://www.youtube.com/c/LakeShowHighlights" class="btn btn-black">#Lakeshow</a>
+<header class="barre-nav">
+    <div class="nav-liens">
+        <a href="https://www.ticketmaster.com/los-angeles-lakers-tickets/artist/805962" class="bouton bouton-or">Billeterie</a>
+        <a href="https://www.nbastore.eu/fr/los-angeles-lakers/t-25031846+z-9030758-2040509788" class="bouton bouton-violet">#Boutique</a>
+        <a href="https://www.youtube.com/c/LakeShowHighlights" class="bouton bouton-noir">#Lakeshow</a>
     </div>
 
-    <div class="top-logo">
+    <div class="nav-logo">
         <a href="{{ path('app_home') }}">
             <img src="{{ asset('assets/img/logo_LakersNewz.png') }}" width="130" height="40" alt="Lakers Newz">
         </a>
     </div>
 
-    <div class="top-actions">
-        <button class="search-btn" aria-label="Rechercher">
+    <div class="nav-actions">
+        <button class="bouton-recherche" aria-label="Rechercher">
             <i class="fa-solid fa-magnifying-glass"></i>
         </button>
 
-        <div class="settings-dropdown">
-            <button class="settings-btn" aria-label="Réglages">
+        <div class="reglages-menu">
+            <button class="bouton-reglages" aria-label="Réglages">
                 <i class="fa-solid fa-gear"></i>
             </button>
 
-            <div class="dropdown-menu">
+            <div class="sous-menu">
                 {% if app.user %}
-                    <div class="dropdown-item user-status">
+                    <div class="sous-menu-element statut-utilisateur">
                         <i class="fa-solid fa-circle-check"></i>
                         <span>Vous êtes connecté</span>
                     </div>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('admin_matchs_index') }}" class="dropdown-item">
+                        <a href="{{ path('admin_matchs_index') }}" class="sous-menu-element">
                             <i class="fa-solid fa-shield"></i>
                             <span>Admin</span>
                         </a>
-                        <div class="dropdown-divider"></div>
+                        <div class="sous-menu-separateur"></div>
                     {% endif %}
-                    <a href="{{ path('app_logout') }}" class="dropdown-item">
+                    <a href="{{ path('app_logout') }}" class="sous-menu-element">
                         <i class="fa-solid fa-right-from-bracket"></i>
                         <span>Se déconnecter</span>
                     </a>
                 {% else %}
-                    <a href="{{ path('app_register') }}" class="dropdown-item">
+                    <a href="{{ path('app_register') }}" class="sous-menu-element">
                         <i class="fa-solid fa-user-plus"></i>
                         <span>S'inscrire</span>
                     </a>
-                    <a href="{{ path('app_login') }}" class="dropdown-item">
+                    <a href="{{ path('app_login') }}" class="sous-menu-element">
                         <i class="fa-solid fa-right-to-bracket"></i>
                         <span>Se connecter</span>
                     </a>
                 {% endif %}
-                <div class="dropdown-divider"></div>
-                <a href="{{ path('app_contact') }}" class="dropdown-item">
+                <div class="sous-menu-separateur"></div>
+                <a href="{{ path('app_contact') }}" class="sous-menu-element">
                     <i class="fa-solid fa-envelope"></i>
                     <span>Contact</span>
                 </a>

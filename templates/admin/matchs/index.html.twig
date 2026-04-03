@@ -4,19 +4,19 @@
 {% block body_class %}admin{% endblock %}
 {% block body %}
 <main class="admin-page">
-    <div class="admin-top">
+    <div class="admin-haut">
         <h1 class="admin-titre">Gestion des matchs</h1>
-        <a href="{{ path('admin_matchs_new') }}" class="admin-btn-new">+ Nouveau match</a>
+        <a href="{{ path('admin_matchs_new') }}" class="admin-bouton-nouveau">+ Nouveau match</a>
     </div>
 
     {% include 'admin/_nav.html.twig' %}
 
     {% for message in app.flashes('success') %}
-        <div class="admin-success">{{ message }}</div>
+        <div class="admin-succes">{{ message }}</div>
     {% endfor %}
 
-    <div class="admin-table-box">
-        <table class="admin-table">
+    <div class="admin-tableauau-conteneur">
+        <table class="admin-tableau">
             <thead>
                 <tr>
                     <th>Équipe 1</th>
@@ -37,11 +37,11 @@
                         <td class="center">{{ match.dateMatch ? match.dateMatch|date('d/m/Y H:i') : '—' }}</td>
                         <td class="center">
                             {% if match.statut == 'termine' %}
-                                <span class="badge badge-green">Terminé</span>
+                                <span class="badge badge-vert">Terminé</span>
                             {% elseif match.statut == 'en_cours' %}
                                 <span class="badge badge-orange">En cours</span>
                             {% else %}
-                                <span class="badge badge-blue">À venir</span>
+                                <span class="badge badge-bleu">À venir</span>
                             {% endif %}
                         </td>
                         <td class="center">
@@ -53,10 +53,10 @@
                         </td>
                         <td class="center">
                             {% if match.statut != 'termine' %}
-                                <a href="{{ path('admin_matchs_resultat', {id: match.id}) }}" class="admin-btn-resultat">Résultat</a>
+                                <a href="{{ path('admin_matchs_resultat', {id: match.id}) }}" class="admin-bouton-resultat">Résultat</a>
                             {% endif %}
                             <form method="post" action="{{ path('admin_matchs_delete', {id: match.id}) }}" style="display: inline;" onsubmit="return confirm('Supprimer ce match ?');">
-                                <button type="submit" class="admin-btn-delete">Supprimer</button>
+                                <button type="submit" class="admin-bouton-supprimer">Supprimer</button>
                             </form>
                         </td>
                     </tr>

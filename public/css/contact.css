@@ -4,22 +4,22 @@ body.contact-page {
   min-height: 100vh;
 }
 
-.contact-main {
+.contact-principal {
   padding: 100px 20px 40px;
   min-height: calc(100vh - 200px);
 }
 
-.contact-container {
+.contact-conteneur {
   max-width: 480px;
   margin: 0 auto;
 }
 
-.contact-header {
+.contact-entete {
   text-align: center;
   margin-bottom: 30px;
 }
 
-.contact-icon {
+.contact-icone {
   width: 60px;
   height: 60px;
   margin: 0 auto 15px;
@@ -28,45 +28,45 @@ body.contact-page {
   justify-content: center;
 }
 
-.contact-icon i {
+.contact-icone i {
   font-size: 40px;
   color: #fdb927;
 }
 
-.contact-header h1 {
+.contact-entete h1 {
   font-size: 28px;
   font-weight: 700;
   color: #fdb927;
   margin: 0;
 }
 
-.contact-form-card {
+.contact-formulaireulaire-carte {
   background: #552583;
   border-radius: 20px;
   padding: 25px;
   margin-bottom: 25px;
 }
 
-.contact-form-card h2 {
+.contact-formulaireulaire-carte h2 {
   color: #fdb927;
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 20px;
 }
 
-.contact-form {
+.contact-formulaire {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.form-group {
+.formulaire-groupe {
   width: 100%;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
+.formulaire-groupe input,
+.formulaire-groupe select,
+.formulaire-groupe textarea {
   width: 100%;
   border: none;
   border-radius: 10px;
@@ -77,13 +77,13 @@ body.contact-page {
   transition: all 0.3s ease;
 }
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
+.formulaire-groupe input::placeholder,
+.formulaire-groupe textarea::placeholder {
   color: #666;
   opacity: 1;
 }
 
-.form-group select {
+.formulaire-groupe select {
   cursor: pointer;
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
@@ -92,24 +92,24 @@ body.contact-page {
   padding-right: 40px;
 }
 
-.form-group select option {
+.formulaire-groupe select option {
   background: #fdb927;
   color: #333;
 }
 
-.form-group textarea {
+.formulaire-groupe textarea {
   resize: vertical;
   min-height: 120px;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+.formulaire-groupe input:focus,
+.formulaire-groupe select:focus,
+.formulaire-groupe textarea:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(253, 185, 39, 0.5);
 }
 
-.submit-btn {
+.bouton-envoyer {
   width: 100%;
   background: #fdb927;
   color: #552583;
@@ -127,27 +127,27 @@ body.contact-page {
   margin-top: 10px;
 }
 
-.submit-btn:hover {
+.bouton-envoyer:hover {
   background: #e5a620;
   transform: translateY(-2px);
   box-shadow: 0 5px 20px rgba(253, 185, 39, 0.4);
 }
 
-.submit-btn i {
+.bouton-envoyer i {
   font-size: 18px;
 }
 
-.form-success {
+.formulaire-succes {
   display: none;
   text-align: center;
   padding: 30px 20px;
 }
 
-.form-success.show {
+.formulaire-succes.show {
   display: block;
 }
 
-.success-icon {
+.succes-icone {
   width: 80px;
   height: 80px;
   background: rgba(76, 175, 80, 0.2);
@@ -158,18 +158,18 @@ body.contact-page {
   margin: 0 auto 20px;
 }
 
-.success-icon i {
+.succes-icone i {
   font-size: 40px;
   color: #4CAF50;
 }
 
-.form-success p {
+.formulaire-succes p {
   font-size: 18px;
   color: #4CAF50;
   margin-bottom: 25px;
 }
 
-.btn-back-home {
+.bouton-retour-accueil {
   display: inline-block;
   background: #4CAF50;
   color: white;
@@ -181,25 +181,25 @@ body.contact-page {
   transition: all 0.3s ease;
 }
 
-.btn-back-home:hover {
+.bouton-retour-accueil:hover {
   background: #45a049;
   transform: translateY(-2px);
 }
 
-.contact-info-card {
+.contact-info-carte {
   background: #552583;
   border-radius: 20px;
   padding: 25px;
 }
 
-.contact-info-card h2 {
+.contact-info-carte h2 {
   color: #fdb927;
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 20px;
 }
 
-.info-item {
+.info-element {
   display: flex;
   gap: 15px;
   padding: 15px;
@@ -209,7 +209,7 @@ body.contact-page {
   align-items: flex-start;
 }
 
-.info-icon {
+.info-icone {
   width: 40px;
   height: 40px;
   min-width: 40px;
@@ -220,19 +220,19 @@ body.contact-page {
   justify-content: center;
 }
 
-.info-icon i {
+.info-icone i {
   color: #fdb927;
   font-size: 18px;
 }
 
-.info-content h3 {
+.info-contenu h3 {
   color: #fdb927;
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 5px;
 }
 
-.info-content p {
+.info-contenu p {
   color: rgba(255, 255, 255, 0.9);
   font-size: 14px;
   line-height: 1.5;
@@ -253,13 +253,13 @@ body.contact-page {
   margin-bottom: 15px;
 }
 
-.social-icons {
+.social-iconees {
   display: flex;
   justify-content: center;
   gap: 15px;
 }
 
-.social-icon {
+.social-icone {
   width: 45px;
   height: 45px;
   background: rgba(255, 255, 255, 0.1);
@@ -273,34 +273,34 @@ body.contact-page {
   transition: all 0.3s ease;
 }
 
-.social-icon:hover {
+.social-icone:hover {
   background: #fdb927;
   color: #552583;
 }
 
 
 @media (min-width: 768px) {
-  .contact-container {
+  .contact-conteneur {
     max-width: 700px;
   }
 
-  .contact-header h1 {
+  .contact-entete h1 {
     font-size: 36px;
   }
 
-  .contact-form-card,
-  .contact-info-card {
+  .contact-formulaireulaire-carte,
+  .contact-info-carte {
     padding: 35px;
   }
 
-  .contact-form-card h2,
-  .contact-info-card h2 {
+  .contact-formulaireulaire-carte h2,
+  .contact-info-carte h2 {
     font-size: 24px;
   }
 
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
+  .formulaire-groupe input,
+  .formulaire-groupe select,
+  .formulaire-groupe textarea {
     padding: 18px 22px;
     font-size: 17px;
   }
@@ -308,11 +308,11 @@ body.contact-page {
 
 
 @media (min-width: 1024px) {
-  .contact-main {
+  .contact-principal {
     padding: 120px 40px 60px;
   }
 
-  .contact-container {
+  .contact-conteneur {
     max-width: 1100px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -320,39 +320,39 @@ body.contact-page {
     gap: 30px;
   }
 
-  .contact-header {
+  .contact-entete {
     grid-column: 1 / -1;
     margin-bottom: 10px;
   }
 
-  .contact-header h1 {
+  .contact-entete h1 {
     font-size: 42px;
   }
 
-  .contact-icon i {
+  .contact-icone i {
     font-size: 50px;
   }
 
-  .contact-form-card {
+  .contact-formulaireulaire-carte {
     grid-column: 1;
     margin-bottom: 0;
   }
 
-  .contact-info-card {
+  .contact-info-carte {
     grid-column: 2;
   }
 
-  .contact-form-card,
-  .contact-info-card {
+  .contact-formulaireulaire-carte,
+  .contact-info-carte {
     padding: 40px;
     border-radius: 25px;
   }
 
-  .info-item {
+  .info-element {
     padding: 18px;
   }
 
-  .social-icon {
+  .social-icone {
     width: 50px;
     height: 50px;
     font-size: 22px;
@@ -360,12 +360,12 @@ body.contact-page {
 }
 
 @media (min-width: 1440px) {
-  .contact-container {
+  .contact-conteneur {
     max-width: 1200px;
   }
 
-  .contact-form-card,
-  .contact-info-card {
+  .contact-formulaireulaire-carte,
+  .contact-info-carte {
     padding: 50px;
   }
 }

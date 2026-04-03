@@ -4,25 +4,25 @@
 {% block body_class %}classement-page{% endblock %}
 {% block body %}
 <main class="classement-main">
-    <section class="classement-card">
+    <section class="classement-carte">
         <h1>Classement NBA 2025/2026</h1>
-        <div class="conference-filters">
-            <button class="conf-btn active" data-conf="all">Toutes les équipes</button>
-            <button class="conf-btn" data-conf="west">Conférence Ouest</button>
-            <button class="conf-btn" data-conf="east">Conférence Est</button>
+        <div class="conference-filtres">
+            <button class="conf-bouton active" data-conf="all">Toutes les équipes</button>
+            <button class="conf-bouton" data-conf="west">Conférence Ouest</button>
+            <button class="conf-bouton" data-conf="east">Conférence Est</button>
         </div>
-        <div id="standings-error" class="error-message"></div>
-        <div class="classement-table__wrapper">
-            <table class="standings-table">
+        <div id="standings-error" class="message-erreur"></div>
+        <div class="classement-tableau-conteneur">
+            <table class="classement-tableau">
                 <thead>
                     <tr>
                         <th>#</th><th>Équipe</th><th>W</th><th>L</th><th>PCT</th><th>GB</th><th>HOME</th><th>AWAY</th><th>PPG</th><th>OPP PPG</th><th>DIFF</th><th>STRK</th><th>L10</th>
                     </tr>
                 </thead>
                 <tbody id="nba-standings-body">
-                    <tr class="loading-row">
+                    <tr class="chargement-ligne">
                         <td colspan="13">
-                            <div class="loading-spinner">
+                            <div class="chargement-icone">
                                 <i class="fa-solid fa-spinner fa-spin"></i>
                                 <p>Chargement du classement...</p>
                             </div>

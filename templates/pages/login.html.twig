@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 {% block title %}Se connecter - Lakers Newz{% endblock %}
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/auth.css') }}">{% endblock %}
-{% block body_class %}auth-page connexion-page{% endblock %}
+{% block body_class %}page-auth connexion-page{% endblock %}
 {% block body %}
-<main class="auth-main">
+<main class="auth-principal">
     <div class="auth-left">
-        <div class="auth-card connexion-card">
-            <div class="auth-header">
+        <div class="auth-carte connexion-carte">
+            <div class="auth-entete">
                 <h1>Se connecter</h1>
                 <p>Entre ton adresse mail et mot de passe</p>
             </div>
@@ -17,30 +17,30 @@
                 </div>
             {% endif %}
 
-            <form class="auth-form" method="post" action="{{ path('app_login') }}">
-                <div class="form-group">
+            <form class="auth-formulaire" method="post" action="{{ path('app_login') }}">
+                <div class="formulaire-groupe">
                     <label for="email">Adresse e-mail</label>
                     <input type="email" id="email" name="email" value="{{ last_username }}" placeholder="Entre ton adresse mail" required>
                 </div>
-                <div class="form-group">
-                    <div class="label-row">
+                <div class="formulaire-groupe">
+                    <div class="libelle-ligne">
                         <label for="password">Mot de passe</label>
-                        <a href="#" class="forgot-password">mot de passe oublié?</a>
+                        <a href="#" class="mdp-oublie">mot de passe oublié?</a>
                     </div>
-                    <div class="password-wrapper">
+                    <div class="mdp-conteneur">
                         <input type="password" id="password" name="password" placeholder="••••••••••" required>
-                        <button type="button" class="toggle-password"><i class="fa-solid fa-eye-slash"></i></button>
+                        <button type="button" class="bouton-voir-mdp"><i class="fa-solid fa-eye-slash"></i></button>
                     </div>
                 </div>
-                <div class="form-checkboxes">
+                <div class="formulaire-cases">
                     <label>
                         <input type="checkbox" id="remember" name="_remember_me">
                         Me souvenir
                     </label>
                 </div>
-                <button type="submit" class="auth-btn">Se connecter</button>
+                <button type="submit" class="auth-bouton">Se connecter</button>
             </form>
-            <div class="auth-footer">
+            <div class="auth-pied">
                 <p>Pas de compte ? <a href="{{ path('app_register') }}">Inscris toi</a></p>
             </div>
         </div>
@@ -52,8 +52,8 @@
 {% endblock %}
 {% block javascripts %}
 <script>
-document.querySelectorAll('.toggle-password').forEach(btn => {
-    btn.addEventListener('click', function() {
+document.querySelectorAll('.bouton-voir-mdp').forEach(bouton => {
+    bouton.addEventListener('click', function() {
         const input = this.parentElement.querySelector('input');
         const icon = this.querySelector('i');
         if (input.type === 'password') {

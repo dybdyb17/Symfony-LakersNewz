@@ -1,81 +1,81 @@
 {% extends 'base.html.twig' %}
 {% block title %}S'inscrire - Lakers Newz{% endblock %}
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/auth.css') }}">{% endblock %}
-{% block body_class %}auth-page inscription-page{% endblock %}
+{% block body_class %}page-auth inscription-page{% endblock %}
 {% block body %}
-<main class="auth-main">
+<main class="auth-principal">
     <div class="auth-left">
         {% if success %}
-            <div class="success-card show">
-                <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+            <div class="succes-carte show">
+                <div class="succes-icone"><i class="fa-solid fa-check"></i></div>
                 <h2 style="color: #4CAF50;">Compte créé avec succès</h2>
                 <p>Bienvenue {{ prenom }}</p>
-                <a href="{{ path('app_login') }}" class="auth-btn success-btn">Se connecter</a>
+                <a href="{{ path('app_login') }}" class="auth-bouton succes-bouton">Se connecter</a>
             </div>
         {% else %}
-            <div class="auth-card">
-                <div class="auth-header">
+            <div class="auth-carte">
+                <div class="auth-entete">
                     <h1>S'inscrire</h1>
                     <p>Créer votre compte</p>
                 </div>
 
-                {{ form_start(registrationForm, {'attr': {'class': 'auth-form'}}) }}
+                {{ form_start(registrationForm, {'attr': {'class': 'auth-formulaire'}}) }}
 
-                    <div class="form-group">
+                    <div class="formulaire-groupe">
                         {{ form_label(registrationForm.firstname) }}
                         {{ form_widget(registrationForm.firstname) }}
                         {{ form_errors(registrationForm.firstname) }}
                     </div>
 
-                    <div class="form-group">
+                    <div class="formulaire-groupe">
                         {{ form_label(registrationForm.lastname) }}
                         {{ form_widget(registrationForm.lastname) }}
                         {{ form_errors(registrationForm.lastname) }}
                     </div>
 
-                    <div class="form-group">
+                    <div class="formulaire-groupe">
                         {{ form_label(registrationForm.pseudo) }}
                         {{ form_widget(registrationForm.pseudo) }}
                         {{ form_errors(registrationForm.pseudo) }}
                     </div>
 
-                    <div class="form-group">
+                    <div class="formulaire-groupe">
                         {{ form_label(registrationForm.email) }}
                         {{ form_widget(registrationForm.email) }}
                         {{ form_errors(registrationForm.email) }}
                     </div>
 
-                    <div class="form-group">
+                    <div class="formulaire-groupe">
                         {{ form_label(registrationForm.dateNaissance) }}
                         {{ form_widget(registrationForm.dateNaissance) }}
                         {{ form_errors(registrationForm.dateNaissance) }}
                     </div>
 
-                    <div class="form-group">
+                    <div class="formulaire-groupe">
                         {{ form_label(registrationForm.telephone) }}
                         {{ form_widget(registrationForm.telephone) }}
                         {{ form_errors(registrationForm.telephone) }}
                     </div>
 
-                    <div class="form-group">
+                    <div class="formulaire-groupe">
                         {{ form_label(registrationForm.lieuNaissance) }}
                         {{ form_widget(registrationForm.lieuNaissance) }}
                         {{ form_errors(registrationForm.lieuNaissance) }}
                     </div>
 
-                    <div class="form-group">
+                    <div class="formulaire-groupe">
                         {{ form_label(registrationForm.plainPassword.first) }}
                         {{ form_widget(registrationForm.plainPassword.first) }}
                         {{ form_errors(registrationForm.plainPassword.first) }}
                     </div>
 
-                    <div class="form-group">
+                    <div class="formulaire-groupe">
                         {{ form_label(registrationForm.plainPassword.second) }}
                         {{ form_widget(registrationForm.plainPassword.second) }}
                         {{ form_errors(registrationForm.plainPassword.second) }}
                     </div>
 
-                    <div class="form-checkboxes">
+                    <div class="formulaire-cases">
                         <label>
                             {{ form_widget(registrationForm.age18) }}
                             Je certifie avoir 18 ans ou plus
@@ -88,11 +88,11 @@
                         {{ form_errors(registrationForm.agreeTerms) }}
                     </div>
 
-                    <button type="submit" class="auth-btn">S'inscrire</button>
+                    <button type="submit" class="auth-bouton">S'inscrire</button>
 
                 {{ form_end(registrationForm) }}
 
-                <div class="auth-footer">
+                <div class="auth-pied">
                     <p>Avez vous un compte? <a href="{{ path('app_login') }}">Se connecter</a></p>
                 </div>
             </div>

@@ -23,17 +23,17 @@
   margin-bottom: 20px;
 }
 
-.retirer-ok-btn {
+.retirer-ok-bouton {
   background: #F8CA23 !important;
   color: #1a1a2e !important;
 }
 
-.retirer-ok-btn:hover {
+.retirer-ok-bouton:hover {
   background: #e5b820 !important;
 }
 
 @media (min-width: 768px) {
-  .retirer-page .deposer-close-btn {
+  .retirer-page .deposer-bouton-fermer {
     font-size: 22px;
   }
 }

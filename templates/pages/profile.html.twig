@@ -14,16 +14,16 @@
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
 </head>
 <body class="profil-page">
-    <div class="profil-bg-pattern"></div>
+    <div class="profil-fond-motif"></div>
 
-    <div class="profil-view" id="profilView">
-        <header class="profil-header">
-            <h1 class="profil-header-titre">Profil</h1>
-            <button class="profil-close-btn" onclick="window.location.href='{{ path('app_paris') }}'"><i class="fa-solid fa-xmark"></i></button>
+    <div class="profil-vue" id="profilView">
+        <header class="profil-entete">
+            <h1 class="profil-entete-titre">Profil</h1>
+            <button class="profil-bouton-fermer" onclick="window.location.href='{{ path('app_paris') }}'"><i class="fa-solid fa-xmark"></i></button>
         </header>
 
-        <div class="profil-hero">
-            <div class="profil-avatar-wrap">
+        <div class="profil-bandeau">
+            <div class="profil-avatar-conteneur">
                 <div class="profil-avatar">
                     {% set initiales = (user.firstname|default('')|first ~ user.lastname|default('')|first)|upper %}
                     {% if initiales is not empty %}
@@ -33,16 +33,16 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="profil-identity">
+            <div class="profil-identite">
                 <p class="profil-pseudo">{{ user.pseudo ?? 'Utilisateur' }}</p>
             </div>
-            <div class="profil-solde-wrap">
-                <p class="profil-solde-label">Solde disponible</p>
+            <div class="profil-solde-conteneur">
+                <p class="profil-solde-libelle">Solde disponible</p>
                 <p class="profil-solde-montant">{{ user.solde|number_format(2, ',', ' ') }} €</p>
             </div>
         </div>
 
-        <hr class="profil-divider">
+        <hr class="profil-separateur">
 
         {% for message in app.flashes('success') %}
             <div style="background: #4CAF50; color: white; padding: 12px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-weight: 600;">
@@ -51,79 +51,79 @@
         {% endfor %}
 
         <div class="profil-actions">
-            <a href="{{ path('app_deposer') }}" class="profil-action-card">
+            <a href="{{ path('app_deposer') }}" class="profil-action-carte">
                 <i class="fa-solid fa-money-bill-transfer"></i>
                 <span>Déposer</span>
             </a>
-            <a href="{{ path('app_retirer') }}" class="profil-action-card">
+            <a href="{{ path('app_retirer') }}" class="profil-action-carte">
                 <i class="fa-solid fa-money-bill-transfer"></i>
                 <span>Retirer</span>
             </a>
         </div>
 
-        <button class="profil-info-btn" onclick="document.getElementById('profilView').style.display='none'; document.getElementById('infoPersoView').style.display='block';">
+        <button class="profil-info-bouton" onclick="document.getElementById('profilView').style.display='none'; document.getElementById('infoPersoView').style.display='block';">
             <i class="fa-solid fa-circle-user"></i> Info personnelle
         </button>
 
-        <a href="{{ path('app_logout') }}" class="profil-disconnect-btn" style="display:block; text-align:center; text-decoration:none;">Se déconnecter</a>
+        <a href="{{ path('app_logout') }}" class="profil-deconnexion-bouton" style="display:block; text-align:center; text-decoration:none;">Se déconnecter</a>
     </div>
 
-    <div class="profil-view" id="infoPersoView" style="display:none;">
-        <header class="profil-header">
-            <h1 class="profil-header-titre">Info perso</h1>
-            <button class="profil-back-btn" onclick="document.getElementById('infoPersoView').style.display='none'; document.getElementById('profilView').style.display='block';"><i class="fa-solid fa-chevron-left"></i></button>
+    <div class="profil-vue" id="infoPersoView" style="display:none;">
+        <header class="profil-entete">
+            <h1 class="profil-entete-titre">Info perso</h1>
+            <button class="profil-bouton-retour" onclick="document.getElementById('infoPersoView').style.display='none'; document.getElementById('profilView').style.display='block';"><i class="fa-solid fa-chevron-left"></i></button>
         </header>
 
         <!-- MODE LECTURE -->
         <div id="modeLecture">
-            <div class="info-section">
-                <h2 class="info-section-titre">Mon identité</h2>
-                <div class="info-table">
-                    <div class="info-row">
-                        <span class="info-label">Civilité</span>
-                        <span class="info-value">Monsieur</span>
+            <div class="info-zone">
+                <h2 class="info-zone-titre">Mon identité</h2>
+                <div class="info-tableau">
+                    <div class="info-ligne">
+                        <span class="info-libelle">Civilité</span>
+                        <span class="info-valeur">Monsieur</span>
                     </div>
-                    <div class="info-row">
-                        <span class="info-label">Nom</span>
-                        <span class="info-value">{{ user.lastname ?? '—' }}</span>
+                    <div class="info-ligne">
+                        <span class="info-libelle">Nom</span>
+                        <span class="info-valeur">{{ user.lastname ?? '—' }}</span>
                     </div>
-                    <div class="info-row">
-                        <span class="info-label">Prénom</span>
-                        <span class="info-value">{{ user.firstname ?? '—' }}</span>
+                    <div class="info-ligne">
+                        <span class="info-libelle">Prénom</span>
+                        <span class="info-valeur">{{ user.firstname ?? '—' }}</span>
                     </div>
-                    <div class="info-row">
-                        <span class="info-label">Pseudo</span>
-                        <span class="info-value">{{ user.pseudo ?? '—' }}</span>
+                    <div class="info-ligne">
+                        <span class="info-libelle">Pseudo</span>
+                        <span class="info-valeur">{{ user.pseudo ?? '—' }}</span>
                     </div>
-                    <div class="info-row">
-                        <span class="info-label">Date de naissance</span>
-                        <span class="info-value">{{ user.dateNaissance ? user.dateNaissance|date('d/m/Y') : '—' }}</span>
+                    <div class="info-ligne">
+                        <span class="info-libelle">Date de naissance</span>
+                        <span class="info-valeur">{{ user.dateNaissance ? user.dateNaissance|date('d/m/Y') : '—' }}</span>
                     </div>
-                    <div class="info-row">
-                        <span class="info-label">Lieu de naissance</span>
-                        <span class="info-value">{{ user.lieuNaissance ?? '—' }}</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="info-section">
-                <h2 class="info-section-titre">Mes informations de contact</h2>
-                <div class="info-table">
-                    <div class="info-row">
-                        <span class="info-label">Email</span>
-                        <span class="info-value">{{ user.email ?? '—' }}</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Téléphone</span>
-                        <span class="info-value">{{ user.telephone ?? '—' }}</span>
+                    <div class="info-ligne">
+                        <span class="info-libelle">Lieu de naissance</span>
+                        <span class="info-valeur">{{ user.lieuNaissance ?? '—' }}</span>
                     </div>
                 </div>
             </div>
 
-            <a href="{{ path('app_profil_modifier') }}" class="profil-info-btn">Modifier mes informations</a>
+            <div class="info-zone">
+                <h2 class="info-zone-titre">Mes informations de contact</h2>
+                <div class="info-tableau">
+                    <div class="info-ligne">
+                        <span class="info-libelle">Email</span>
+                        <span class="info-valeur">{{ user.email ?? '—' }}</span>
+                    </div>
+                    <div class="info-ligne">
+                        <span class="info-libelle">Téléphone</span>
+                        <span class="info-valeur">{{ user.telephone ?? '—' }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <a href="{{ path('app_profil_modifier') }}" class="profil-info-bouton">Modifier mes informations</a>
 
             <form method="post" action="{{ path('app_profil_supprimer') }}" onsubmit="return confirm('Êtes-vous sûr de vouloir clôturer votre compte ? Cette action est irréversible.');">
-                <button type="submit" class="profil-cloture-btn">Clôturer mon compte</button>
+                <button type="submit" class="profil-cloture-bouton">Clôturer mon compte</button>
             </form>
         </div>
 

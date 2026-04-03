@@ -38,43 +38,43 @@ function genererCote(base) {
 
 function renderMatchCard(match) {
   const card = document.createElement('div');
-  card.className = 'match-card';
+  card.className = 'match-carte';
   const logo1 = getLogoUrl(match.team1);
   const logo2 = getLogoUrl(match.team2);
   const abrev1 = match.team1.split(' ').pop().toUpperCase().slice(0, 7);
   const abrev2 = match.team2.split(' ').pop().toUpperCase().slice(0, 7);
 
   card.innerHTML = `
-    <div class="match-card-top">
-      <span class="match-card-date">${match.date}</span>
-      <span class="match-card-live">— — —</span>
+    <div class="match-carte-haut">
+      <span class="match-carte-date">${match.date}</span>
+      <span class="match-carte-live">— — —</span>
     </div>
-    <div class="match-card-teams">
-      <div class="match-team">
-        <div class="match-team-logo">
+    <div class="match-carte-equipes">
+      <div class="match-equipe">
+        <div class="match-equipe-logo">
           <img src="${logo1}" alt="${match.team1}" onerror="this.src='https://via.placeholder.com/50x50/552583/FDB927?text=${match.team1.charAt(0)}'">
         </div>
-        <span class="match-team-name">${match.team1}</span>
+        <span class="match-equipe-nom">${match.team1}</span>
       </div>
       <span class="match-vs">VS</span>
-      <div class="match-team">
-        <div class="match-team-logo">
+      <div class="match-equipe">
+        <div class="match-equipe-logo">
           <img src="${logo2}" alt="${match.team2}" onerror="this.src='https://via.placeholder.com/50x50/552583/FDB927?text=${match.team2.charAt(0)}'">
         </div>
-        <span class="match-team-name">${match.team2}</span>
+        <span class="match-equipe-nom">${match.team2}</span>
       </div>
     </div>
-    <div class="match-card-cotes">
-      <button class="cote-btn" data-match-id="${match.id}" data-team="${match.team1}" data-cote="${match.cote1}" data-label="${match.team1} - ${match.team2}">
+    <div class="match-carte-cotes">
+      <button class="cote-bouton" data-match-id="${match.id}" data-team="${match.team1}" data-cote="${match.cote1}" data-label="${match.team1} - ${match.team2}">
         ${abrev1} (${match.cote1})
       </button>
-      <button class="cote-btn" data-match-id="${match.id}" data-team="${match.team2}" data-cote="${match.cote2}" data-label="${match.team1} - ${match.team2}">
+      <button class="cote-bouton" data-match-id="${match.id}" data-team="${match.team2}" data-cote="${match.cote2}" data-label="${match.team1} - ${match.team2}">
         ${abrev2} (${match.cote2})
       </button>
     </div>
   `;
-  card.querySelectorAll('.cote-btn').forEach(btn => {
-    btn.addEventListener('click', () => toggleSelection(btn));
+  card.querySelectorAll('.cote-bouton').forEach(bouton => {
+    bouton.addEventListener('click', () => toggleSelection(bouton));
   });
   return card;
 }
@@ -109,23 +109,23 @@ async function chargerMatchs() {
   }
 }
 
-function toggleSelection(btn) {
-  const matchId = parseInt(btn.dataset.matchId);
-  const team = btn.dataset.team;
-  const cote = parseFloat(btn.dataset.cote);
-  const label = btn.dataset.label;
+function toggleSelection(bouton) {
+  const matchId = parseInt(bouton.dataset.matchId);
+  const team = bouton.dataset.team;
+  const cote = parseFloat(bouton.dataset.cote);
+  const label = bouton.dataset.label;
   const existingIdx = selections.findIndex(s => s.matchId === matchId);
 
   if (existingIdx !== -1 && selections[existingIdx].teamName === team) {
     selections.splice(existingIdx, 1);
-    btn.classList.remove('selected');
+    bouton.classList.remove('selected');
   } else {
     if (existingIdx !== -1) {
       selections.splice(existingIdx, 1);
-      document.querySelectorAll(`.cote-btn[data-match-id="${matchId}"]`).forEach(b => b.classList.remove('selected'));
+      document.querySelectorAll(`.cote-bouton[data-match-id="${matchId}"]`).forEach(b => b.classList.remove('selected'));
     }
     selections.push({ matchId, teamName: team, cote, matchLabel: label, mise: 0 });
-    btn.classList.add('selected');
+    bouton.classList.add('selected');
   }
   updateCoupon();
 }
@@ -165,22 +165,22 @@ function renderCouponItems() {
     if (combineMiseEl) combineMiseEl.style.display = 'none';
     selections.forEach((sel, idx) => {
       const item = document.createElement('div');
-      item.className = 'coupon-item';
+      item.className = 'coupon-element';
       item.innerHTML = `
-        <div class="coupon-item-header">
-          <span class="coupon-item-match">${sel.matchLabel}</span>
-          <span class="coupon-item-cote">${sel.cote}</span>
-          <button class="coupon-item-remove" data-idx="${idx}">×</button>
+        <div class="coupon-element-entete">
+          <span class="coupon-element-match">${sel.matchLabel}</span>
+          <span class="coupon-element-cote">${sel.cote}</span>
+          <button class="coupon-element-supprimer" data-idx="${idx}">×</button>
         </div>
-        <div class="coupon-item-team">${sel.teamName}</div>
-        <div class="coupon-item-type">Vainqueur du match</div>
-        <div class="coupon-item-mise-row">
-          <input type="number" class="coupon-item-mise" data-idx="${idx}" placeholder="Mise" min="1" value="${sel.mise || ''}">
-          <span class="coupon-item-currency">€</span>
+        <div class="coupon-element-equipe">${sel.teamName}</div>
+        <div class="coupon-element-type">Vainqueur du match</div>
+        <div class="coupon-element-mise-ligne">
+          <input type="number" class="coupon-element-mise" data-idx="${idx}" placeholder="Mise" min="1" value="${sel.mise || ''}">
+          <span class="coupon-element-devise">€</span>
         </div>
       `;
-      item.querySelector('.coupon-item-remove').addEventListener('click', () => removeSelection(idx));
-      item.querySelector('.coupon-item-mise').addEventListener('input', e => {
+      item.querySelector('.coupon-element-supprimer').addEventListener('click', () => removeSelection(idx));
+      item.querySelector('.coupon-element-mise').addEventListener('input', e => {
         selections[idx].mise = parseFloat(e.target.value) || 0;
         calculerGains();
       });
@@ -190,17 +190,17 @@ function renderCouponItems() {
     if (combineMiseEl) combineMiseEl.style.display = 'flex';
     selections.forEach((sel, idx) => {
       const item = document.createElement('div');
-      item.className = 'coupon-item';
+      item.className = 'coupon-element';
       item.innerHTML = `
-        <div class="coupon-item-header">
-          <span class="coupon-item-match">${sel.matchLabel}</span>
-          <span class="coupon-item-cote">${sel.cote}</span>
-          <button class="coupon-item-remove" data-idx="${idx}">×</button>
+        <div class="coupon-element-entete">
+          <span class="coupon-element-match">${sel.matchLabel}</span>
+          <span class="coupon-element-cote">${sel.cote}</span>
+          <button class="coupon-element-supprimer" data-idx="${idx}">×</button>
         </div>
-        <div class="coupon-item-team">${sel.teamName}</div>
-        <div class="coupon-item-type">Vainqueur du match</div>
+        <div class="coupon-element-equipe">${sel.teamName}</div>
+        <div class="coupon-element-type">Vainqueur du match</div>
       `;
-      item.querySelector('.coupon-item-remove').addEventListener('click', () => removeSelection(idx));
+      item.querySelector('.coupon-element-supprimer').addEventListener('click', () => removeSelection(idx));
       itemsEl.appendChild(item);
     });
     const coteTotale = selections.reduce((acc, s) => acc * s.cote, 1);
@@ -211,7 +211,7 @@ function renderCouponItems() {
 
 function removeSelection(idx) {
   const sel = selections[idx];
-  document.querySelectorAll(`.cote-btn[data-match-id="${sel.matchId}"]`).forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll(`.cote-bouton[data-match-id="${sel.matchId}"]`).forEach(b => b.classList.remove('selected'));
   selections.splice(idx, 1);
   updateCoupon();
 }
@@ -230,9 +230,9 @@ function calculerGains() {
   gainsEl.textContent = gains.toFixed(2).replace('.', ',') + ' €';
 }
 
-document.querySelectorAll('.coupon-tab').forEach(tab => {
+document.querySelectorAll('.coupon-onglet').forEach(tab => {
   tab.addEventListener('click', () => {
-    document.querySelectorAll('.coupon-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.coupon-onglet').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     tabActif = tab.dataset.tab;
     renderCouponItems();
@@ -292,12 +292,7 @@ document.getElementById('parierBtn')?.addEventListener('click', async () => {
     }
   }
 
-  alert('Pari enregistré avec succès !');
-  selections.forEach(sel => {
-    document.querySelectorAll(`.cote-btn[data-match-id="${sel.matchId}"]`).forEach(b => b.classList.remove('selected'));
-  });
-  selections = [];
-  updateCoupon();
+  window.location.reload();
 });
 
 document.getElementById('panierBtn')?.addEventListener('click', () => openMesParis('en_cours'));
@@ -306,7 +301,7 @@ async function openMesParis(filtre = 'en_cours') {
   const overlay = document.getElementById('mesParis');
   if (!overlay) return;
   overlay.style.display = 'block';
-  document.querySelectorAll('.mp-tab').forEach(tab => {
+  document.querySelectorAll('.mp-onglet').forEach(tab => {
     tab.classList.toggle('active', tab.dataset.filter === filtre);
   });
   await renderMesParis(filtre);
@@ -317,9 +312,9 @@ document.getElementById('closeMesParis')?.addEventListener('click', () => {
   if (overlay) overlay.style.display = 'none';
 });
 
-document.querySelectorAll('.mp-tab').forEach(tab => {
+document.querySelectorAll('.mp-onglet').forEach(tab => {
   tab.addEventListener('click', () => {
-    document.querySelectorAll('.mp-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.mp-onglet').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     renderMesParis(tab.dataset.filter);
   });
@@ -357,17 +352,17 @@ async function renderMesParis(filtre) {
 
   filtered.forEach(pari => {
     const card = document.createElement('div');
-    card.className = 'mes-paris-card';
+    card.className = 'mes-paris-carte';
     pari.selections.forEach(sel => {
       const item = document.createElement('div');
-      item.className = 'mes-paris-item';
+      item.className = 'mes-paris-element';
       item.innerHTML = `
-        <div class="mes-paris-item-left">
-          <span class="mes-paris-item-match">${sel.typePari}</span>
-          <span class="mes-paris-item-team${pari.statut === 'gagne' ? ' gagne' : pari.statut === 'perdu' ? ' perdu' : ''}">${sel.equipeChoisie.toUpperCase()}</span>
-          <span class="mes-paris-item-type">Résultat du match (temps réglementaire)</span>
+        <div class="mes-paris-element-gauche">
+          <span class="mes-paris-element-match">${sel.typePari}</span>
+          <span class="mes-paris-element-equipe${pari.statut === 'gagne' ? ' gagne' : pari.statut === 'perdu' ? ' perdu' : ''}">${sel.equipeChoisie.toUpperCase()}</span>
+          <span class="mes-paris-element-type">Résultat du match (temps réglementaire)</span>
         </div>
-        <span class="mes-paris-item-cote">${sel.cote}</span>
+        <span class="mes-paris-element-cote">${sel.cote}</span>
       `;
       card.appendChild(item);
     });
