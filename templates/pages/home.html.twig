@@ -20,7 +20,7 @@
             <p class="hero-description">
                 Toute l'actualité des Los Angeles Lakers en temps réel
             </p>
-            <a href="#news-section" class="hero-cta">
+            <a href="#news-section" class="hero-btn">
                 <i class="fa-solid fa-arrow-down"></i>
                 Découvrir les news
             </a>
@@ -42,7 +42,7 @@
                 {% else %}
                     {% for article in articles %}
                         <article class="news-card">
-                            <div class="news-card__image">
+                            <div class="news-card-image">
                                 <img src="{{ article.image ?? 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&h=600&fit=crop' }}" alt="{{ article.titre }}" loading="lazy">
                                 <span class="news-category {% if article.categorie == 'rumeurs' %}category-rumeurs
                                 {% elseif article.categorie == 'interviews' %}category-interviews
@@ -50,19 +50,19 @@
                                 {% endif %}">{{ article.categorie|default('News')|capitalize }}
                                 </span>
                             </div>
-                            <div class="news-card__content">
-                                <div class="news-card__date">
+                            <div class="news-card-content">
+                                <div class="news-card-date">
                                     <i class="fa-solid fa-calendar"></i>
                                     {{ article.createdAt|date('d F Y') }}
                                 </div>
-                                <h3 class="news-card__title">{{ article.titre }}</h3>
-                                <p class="news-card__excerpt">{{ article.contenu|length > 150 ? article.contenu|slice(0, 150) ~ '...' : article.contenu }}</p>
-                                <div class="news-card__footer">
-                                    <span class="news-card__author">
+                                <h3 class="news-card-title">{{ article.titre }}</h3>
+                                <p class="news-card-excerpt">{{ article.contenu|length > 150 ? article.contenu|slice(0, 150) ~ '...' : article.contenu }}</p>
+                                <div class="news-card-footer">
+                                    <span class="news-card-author">
                                         <i class="fa-solid fa-user"></i>
                                         {{ article.auteur|default('Lakers Newz') }}
                                     </span>
-                                    <a href="#" class="news-card__read-more">
+                                    <a href="#" class="news-card-read-more">
                                         Lire la suite
                                         <i class="fa-solid fa-arrow-right"></i>
                                     </a>

@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 {% block title %}Admin - Nouveau match{% endblock %}
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/admin.css') }}">{% endblock %}
-{% block body_class %}admin-page{% endblock %}
+{% block body_class %}admin{% endblock %}
 {% block body %}
-<main class="admin-main admin-main--narrow">
-    <h1 class="admin-title">Créer un match</h1>
+<main class="admin-page admin-page-small">
+    <h1 class="admin-titre">Créer un match</h1>
 
-    <div class="admin-form-card">
+    <div class="admin-form-box">
         {{ form_start(form, {'attr': {'class': 'admin-form'}}) }}
             <div>
                 {{ form_label(form.team1) }}
@@ -30,10 +30,10 @@
                 {{ form_label(form.dateMatch) }}
                 {{ form_widget(form.dateMatch) }}
             </div>
-            <button type="submit" class="admin-btn-submit">Créer le match</button>
+            <button type="submit" class="admin-btn-ok">Créer le match</button>
         {{ form_end(form) }}
     </div>
 
-    <a href="{{ path('admin_matchs_index') }}" class="admin-back-link">← Retour à la liste</a>
+    <a href="{{ path('admin_matchs_index') }}" class="admin-back">← Retour à la liste</a>
 </main>
 {% endblock %}

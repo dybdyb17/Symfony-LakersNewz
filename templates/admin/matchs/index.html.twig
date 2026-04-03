@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 {% block title %}Admin - Matchs{% endblock %}
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/admin.css') }}">{% endblock %}
-{% block body_class %}admin-page{% endblock %}
+{% block body_class %}admin{% endblock %}
 {% block body %}
-<main class="admin-main">
-    <div class="admin-header">
-        <h1 class="admin-title">Gestion des matchs</h1>
+<main class="admin-page">
+    <div class="admin-top">
+        <h1 class="admin-titre">Gestion des matchs</h1>
         <a href="{{ path('admin_matchs_new') }}" class="admin-btn-new">+ Nouveau match</a>
     </div>
 
     {% include 'admin/_nav.html.twig' %}
 
     {% for message in app.flashes('success') %}
-        <div class="admin-flash-success">{{ message }}</div>
+        <div class="admin-success">{{ message }}</div>
     {% endfor %}
 
-    <div class="admin-table-wrapper">
+    <div class="admin-table-box">
         <table class="admin-table">
             <thead>
                 <tr>
@@ -37,11 +37,11 @@
                         <td class="center">{{ match.dateMatch ? match.dateMatch|date('d/m/Y H:i') : '—' }}</td>
                         <td class="center">
                             {% if match.statut == 'termine' %}
-                                <span class="admin-badge admin-badge--green">Terminé</span>
+                                <span class="badge badge-green">Terminé</span>
                             {% elseif match.statut == 'en_cours' %}
-                                <span class="admin-badge admin-badge--orange">En cours</span>
+                                <span class="badge badge-orange">En cours</span>
                             {% else %}
-                                <span class="admin-badge admin-badge--blue">À venir</span>
+                                <span class="badge badge-blue">À venir</span>
                             {% endif %}
                         </td>
                         <td class="center">
@@ -61,7 +61,9 @@
                         </td>
                     </tr>
                 {% else %}
-                    <tr><td colspan="7" class="empty-row">Aucun match</td></tr>
+                    <tr>
+                        <td colspan="7" class="empty">Aucun match</td>
+                    </tr>
                 {% endfor %}
             </tbody>
         </table>

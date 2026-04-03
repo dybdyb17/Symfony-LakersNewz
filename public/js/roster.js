@@ -65,16 +65,16 @@
   const createPlayerCard = (player) => {
     return `
       <div class="player-card" data-position="${player.position}">
-        <div class="player-card__header">
+        <div class="player-card-header">
           <span class="player-jersey">#${player.jersey}</span>
           <span class="player-position">${player.position}</span>
         </div>
 
-        <div class="player-card__image">
+        <div class="player-card-image">
           <img src="${player.headshot}" alt="${player.name}" loading="lazy">
         </div>
 
-        <div class="player-card__info">
+        <div class="player-card-info">
           <h3 class="player-name">${player.name}</h3>
 
           <div class="player-stats">

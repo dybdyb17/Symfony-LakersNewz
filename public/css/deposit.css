@@ -31,7 +31,9 @@ body.deposer-page {
   transition: opacity 0.2s;
 }
 
-.deposer-close-btn:hover { opacity: 0.7; }
+.deposer-close-btn:hover {
+  opacity: 0.7;
+}
 
 .deposer-solde-badge {
   background: #1a1a2e;
@@ -45,7 +47,10 @@ body.deposer-page {
   gap: 6px;
 }
 
-.deposer-solde-badge i { color: #F8CA23; font-size: 11px; }
+.deposer-solde-badge i {
+  color: #F8CA23;
+  font-size: 11px;
+}
 
 .deposer-main {
   position: relative;
@@ -135,7 +140,9 @@ body.deposer-page {
   color: rgba(255,255,255,0.5);
 }
 
-.deposer-limite strong { color: rgba(255,255,255,0.8); }
+.deposer-limite strong {
+  color: rgba(255,255,255,0.8);
+}
 
 .deposer-paiement-bloc {
   margin-bottom: 20px;
@@ -156,7 +163,9 @@ body.deposer-page {
   transition: all 0.2s;
 }
 
-.deposer-carte-option:hover { background: #252540; }
+.deposer-carte-option:hover {
+  background: #252540;
+}
 
 .carte-option-top {
   display: flex;
@@ -177,8 +186,15 @@ body.deposer-page {
   font-size: 28px;
 }
 
-.carte-logos .fa-cc-visa { color: #1a1f71; background: white; border-radius: 4px; padding: 2px; }
-.carte-logos .fa-cc-mastercard { color: #eb001b; }
+.carte-logos .fa-cc-visa {
+    color: #1a1f71;
+    background: white;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.carte-logos .fa-cc-mastercard
+{ color: #eb001b; }
 
 .carte-option-limits {
   display: flex;
@@ -219,7 +235,9 @@ body.deposer-page {
   outline: none;
 }
 
-.carte-input::placeholder { color: rgba(26,26,46,0.5); }
+.carte-input::placeholder {
+  color: rgba(26,26,46,0.5);
+}
 
 .carte-icon {
   position: absolute;
@@ -236,7 +254,9 @@ body.deposer-page {
   margin-bottom: 12px;
 }
 
-.carte-row .carte-input { margin-bottom: 0; }
+.carte-row .carte-input {
+  margin-bottom: 0;
+}
 
 .deposer-continuer-btn {
   width: 100%;
@@ -254,7 +274,9 @@ body.deposer-page {
   letter-spacing: 0.3px;
 }
 
-.deposer-continuer-btn:hover { background: #7B2FBE; }
+.deposer-continuer-btn:hover {
+  background: #7B2FBE;
+}
 
 .deposer-fermer-btn {
   width: 100%;
@@ -269,7 +291,9 @@ body.deposer-page {
   transition: opacity 0.2s;
 }
 
-.deposer-fermer-btn:hover { opacity: 0.7; }
+.deposer-fermer-btn:hover {
+  opacity: 0.7;
+}
 
 .deposer-securise {
   text-align: center;
@@ -341,4 +365,6 @@ body.deposer-page {
   transition: all 0.2s;
 }
 
-.confirm-ok-btn:hover { background: #e5b820; }
+.confirm-ok-btn:hover {
+  background: #e5b820;
+}

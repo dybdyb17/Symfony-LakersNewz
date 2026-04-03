@@ -45,26 +45,26 @@ function renderMatchCard(match) {
   const abrev2 = match.team2.split(' ').pop().toUpperCase().slice(0, 7);
 
   card.innerHTML = `
-    <div class="match-card__top">
-      <span class="match-card__date">${match.date}</span>
-      <span class="match-card__live">— — —</span>
+    <div class="match-card-top">
+      <span class="match-card-date">${match.date}</span>
+      <span class="match-card-live">— — —</span>
     </div>
-    <div class="match-card__teams">
+    <div class="match-card-teams">
       <div class="match-team">
-        <div class="match-team__logo">
+        <div class="match-team-logo">
           <img src="${logo1}" alt="${match.team1}" onerror="this.src='https://via.placeholder.com/50x50/552583/FDB927?text=${match.team1.charAt(0)}'">
         </div>
-        <span class="match-team__name">${match.team1}</span>
+        <span class="match-team-name">${match.team1}</span>
       </div>
       <span class="match-vs">VS</span>
       <div class="match-team">
-        <div class="match-team__logo">
+        <div class="match-team-logo">
           <img src="${logo2}" alt="${match.team2}" onerror="this.src='https://via.placeholder.com/50x50/552583/FDB927?text=${match.team2.charAt(0)}'">
         </div>
-        <span class="match-team__name">${match.team2}</span>
+        <span class="match-team-name">${match.team2}</span>
       </div>
     </div>
-    <div class="match-card__cotes">
+    <div class="match-card-cotes">
       <button class="cote-btn" data-match-id="${match.id}" data-team="${match.team1}" data-cote="${match.cote1}" data-label="${match.team1} - ${match.team2}">
         ${abrev1} (${match.cote1})
       </button>
@@ -167,20 +167,20 @@ function renderCouponItems() {
       const item = document.createElement('div');
       item.className = 'coupon-item';
       item.innerHTML = `
-        <div class="coupon-item__header">
-          <span class="coupon-item__match">${sel.matchLabel}</span>
-          <span class="coupon-item__cote">${sel.cote}</span>
-          <button class="coupon-item__remove" data-idx="${idx}">×</button>
+        <div class="coupon-item-header">
+          <span class="coupon-item-match">${sel.matchLabel}</span>
+          <span class="coupon-item-cote">${sel.cote}</span>
+          <button class="coupon-item-remove" data-idx="${idx}">×</button>
         </div>
-        <div class="coupon-item__team">${sel.teamName}</div>
-        <div class="coupon-item__type">Vainqueur du match</div>
-        <div class="coupon-item__mise-row">
-          <input type="number" class="coupon-item__mise" data-idx="${idx}" placeholder="Mise" min="1" value="${sel.mise || ''}">
-          <span class="coupon-item__mise-currency">€</span>
+        <div class="coupon-item-team">${sel.teamName}</div>
+        <div class="coupon-item-type">Vainqueur du match</div>
+        <div class="coupon-item-mise-row">
+          <input type="number" class="coupon-item-mise" data-idx="${idx}" placeholder="Mise" min="1" value="${sel.mise || ''}">
+          <span class="coupon-item-currency">€</span>
         </div>
       `;
-      item.querySelector('.coupon-item__remove').addEventListener('click', () => removeSelection(idx));
-      item.querySelector('.coupon-item__mise').addEventListener('input', e => {
+      item.querySelector('.coupon-item-remove').addEventListener('click', () => removeSelection(idx));
+      item.querySelector('.coupon-item-mise').addEventListener('input', e => {
         selections[idx].mise = parseFloat(e.target.value) || 0;
         calculerGains();
       });
@@ -192,15 +192,15 @@ function renderCouponItems() {
       const item = document.createElement('div');
       item.className = 'coupon-item';
       item.innerHTML = `
-        <div class="coupon-item__header">
-          <span class="coupon-item__match">${sel.matchLabel}</span>
-          <span class="coupon-item__cote">${sel.cote}</span>
-          <button class="coupon-item__remove" data-idx="${idx}">×</button>
+        <div class="coupon-item-header">
+          <span class="coupon-item-match">${sel.matchLabel}</span>
+          <span class="coupon-item-cote">${sel.cote}</span>
+          <button class="coupon-item-remove" data-idx="${idx}">×</button>
         </div>
-        <div class="coupon-item__team">${sel.teamName}</div>
-        <div class="coupon-item__type">Vainqueur du match</div>
+        <div class="coupon-item-team">${sel.teamName}</div>
+        <div class="coupon-item-type">Vainqueur du match</div>
       `;
-      item.querySelector('.coupon-item__remove').addEventListener('click', () => removeSelection(idx));
+      item.querySelector('.coupon-item-remove').addEventListener('click', () => removeSelection(idx));
       itemsEl.appendChild(item);
     });
     const coteTotale = selections.reduce((acc, s) => acc * s.cote, 1);
@@ -362,12 +362,12 @@ async function renderMesParis(filtre) {
       const item = document.createElement('div');
       item.className = 'mes-paris-item';
       item.innerHTML = `
-        <div class="mes-paris-item__left">
-          <span class="mes-paris-item__match">${sel.typePari}</span>
-          <span class="mes-paris-item__team${pari.statut === 'gagne' ? ' gagne' : pari.statut === 'perdu' ? ' perdu' : ''}">${sel.equipeChoisie.toUpperCase()}</span>
-          <span class="mes-paris-item__type">Résultat du match (temps réglementaire)</span>
+        <div class="mes-paris-item-left">
+          <span class="mes-paris-item-match">${sel.typePari}</span>
+          <span class="mes-paris-item-team${pari.statut === 'gagne' ? ' gagne' : pari.statut === 'perdu' ? ' perdu' : ''}">${sel.equipeChoisie.toUpperCase()}</span>
+          <span class="mes-paris-item-type">Résultat du match (temps réglementaire)</span>
         </div>
-        <span class="mes-paris-item__cote">${sel.cote}</span>
+        <span class="mes-paris-item-cote">${sel.cote}</span>
       `;
       card.appendChild(item);
     });

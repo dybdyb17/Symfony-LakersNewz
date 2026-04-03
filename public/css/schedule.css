@@ -14,7 +14,6 @@ body.calendrier-page::before {
 
 body.calendrier-page .topbar {
   background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(6px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -34,7 +33,7 @@ body.calendrier-page .burger-btn {
 
 .calendar-hero {
   position: relative;
-  background: linear-gradient(135deg, rgba(84, 37, 131, 0.9), rgba(253, 185, 39, 0.2)), 
+  background: linear-gradient(135deg, rgba(84, 37, 131, 0.9), rgba(253, 185, 39, 0.2)),
               url('../assets/img/dean-bennett-nFjLHE4vmn4-unsplash.jpg') center/cover no-repeat;
   border-radius: 24px;
   overflow: hidden;
@@ -42,20 +41,19 @@ body.calendrier-page .burger-btn {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
 }
 
-.calendar-hero__overlay {
+.calendar-hero-overlay {
   max-width: 560px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.calendar-hero__label {
+.calendar-hero-label {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   font-size: 14px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
   background: rgba(0, 0, 0, 0.35);
   padding: 8px 14px;
   border-radius: 999px;
@@ -81,10 +79,9 @@ body.calendrier-page .burger-btn {
   padding: 32px;
   box-shadow: 0 18px 30px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
 }
 
-.calendar-card__header {
+.calendar-card-header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -93,12 +90,12 @@ body.calendrier-page .burger-btn {
   margin-bottom: 28px;
 }
 
-.calendar-card__header h2 {
+.calendar-card-header h2 {
   font-size: 28px;
   margin-bottom: 4px;
 }
 
-.calendar-card__subtitle {
+.calendar-card-subtitle {
   color: rgba(245, 245, 245, 0.7);
 }
 
@@ -131,7 +128,7 @@ body.calendrier-page .burger-btn {
   box-shadow: 0 0 0 2px rgba(253, 185, 39, 0.25);
 }
 
-.calendar-table__wrapper {
+.calendar-table-wrapper {
   width: 100%;
   display: block;
   max-height: none;
@@ -157,7 +154,7 @@ body.calendrier-page .burger-btn {
 }
 
 .calendar-table tbody tr {
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: background 0.2s ease;
   background: rgba(255, 255, 255, 0.02);
 }
 
@@ -166,7 +163,6 @@ body.calendrier-page .burger-btn {
 }
 
 .calendar-table tbody tr:hover {
-  transform: translateX(4px);
   background: rgba(253, 185, 39, 0.12);
 }
 
@@ -184,7 +180,6 @@ body.calendrier-page .burger-btn {
 
 .calendar-time {
   font-weight: 500;
-  letter-spacing: 0.05em;
 }
 
 .calendar-matchup {
@@ -232,7 +227,6 @@ body.calendrier-page .burger-btn {
   color: #ff7a7a;
 }
 
-
 @media (max-width: 1024px) {
   .calendar-main {
     padding: 110px 20px 48px;
@@ -256,7 +250,7 @@ body.calendrier-page .burger-btn {
     padding: 24px 20px;
   }
 
-  .calendar-card__header {
+  .calendar-card-header {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -282,7 +276,6 @@ body.calendrier-page .burger-btn {
 
   .calendar-table tr {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px 16px;
     padding: 18px 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -297,7 +290,6 @@ body.calendrier-page .burger-btn {
     display: block;
     font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
     color: rgba(253, 185, 39, 0.75);
     margin-bottom: 4px;
   }

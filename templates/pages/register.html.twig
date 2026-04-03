@@ -76,16 +76,14 @@
                     </div>
 
                     <div class="form-checkboxes">
-                        <label class="checkbox-wrapper">
+                        <label>
                             {{ form_widget(registrationForm.age18) }}
-                            <span class="checkmark"></span>
-                            <span class="checkbox-label">Je certifie avoir 18 ans ou plus</span>
+                            Je certifie avoir 18 ans ou plus
                         </label>
                         {{ form_errors(registrationForm.age18) }}
-                        <label class="checkbox-wrapper">
+                        <label>
                             {{ form_widget(registrationForm.agreeTerms) }}
-                            <span class="checkmark"></span>
-                            <span class="checkbox-label">J'accepte les conditions d'utilisation</span>
+                            J'accepte les conditions d'utilisation
                         </label>
                         {{ form_errors(registrationForm.agreeTerms) }}
                     </div>

@@ -1,3 +1,6 @@
+
+/* banniere jeu responsabe +18 */
+
 .responsible-banner {
   position: fixed;
   top: 0;
@@ -14,6 +17,8 @@
   object-fit: cover;
   display: block;
 }
+
+/* PAGE PARIS - GENERAL */
 
 body.paris-page {
   background: #7B2FBE;
@@ -42,9 +47,12 @@ body.paris-page .burger-btn.active {
   display: none;
 }
 
+/* BARRE SOUS LA TOPBAR      */
+/* (solde, panier, profil)   */
+
 .paris-subheader {
   position: fixed;
-  top: 100px; 
+  top: 100px;
   left: 0;
   right: 0;
   z-index: 1700;
@@ -87,8 +95,14 @@ body.paris-page .burger-btn.active {
   transition: background 0.2s;
 }
 
-.solde-btn i { color: #FDB927; font-size: 11px; }
-.solde-btn:hover { background: #444; }
+.solde-btn i {
+    color: #FDB927;
+    font-size: 11px;
+}
+
+.solde-btn:hover {
+    background: #444;
+}
 
 .panier-btn,
 .profil-btn {
@@ -117,7 +131,12 @@ body.paris-page .burger-btn.active {
   justify-content: center;
 }
 
-.panier-count.show { display: flex; }
+.panier-count.show {
+    display: flex;
+}
+
+/* CONTENU PRINCIPAL */
+/* (matchs + coupon sidebar) */
 
 .paris-main {
   display: flex;
@@ -150,7 +169,12 @@ body.paris-page .burger-btn.active {
   color: rgba(255,255,255,0.8);
 }
 
-.loading-matchs i { font-size: 2rem; color: #FDB927; }
+.loading-matchs i {
+    font-size: 2rem;
+    color: #FDB927;
+}
+
+/* CARTES DES MATCHS*/
 
 .match-card {
   background: rgba(248, 202, 35, 0.95);
@@ -159,20 +183,20 @@ body.paris-page .burger-btn.active {
   color: #111;
 }
 
-.match-card__top {
+.match-card-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 14px;
 }
 
-.match-card__date {
+.match-card-date {
   font-size: 13px;
   color: rgba(0,0,0,0.55);
   font-weight: 500;
 }
 
-.match-card__live {
+.match-card-live {
   background: #2a2a3e;
   color: #FDB927;
   border-radius: 6px;
@@ -182,7 +206,7 @@ body.paris-page .burger-btn.active {
   letter-spacing: 1px;
 }
 
-.match-card__teams {
+.match-card-teams {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -199,7 +223,7 @@ body.paris-page .burger-btn.active {
   min-width: 0;
 }
 
-.match-team__logo {
+.match-team-logo {
   width: 58px;
   height: 58px;
   background: rgba(143, 34, 211, 0.85);
@@ -213,13 +237,13 @@ body.paris-page .burger-btn.active {
   aspect-ratio: 1/1;
 }
 
-.match-team__logo img {
+.match-team-logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.match-team__name {
+.match-team-name {
   font-size: 14px;
   font-weight: 700;
   color: #111;
@@ -235,11 +259,13 @@ body.paris-page .burger-btn.active {
   padding: 0 16px;
 }
 
-.match-card__cotes {
+.match-card-cotes {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
+/* BOUTONS DE COTES          */
 
 .cote-btn {
   flex: 1;
@@ -260,7 +286,9 @@ body.paris-page .burger-btn.active {
   justify-content: center;
 }
 
-.cote-btn:hover { background: rgba(143, 34, 211, 0.85); }
+.cote-btn:hover {
+    background: rgba(143, 34, 211, 0.85);
+}
 
 .cote-btn.selected {
   background: #1a1a2e;
@@ -280,14 +308,19 @@ body.paris-page .burger-btn.active {
   flex-shrink: 0;
 }
 
-.voir-options-btn:hover { color: #552583; text-decoration: underline; }
+.voir-options-btn:hover {
+    color: #552583; text-decoration: underline;
+}
 
+
+/* coupon sur le coté (ordi)  */
 .coupon-sidebar {
   width: 320px;
   flex-shrink: 0;
   background: white;
   border-radius: 14px;
   overflow: hidden;
+  /* sticky = reste colle quand on scroll les matchs */
   position: sticky;
   top: 192px;
   display: flex;
@@ -305,7 +338,10 @@ body.paris-page .burger-btn.active {
   border-bottom: 1px solid #eee;
 }
 
-.coupon-count { font-size: 14px; font-weight: 700; }
+.coupon-count {
+    font-size: 14px; font-weight: 700;
+}
+
 .coupon-options-btn {
   background: none;
   border: none;
@@ -325,9 +361,20 @@ body.paris-page .burger-btn.active {
   gap: 8px;
 }
 
-.coupon-empty__icon { font-size: 36px; opacity: 0.3; }
-.coupon-empty__title { font-size: 14px; font-weight: 700; color: #555; }
-.coupon-empty__sub { font-size: 12px; color: #aaa; }
+.coupon-empty-icon {
+    font-size: 36px; opacity: 0.3;
+}
+
+.coupon-empty-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #555;
+}
+
+.coupon-empty-sub {
+    font-size: 12px;
+    color: #aaa;
+}
 
 .coupon-tabs {
   display: flex;
@@ -347,7 +394,10 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.coupon-tab.active { color: #552583; border-bottom-color: #552583; }
+.coupon-tab.active {
+    color: #552583;
+    border-bottom-color: #552583;
+}
 
 .coupon-selections {
   flex: 1;
@@ -365,6 +415,8 @@ body.paris-page .burger-btn.active {
   overflow-y: auto;
 }
 
+/* Un coupon-item = un match selectionne dans le coupon */
+
 .coupon-item {
   background: #f5f5f5;
   border-radius: 8px;
@@ -373,16 +425,21 @@ body.paris-page .burger-btn.active {
   border: 1px solid #eee;
 }
 
-.coupon-item__header {
+.coupon-item-header {
   display: flex;
   align-items: flex-start;
   margin-bottom: 2px;
   gap: 4px;
 }
 
-.coupon-item__match { font-size: 10px; color: #999; flex: 1; }
+.coupon-item-match {
+    font-size: 10px;
+    color: #999;
+    /* flex: 1 = prend tout l'espace restant */
+    flex: 1;
+}
 
-.coupon-item__cote {
+.coupon-item-cote {
   background: #FDB927;
   color: #111;
   font-weight: 800;
@@ -392,7 +449,7 @@ body.paris-page .burger-btn.active {
   flex-shrink: 0;
 }
 
-.coupon-item__remove {
+.coupon-item-remove {
   background: none;
   border: none;
   cursor: pointer;
@@ -403,18 +460,30 @@ body.paris-page .burger-btn.active {
   flex-shrink: 0;
 }
 
-.coupon-item__remove:hover { color: #e53935; }
+.coupon-item-remove:hover {
+    color: #e53935;
+}
 
-.coupon-item__team { font-size: 13px; font-weight: 700; color: #111; margin-bottom: 2px; }
-.coupon-item__type { font-size: 11px; color: #888; margin-bottom: 6px; }
+.coupon-item-team {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 2px;
+}
 
-.coupon-item__mise-row {
+.coupon-item-type {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 6px;
+}
+
+.coupon-item-mise-row {
   display: flex;
   gap: 4px;
   align-items: center;
 }
 
-.coupon-item__mise {
+.coupon-item-mise {
   flex: 1;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -425,8 +494,14 @@ body.paris-page .burger-btn.active {
   outline: none;
 }
 
-.coupon-item__mise:focus { border-color: #552583; }
-.coupon-item__mise-currency { font-size: 12px; color: #aaa; }
+.coupon-item-mise:focus {
+    border-color: #552583;
+}
+
+.coupon-item-currency {
+    font-size: 12px;
+    color: #aaa;
+}
 
 .coupon-combine-mise {
   display: flex;
@@ -446,7 +521,9 @@ body.paris-page .burger-btn.active {
   color: #111;
 }
 
-.mise-input:focus { border-color: #552583; }
+.mise-input:focus {
+    border-color: #552583;
+}
 
 .combine-cote {
   background: #FDB927;
@@ -471,7 +548,11 @@ body.paris-page .burger-btn.active {
   font-size: 13px;
 }
 
-.gains-amount { font-weight: 800; font-size: 15px; color: #111; }
+.gains-amount {
+    font-weight: 800;
+    font-size: 15px;
+    color: #111;
+}
 
 .parier-main-btn {
   width: 100%;
@@ -486,10 +567,16 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.parier-main-btn:hover { background: #e5a620; }
+.parier-main-btn:hover {
+    background: #e5a620;
+}
 
+
+
+/* Mes paris (OVERLAY) */
 .mes-paris-overlay {
   position: fixed;
+  /* inset: 0 = raccourci pour top/right/bottom/left: 0 (ça prend tout l'ecran) */
   inset: 0;
   background: url(../assets/img/lakersgold.jpg) center/cover fixed no-repeat;
   z-index: 3000;
@@ -537,6 +624,10 @@ body.paris-page .burger-btn.active {
   margin-bottom: 24px;
 }
 
+
+
+/* mp = page mes paris avec gagné et terminée */
+
 .mp-tab {
   background: rgba(0,0,0,0.1);
   border: 2px solid transparent;
@@ -549,8 +640,13 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.mp-tab.active { background: #1a1a2e; color: white; }
-.mp-tab:hover:not(.active) { border-color: #1a1a2e; }
+.mp-tab.active {
+  background: #1a1a2e;
+  color: white;
+}
+.mp-tab:hover:not(.active) {
+  border-color: #1a1a2e;
+}
 
 .mes-paris-list {
   display: flex;
@@ -572,14 +668,38 @@ body.paris-page .burger-btn.active {
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 
-.mes-paris-item:last-child { border-bottom: none; }
-.mes-paris-item__left { display: flex; flex-direction: column; gap: 2px; }
-.mes-paris-item__match { font-size: 11px; color: rgba(255,255,255,0.4); }
-.mes-paris-item__team { font-size: 17px; font-weight: 900; color: white; }
-.mes-paris-item__team.gagne { color: #4CAF50; }
-.mes-paris-item__team.perdu { color: #e53935; }
-.mes-paris-item__type { font-size: 11px; color: rgba(255,255,255,0.5); }
-.mes-paris-item__cote { font-size: 17px; font-weight: 900; color: white; }
+.mes-paris-item:last-child {
+  border-bottom: none;
+}
+.mes-paris-item-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.mes-paris-item-match {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+}
+.mes-paris-item-team {
+  font-size: 17px;
+  font-weight: 900;
+  color: white;
+}
+.mes-paris-item-team.gagne {
+  color: #4CAF50;
+}
+.mes-paris-item-team.perdu {
+  color: #e53935;
+}
+.mes-paris-item-type {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+}
+.mes-paris-item-cote {
+  font-size: 17px;
+  font-weight: 900;
+  color: white;
+}
 
 .mes-paris-empty {
   display: flex;
@@ -591,8 +711,16 @@ body.paris-page .burger-btn.active {
   text-align: center;
 }
 
-.mes-paris-empty i { font-size: 50px; color: rgba(0,0,0,0.2); }
-.mes-paris-empty p { font-size: 18px; font-weight: 700; color: #1a1a2e; line-height: 1.5; }
+.mes-paris-empty i {
+  font-size: 50px;
+  color: rgba(0,0,0,0.2);
+}
+.mes-paris-empty p {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a2e;
+  line-height: 1.5;
+}
 
 .voir-paris-btn {
   background: #e53935;
@@ -605,19 +733,25 @@ body.paris-page .burger-btn.active {
   cursor: pointer;
 }
 
-.voir-paris-btn:hover { background: #c62828; }
+.voir-paris-btn:hover {
+  background: #c62828;
+}
+
+/* MODALS (POPUPS)*/
 
 .modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.65);
-  z-index: 5000; 
+  z-index: 5000;
   display: none;
   align-items: center;
   justify-content: center;
 }
 
-.modal-overlay.show { display: flex; }
+.modal-overlay.show {
+  display: flex;
+}
 
 .modal {
   background: #FDB927;
@@ -671,7 +805,11 @@ body.paris-page .burger-btn.active {
   outline: none;
 }
 
-.deposer-amount-box span { font-size: 18px; color: white; font-weight: 700; }
+.deposer-amount-box span {
+  font-size: 18px;
+  color: white;
+  font-weight: 700;
+}
 
 .deposer-presets {
   display: flex;
@@ -693,10 +831,22 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.preset-btn:hover, .preset-btn.active { background: #552583; }
+.preset-btn:hover, .preset-btn.active {
+  background: #552583;
+}
 
-.deposer-hint { text-align: center; font-size: 12px; color: #555; margin-bottom: 14px; }
-.paiement-label { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 8px; }
+.deposer-hint {
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 14px;
+}
+.paiement-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
 
 .paiement-option-box {
   background: #1a1a2e;
@@ -711,7 +861,9 @@ body.paris-page .burger-btn.active {
   margin-bottom: 12px;
 }
 
-.paiement-option-box i { font-size: 22px; }
+.paiement-option-box i {
+  font-size: 22px;
+}
 
 .carte-form {
   background: #1a1a2e;
@@ -720,7 +872,11 @@ body.paris-page .burger-btn.active {
   margin-bottom: 10px;
 }
 
-.carte-form h3 { color: white; font-size: 14px; margin-bottom: 10px; }
+.carte-form h3 {
+  color: white;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
 
 .carte-input {
   width: 100%;
@@ -736,7 +892,10 @@ body.paris-page .burger-btn.active {
   box-sizing: border-box;
 }
 
-.carte-row { display: flex; gap: 8px; }
+.carte-row {
+  display: flex;
+  gap: 8px;
+}
 
 .continuer-btn {
   width: 100%;
@@ -752,7 +911,9 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.continuer-btn:hover { background: #7B2FBE; }
+.continuer-btn:hover {
+  background: #7B2FBE;
+}
 
 .annuler-btn {
   width: 100%;
@@ -775,6 +936,8 @@ body.paris-page .burger-btn.active {
   gap: 4px;
   margin-top: 6px;
 }
+
+/* Modal quand le solde est insuffisant pour parier */
 
 .depot-necessaire-modal {
   background: #1a1a2e;
@@ -813,7 +976,9 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.depot-faire-btn:hover { background: #e5b820; }
+.depot-faire-btn:hover {
+  background: #e5b820;
+}
 
 .depot-plus-tard-btn {
   background: none;
@@ -828,8 +993,12 @@ body.paris-page .burger-btn.active {
   transition: color 0.2s;
 }
 
-.depot-plus-tard-btn:hover { color: white; }
+.depot-plus-tard-btn:hover {
+  color: white;
+}
 
+
+/* confirmation réussir ou échec*/
 
 .confirm-icon {
   width: 70px;
@@ -841,15 +1010,42 @@ body.paris-page .burger-btn.active {
   margin: 0 auto 16px;
 }
 
-.success-icon { background: rgba(76,175,80,0.2); }
-.success-icon i { font-size: 36px; color: #4CAF50; }
-.error-icon { background: rgba(229,57,53,0.15); }
-.error-icon i { font-size: 36px; color: #e53935; }
+.success-icon {
+  background: rgba(76,175,80,0.2);
+}
+.success-icon i {
+  font-size: 36px;
+  color: #4CAF50;
+}
+.error-icon {
+  background: rgba(229,57,53,0.15);
+}
+.error-icon i {
+  font-size: 36px;
+  color: #e53935;
+}
 
-.confirm-modal h2 { font-size: 20px; font-weight: 800; color: #111; margin-bottom: 8px; }
-.error-title { color: #c62828; }
-.confirm-amount { font-size: 26px; font-weight: 900; color: #552583; margin-bottom: 18px; }
-.confirm-text { font-size: 13px; color: #444; margin-bottom: 18px; line-height: 1.5; }
+.confirm-modal h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 8px;
+}
+.error-title {
+  color: #c62828;
+}
+.confirm-amount {
+  font-size: 26px;
+  font-weight: 900;
+  color: #552583;
+  margin-bottom: 18px;
+}
+.confirm-text {
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
 
 .ok-btn {
   background: #552583;
@@ -863,9 +1059,16 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.ok-btn:hover { background: #7B2FBE; }
+.ok-btn:hover {
+  background: #7B2FBE;
+}
 
-.profil-modal { text-align: center; max-width: 360px; }
+/* profil du modal */
+
+.profil-modal {
+  text-align: center;
+  max-width: 360px;
+}
 
 .profil-avatar {
   width: 70px;
@@ -880,11 +1083,28 @@ body.paris-page .burger-btn.active {
   margin: 0 auto 10px;
 }
 
-.profil-pseudo { font-size: 18px; font-weight: 800; color: #111; margin-bottom: 2px; }
-.profil-solde-label { font-size: 12px; color: #666; }
-.profil-solde { font-size: 20px; font-weight: 900; color: #552583; margin-bottom: 14px; }
+.profil-pseudo {
+  font-size: 18px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 2px;
+}
+.profil-solde-label {
+  font-size: 12px;
+  color: #666;
+}
+.profil-solde {
+  font-size: 20px;
+  font-weight: 900;
+  color: #552583;
+  margin-bottom: 14px;
+}
 
-.profil-btns { display: flex; gap: 10px; margin-bottom: 10px; }
+.profil-btns {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
 
 .profil-action-btn {
   flex: 1;
@@ -903,8 +1123,12 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.profil-action-btn i { font-size: 18px; }
-.profil-action-btn:hover { background: #2a2a4e; }
+.profil-action-btn i {
+  font-size: 18px;
+}
+.profil-action-btn:hover {
+  background: #2a2a4e;
+}
 
 .profil-info-btn {
   width: 100%;
@@ -924,7 +1148,9 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.profil-info-btn:hover { background: #2a2a4e; }
+.profil-info-btn:hover {
+  background: #2a2a4e;
+}
 
 .profil-disconnect-btn {
   width: 100%;
@@ -939,7 +1165,11 @@ body.paris-page .burger-btn.active {
   transition: all 0.2s;
 }
 
-.profil-disconnect-btn:hover { background: #c62828; }
+.profil-disconnect-btn:hover {
+  background: #c62828;
+}
+
+/* version mobile */
 
 .mobile-parier-bar {
   display: none;
@@ -948,6 +1178,8 @@ body.paris-page .burger-btn.active {
 .mobile-coupon-view {
   display: none;
 }
+
+/* RESPONSIVE*/
 
 @media (max-width: 900px) {
 
@@ -967,7 +1199,7 @@ body.paris-page .burger-btn.active {
     box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
   }
 
-  .mobile-parier-bar__left {
+  .mobile-parier-bar-left {
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -975,7 +1207,7 @@ body.paris-page .burger-btn.active {
     min-width: 0;
   }
 
-  .mobile-parier-bar__teams {
+  .mobile-parier-bar-teams {
     font-size: 13px;
     font-weight: 800;
     color: #1a1a2e;
@@ -985,13 +1217,13 @@ body.paris-page .burger-btn.active {
     text-overflow: ellipsis;
   }
 
-  .mobile-parier-bar__detail {
+  .mobile-parier-bar-detail {
     font-size: 12px;
     color: rgba(26,26,46,0.6);
     font-family: 'Exo', sans-serif;
   }
 
-  .mobile-parier-bar__cote {
+  .mobile-parier-bar-cote {
     background: #552583;
     color: white;
     font-weight: 900;
@@ -1028,6 +1260,7 @@ body.paris-page .burger-btn.active {
     z-index: 0;
   }
 
+  /* mcv = mobile coupon view (coupon en plein ecran sur mobile) */
   .mcv-header {
     position: relative;
     z-index: 1;
@@ -1105,11 +1338,18 @@ body.paris-page .burger-btn.active {
     border-bottom: 1px solid rgba(255,255,255,0.07);
   }
 
-  .mcv-item:first-child { border-radius: 12px 12px 0 0; }
-  .mcv-item:last-child { border-radius: 0 0 12px 12px; border-bottom: none; }
-  .mcv-item:only-child { border-radius: 12px; }
+  .mcv-item:first-child {
+    border-radius: 12px 12px 0 0;
+  }
+  .mcv-item:last-child {
+    border-radius: 0 0 12px 12px;
+    border-bottom: none;
+  }
+  .mcv-item:only-child {
+    border-radius: 12px;
+  }
 
-  .mcv-item__left {
+  .mcv-item-left {
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -1117,7 +1357,7 @@ body.paris-page .burger-btn.active {
     min-width: 0;
   }
 
-  .mcv-item__match {
+  .mcv-item-match {
     font-size: 11px;
     color: rgba(255,255,255,0.45);
     display: flex;
@@ -1125,28 +1365,31 @@ body.paris-page .burger-btn.active {
     gap: 6px;
   }
 
-  .mcv-item__match i { font-size: 12px; color: rgba(255,255,255,0.3); }
+  .mcv-item-match i {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
 
-  .mcv-item__team {
+  .mcv-item-team {
     font-size: 18px;
     font-weight: 900;
     color: white;
     text-transform: uppercase;
   }
 
-  .mcv-item__type {
+  .mcv-item-type {
     font-size: 11px;
     color: rgba(255,255,255,0.45);
   }
 
-  .mcv-item__right {
+  .mcv-item-right {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 4px;
   }
 
-  .mcv-item__remove {
+  .mcv-item-remove {
     background: none;
     border: none;
     color: rgba(255,255,255,0.5);
@@ -1156,9 +1399,11 @@ body.paris-page .burger-btn.active {
     line-height: 1;
   }
 
-  .mcv-item__remove:hover { color: #e53935; }
+  .mcv-item-remove:hover {
+    color: #e53935;
+  }
 
-  .mcv-item__cote {
+  .mcv-item-cote {
     font-size: 16px;
     font-weight: 800;
     color: white;
@@ -1215,7 +1460,9 @@ body.paris-page .burger-btn.active {
     text-align: center;
   }
 
-  .mcv-parier-btn:hover { background: #e5b820; }
+  .mcv-parier-btn:hover {
+    background: #e5b820;
+  }
 
   .mcv-cote-badge {
     background: #552583;
@@ -1268,12 +1515,12 @@ body.paris-page .burger-btn.active {
     gap: 0;
   }
 
-  .mcv-item--simple .mcv-item__left {
+  .mcv-item--simple .mcv-item-left {
     width: 100%;
     margin-bottom: 6px;
   }
 
-  .mcv-item--simple .mcv-item__right {
+  .mcv-item--simple .mcv-item-right {
     position: absolute;
     right: 16px;
     top: 14px;
@@ -1283,7 +1530,7 @@ body.paris-page .burger-btn.active {
     position: relative;
   }
 
-  .mcv-item__mise-row {
+  .mcv-item-mise-row {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1292,7 +1539,7 @@ body.paris-page .burger-btn.active {
     border-top: 1px solid rgba(255,255,255,0.08);
   }
 
-  .mcv-item__mise-input {
+  .mcv-item-mise-input {
     width: 80px;
     background: rgba(255,255,255,0.1);
     border: none;
@@ -1306,9 +1553,11 @@ body.paris-page .burger-btn.active {
     text-align: center;
   }
 
-  .mcv-item__mise-input::placeholder { color: rgba(255,255,255,0.3); }
+  .mcv-item-mise-input::placeholder {
+    color: rgba(255,255,255,0.3);
+  }
 
-  .mcv-item__mise-euro {
+  .mcv-item-mise-euro {
     font-size: 14px;
     color: rgba(255,255,255,0.5);
     font-weight: 600;
@@ -1325,14 +1574,30 @@ body.paris-page .burger-btn.active {
 }
 
 @media (max-width: 900px) {
-  .coupon-sidebar { display: none; }
-  .paris-main { padding-left: 16px; padding-right: 16px; }
+  .coupon-sidebar {
+    display: none;
+  }
+  .paris-main {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
 @media (max-width: 768px) {
-  .paris-subheader { padding: 12px 16px 12px 60px; }
-  .paris-title { font-size: 16px; }
-  .responsible-banner { padding: 0 12px; }
-  .responsible-banner__text { font-size: 10px; }
-  .match-team__logo { width: 50px; height: 50px; }
+  .paris-subheader {
+    padding: 12px 16px 12px 60px;
+  }
+  .paris-title {
+    font-size: 16px;
+  }
+  .responsible-banner {
+    padding: 0 12px;
+  }
+  .responsible-banner__text {
+    font-size: 10px;
+  }
+  .match-team-logo {
+    width: 50px;
+    height: 50px;
+  }
 }

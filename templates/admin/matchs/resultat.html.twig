@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block title %}Admin - Résultat du match{% endblock %}
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/admin.css') }}">{% endblock %}
-{% block body_class %}admin-page{% endblock %}
+{% block body_class %}admin{% endblock %}
 {% block body %}
-<main class="admin-main admin-main--narrow">
-    <h1 class="admin-title">Résultat du match</h1>
+<main class="admin-page admin-page-small">
+    <h1 class="admin-titre">Résultat du match</h1>
 
     <div class="admin-resultat-box">
         <p class="admin-resultat-team">{{ match.team1 }}</p>
@@ -22,10 +22,10 @@
                     <input type="number" name="scoreTeam2" value="0" min="0" class="admin-score-input">
                 </div>
             </div>
-            <button type="submit" class="admin-btn-submit">Valider le résultat</button>
+            <button type="submit" class="admin-btn-ok">Valider le résultat</button>
         </form>
     </div>
 
-    <a href="{{ path('admin_matchs_index') }}" class="admin-back-link">← Retour à la liste</a>
+    <a href="{{ path('admin_matchs_index') }}" class="admin-back">← Retour à la liste</a>
 </main>
 {% endblock %}

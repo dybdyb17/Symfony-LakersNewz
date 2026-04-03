@@ -68,7 +68,6 @@ body.contact-page {
 .form-group select,
 .form-group textarea {
   width: 100%;
-  background: #fdb927;
   border: none;
   border-radius: 10px;
   padding: 15px 18px;
@@ -277,7 +276,6 @@ body.contact-page {
 .social-icon:hover {
   background: #fdb927;
   color: #552583;
-  transform: translateY(-3px);
 }
 
 

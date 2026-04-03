@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 {% block title %}Admin - Articles{% endblock %}
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/admin.css') }}">{% endblock %}
-{% block body_class %}admin-page{% endblock %}
+{% block body_class %}admin{% endblock %}
 {% block body %}
-<main class="admin-main">
-    <div class="admin-header">
-        <h1 class="admin-title">Gestion des articles</h1>
+<main class="admin-page">
+    <div class="admin-top">
+        <h1 class="admin-titre">Gestion des articles</h1>
         <a href="{{ path('admin_articles_new') }}" class="admin-btn-new">+ Nouvel article</a>
     </div>
 
     {% include 'admin/_nav.html.twig' %}
 
     {% for message in app.flashes('success') %}
-        <div class="admin-flash-success">{{ message }}</div>
+        <div class="admin-success">{{ message }}</div>
     {% endfor %}
 
-    <div class="admin-table-wrapper">
+    <div class="admin-table-box">
         <table class="admin-table">
             <thead>
                 <tr>
@@ -41,7 +41,7 @@
                         </td>
                     </tr>
                 {% else %}
-                    <tr><td colspan="5" class="empty-row">Aucun article</td></tr>
+                    <tr><td colspan="5" class="empty">Aucun article</td></tr>
                 {% endfor %}
             </tbody>
         </table>

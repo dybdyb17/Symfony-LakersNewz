@@ -1,21 +1,21 @@
-.admin-main {
+.admin-page {
     padding: 120px 20px 40px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.admin-main--narrow {
+.admin-page-small {
     max-width: 600px;
 }
 
-.admin-header {
+.admin-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.admin-title {
+.admin-titre {
     color: white;
     font-size: 28px;
 }
@@ -71,7 +71,7 @@
     font-size: 13px;
 }
 
-.admin-btn-submit {
+.admin-btn-ok {
     background: #4CAF50;
     color: white;
     border: none;
@@ -84,7 +84,7 @@
     width: 100%;
 }
 
-.admin-btn-submit--edit {
+.admin-btn-ok-edit {
     background: #FDB927;
     color: #1a1a2e;
 }
@@ -99,7 +99,7 @@
     font-size: 13px;
 }
 
-.admin-table-wrapper {
+.admin-table-box {
     background: rgba(0, 0, 0, 0.6);
     border-radius: 16px;
     overflow: hidden;
@@ -133,24 +133,32 @@
     text-align: center;
 }
 
-.admin-table .empty-row {
+.admin-table .empty {
     padding: 20px;
     text-align: center;
     color: rgba(255, 255, 255, 0.5);
 }
 
-.admin-badge {
+.badge {
     padding: 4px 10px;
     border-radius: 12px;
     font-size: 13px;
 }
 
-.admin-badge--green { background: #4CAF50; }
-.admin-badge--red { background: #e53935; }
-.admin-badge--orange { background: #FF9800; }
-.admin-badge--blue { background: #2196F3; }
+.badge-green {
+  background: #4CAF50;
+}
+.badge-red {
+  background: #e53935;
+}
+.badge-orange {
+  background: #FF9800;
+}
+.badge-blue {
+  background: #2196F3;
+}
 
-.admin-form-card {
+.admin-form-box {
     background: rgba(0, 0, 0, 0.6);
     border-radius: 16px;
     padding: 30px;
@@ -184,11 +192,11 @@
     gap: 15px;
 }
 
-.admin-form .form-row > div {
+.admin-form .form-row div {
     flex: 1;
 }
 
-.admin-back-link {
+.admin-back {
     color: #FDB927;
     display: block;
     text-align: center;
@@ -196,7 +204,7 @@
     text-decoration: none;
 }
 
-.admin-flash-success {
+.admin-success {
     background: #4CAF50;
     color: white;
     padding: 12px;

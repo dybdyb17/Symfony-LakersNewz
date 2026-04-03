@@ -1,22 +1,22 @@
 {% extends 'base.html.twig' %}
 {% block title %}Admin - Nouvel article{% endblock %}
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/admin.css') }}">{% endblock %}
-{% block body_class %}admin-page{% endblock %}
+{% block body_class %}admin{% endblock %}
 {% block body %}
-<main class="admin-main admin-main--narrow">
-    <h1 class="admin-title">Créer un article</h1>
+<main class="admin-page admin-page-small">
+    <h1 class="admin-titre">Créer un article</h1>
 
-    <div class="admin-form-card">
+    <div class="admin-form-box">
         {{ form_start(form, {'attr': {'class': 'admin-form'}}) }}
             <div>{{ form_label(form.titre) }}{{ form_widget(form.titre) }}</div>
             <div>{{ form_label(form.contenu) }}{{ form_widget(form.contenu) }}</div>
             <div>{{ form_label(form.categorie) }}{{ form_widget(form.categorie) }}</div>
             <div>{{ form_label(form.image) }}{{ form_widget(form.image) }}</div>
             <div>{{ form_label(form.auteur) }}{{ form_widget(form.auteur) }}</div>
-            <button type="submit" class="admin-btn-submit">Créer l'article</button>
+            <button type="submit" class="admin-btn-ok">Créer l'article</button>
         {{ form_end(form) }}
     </div>
 
-    <a href="{{ path('admin_articles_index') }}" class="admin-back-link">← Retour à la liste</a>
+    <a href="{{ path('admin_articles_index') }}" class="admin-back">← Retour à la liste</a>
 </main>
 {% endblock %}

@@ -46,9 +46,16 @@ main {
   font-weight: bold;
 }
 
-.btn-gold   { background-color: #FDB927; }
-.btn-purple { background-color: #940ad3; color: #222; }
-.btn-black  { background-color: #000000; }
+.btn-gold {
+  background-color: #FDB927;
+}
+.btn-purple {
+  background-color: #940ad3;
+  color: #222;
+}
+.btn-black {
+  background-color: #000000;
+}
 
 .top-logo {
   display: block;
