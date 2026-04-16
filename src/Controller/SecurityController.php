@@ -22,7 +22,7 @@ class SecurityController extends AbstractController
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('pages/login.html.twig', [
+        return $this->render('pages/connexion.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error,
         ]);
@@ -58,7 +58,7 @@ class SecurityController extends AbstractController
             $prenom = $user->getFirstname();
         }
 
-        return $this->render('pages/register.html.twig', [
+        return $this->render('pages/inscription.html.twig', [
             'registrationForm' => $form,
             'success' => $success,
             'prenom' => $prenom,

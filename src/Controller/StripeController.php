@@ -62,7 +62,7 @@ class StripeController extends AbstractController
             }
         }
 
-        return $this->render('pages/deposit.html.twig', [
+        return $this->render('pages/deposer.html.twig', [
             'success' => true,
             'montant' => $montant,
             'solde' => $user->getSolde(),

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Déposer - Lakers Newz</title>
+    <title>Retirer - Lakers Newz</title>
     <link href="{{ asset('assets/fonts/fontawesome/css/fontawesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/fonts/fontawesome/css/brands.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/fonts/fontawesome/css/solid.css') }}" rel="stylesheet">
@@ -11,9 +11,10 @@
     <link rel="shortcut icon" href="{{ asset('assets/icons/favicon.ico') }}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/deposit.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/deposer.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/retirer.css') }}">
 </head>
-<body class="deposer-page">
+<body class="deposer-page retirer-page">
     <div class="deposer-bg-pattern"></div>
 
     <header class="deposer-entete">
@@ -27,16 +28,27 @@
     </header>
 
     <main class="deposer-principal">
-        <h1 class="deposer-titre">Déposer</h1>
+        <h1 class="deposer-titre">Retirer</h1>
 
         {% if success %}
             <div class="deposer-confirmation-fond" style="display:flex;">
                 <div class="deposer-confirmation-boite">
                     <div class="confirm-check"><i class="fa-solid fa-circle-check"></i></div>
-                    <p class="confirm-titre">Dépôt confirmé</p>
-                    <p class="confirm-sous">Montant du Dépôt</p>
+                    <p class="confirm-titre">Retrait confirmé</p>
+                    <p class="confirm-sous">Montant du retrait</p>
                     <p class="confirm-montant">{{ montant|number_format(2, ',', ' ') }} €</p>
                     <a href="{{ path('app_paris') }}" class="confirm-ok-bouton" style="display:block; text-align:center; text-decoration:none;">OK</a>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if insuffisant %}
+            <div class="deposer-confirmation-fond" style="display:flex;">
+                <div class="deposer-confirmation-boite">
+                    <div class="retirer-icon-error" style="font-size:40px;">⚔️</div>
+                    <p class="confirm-titre retirer-titre-error">Solde insuffisant</p>
+                    <p class="confirm-sous retirer-sous-error">Pour retirer de l'argent, votre solde doit être supérieur à 10€</p>
+                    <a href="{{ path('app_retirer') }}" class="confirm-ok-bouton retirer-ok-bouton" style="display:block; text-align:center; text-decoration:none;">OK</a>
                 </div>
             </div>
         {% endif %}
@@ -47,10 +59,10 @@
             </div>
         {% endfor %}
 
-        <form method="post" action="{{ path('app_deposit_checkout') }}">
+        <form method="post" action="{{ path('app_retirer') }}">
             <div class="deposer-bloc">
                 <div class="deposer-montant-ligne">
-                    <input type="number" id="montantInput" name="montant" value="0" min="0" max="5000">
+                    <input type="number" id="montantInput" name="montant" value="0" min="0">
                     <span class="deposer-devise">€</span>
                 </div>
                 <div class="deposer-valeurs-rapides">
@@ -59,11 +71,11 @@
                     <button type="button" class="dep-valeur" data-amount="50">50 €</button>
                     <button type="button" class="dep-valeur" data-amount="100">100 €</button>
                 </div>
-                <p class="deposer-limite">Tu peux encore déposer jusqu'à <strong>5000 €</strong></p>
+                <p class="deposer-limite">Minimum de retrait : <strong>10 €</strong></p>
             </div>
 
             <div class="deposer-paiement-bloc">
-                <p class="deposer-paiement-libelle">Moyen de paiement</p>
+                <p class="deposer-paiement-libelle">Moyen de retrait</p>
                 <div class="deposer-carte-option">
                     <div class="carte-option-haut">
                         <span class="carte-option-libelle">Carte bancaire</span>
@@ -73,14 +85,14 @@
                         </div>
                     </div>
                     <div class="carte-option-limites">
-                        <span>min 11 €</span>
+                        <span>min 10 €</span>
                         <span>Max 50 000 €</span>
                     </div>
                 </div>
             </div>
 
-            <button type="submit" class="deposer-continuer-bouton">Continuer</button>
-            <p class="deposer-securise"><i class="fa-solid fa-lock"></i> Paiement sécurisé</p>
+            <button type="submit" class="deposer-continuer-bouton">Retirer</button>
+            <p class="deposer-securise"><i class="fa-solid fa-lock"></i> Transaction sécurisée</p>
         </form>
     </main>
 

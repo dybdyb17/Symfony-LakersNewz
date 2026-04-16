@@ -16,7 +16,7 @@ class PageController extends AbstractController
     {
         $articles = $articleRepository->findBy([], ['createdAt' => 'DESC']);
 
-        return $this->render('pages/home.html.twig', [
+        return $this->render('pages/accueil.html.twig', [
             'articles' => $articles,
         ]);
     }
@@ -24,13 +24,13 @@ class PageController extends AbstractController
     #[Route('/calendrier', name: 'app_calendrier')]
     public function calendrier(): Response
     {
-        return $this->render('pages/schedule.html.twig');
+        return $this->render('pages/calendrier.html.twig');
     }
 
     #[Route('/classement', name: 'app_classement')]
     public function classement(): Response
     {
-        return $this->render('pages/standing.html.twig');
+        return $this->render('pages/classement.html.twig');
     }
 
     #[Route('/roster', name: 'app_roster')]
@@ -42,7 +42,7 @@ class PageController extends AbstractController
     #[Route('/paris', name: 'app_paris')]
     public function paris(): Response
     {
-        return $this->render('pages/bets.html.twig', [
+        return $this->render('pages/paris.html.twig', [
             'user' => $this->getUser(),
         ]);
     }
@@ -55,7 +55,7 @@ class PageController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        return $this->render('pages/profile.html.twig', [
+        return $this->render('pages/profil.html.twig', [
             'user' => $user,
         ]);
     }
@@ -78,7 +78,7 @@ class PageController extends AbstractController
             return $this->redirectToRoute('app_profil');
         }
 
-        return $this->render('pages/profile_edit.html.twig', [
+        return $this->render('pages/profil_modifier.html.twig', [
             'profilForm' => $form,
             'user' => $user,
         ]);
@@ -123,7 +123,7 @@ class PageController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        return $this->render('pages/deposit.html.twig', [
+        return $this->render('pages/deposer.html.twig', [
             'success' => false,
             'montant' => 0,
             'solde' => $user->getSolde(),
@@ -166,7 +166,7 @@ class PageController extends AbstractController
             }
         }
 
-        return $this->render('pages/withdraw.html.twig', [
+        return $this->render('pages/retirer.html.twig', [
             'success' => $success,
             'insuffisant' => $insuffisant,
             'montant' => $montant,
