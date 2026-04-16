@@ -34,22 +34,21 @@
             <span class="coupon-compteur" id="couponCount">0 sélection</span>
             <button class="coupon-options-bouton"><i class="fa-solid fa-ellipsis"></i></button>
         </div>
+        <div class="coupon-onglets">
+            <button class="coupon-onglet active" data-tab="simple">Simple</button>
+            <button class="coupon-onglet" data-tab="combine">Combiné</button>
+        </div>
         <div class="coupon-vide" id="couponEmpty">
             <div class="coupon-vide-icone">🏀</div>
             <p class="coupon-vide-titre">Placer un nouveau paris</p>
             <p class="coupon-vide-sous">On croise les doigts pour toi !</p>
         </div>
         <div class="coupon-selections" id="couponSelections" style="display:none;">
-            <div class="coupon-onglets">
-                <button class="coupon-onglet active" data-tab="simple">Simple</button>
-                <button class="coupon-onglet" data-tab="combine">Combiné</button>
-            </div>
             <div class="coupon-elements" id="couponItems"></div>
-            <div class="coupon-combine-mise" id="combineMise" style="display:none;">
-                <input type="number" class="mise-champ" id="combineMiseInput" placeholder="Mise" min="1">
-                <span>€</span>
-                <span class="combine-cote" id="combineCote">1.00</span>
-            </div>
+        </div>
+        <div class="coupon-combine-mise" id="combineMise" style="display:none;">
+            <input type="number" class="mise-champ" id="combineMiseInput" placeholder="Mise" min="1">
+            <span class="combine-cote" id="combineCote">0.00</span>
         </div>
         <div class="coupon-pied">
             <div class="coupon-gains"><span>Gains possibles</span><span class="gains-montant" id="gainsAmount">0,00 €</span></div>
@@ -178,40 +177,5 @@
     </div>
 </div>
 
-<div class="mobile-parier-barre" id="mobilePariBar" style="display:none;">
-    <div class="mobile-parier-barrere-gauche">
-        <span class="mobile-parier-barrere-equipes" id="mobilePariTeams">—</span>
-        <span class="mobile-parier-barre-detail" id="mobilePariDetail">Combiné (0)</span>
-    </div>
-    <div class="mobile-parier-barre-cote" id="mobilePariCote">—</div>
-</div>
-
-<div class="mobile-coupon-vue" id="mobileCouponView" style="display:none;">
-    <div class="mcv-fond-motif"></div>
-    <div class="mcv-entete">
-        <span class="mcv-solde" id="mcvSolde">+ 0,00 €</span>
-        <button class="mcv-fermer" id="mcvClose"><i class="fa-solid fa-chevron-right"></i></button>
-    </div>
-    <div class="mcv-onglets">
-        <button class="mcv-onglet" id="mcvTabSimple" data-tab="simple">Simple</button>
-        <button class="mcv-onglet mcv-onglet--actif" id="mcvTabCombine" data-tab="combine">Combiné</button>
-    </div>
-    <div class="mcv-liste" id="mcvList"></div>
-    <div class="mcv-pied">
-        <div class="mcv-mise-ligne mcv-mise-global">
-            <input type="number" class="mcv-mise-champ" id="mcvMise" placeholder="0" min="0" value="0">
-            <span class="mcv-euro">€</span>
-            <button class="mcv-parier-bouton" id="mcvPariBtn"><span id="mcvPariMontant">Parier</span></button>
-            <div class="mcv-cote-badge" id="mcvCoteBadge">—</div>
-        </div>
-        <div class="mcv-mise-ligne mcv-parier-simple-ligne" style="display:none;">
-            <button class="mcv-parier-bouton mcv-parier-simple-bouton" id="mcvPariSimpleBtn"><span id="mcvPariMontantSimple">Parier</span></button>
-        </div>
-        <div class="mcv-gains-ligne">
-            <span>Gains possibles</span>
-            <span class="mcv-gains-montant" id="mcvGains">0,00 €</span>
-        </div>
-    </div>
-</div>
 {% endblock %}
 {% block javascripts %}<script src="{{ asset('js/bets.js') }}"></script>{% endblock %}

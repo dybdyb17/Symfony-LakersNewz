@@ -251,33 +251,44 @@ document.getElementById('parierBtn')?.addEventListener('click', async () => {
   } else {
     mise = parseFloat(document.getElementById('combineMiseInput')?.value) || 0;
   }
-
   if (mise <= 0) { alert('Veuillez saisir une mise.'); return; }
 
-  let paris;
   if (tabActif === 'simple') {
-    paris = selections.map(s => ({ equipe: s.teamName, cote: s.cote, mise: s.mise }));
+    for (const sel of selections) {
+      if (!sel.mise || sel.mise <= 0) continue;
+      const parts = sel.matchLabel.split(' - ');
+      const body = {
+        equipe: sel.teamName,
+        cote: sel.cote,
+        mise: sel.mise,
+        match: { team1: parts[0]?.trim(), team2: parts[1]?.trim(), cote1: sel.cote, cote2: sel.cote },
+      };
+      try {
+        const res = await fetch(`${API_URL}/api/pari`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        if (res.status === 400) { alert('Solde insuffisant. Veuillez faire un dépôt.'); return; }
+        if (!res.ok) { alert('Erreur lors du pari.'); return; }
+      } catch {
+        alert('Erreur réseau.');
+        return;
+      }
+    }
   } else {
     const cote = selections.reduce((acc, s) => acc * s.cote, 1);
     const equipe = selections.map(s => s.teamName).join(' + ');
-    paris = [{ equipe, cote, mise }];
-  }
-
-  for (const pari of paris) {
-    const body = { equipe: pari.equipe, cote: pari.cote, mise: pari.mise };
-    if (tabActif === 'combine') {
-      body.selections = selections.map(sel => ({ equipe: sel.teamName, cote: sel.cote }));
-      body.matchs = selections.map(sel => {
-        const parts = sel.matchLabel.split(' - ');
-        return { team1: parts[0]?.trim(), team2: parts[1]?.trim(), cote1: sel.cote, cote2: sel.cote };
-      });
-    } else {
-      const sel = selections.find(s => s.teamName === pari.equipe);
-      if (sel) {
-        const parts = sel.matchLabel.split(' - ');
-        body.match = { team1: parts[0]?.trim(), team2: parts[1]?.trim(), cote1: pari.cote, cote2: pari.cote };
-      }
-    }
+    const body = {
+      equipe,
+      cote,
+      mise,
+      selections: selections.map(s => ({ equipe: s.teamName, cote: s.cote })),
+      matchs: selections.map(s => {
+        const parts = s.matchLabel.split(' - ');
+        return { team1: parts[0]?.trim(), team2: parts[1]?.trim(), cote1: s.cote, cote2: s.cote };
+      }),
+    };
     try {
       const res = await fetch(`${API_URL}/api/pari`, {
         method: 'POST',

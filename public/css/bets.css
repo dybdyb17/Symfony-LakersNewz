@@ -342,6 +342,36 @@ body.paris-page .bouton-menu.active {
     font-size: 14px; font-weight: 700;
 }
 
+.coupon-onglets {
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+
+.coupon-onglet {
+  flex: 1;
+  padding: 10px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.coupon-onglet.active {
+  color: #552583;
+  border-bottom-color: #552583;
+}
+
+.coupon-combine-mise {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid #eee;
+}
+
 .coupon-options-bouton {
   background: none;
   border: none;
@@ -374,29 +404,6 @@ body.paris-page .bouton-menu.active {
 .coupon-vide-sous {
     font-size: 12px;
     color: #aaa;
-}
-
-.coupon-onglets {
-  display: flex;
-  border-bottom: 1px solid #eee;
-}
-
-.coupon-onglet {
-  flex: 1;
-  padding: 10px;
-  background: none;
-  border: none;
-  border-bottom: 3px solid transparent;
-  font-size: 13px;
-  font-weight: 600;
-  color: #aaa;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.coupon-onglet.active {
-    color: #552583;
-    border-bottom-color: #552583;
 }
 
 .coupon-selections {
@@ -501,14 +508,6 @@ body.paris-page .bouton-menu.active {
 .coupon-element-devise {
     font-size: 12px;
     color: #aaa;
-}
-
-.coupon-combine-mise {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px;
-  border-top: 1px solid #eee;
 }
 
 .mise-champ {
@@ -1169,409 +1168,7 @@ body.paris-page .bouton-menu.active {
   background: #c62828;
 }
 
-/* version mobile */
-
-.mobile-parier-barre {
-  display: none;
-}
-
-.mobile-coupon-vue {
-  display: none;
-}
-
-/* RESPONSIVE*/
-
-@media (max-width: 900px) {
-
-  .mobile-parier-barre {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #F8CA23;
-    padding: 14px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    z-index: 1500;
-    cursor: pointer;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
-  }
-
-  .mobile-parier-barrere-gauche {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    flex: 1;
-    min-width: 0;
-  }
-
-  .mobile-parier-barrere-equipes {
-    font-size: 13px;
-    font-weight: 800;
-    color: #1a1a2e;
-    font-family: 'Exo', sans-serif;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .mobile-parier-barre-detail {
-    font-size: 12px;
-    color: rgba(26,26,46,0.6);
-    font-family: 'Exo', sans-serif;
-  }
-
-  .mobile-parier-barre-cote {
-    background: #552583;
-    color: white;
-    font-weight: 900;
-    font-size: 15px;
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-family: 'Exo', sans-serif;
-    flex-shrink: 0;
-  }
-
-  .paris-principal {
-    padding-bottom: 90px;
-  }
-
-  .mobile-coupon-vue {
-    position: fixed;
-    inset: 0;
-    background: #F8CA23;
-    z-index: 3500;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Exo', sans-serif;
-    overflow: hidden;
-  }
-
-  .mcv-fond-motif {
-    position: absolute;
-    inset: 0;
-    background-image: url('./assets/img/Los_Angeles_Lakers_logo.svg.png');
-    background-size: 160px;
-    background-repeat: repeat;
-    opacity: 0.07;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* mcv = mobile coupon view (coupon en plein ecran sur mobile) */
-  .mcv-entete {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 20px;
-  }
-
-  .mcv-solde {
-    background: #1a1a2e;
-    color: white;
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  .mcv-fermer {
-    background: none;
-    border: none;
-    font-size: 22px;
-    color: #1a1a2e;
-    cursor: pointer;
-    padding: 4px;
-  }
-
-  .mcv-onglets {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    gap: 12px;
-    padding: 0 20px 16px;
-  }
-
-  .mcv-onglet {
-    flex: 1;
-    background: #d4a820;
-    border: 3px solid transparent;
-    border-radius: 10px;
-    padding: 12px;
-    font-size: 16px;
-    font-weight: 800;
-    color: #1a1a2e;
-    cursor: pointer;
-    font-family: 'Exo', sans-serif;
-    transition: all 0.2s;
-  }
-
-  .mcv-onglet--actif {
-    background: #1a1a2e;
-    color: #F8CA23;
-    border: 3px solid #5aaaff;
-  }
-
-  .mcv-liste {
-    position: relative;
-    z-index: 1;
-    flex: 1;
-    overflow-y: auto;
-    padding: 0 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .mcv-element {
-    background: #1a1a2e;
-    border-radius: 0;
-    padding: 14px 16px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-  }
-
-  .mcv-element:first-child {
-    border-radius: 12px 12px 0 0;
-  }
-  .mcv-element:last-child {
-    border-radius: 0 0 12px 12px;
-    border-bottom: none;
-  }
-  .mcv-element:only-child {
-    border-radius: 12px;
-  }
-
-  .mcv-element-gauche {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    flex: 1;
-    min-width: 0;
-  }
-
-  .mcv-element-match {
-    font-size: 11px;
-    color: rgba(255,255,255,0.45);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .mcv-element-match i {
-    font-size: 12px;
-    color: rgba(255,255,255,0.3);
-  }
-
-  .mcv-element-equipe {
-    font-size: 18px;
-    font-weight: 900;
-    color: white;
-    text-transform: uppercase;
-  }
-
-  .mcv-element-type {
-    font-size: 11px;
-    color: rgba(255,255,255,0.45);
-  }
-
-  .mcv-element-droite {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 4px;
-  }
-
-  .mcv-element-supprimer {
-    background: none;
-    border: none;
-    color: rgba(255,255,255,0.5);
-    font-size: 18px;
-    cursor: pointer;
-    padding: 0;
-    line-height: 1;
-  }
-
-  .mcv-element-supprimer:hover {
-    color: #e53935;
-  }
-
-  .mcv-element-cote {
-    font-size: 16px;
-    font-weight: 800;
-    color: white;
-  }
-
-  /* Footer */
-  .mcv-pied {
-    position: relative;
-    z-index: 1;
-    padding: 14px 16px 16px;
-    background: #1a1a2e;
-  }
-
-  .mcv-mise-ligne {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-  }
-
-  .mcv-mise-champ {
-    width: 80px;
-    background: #e8e8e8;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 10px;
-    font-size: 18px;
-    font-weight: 700;
-    font-family: 'Exo', sans-serif;
-    color: #1a1a2e;
-    outline: none;
-    text-align: center;
-    flex-shrink: 0;
-  }
-
-  .mcv-euro {
-    font-size: 16px;
-    font-weight: 700;
-    color: white;
-  }
-
-  .mcv-parier-bouton {
-    flex: 1;
-    background: #F8CA23;
-    color: #1a1a2e;
-    border: none;
-    border-radius: 20px;
-    padding: 14px 16px;
-    font-size: 16px;
-    font-weight: 900;
-    font-family: 'Exo', sans-serif;
-    cursor: pointer;
-    transition: background 0.2s;
-    text-align: center;
-  }
-
-  .mcv-parier-bouton:hover {
-    background: #e5b820;
-  }
-
-  .mcv-cote-badge {
-    background: #552583;
-    color: white;
-    font-weight: 900;
-    font-size: 14px;
-    border-radius: 20px;
-    padding: 10px 14px;
-    flex-shrink: 0;
-    font-family: 'Exo', sans-serif;
-  }
-
-  .mcv-gains-ligne {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 13px;
-    color: rgba(255,255,255,0.6);
-    font-weight: 600;
-  }
-
-  .mcv-gains-montant {
-    font-size: 16px;
-    font-weight: 900;
-    color: white;
-  }
-
-  .mcv-bloc-combine {
-    background: #1a1a2e;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-
-  .mcv-element--combine {
-    border-radius: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding: 14px 16px;
-  }
-
-  .mcv-element--combine:last-child {
-    border-bottom: none;
-  }
-
-  .mcv-element--simple {
-    background: #1a1a2e;
-    border-radius: 12px;
-    margin-bottom: 10px;
-    padding: 14px 16px 10px;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .mcv-element--simple .mcv-element-gauche {
-    width: 100%;
-    margin-bottom: 6px;
-  }
-
-  .mcv-element--simple .mcv-element-droite {
-    position: absolute;
-    right: 16px;
-    top: 14px;
-  }
-
-  .mcv-element--simple {
-    position: relative;
-  }
-
-  .mcv-element-mise-ligne {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .mcv-element-mise-champ {
-    width: 80px;
-    background: rgba(255,255,255,0.1);
-    border: none;
-    border-radius: 6px;
-    padding: 6px 10px;
-    font-size: 15px;
-    font-weight: 700;
-    font-family: 'Exo', sans-serif;
-    color: white;
-    outline: none;
-    text-align: center;
-  }
-
-  .mcv-element-mise-champ::placeholder {
-    color: rgba(255,255,255,0.3);
-  }
-
-  .mcv-element-mise-euro {
-    font-size: 14px;
-    color: rgba(255,255,255,0.5);
-    font-weight: 600;
-  }
-
-  .mcv-parier-simple-ligne {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .mcv-parier-simple-bouton {
-    width: 100%;
-  }
-}
+/* RESPONSIVE */
 
 @media (max-width: 900px) {
   .coupon-panneau {
