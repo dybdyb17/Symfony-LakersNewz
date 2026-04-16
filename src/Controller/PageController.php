@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class PageController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
+    #[Route('/', name: 'app_accueil')]
     public function home(ArticleRepository $articleRepository): Response
     {
         $articles = $articleRepository->findBy([], ['createdAt' => 'DESC']);
@@ -52,7 +52,7 @@ class PageController extends AbstractController
     {
         $user = $this->getUser();
         if (!$user) {
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_connexion');
         }
 
         return $this->render('pages/profil.html.twig', [
@@ -65,7 +65,7 @@ class PageController extends AbstractController
     {
         $user = $this->getUser();
         if (!$user) {
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_connexion');
         }
 
         $form = $this->createForm(\App\Form\ProfileFormType::class, $user);
@@ -89,7 +89,7 @@ class PageController extends AbstractController
     {
         $user = $this->getUser();
         if (!$user) {
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_connexion');
         }
 
         $transactions = $em->getRepository(\App\Entity\Transaction::class)->findBy(['user' => $user]);
@@ -112,7 +112,7 @@ class PageController extends AbstractController
         $em->remove($user);
         $em->flush();
 
-        return $this->redirectToRoute('app_home');
+        return $this->redirectToRoute('app_accueil');
     }
 
     #[Route('/deposer', name: 'app_deposer', methods: ['GET'])]
@@ -120,7 +120,7 @@ class PageController extends AbstractController
     {
         $user = $this->getUser();
         if (!$user) {
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_connexion');
         }
 
         return $this->render('pages/deposer.html.twig', [
@@ -135,7 +135,7 @@ class PageController extends AbstractController
     {
         $user = $this->getUser();
         if (!$user) {
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_connexion');
         }
 
         $success = false;

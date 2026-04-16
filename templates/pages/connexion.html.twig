@@ -17,7 +17,7 @@
                 </div>
             {% endif %}
 
-            <form class="auth-formulaire" method="post" action="{{ path('app_login') }}">
+            <form class="auth-formulaire" method="post" action="{{ path('app_connexion') }}">
                 <div class="formulaire-groupe">
                     <label for="email">Adresse e-mail</label>
                     <input type="email" id="email" name="email" value="{{ last_username }}" placeholder="Entre ton adresse mail" required>
@@ -41,7 +41,7 @@
                 <button type="submit" class="auth-bouton">Se connecter</button>
             </form>
             <div class="auth-pied">
-                <p>Pas de compte ? <a href="{{ path('app_register') }}">Inscris toi</a></p>
+                <p>Pas de compte ? <a href="{{ path('app_inscription') }}">Inscris toi</a></p>
             </div>
         </div>
     </div>

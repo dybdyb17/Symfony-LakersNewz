@@ -13,12 +13,12 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class StripeController extends AbstractController
 {
-    #[Route('/deposit/checkout', name: 'app_deposit_checkout', methods: ['POST'])]
+    #[Route('/deposit/checkout', name: 'app_deposer_checkout', methods: ['POST'])]
     public function checkout(Request $request, StripeService $stripeService, UrlGeneratorInterface $urlGenerator): Response
     {
         $user = $this->getUser();
         if (!$user) {
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_connexion');
         }
 
         $montant = (float) $request->request->get('montant', 0);
@@ -28,7 +28,7 @@ class StripeController extends AbstractController
             return $this->redirectToRoute('app_deposer');
         }
 
-        $successUrl = $urlGenerator->generate('app_deposit_success', ['montant' => $montant], UrlGeneratorInterface::ABSOLUTE_URL);
+        $successUrl = $urlGenerator->generate('app_deposer_success', ['montant' => $montant], UrlGeneratorInterface::ABSOLUTE_URL);
         $cancelUrl = $urlGenerator->generate('app_deposer', [], UrlGeneratorInterface::ABSOLUTE_URL);
 
         $session = $stripeService->createCheckoutSession($montant, $successUrl . '&session_id={CHECKOUT_SESSION_ID}', $cancelUrl);
@@ -36,12 +36,12 @@ class StripeController extends AbstractController
         return $this->redirect($session->url);
     }
 
-    #[Route('/deposit/success', name: 'app_deposit_success', methods: ['GET'])]
+    #[Route('/deposit/success', name: 'app_deposer_success', methods: ['GET'])]
     public function success(Request $request, StripeService $stripeService, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
         if (!$user) {
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_connexion');
         }
 
         $sessionId = $request->query->get('session_id');

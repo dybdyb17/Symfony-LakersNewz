@@ -6,7 +6,7 @@
     </div>
 
     <div class="nav-logo">
-        <a href="{{ path('app_home') }}">
+        <a href="{{ path('app_accueil') }}">
             <img src="{{ asset('assets/img/logo_LakersNewz.png') }}" width="130" height="40" alt="Lakers Newz">
         </a>
     </div>
@@ -34,16 +34,16 @@
                         </a>
                         <div class="sous-menu-separateur"></div>
                     {% endif %}
-                    <a href="{{ path('app_logout') }}" class="sous-menu-element">
+                    <a href="{{ path('app_deconnexion') }}" class="sous-menu-element">
                         <i class="fa-solid fa-right-from-bracket"></i>
                         <span>Se déconnecter</span>
                     </a>
                 {% else %}
-                    <a href="{{ path('app_register') }}" class="sous-menu-element">
+                    <a href="{{ path('app_inscription') }}" class="sous-menu-element">
                         <i class="fa-solid fa-user-plus"></i>
                         <span>S'inscrire</span>
                     </a>
-                    <a href="{{ path('app_login') }}" class="sous-menu-element">
+                    <a href="{{ path('app_connexion') }}" class="sous-menu-element">
                         <i class="fa-solid fa-right-to-bracket"></i>
                         <span>Se connecter</span>
                     </a>

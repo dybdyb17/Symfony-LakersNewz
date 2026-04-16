@@ -16,7 +16,7 @@
                 <div class="formulaire-succes show">
                     <div class="succes-icone"><i class="fa-solid fa-circle-check"></i></div>
                     <p>Merci ! Votre message a été envoyé avec succès.</p>
-                    <a href="{{ path('app_home') }}" class="bouton-retour-accueil">Retourner à la page d'accueil</a>
+                    <a href="{{ path('app_accueil') }}" class="bouton-retour-accueil">Retourner à la page d'accueil</a>
                 </div>
             {% else %}
                 {{ form_start(contactForm, {'attr': {'class': 'contact-formulaire'}}) }}
