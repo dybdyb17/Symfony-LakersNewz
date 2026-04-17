@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class StripeController extends AbstractController
 {
-    #[Route('/deposit/checkout', name: 'app_deposer_checkout', methods: ['POST'])]
+    #[Route('/deposer/checkout', name: 'app_deposer_checkout', methods: ['POST'])]
     public function checkout(Request $request, StripeService $stripeService, UrlGeneratorInterface $urlGenerator): Response
     {
         $user = $this->getUser();
@@ -24,7 +24,7 @@ class StripeController extends AbstractController
         $montant = (float) $request->request->get('montant', 0);
 
         if ($montant <= 0) {
-            $this->addFlash('error', 'Le montant doit être supérieur à 0');
+            $this->addFlash('error', 'le montant doit etre superieur à 0');
             return $this->redirectToRoute('app_deposer');
         }
 
