@@ -386,3 +386,15 @@ body.page-auth {
   }
 }
 
+
+.flash-erreur {
+    background: #e53935;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.inscription-succes-titre { color: #4CAF50; }

@@ -45,9 +45,7 @@
         <hr class="profil-separateur">
 
         {% for message in app.flashes('success') %}
-            <div style="background: #4CAF50; color: white; padding: 12px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-weight: 600;">
-                {{ message }}
-            </div>
+            <div class="flash-succes">{{ message }}</div>
         {% endfor %}
 
         <div class="profil-actions">
@@ -65,10 +63,10 @@
             <i class="fa-solid fa-circle-user"></i> Info personnelle
         </button>
 
-        <a href="{{ path('app_deconnexion') }}" class="profil-deconnexion-bouton" style="display:block; text-align:center; text-decoration:none;">Se déconnecter</a>
+        <a href="{{ path('app_deconnexion') }}" class="profil-deconnexion-bouton">Se déconnecter</a>
     </div>
 
-    <div class="profil-vue" id="infoPersoView" style="display:none;">
+    <div class="profil-vue profil-vue-cachee" id="infoPersoView">
         <header class="profil-entete">
             <h1 class="profil-entete-titre">Info perso</h1>
             <button class="profil-bouton-retour" onclick="document.getElementById('infoPersoView').style.display='none'; document.getElementById('profilView').style.display='block';"><i class="fa-solid fa-chevron-left"></i></button>

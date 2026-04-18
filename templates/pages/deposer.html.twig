@@ -30,21 +30,19 @@
         <h1 class="deposer-titre">Déposer</h1>
 
         {% if success %}
-            <div class="deposer-confirmation-fond" style="display:flex;">
+            <div class="deposer-confirmation-fond visible">
                 <div class="deposer-confirmation-boite">
                     <div class="confirm-check"><i class="fa-solid fa-circle-check"></i></div>
                     <p class="confirm-titre">Dépôt confirmé</p>
                     <p class="confirm-sous">Montant du Dépôt</p>
                     <p class="confirm-montant">{{ montant|number_format(2, ',', ' ') }} €</p>
-                    <a href="{{ path('app_paris') }}" class="confirm-ok-bouton" style="display:block; text-align:center; text-decoration:none;">OK</a>
+                    <a href="{{ path('app_paris') }}" class="confirm-ok-bouton confirm-ok-lien">OK</a>
                 </div>
             </div>
         {% endif %}
 
         {% for message in app.flashes('error') %}
-            <div style="background: #e53935; color: white; padding: 12px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-weight: 600;">
-                {{ message }}
-            </div>
+            <div class="flash-erreur">{{ message }}</div>
         {% endfor %}
 
         <form method="post" action="{{ path('app_deposer_checkout') }}">
@@ -84,12 +82,6 @@
         </form>
     </main>
 
-    <script>
-    document.querySelectorAll('.dep-valeur').forEach(bouton => {
-        bouton.addEventListener('click', () => {
-            document.getElementById('montantInput').value = bouton.dataset.amount;
-        });
-    });
-    </script>
+    <script src="{{ asset('js/deposer.js') }}"></script>
 </body>
 </html>

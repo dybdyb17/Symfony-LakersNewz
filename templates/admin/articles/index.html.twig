@@ -35,7 +35,7 @@
                         <td class="center">{{ article.createdAt ? article.createdAt|date('d/m/Y') : '—' }}</td>
                         <td class="center">
                             <a href="{{ path('admin_articles_edit', {id: article.id}) }}" class="admin-bouton-modifier">Modifier</a>
-                            <form method="post" action="{{ path('admin_articles_delete', {id: article.id}) }}" style="display: inline;" onsubmit="return confirm('Supprimer cet article ?');">
+                            <form method="post" action="{{ path('admin_articles_delete', {id: article.id}) }}" class="form-inline" onsubmit="return confirm('Supprimer cet article ?');">
                                 <button type="submit" class="admin-bouton-supprimer">Supprimer</button>
                             </form>
                         </td>

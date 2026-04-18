@@ -12,9 +12,7 @@
             </div>
 
             {% if error %}
-                <div style="background: #e53935; color: white; padding: 12px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-weight: 600;">
-                    Email ou mot de passe incorrect
-                </div>
+                <div class="flash-erreur">Email ou mot de passe incorrect</div>
             {% endif %}
 
             <form class="auth-formulaire" method="post" action="{{ path('app_connexion') }}">
@@ -51,21 +49,5 @@
 </main>
 {% endblock %}
 {% block javascripts %}
-<script>
-document.querySelectorAll('.bouton-voir-mdp').forEach(bouton => {
-    bouton.addEventListener('click', function() {
-        const input = this.parentElement.querySelector('input');
-        const icon = this.querySelector('i');
-        if (input.type === 'password') {
-            input.type = 'text';
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
-        } else {
-            input.type = 'password';
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
-        }
-    });
-});
-</script>
+<script src="{{ asset('js/connexion.js') }}"></script>
 {% endblock %}

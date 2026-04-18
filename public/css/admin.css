@@ -257,3 +257,5 @@
     justify-content: center;
     margin-bottom: 15px;
 }
+
+.form-inline { display: inline; }

@@ -368,3 +368,22 @@ body.deposer-page {
 .confirm-ok-bouton:hover {
   background: #e5b820;
 }
+
+.deposer-confirmation-fond { display: none; }
+.deposer-confirmation-fond.visible { display: flex; }
+
+.confirm-ok-lien {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.flash-erreur {
+    background: #e53935;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+}

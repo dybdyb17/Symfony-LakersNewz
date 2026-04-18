@@ -55,7 +55,7 @@
                             {% if match.statut != 'termine' %}
                                 <a href="{{ path('admin_matchs_resultat', {id: match.id}) }}" class="admin-bouton-resultat">Résultat</a>
                             {% endif %}
-                            <form method="post" action="{{ path('admin_matchs_delete', {id: match.id}) }}" style="display: inline;" onsubmit="return confirm('Supprimer ce match ?');">
+                            <form method="post" action="{{ path('admin_matchs_delete', {id: match.id}) }}" class="form-inline" onsubmit="return confirm('Supprimer ce match ?');">
                                 <button type="submit" class="admin-bouton-supprimer">Supprimer</button>
                             </form>
                         </td>

@@ -353,3 +353,21 @@ body.profil-page {
 .info-modifier-champ::placeholder {
     color: rgba(26,26,46,0.5);
 }
+
+.flash-succes {
+    background: #4CAF50;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.profil-deconnexion-bouton {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.profil-vue-cachee { display: none; }
