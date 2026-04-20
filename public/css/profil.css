@@ -27,21 +27,21 @@ body.profil-page {
   min-height: 100vh;
 }
 
-.profil-entete {
+.profil-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 40px;
 }
 
-.profil-entete-titre {
+.profil-header-title {
   font-size: 28px;
   font-weight: 900;
   color: #1a1a2e;
 }
 
-.profil-bouton-fermer,
-.profil-bouton-retour {
+.profil-btn-fermer,
+.profil-btn-retour {
   background: none;
   border: none;
   font-size: 28px;
@@ -55,8 +55,8 @@ body.profil-page {
   transition: opacity 0.2s;
 }
 
-.profil-bouton-fermer:hover,
-.profil-bouton-retour:hover {
+.profil-btn-fermer:hover,
+.profil-btn-retour:hover {
   opacity: 0.6;
 }
 
@@ -131,7 +131,7 @@ body.profil-page {
   margin-bottom: 24px;
 }
 
-.profil-action-carte {
+.profil-action-card {
   background: #1a1a2e;
   border: none;
   border-radius: 14px;
@@ -147,22 +147,22 @@ body.profil-page {
   font-family: 'Exo', sans-serif;
 }
 
-.profil-action-carte i {
+.profil-action-card i {
   font-size: 32px;
 }
 
-.profil-action-carte span {
+.profil-action-card span {
   font-size: 18px;
   font-weight: 700;
   color: white;
 }
 
-.profil-action-carte:hover {
+.profil-action-card:hover {
   background: #2a2a4e;
   transform: translateY(-2px);
 }
 
-.profil-info-bouton {
+.profil-info-btn {
   width: 100%;
   background: #1a1a2e;
   border: none;
@@ -180,16 +180,16 @@ body.profil-page {
   transition: all 0.2s;
 }
 
-.profil-info-bouton i {
+.profil-info-btn i {
   font-size: 20px;
   color: #F8CA23;
 }
 
-.profil-info-bouton:hover {
+.profil-info-btn:hover {
   background: #2a2a4e;
 }
 
-.profil-deconnexion-bouton {
+.profil-deconnexion-btn {
   width: 100%;
   background: #e53935;
   border: none;
@@ -203,7 +203,7 @@ body.profil-page {
   transition: all 0.2s;
 }
 
-.profil-deconnexion-bouton:hover {
+.profil-deconnexion-btn:hover {
   background: #c62828;
 }
 
@@ -211,14 +211,14 @@ body.profil-page {
   margin-bottom: 32px;
 }
 
-.info-zone-titre {
+.info-zone-title {
   font-size: 20px;
   font-weight: 800;
   color: #1a1a2e;
   margin-bottom: 14px;
 }
 
-.info-tableau {
+.info-table {
   background: #1a1a2e;
   border-radius: 14px;
   overflow: hidden;
@@ -249,7 +249,7 @@ body.profil-page {
   text-align: right;
 }
 
-.profil-cloture-bouton {
+.profil-cloture-btn {
   width: 100%;
   max-width: 420px;
   display: block;
@@ -266,7 +266,7 @@ body.profil-page {
   transition: all 0.2s;
 }
 
-.profil-cloture-bouton:hover {
+.profil-cloture-btn:hover {
   background: #c62828;
 }
 
@@ -280,7 +280,7 @@ body.profil-page {
   justify-content: center;
 }
 
-.cloture-modale {
+.cloture-modal {
   background: #1a1a2e;
   border-radius: 20px;
   padding: 36px 32px;
@@ -289,21 +289,21 @@ body.profil-page {
   text-align: center;
 }
 
-.cloture-modale h2 {
+.cloture-modal h2 {
   font-size: 22px;
   font-weight: 900;
   color: white;
   margin-bottom: 12px;
 }
 
-.cloture-modale p {
+.cloture-modal p {
   font-size: 14px;
   color: rgba(255,255,255,0.6);
   margin-bottom: 28px;
   line-height: 1.6;
 }
 
-.cloture-confirmation-bouton {
+.cloture-confirmation-btn {
   width: 100%;
   background: #e53935;
   border: none;
@@ -318,11 +318,11 @@ body.profil-page {
   transition: all 0.2s;
 }
 
-.cloture-confirmation-bouton:hover {
+.cloture-confirmation-btn:hover {
   background: #c62828;
 }
 
-.cloture-annuler-bouton {
+.cloture-annuler-btn {
   background: none;
   border: none;
   color: rgba(255,255,255,0.5);
@@ -334,7 +334,7 @@ body.profil-page {
   padding: 4px;
 }
 
-.cloture-annuler-bouton:hover {
+.cloture-annuler-btn:hover {
   color: white;
 }
 .info-modifier-champ {
@@ -364,7 +364,7 @@ body.profil-page {
     font-weight: 600;
 }
 
-.profil-deconnexion-bouton {
+.profil-deconnexion-btn {
     display: block;
     text-align: center;
     text-decoration: none;

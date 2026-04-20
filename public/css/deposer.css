@@ -8,7 +8,7 @@ body.deposer-page {
   overflow-x: hidden;
 }
 
-.deposer-entete {
+.deposer-header {
   position: relative;
   z-index: 10;
   display: flex;
@@ -17,7 +17,7 @@ body.deposer-page {
   padding: 20px 24px;
 }
 
-.deposer-bouton-fermer {
+.deposer-btn-fermer {
   background: none;
   border: none;
   font-size: 28px;
@@ -31,7 +31,7 @@ body.deposer-page {
   transition: opacity 0.2s;
 }
 
-.deposer-bouton-fermer:hover {
+.deposer-btn-fermer:hover {
   opacity: 0.7;
 }
 
@@ -60,7 +60,7 @@ body.deposer-page {
   padding: 10px 24px 60px;
 }
 
-.deposer-titre {
+.deposer-title {
   font-size: 28px;
   font-weight: 800;
   color: #1a1a2e;
@@ -155,7 +155,7 @@ body.deposer-page {
   margin-bottom: 10px;
 }
 
-.deposer-carte-option {
+.deposer-card-option {
   background: #1a1a2e;
   border-radius: 16px;
   padding: 18px 20px;
@@ -163,66 +163,66 @@ body.deposer-page {
   transition: all 0.2s;
 }
 
-.deposer-carte-option:hover {
+.deposer-card-option:hover {
   background: #252540;
 }
 
-.carte-option-haut {
+.card-option-haut {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
 }
 
-.carte-option-libelle {
+.card-option-libelle {
   font-size: 15px;
   font-weight: 700;
   color: white;
 }
 
-.carte-logos {
+.card-logos {
   display: flex;
   gap: 8px;
   font-size: 28px;
 }
 
-.carte-logos .fa-cc-visa {
+.card-logos .fa-cc-visa {
     color: #1a1f71;
     background: white;
     border-radius: 4px;
     padding: 2px;
 }
 
-.carte-logos .fa-cc-mastercard
+.card-logos .fa-cc-mastercard
 { color: #eb001b; }
 
-.carte-option-limites {
+.card-option-limites {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
   color: rgba(255,255,255,0.4);
 }
 
-.deposer-carte-formulaireulaire {
+.deposer-card-formulaireulaire {
   background: #1a1a2e;
   border-radius: 16px;
   padding: 20px;
   margin-top: 10px;
 }
 
-.carte-formulaireulaire-titre {
+.card-formulaireulaire-title {
   font-size: 16px;
   font-weight: 700;
   color: white;
   margin-bottom: 16px;
 }
 
-.carte-champ-groupe {
+.card-champ-groupe {
   position: relative;
   margin-bottom: 12px;
 }
 
-.carte-champ {
+.card-champ {
   width: 100%;
   background: #F8CA23;
   border: none;
@@ -235,11 +235,11 @@ body.deposer-page {
   outline: none;
 }
 
-.carte-champ::placeholder {
+.card-champ::placeholder {
   color: rgba(26,26,46,0.5);
 }
 
-.carte-icone {
+.card-icone {
   position: absolute;
   right: 14px;
   top: 50%;
@@ -248,17 +248,17 @@ body.deposer-page {
   font-size: 18px;
 }
 
-.carte-ligne {
+.card-ligne {
   display: flex;
   gap: 12px;
   margin-bottom: 12px;
 }
 
-.carte-ligne .carte-champ {
+.card-ligne .card-champ {
   margin-bottom: 0;
 }
 
-.deposer-continuer-bouton {
+.deposer-continuer-btn {
   width: 100%;
   background: #552583;
   color: white;
@@ -274,11 +274,11 @@ body.deposer-page {
   letter-spacing: 0.3px;
 }
 
-.deposer-continuer-bouton:hover {
+.deposer-continuer-btn:hover {
   background: #7B2FBE;
 }
 
-.deposer-fermer-bouton {
+.deposer-fermer-btn {
   width: 100%;
   background: none;
   border: none;
@@ -291,7 +291,7 @@ body.deposer-page {
   transition: opacity 0.2s;
 }
 
-.deposer-fermer-bouton:hover {
+.deposer-fermer-btn:hover {
   opacity: 0.7;
 }
 
@@ -331,7 +331,7 @@ body.deposer-page {
   margin-bottom: 12px;
 }
 
-.confirm-titre {
+.confirm-title {
   font-size: 22px;
   font-weight: 900;
   color: white;
@@ -351,7 +351,7 @@ body.deposer-page {
   margin-bottom: 28px;
 }
 
-.confirm-ok-bouton {
+.confirm-ok-btn {
   width: 100%;
   background: #F8CA23;
   color: #1a1a2e;
@@ -365,7 +365,7 @@ body.deposer-page {
   transition: all 0.2s;
 }
 
-.confirm-ok-bouton:hover {
+.confirm-ok-btn:hover {
   background: #e5b820;
 }
 

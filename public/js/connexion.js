@@ -1,5 +1,5 @@
-document.querySelectorAll('.bouton-voir-mdp').forEach(bouton => {
-    bouton.addEventListener('click', function() {
+document.querySelectorAll('.btn-voir-mdp').forEach(btn => {
+    btn.addEventListener('click', function() {
         const input = this.parentElement.querySelector('input');
         const icon = this.querySelector('i');
         if (input.type === 'password') {

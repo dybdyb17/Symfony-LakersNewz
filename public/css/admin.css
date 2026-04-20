@@ -15,7 +15,7 @@
     margin-bottom: 20px;
 }
 
-.admin-titre {
+.admin-title {
     color: white;
     font-size: 28px;
 }
@@ -42,7 +42,7 @@
     color: #1a1a2e;
 }
 
-.admin-bouton-nouveau {
+.admin-btn-nouveau {
     background: #4CAF50;
     color: white;
     padding: 10px 20px;
@@ -51,7 +51,7 @@
     font-weight: 700;
 }
 
-.admin-bouton-modifier {
+.admin-btn-modifier {
     background: #FDB927;
     color: #1a1a2e;
     padding: 6px 12px;
@@ -61,7 +61,7 @@
     font-size: 13px;
 }
 
-.admin-bouton-supprimer {
+.admin-btn-supprimer {
     background: #e53935;
     color: white;
     border: none;
@@ -71,7 +71,7 @@
     font-size: 13px;
 }
 
-.admin-bouton-valider {
+.admin-btn-valider {
     background: #4CAF50;
     color: white;
     border: none;
@@ -84,12 +84,12 @@
     width: 100%;
 }
 
-.admin-bouton-valider-modifier {
+.admin-btn-valider-modifier {
     background: #FDB927;
     color: #1a1a2e;
 }
 
-.admin-bouton-resultat {
+.admin-btn-resultat {
     background: #FDB927;
     color: #1a1a2e;
     padding: 6px 12px;
@@ -99,41 +99,41 @@
     font-size: 13px;
 }
 
-.admin-tableauau-conteneur {
+.admin-tableau-conteneur {
     background: rgba(0, 0, 0, 0.6);
     border-radius: 16px;
     overflow: hidden;
 }
 
-.admin-tableau {
+.admin-table {
     width: 100%;
     border-collapse: collapse;
     color: white;
 }
 
-.admin-tableau thead tr {
+.admin-table thead tr {
     background: rgba(85, 37, 131, 0.8);
 }
 
-.admin-tableau th {
+.admin-table th {
     padding: 12px;
     text-align: left;
 }
 
-.admin-tableau th.center {
+.admin-table th.center {
     text-align: center;
 }
 
-.admin-tableau td {
+.admin-table td {
     padding: 12px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.admin-tableau td.center {
+.admin-table td.center {
     text-align: center;
 }
 
-.admin-tableau .vide {
+.admin-table .vide {
     padding: 20px;
     text-align: center;
     color: rgba(255, 255, 255, 0.5);

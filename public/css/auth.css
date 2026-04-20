@@ -22,7 +22,7 @@ body.page-auth {
   display: none;
 }
 
-.auth-carte {
+.auth-card {
   background: #fdb927;
   border-radius: 20px;
   padding: 30px 25px;
@@ -32,19 +32,19 @@ body.page-auth {
   margin: 0 auto;
 }
 
-.auth-entete {
+.auth-header {
   text-align: center;
   margin-bottom: 25px;
 }
 
-.auth-entete h1 {
+.auth-header h1 {
   font-size: 32px;
   font-weight: 800;
   color: #552583;
   margin-bottom: 8px;
 }
 
-.auth-entete p {
+.auth-header p {
   font-size: 14px;
   color: #555;
 }
@@ -115,7 +115,7 @@ body.page-auth {
   padding-right: 50px;
 }
 
-.bouton-voir-mdp {
+.btn-voir-mdp {
   position: absolute;
   right: 15px;
   top: 50%;
@@ -128,7 +128,7 @@ body.page-auth {
   font-size: 16px;
 }
 
-.bouton-voir-mdp:hover {
+.btn-voir-mdp:hover {
   color: #552583;
 }
 
@@ -155,7 +155,7 @@ body.page-auth {
   accent-color: #552583;
 }
 
-.auth-bouton {
+.auth-btn {
   width: 100%;
   background: #552583;
   color: white;
@@ -172,32 +172,32 @@ body.page-auth {
   display: block;
 }
 
-.auth-bouton:hover {
+.auth-btn:hover {
   background: #6b2d9e;
   opacity: 0.9;
 }
 
-.auth-pied {
+.auth-footer {
   text-align: center;
   margin-top: 20px;
 }
 
-.auth-pied p {
+.auth-footer p {
   font-size: 14px;
   color: #555;
 }
 
-.auth-pied a {
+.auth-footer a {
   color: #552583;
   font-weight: 600;
   text-decoration: none;
 }
 
-.auth-pied a:hover {
+.auth-footer a:hover {
   text-decoration: underline;
 }
 
-.succes-carte {
+.succes-card {
   display: none;
   background: #552583;
   border-radius: 20px;
@@ -209,7 +209,7 @@ body.page-auth {
   margin: 0 auto;
 }
 
-.succes-carte.show {
+.succes-card.show {
   display: block;
 }
 
@@ -229,19 +229,19 @@ body.page-auth {
   color: #4CAF50;
 }
 
-.succes-carte h2 {
+.succes-card h2 {
   font-size: 22px;
   color: #4CAF50;
   margin-bottom: 10px;
 }
 
-.succes-carte p {
+.succes-card p {
   font-size: 15px;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 25px;
 }
 
-.succes-carte .succes-bouton {
+.succes-card .succes-btn {
   background: #4CAF50;
   max-width: 220px;
   margin: 0 auto;
@@ -252,16 +252,16 @@ body.page-auth {
     padding: 30px 40px;
   }
 
-  .auth-carte {
+  .auth-card {
     padding: 35px 30px;
     max-width: 550px;
   }
 
-  .auth-entete h1 {
+  .auth-header h1 {
     font-size: 38px;
   }
 
-  .auth-entete p {
+  .auth-header p {
     font-size: 16px;
   }
 
@@ -281,7 +281,7 @@ body.page-auth {
     min-height: 100vh;
   }
 
-  .page-auth .pied-site {
+  .page-auth .footer-site {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -321,18 +321,18 @@ body.page-auth {
     object-position: center;
   }
 
-  .auth-carte {
+  .auth-card {
     max-width: 100%;
     padding: 25px;
     margin: 0;
     margin-top: 20px;
   }
 
-  .auth-entete h1 {
+  .auth-header h1 {
     font-size: 32px;
   }
 
-  .auth-entete p {
+  .auth-header p {
     font-size: 14px;
   }
 
@@ -349,14 +349,14 @@ body.page-auth {
     font-size: 14px;
   }
 
-  .auth-bouton {
+  .auth-btn {
     padding: 14px;
     font-size: 15px;
   }
 }
 
 @media (min-width: 1440px) {
-  .page-auth .pied-site {
+  .page-auth .footer-site {
     width: 40%;
   }
 
@@ -371,12 +371,12 @@ body.page-auth {
     max-width: 60%;
   }
 
-  .auth-carte {
+  .auth-card {
     padding: 30px;
     margin-top: 30px;
   }
 
-  .auth-entete h1 {
+  .auth-header h1 {
     font-size: 36px;
   }
 
@@ -397,4 +397,4 @@ body.page-auth {
     font-weight: 600;
 }
 
-.inscription-succes-titre { color: #4CAF50; }
+.inscription-succes-title { color: #4CAF50; }

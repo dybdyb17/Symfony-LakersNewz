@@ -16,9 +16,9 @@
 <body class="deposer-page">
     <div class="deposer-bg-pattern"></div>
 
-    <header class="deposer-entete">
-        <button class="deposer-bouton-fermer" onclick="window.location.href='{{ path('app_paris') }}'"><i class="fa-solid fa-xmark"></i></button>
-        <div class="deposer-entete-right">
+    <header class="deposer-header">
+        <button class="deposer-btn-fermer" onclick="window.location.href='{{ path('app_paris') }}'"><i class="fa-solid fa-xmark"></i></button>
+        <div class="deposer-header-right">
             <span class="deposer-solde-badge">
                 <i class="fa-solid fa-plus"></i>
                 <span>{{ solde|number_format(2, ',', ' ') }} €</span>
@@ -27,16 +27,16 @@
     </header>
 
     <main class="deposer-principal">
-        <h1 class="deposer-titre">Déposer</h1>
+        <h1 class="deposer-title">Déposer</h1>
 
         {% if success %}
             <div class="deposer-confirmation-fond visible">
                 <div class="deposer-confirmation-boite">
                     <div class="confirm-check"><i class="fa-solid fa-circle-check"></i></div>
-                    <p class="confirm-titre">Dépôt confirmé</p>
+                    <p class="confirm-title">Dépôt confirmé</p>
                     <p class="confirm-sous">Montant du Dépôt</p>
                     <p class="confirm-montant">{{ montant|number_format(2, ',', ' ') }} €</p>
-                    <a href="{{ path('app_paris') }}" class="confirm-ok-bouton confirm-ok-lien">OK</a>
+                    <a href="{{ path('app_paris') }}" class="confirm-ok-btn confirm-ok-lien">OK</a>
                 </div>
             </div>
         {% endif %}
@@ -62,22 +62,22 @@
 
             <div class="deposer-paiement-bloc">
                 <p class="deposer-paiement-libelle">Moyen de paiement</p>
-                <div class="deposer-carte-option">
-                    <div class="carte-option-haut">
-                        <span class="carte-option-libelle">Carte bancaire</span>
-                        <div class="carte-logos">
+                <div class="deposer-card-option">
+                    <div class="card-option-haut">
+                        <span class="card-option-libelle">Carte bancaire</span>
+                        <div class="card-logos">
                             <i class="fa-brands fa-cc-visa"></i>
                             <i class="fa-brands fa-cc-mastercard"></i>
                         </div>
                     </div>
-                    <div class="carte-option-limites">
+                    <div class="card-option-limites">
                         <span>min 11 €</span>
                         <span>Max 50 000 €</span>
                     </div>
                 </div>
             </div>
 
-            <button type="submit" class="deposer-continuer-bouton">Continuer</button>
+            <button type="submit" class="deposer-continuer-btn">Continuer</button>
             <p class="deposer-securise"><i class="fa-solid fa-lock"></i> Paiement sécurisé</p>
         </form>
     </main>

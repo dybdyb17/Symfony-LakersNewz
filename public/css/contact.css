@@ -14,7 +14,7 @@ body.contact-page {
   margin: 0 auto;
 }
 
-.contact-entete {
+.contact-header {
   text-align: center;
   margin-bottom: 30px;
 }
@@ -33,21 +33,21 @@ body.contact-page {
   color: #fdb927;
 }
 
-.contact-entete h1 {
+.contact-header h1 {
   font-size: 28px;
   font-weight: 700;
   color: #fdb927;
   margin: 0;
 }
 
-.contact-formulaireulaire-carte {
+.contact-formulaireulaire-card {
   background: #552583;
   border-radius: 20px;
   padding: 25px;
   margin-bottom: 25px;
 }
 
-.contact-formulaireulaire-carte h2 {
+.contact-formulaireulaire-card h2 {
   color: #fdb927;
   font-size: 20px;
   font-weight: 700;
@@ -109,7 +109,7 @@ body.contact-page {
   box-shadow: 0 0 0 3px rgba(253, 185, 39, 0.5);
 }
 
-.bouton-envoyer {
+.btn-envoyer {
   width: 100%;
   background: #fdb927;
   color: #552583;
@@ -127,13 +127,13 @@ body.contact-page {
   margin-top: 10px;
 }
 
-.bouton-envoyer:hover {
+.btn-envoyer:hover {
   background: #e5a620;
   transform: translateY(-2px);
   box-shadow: 0 5px 20px rgba(253, 185, 39, 0.4);
 }
 
-.bouton-envoyer i {
+.btn-envoyer i {
   font-size: 18px;
 }
 
@@ -169,7 +169,7 @@ body.contact-page {
   margin-bottom: 25px;
 }
 
-.bouton-retour-accueil {
+.btn-retour-accueil {
   display: inline-block;
   background: #4CAF50;
   color: white;
@@ -181,18 +181,18 @@ body.contact-page {
   transition: all 0.3s ease;
 }
 
-.bouton-retour-accueil:hover {
+.btn-retour-accueil:hover {
   background: #45a049;
   transform: translateY(-2px);
 }
 
-.contact-info-carte {
+.contact-info-card {
   background: #552583;
   border-radius: 20px;
   padding: 25px;
 }
 
-.contact-info-carte h2 {
+.contact-info-card h2 {
   color: #fdb927;
   font-size: 20px;
   font-weight: 700;
@@ -225,14 +225,14 @@ body.contact-page {
   font-size: 18px;
 }
 
-.info-contenu h3 {
+.info-content h3 {
   color: #fdb927;
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 5px;
 }
 
-.info-contenu p {
+.info-content p {
   color: rgba(255, 255, 255, 0.9);
   font-size: 14px;
   line-height: 1.5;
@@ -284,17 +284,17 @@ body.contact-page {
     max-width: 700px;
   }
 
-  .contact-entete h1 {
+  .contact-header h1 {
     font-size: 36px;
   }
 
-  .contact-formulaireulaire-carte,
-  .contact-info-carte {
+  .contact-formulaireulaire-card,
+  .contact-info-card {
     padding: 35px;
   }
 
-  .contact-formulaireulaire-carte h2,
-  .contact-info-carte h2 {
+  .contact-formulaireulaire-card h2,
+  .contact-info-card h2 {
     font-size: 24px;
   }
 
@@ -320,12 +320,12 @@ body.contact-page {
     gap: 30px;
   }
 
-  .contact-entete {
+  .contact-header {
     grid-column: 1 / -1;
     margin-bottom: 10px;
   }
 
-  .contact-entete h1 {
+  .contact-header h1 {
     font-size: 42px;
   }
 
@@ -333,17 +333,17 @@ body.contact-page {
     font-size: 50px;
   }
 
-  .contact-formulaireulaire-carte {
+  .contact-formulaireulaire-card {
     grid-column: 1;
     margin-bottom: 0;
   }
 
-  .contact-info-carte {
+  .contact-info-card {
     grid-column: 2;
   }
 
-  .contact-formulaireulaire-carte,
-  .contact-info-carte {
+  .contact-formulaireulaire-card,
+  .contact-info-card {
     padding: 40px;
     border-radius: 25px;
   }
@@ -364,8 +364,8 @@ body.contact-page {
     max-width: 1200px;
   }
 
-  .contact-formulaireulaire-carte,
-  .contact-info-carte {
+  .contact-formulaireulaire-card,
+  .contact-info-card {
     padding: 50px;
   }
 }

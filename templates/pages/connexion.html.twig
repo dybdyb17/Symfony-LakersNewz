@@ -5,8 +5,8 @@
 {% block body %}
 <main class="auth-principal">
     <div class="auth-left">
-        <div class="auth-carte connexion-carte">
-            <div class="auth-entete">
+        <div class="auth-card connexion-card">
+            <div class="auth-header">
                 <h1>Se connecter</h1>
                 <p>Entre ton adresse mail et mot de passe</p>
             </div>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="mdp-conteneur">
                         <input type="password" id="password" name="password" placeholder="••••••••••" required>
-                        <button type="button" class="bouton-voir-mdp"><i class="fa-solid fa-eye-slash"></i></button>
+                        <button type="button" class="btn-voir-mdp"><i class="fa-solid fa-eye-slash"></i></button>
                     </div>
                 </div>
                 <div class="formulaire-cases">
@@ -36,9 +36,9 @@
                         Me souvenir
                     </label>
                 </div>
-                <button type="submit" class="auth-bouton">Se connecter</button>
+                <button type="submit" class="auth-btn">Se connecter</button>
             </form>
-            <div class="auth-pied">
+            <div class="auth-footer">
                 <p>Pas de compte ? <a href="{{ path('app_inscription') }}">Inscris toi</a></p>
             </div>
         </div>

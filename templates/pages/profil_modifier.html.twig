@@ -17,16 +17,16 @@
     <div class="profil-fond-motif"></div>
 
     <div class="profil-vue">
-        <header class="profil-entete">
-            <h1 class="profil-entete-titre">Modifier mes informations</h1>
-            <button class="profil-bouton-retour" onclick="window.location.href='{{ path('app_profil') }}'"><i class="fa-solid fa-chevron-left"></i></button>
+        <header class="profil-header">
+            <h1 class="profil-header-title">Modifier mes informations</h1>
+            <button class="profil-btn-retour" onclick="window.location.href='{{ path('app_profil') }}'"><i class="fa-solid fa-chevron-left"></i></button>
         </header>
 
         {{ form_start(profilForm, {'attr': {'class': 'info-zone'}}) }}
 
             <div class="info-zone">
-                <h2 class="info-zone-titre">Mon identité</h2>
-                <div class="info-tableau">
+                <h2 class="info-zone-title">Mon identité</h2>
+                <div class="info-table">
                     <div class="info-ligne">
                         <span class="info-libelle">{{ form_label(profilForm.lastname) }}</span>
                         {{ form_widget(profilForm.lastname, {'attr': {'class': 'info-modifier-champ'}}) }}
@@ -51,8 +51,8 @@
             </div>
 
             <div class="info-zone">
-                <h2 class="info-zone-titre">Mes informations de contact</h2>
-                <div class="info-tableau">
+                <h2 class="info-zone-title">Mes informations de contact</h2>
+                <div class="info-table">
                     <div class="info-ligne">
                         <span class="info-libelle">{{ form_label(profilForm.email) }}</span>
                         {{ form_widget(profilForm.email, {'attr': {'class': 'info-modifier-champ'}}) }}
@@ -64,7 +64,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="profil-info-bouton">
+            <button type="submit" class="profil-info-btn">
                 <i class="fa-solid fa-floppy-disk"></i> Enregistrer
             </button>
 

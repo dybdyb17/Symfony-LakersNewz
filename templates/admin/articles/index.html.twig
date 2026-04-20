@@ -5,8 +5,8 @@
 {% block body %}
 <main class="admin-page">
     <div class="admin-haut">
-        <h1 class="admin-titre">Gestion des articles</h1>
-        <a href="{{ path('admin_articles_new') }}" class="admin-bouton-nouveau">+ nouvel article</a>
+        <h1 class="admin-title">Gestion des articles</h1>
+        <a href="{{ path('admin_articles_new') }}" class="admin-btn-nouveau">+ nouvel article</a>
     </div>
 
     {% include 'admin/_nav.html.twig' %}
@@ -15,8 +15,8 @@
         <div class="admin-succes">{{ message }}</div>
     {% endfor %}
 
-    <div class="admin-tableauau-conteneur">
-        <table class="admin-tableau">
+    <div class="admin-tableau-conteneur">
+        <table class="admin-table">
             <thead>
                 <tr>
                     <th>Titre</th>
@@ -34,9 +34,9 @@
                         <td class="center">{{ article.auteur ?? 'Lakers Newz' }}</td>
                         <td class="center">{{ article.createdAt ? article.createdAt|date('d/m/Y') : '—' }}</td>
                         <td class="center">
-                            <a href="{{ path('admin_articles_edit', {id: article.id}) }}" class="admin-bouton-modifier">Modifier</a>
+                            <a href="{{ path('admin_articles_edit', {id: article.id}) }}" class="admin-btn-modifier">Modifier</a>
                             <form method="post" action="{{ path('admin_articles_delete', {id: article.id}) }}" class="form-inline" onsubmit="return confirm('Supprimer cet article ?');">
-                                <button type="submit" class="admin-bouton-supprimer">Supprimer</button>
+                                <button type="submit" class="admin-btn-supprimer">Supprimer</button>
                             </form>
                         </td>
                     </tr>

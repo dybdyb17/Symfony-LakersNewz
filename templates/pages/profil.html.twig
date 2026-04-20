@@ -17,9 +17,9 @@
     <div class="profil-fond-motif"></div>
 
     <div class="profil-vue" id="profilView">
-        <header class="profil-entete">
-            <h1 class="profil-entete-titre">Profil</h1>
-            <button class="profil-bouton-fermer" onclick="window.location.href='{{ path('app_paris') }}'"><i class="fa-solid fa-xmark"></i></button>
+        <header class="profil-header">
+            <h1 class="profil-header-title">Profil</h1>
+            <button class="profil-btn-fermer" onclick="window.location.href='{{ path('app_paris') }}'"><i class="fa-solid fa-xmark"></i></button>
         </header>
 
         <div class="profil-bandeau">
@@ -49,34 +49,34 @@
         {% endfor %}
 
         <div class="profil-actions">
-            <a href="{{ path('app_deposer') }}" class="profil-action-carte">
+            <a href="{{ path('app_deposer') }}" class="profil-action-card">
                 <i class="fa-solid fa-money-bill-transfer"></i>
                 <span>Déposer</span>
             </a>
-            <a href="{{ path('app_retirer') }}" class="profil-action-carte">
+            <a href="{{ path('app_retirer') }}" class="profil-action-card">
                 <i class="fa-solid fa-money-bill-transfer"></i>
                 <span>Retirer</span>
             </a>
         </div>
 
-        <button class="profil-info-bouton" onclick="document.getElementById('profilView').style.display='none'; document.getElementById('infoPersoView').style.display='block';">
+        <button class="profil-info-btn" onclick="document.getElementById('profilView').style.display='none'; document.getElementById('infoPersoView').style.display='block';">
             <i class="fa-solid fa-circle-user"></i> Info personnelle
         </button>
 
-        <a href="{{ path('app_deconnexion') }}" class="profil-deconnexion-bouton">Se déconnecter</a>
+        <a href="{{ path('app_deconnexion') }}" class="profil-deconnexion-btn">Se déconnecter</a>
     </div>
 
     <div class="profil-vue profil-vue-cachee" id="infoPersoView">
-        <header class="profil-entete">
-            <h1 class="profil-entete-titre">Info perso</h1>
-            <button class="profil-bouton-retour" onclick="document.getElementById('infoPersoView').style.display='none'; document.getElementById('profilView').style.display='block';"><i class="fa-solid fa-chevron-left"></i></button>
+        <header class="profil-header">
+            <h1 class="profil-header-title">Info perso</h1>
+            <button class="profil-btn-retour" onclick="document.getElementById('infoPersoView').style.display='none'; document.getElementById('profilView').style.display='block';"><i class="fa-solid fa-chevron-left"></i></button>
         </header>
 
         <!-- MODE LECTURE -->
         <div id="modeLecture">
             <div class="info-zone">
-                <h2 class="info-zone-titre">Mon identité</h2>
-                <div class="info-tableau">
+                <h2 class="info-zone-title">Mon identité</h2>
+                <div class="info-table">
                     <div class="info-ligne">
                         <span class="info-libelle">Civilité</span>
                         <span class="info-valeur">Monsieur</span>
@@ -105,8 +105,8 @@
             </div>
 
             <div class="info-zone">
-                <h2 class="info-zone-titre">Mes informations de contact</h2>
-                <div class="info-tableau">
+                <h2 class="info-zone-title">Mes informations de contact</h2>
+                <div class="info-table">
                     <div class="info-ligne">
                         <span class="info-libelle">Email</span>
                         <span class="info-valeur">{{ user.email ?? '—' }}</span>
@@ -118,10 +118,10 @@
                 </div>
             </div>
 
-            <a href="{{ path('app_profil_modifier') }}" class="profil-info-bouton">Modifier mes informations</a>
+            <a href="{{ path('app_profil_modifier') }}" class="profil-info-btn">Modifier mes informations</a>
 
             <form method="post" action="{{ path('app_profil_supprimer') }}" onsubmit="return confirm('Êtes-vous sûr de vouloir clôturer votre compte ? Cette action est irréversible.');">
-                <button type="submit" class="profil-cloture-bouton">Clôturer mon compte</button>
+                <button type="submit" class="profil-cloture-btn">Clôturer mon compte</button>
             </form>
         </div>
 

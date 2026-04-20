@@ -17,7 +17,7 @@ main {
   flex: 1;
 }
 
-.barre-nav {
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -37,7 +37,7 @@ main {
   gap: 10px;
 }
 
-.bouton {
+.btn {
   padding: 6px 14px;
   border-radius: 4px;
   font-size: 14px;
@@ -46,14 +46,14 @@ main {
   font-weight: bold;
 }
 
-.bouton-or {
+.btn-or {
   background-color: #FDB927;
 }
-.bouton-violet {
+.btn-violet {
   background-color: #940ad3;
   color: #222;
 }
-.bouton-noir {
+.btn-noir {
   background-color: #000000;
 }
 
@@ -89,7 +89,7 @@ main {
   border-color: #555;
 }
 
-.bouton-menu {
+.btn-menu {
   position: fixed;
   top: 70px;
   left: 20px;
@@ -101,11 +101,11 @@ main {
   color: white;
 }
 
-.bouton-menu.active i {
+.btn-menu.active i {
   color: white;
 }
 
-.menu-lateral {
+.sidebar {
   position: fixed;
   top: 56px;
   left: -260px;
@@ -120,21 +120,21 @@ main {
   z-index: 999;
 }
 
-.menu-lateral.open {
+.sidebar.open {
   left: 0;
 }
 
-.menu-lateral .nav ul {
+.sidebar .nav ul {
   list-style: none;
   padding: 0;
   margin-top: 70px;
 }
 
-.menu-lateral .nav li {
+.sidebar .nav li {
   margin: 75px 0;
 }
 
-.menu-lateral .nav a {
+.sidebar .nav a {
   color: white;
   text-decoration: none;
   font-size: 30px;
@@ -143,35 +143,35 @@ main {
   gap: 10px;
 }
 
-.menu-lateral .nav a:hover {
+.sidebar .nav a:hover {
   color: #f4db1d;
 }
 
-.menu-lateral .nav a.active {
+.sidebar .nav a.active {
   color: #fdb927;
   font-weight: 600;
 }
 
-.menu-lateral-pied {
+.sidebar-footer {
   margin-top: auto;
   text-align: center;
 }
 
-.menu-lateral-pied img {
+.sidebar-footer img {
   width: 150px;
   opacity: 0.8;
 }
 
-.logo-pied img {
+.logo-footer img {
   width: 120px;
   transition: transform 0.3s ease;
 }
 
-.logo-pied img:hover {
+.logo-footer img:hover {
   transform: scale(1.05);
 }
 
-.bouton-fermer {
+.btn-fermer {
   background: none;
   border: none;
   color: white;
@@ -181,11 +181,11 @@ main {
   margin-left: auto;
 }
 
-.reglages-menu {
+.settings-menu {
   position: relative;
 }
 
-.bouton-reglages {
+.btn-settings {
   background: none;
   border: 1px solid transparent;
   padding: 6px;
@@ -196,7 +196,7 @@ main {
   transition: all 0.3s ease;
 }
 
-.bouton-reglages:hover {
+.btn-settings:hover {
   border-color: #555;
   transform: rotate(45deg);
 }
@@ -230,7 +230,7 @@ main {
   border-bottom: 8px solid rgba(253, 185, 39, 0.3);
 }
 
-.reglages-menu.active .sous-menu {
+.settings-menu.active .sous-menu {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -279,12 +279,12 @@ main {
   margin: 8px 0;
 }
 
-.reglages-menu.active .bouton-reglages {
+.settings-menu.active .btn-settings {
   border-color: #fdb927;
   color: #fdb927;
 }
 
-.pied-site {
+.footer-site {
   background-color: #4e2a84;
   color: #fff;
   font-size: 0.85rem;
@@ -292,7 +292,7 @@ main {
   margin-top: auto;
 }
 
-.pied-site .pied-navigation {
+.footer-site .footer-navigation {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -301,38 +301,38 @@ main {
   border-bottom: 2px solid #d1a040;
 }
 
-.pied-site .fan-logo img {
+.footer-site .fan-logo img {
   height: 40px;
   margin-bottom: 1rem;
 }
 
-.pied-site .colonnes {
+.footer-site .colonnes {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
 }
 
-.pied-site .colonne {
+.footer-site .colonne {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   text-align: center;
 }
 
-.pied-site .colonne a {
+.footer-site .colonne a {
   color: #fff;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
-.pied-site .colonne a:hover {
+.footer-site .colonne a:hover {
   color: #fcd34d;
   text-decoration: underline;
 }
 
-.pied-site .pied-bas {
+.footer-site .footer-bas {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 1rem;
   text-align: center;
@@ -370,7 +370,7 @@ main {
   color: rgba(255, 255, 255, 0.8);
 }
 
-.contenu-principal {
+.content-principal {
   padding-top: 120px;
   padding-left: 20px;
   padding-right: 20px;
@@ -389,7 +389,7 @@ main {
     display: none;
   }
 
-  .barre-nav {
+  .navbar {
     justify-content: flex-start;
   }
 
@@ -397,7 +397,7 @@ main {
     gap: 6px;
   }
 
-  .nav-liens .bouton {
+  .nav-liens .btn {
     padding: 4px 10px;
     font-size: 12px;
   }

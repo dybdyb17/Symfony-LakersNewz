@@ -6,15 +6,15 @@
 <main class="auth-principal">
     <div class="auth-left">
         {% if success %}
-            <div class="succes-carte show">
+            <div class="succes-card show">
                 <div class="succes-icone"><i class="fa-solid fa-check"></i></div>
-                <h2 class="inscription-succes-titre">Compte créé avec succès</h2>
+                <h2 class="inscription-succes-title">Compte créé avec succès</h2>
                 <p>Bienvenue {{ prenom }}</p>
-                <a href="{{ path('app_connexion') }}" class="auth-bouton succes-bouton">Se connecter</a>
+                <a href="{{ path('app_connexion') }}" class="auth-btn succes-btn">Se connecter</a>
             </div>
         {% else %}
-            <div class="auth-carte">
-                <div class="auth-entete">
+            <div class="auth-card">
+                <div class="auth-header">
                     <h1>S'inscrire</h1>
                     <p>Créer votre compte</p>
                 </div>
@@ -88,18 +88,18 @@
                         {{ form_errors(registrationForm.agreeTerms) }}
                     </div>
 
-                    <button type="submit" class="auth-bouton">S'inscrire</button>
+                    <button type="submit" class="auth-btn">S'inscrire</button>
 
                 {{ form_end(registrationForm) }}
 
-                <div class="auth-pied">
+                <div class="auth-footer">
                     <p>Avez vous un compte? <a href="{{ path('app_connexion') }}">Se connecter</a></p>
                 </div>
             </div>
         {% endif %}
     </div>
     <div class="auth-right">
-        <img src="{{ asset('assets/img/dean-bennett-nFjLHE4vmn4-unsplash.jpg') }}" alt="Kobe Bryant Mural" class="auth-image">
+        <img src="{{ asset('assets/img/dean-bennett-nFjLHE4vmn4-unsplash.jpg') }}" alt="Kobe Bryant" class="auth-image">
     </div>
 </main>
 {% endblock %}

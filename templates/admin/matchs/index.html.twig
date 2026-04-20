@@ -5,8 +5,8 @@
 {% block body %}
 <main class="admin-page">
     <div class="admin-haut">
-        <h1 class="admin-titre">Gestion des matchs</h1>
-        <a href="{{ path('admin_matchs_new') }}" class="admin-bouton-nouveau">+ Nouveau match</a>
+        <h1 class="admin-title">Gestion des matchs</h1>
+        <a href="{{ path('admin_matchs_new') }}" class="admin-btn-nouveau">+ Nouveau match</a>
     </div>
 
     {% include 'admin/_nav.html.twig' %}
@@ -15,8 +15,8 @@
         <div class="admin-succes">{{ message }}</div>
     {% endfor %}
 
-    <div class="admin-tableauau-conteneur">
-        <table class="admin-tableau">
+    <div class="admin-tableau-conteneur">
+        <table class="admin-table">
             <thead>
                 <tr>
                     <th>Équipe 1</th>
@@ -53,10 +53,10 @@
                         </td>
                         <td class="center">
                             {% if match.statut != 'termine' %}
-                                <a href="{{ path('admin_matchs_resultat', {id: match.id}) }}" class="admin-bouton-resultat">Résultat</a>
+                                <a href="{{ path('admin_matchs_resultat', {id: match.id}) }}" class="admin-btn-resultat">Résultat</a>
                             {% endif %}
                             <form method="post" action="{{ path('admin_matchs_delete', {id: match.id}) }}" class="form-inline" onsubmit="return confirm('Supprimer ce match ?');">
-                                <button type="submit" class="admin-bouton-supprimer">Supprimer</button>
+                                <button type="submit" class="admin-btn-supprimer">Supprimer</button>
                             </form>
                         </td>
                     </tr>

@@ -25,23 +25,23 @@ body.paris-page {
   font-family: 'Exo', sans-serif;
 }
 
-body.paris-page .barre-nav {
+body.paris-page .navbar {
   top: 44px !important;
   z-index: 1900 !important;
 }
 
-body.paris-page .bouton-menu {
+body.paris-page .btn-menu {
   top: calc(44px + 56px + 14px) !important;
   z-index: 1800 !important;
 }
 
-body.paris-page .menu-lateral {
+body.paris-page .sidebar {
   top: calc(44px + 56px) !important;
   height: calc(100vh - 44px - 56px) !important;
   z-index: 1850 !important;
 }
 
-body.paris-page .bouton-menu.active {
+body.paris-page .btn-menu.active {
   display: none;
 }
 
@@ -60,7 +60,7 @@ body.paris-page .bouton-menu.active {
   border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 
-.paris-titre {
+.paris-title {
   font-size: 22px;
   font-weight: 800;
   color: #FDB927;
@@ -76,7 +76,7 @@ body.paris-page .bouton-menu.active {
   flex-shrink: 0;
 }
 
-.solde-bouton {
+.solde-btn {
   background: #333;
   border: none;
   color: white;
@@ -91,17 +91,17 @@ body.paris-page .bouton-menu.active {
   transition: background 0.2s;
 }
 
-.solde-bouton i {
+.solde-btn i {
     color: #FDB927;
     font-size: 11px;
 }
 
-.solde-bouton:hover {
+.solde-btn:hover {
     background: #444;
 }
 
-.panier-bouton,
-.profil-bouton {
+.panier-btn,
+.profil-btn {
   background: none;
   border: none;
   color: #FDB927;
@@ -168,27 +168,27 @@ body.paris-page .bouton-menu.active {
     color: #FDB927;
 }
 
-.match-carte {
+.match-card {
   background: rgba(248, 202, 35, 0.95);
   border-radius: 10px;
   padding: 16px 20px;
   color: #111;
 }
 
-.match-carte-haut {
+.match-card-haut {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 14px;
 }
 
-.match-carte-date {
+.match-card-date {
   font-size: 13px;
   color: rgba(0,0,0,0.55);
   font-weight: 500;
 }
 
-.match-carte-live {
+.match-card-live {
   background: #2a2a3e;
   color: #FDB927;
   border-radius: 6px;
@@ -198,7 +198,7 @@ body.paris-page .bouton-menu.active {
   letter-spacing: 1px;
 }
 
-.match-carte-equipes {
+.match-card-equipes {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -251,13 +251,13 @@ body.paris-page .bouton-menu.active {
   padding: 0 16px;
 }
 
-.match-carte-cotes {
+.match-card-cotes {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.cote-bouton {
+.cote-btn {
   flex: 1;
   background: rgba(78, 42, 132, 0.80);
   color: #F8CA23;
@@ -276,17 +276,17 @@ body.paris-page .bouton-menu.active {
   justify-content: center;
 }
 
-.cote-bouton:hover {
+.cote-btn:hover {
     background: rgba(143, 34, 211, 0.85);
 }
 
-.cote-bouton.selected {
+.cote-btn.selected {
   background: #1a1a2e;
   color: #F8CA23;
   border: 2px solid #F8CA23;
 }
 
-.options-bouton {
+.options-btn {
   font-size: 11px;
   color: rgba(0,0,0,0.5);
   cursor: pointer;
@@ -298,7 +298,7 @@ body.paris-page .bouton-menu.active {
   flex-shrink: 0;
 }
 
-.options-bouton:hover {
+.options-btn:hover {
     color: #552583; text-decoration: underline;
 }
 
@@ -318,7 +318,7 @@ body.paris-page .bouton-menu.active {
   color: #111;
 }
 
-.coupon-entete {
+.coupon-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -360,7 +360,7 @@ body.paris-page .bouton-menu.active {
   border-top: 1px solid #eee;
 }
 
-.coupon-options-bouton {
+.coupon-options-btn {
   background: none;
   border: none;
   cursor: pointer;
@@ -384,7 +384,7 @@ body.paris-page .bouton-menu.active {
     color: #7B2FBE;
 }
 
-.coupon-vide-titre {
+.coupon-vide-title {
     font-size: 14px;
     font-weight: 700;
     color: #555;
@@ -419,7 +419,7 @@ body.paris-page .bouton-menu.active {
   border: 1px solid #eee;
 }
 
-.coupon-element-entete {
+.coupon-element-header {
   display: flex;
   align-items: flex-start;
   margin-bottom: 2px;
@@ -539,7 +539,7 @@ body.paris-page .bouton-menu.active {
     color: #111;
 }
 
-.parier-bouton-principal {
+.parier-btn-principal {
   width: 100%;
   background: #FDB927;
   color: #111;
@@ -552,7 +552,7 @@ body.paris-page .bouton-menu.active {
   transition: all 0.2s;
 }
 
-.parier-bouton-principal:hover {
+.parier-btn-principal:hover {
     background: #e5a620;
 }
 
@@ -572,14 +572,14 @@ body.paris-page .bouton-menu.active {
   min-height: 100vh;
 }
 
-.mes-paris-entete {
+.mes-paris-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 20px;
 }
 
-.mes-paris-entete h1 {
+.mes-paris-header h1 {
   font-size: 28px;
   font-weight: 900;
   color: #1a1a2e;
@@ -591,7 +591,7 @@ body.paris-page .bouton-menu.active {
   gap: 14px;
 }
 
-.mes-paris-bouton-retour {
+.mes-paris-btn-retour {
   background: none;
   border: none;
   font-size: 22px;
@@ -632,7 +632,7 @@ body.paris-page .bouton-menu.active {
   gap: 16px;
 }
 
-.mes-paris-carte {
+.mes-paris-card {
   background: #1a1a2e;
   border-radius: 12px;
   overflow: hidden;
@@ -700,7 +700,7 @@ body.paris-page .bouton-menu.active {
   line-height: 1.5;
 }
 
-.voir-paris-bouton {
+.voir-paris-btn {
   background: #e53935;
   color: white;
   border: none;
@@ -711,13 +711,13 @@ body.paris-page .bouton-menu.active {
   cursor: pointer;
 }
 
-.voir-paris-bouton:hover {
+.voir-paris-btn:hover {
   background: #c62828;
 }
 
 /* MODALS (POPUPS)*/
 
-.modale-fond {
+.modal-fond {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.65);
@@ -727,11 +727,11 @@ body.paris-page .bouton-menu.active {
   justify-content: center;
 }
 
-.modale-fond.show {
+.modal-fond.show {
   display: flex;
 }
 
-.modale {
+.modal {
   background: #FDB927;
   border-radius: 18px;
   padding: 28px 24px;
@@ -742,7 +742,7 @@ body.paris-page .bouton-menu.active {
   overflow-y: auto;
 }
 
-.modale-fermer {
+.modal-fermer {
   position: absolute;
   top: 12px;
   left: 14px;
@@ -753,7 +753,7 @@ body.paris-page .bouton-menu.active {
   color: #333;
 }
 
-.modale-titre {
+.modal-title {
   font-size: 22px;
   font-weight: 800;
   color: #111;
@@ -797,7 +797,7 @@ body.paris-page .bouton-menu.active {
   flex-wrap: wrap;
 }
 
-.valeur-rapide-bouton {
+.valeur-rapide-btn {
   background: #1a1a2e;
   color: white;
   border: none;
@@ -809,7 +809,7 @@ body.paris-page .bouton-menu.active {
   transition: all 0.2s;
 }
 
-.valeur-rapide-bouton:hover, .valeur-rapide-bouton.active {
+.valeur-rapide-btn:hover, .valeur-rapide-btn.active {
   background: #552583;
 }
 
@@ -843,20 +843,20 @@ body.paris-page .bouton-menu.active {
   font-size: 22px;
 }
 
-.carte-formulaire {
+.card-formulaire {
   background: #1a1a2e;
   border-radius: 10px;
   padding: 14px;
   margin-bottom: 10px;
 }
 
-.carte-formulaire h3 {
+.card-formulaire h3 {
   color: white;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
-.carte-champ {
+.card-champ {
   width: 100%;
   background: #FDB927;
   border: none;
@@ -870,12 +870,12 @@ body.paris-page .bouton-menu.active {
   box-sizing: border-box;
 }
 
-.carte-ligne {
+.card-ligne {
   display: flex;
   gap: 8px;
 }
 
-.continuer-bouton {
+.continuer-btn {
   width: 100%;
   background: #552583;
   color: white;
@@ -889,11 +889,11 @@ body.paris-page .bouton-menu.active {
   transition: all 0.2s;
 }
 
-.continuer-bouton:hover {
+.continuer-btn:hover {
   background: #7B2FBE;
 }
 
-.annuler-bouton {
+.annuler-btn {
   width: 100%;
   background: transparent;
   color: #e53935;
@@ -915,7 +915,7 @@ body.paris-page .bouton-menu.active {
   margin-top: 6px;
 }
 
-.depot-necessaire-modale {
+.depot-necessaire-modal {
   background: #1a1a2e;
   border-radius: 16px;
   padding: 32px 28px;
@@ -923,7 +923,7 @@ body.paris-page .bouton-menu.active {
   max-width: 380px;
 }
 
-.depot-titre {
+.depot-title {
   font-size: 22px;
   font-weight: 800;
   color: white;
@@ -937,7 +937,7 @@ body.paris-page .bouton-menu.active {
   line-height: 1.6;
 }
 
-.depot-faire-bouton {
+.depot-faire-btn {
   width: 100%;
   background: #F8CA23;
   color: #111;
@@ -952,11 +952,11 @@ body.paris-page .bouton-menu.active {
   transition: all 0.2s;
 }
 
-.depot-faire-bouton:hover {
+.depot-faire-btn:hover {
   background: #e5b820;
 }
 
-.depot-plus-tard-bouton {
+.depot-plus-tard-btn {
   background: none;
   border: none;
   color: rgba(255,255,255,0.6);
@@ -969,7 +969,7 @@ body.paris-page .bouton-menu.active {
   transition: color 0.2s;
 }
 
-.depot-plus-tard-bouton:hover {
+.depot-plus-tard-btn:hover {
   color: white;
 }
 
@@ -999,13 +999,13 @@ body.paris-page .bouton-menu.active {
   color: #e53935;
 }
 
-.confirmation-modale h2 {
+.confirmation-modal h2 {
   font-size: 20px;
   font-weight: 800;
   color: #111;
   margin-bottom: 8px;
 }
-.erreur-titre {
+.erreur-title {
   color: #c62828;
 }
 .confirmation-montant {
@@ -1021,7 +1021,7 @@ body.paris-page .bouton-menu.active {
   line-height: 1.5;
 }
 
-.ok-bouton {
+.ok-btn {
   background: #552583;
   color: white;
   border: none;
@@ -1033,13 +1033,13 @@ body.paris-page .bouton-menu.active {
   transition: all 0.2s;
 }
 
-.ok-bouton:hover {
+.ok-btn:hover {
   background: #7B2FBE;
 }
 
-/* profil du modale */
+/* profil du modal */
 
-.profil-modale {
+.profil-modal {
   text-align: center;
   max-width: 360px;
 }
@@ -1074,13 +1074,13 @@ body.paris-page .bouton-menu.active {
   margin-bottom: 14px;
 }
 
-.profil-boutons {
+.profil-btns {
   display: flex;
   gap: 10px;
   margin-bottom: 10px;
 }
 
-.profil-action-bouton {
+.profil-action-btn {
   flex: 1;
   background: #1a1a2e;
   color: #FDB927;
@@ -1097,14 +1097,14 @@ body.paris-page .bouton-menu.active {
   transition: all 0.2s;
 }
 
-.profil-action-bouton i {
+.profil-action-btn i {
   font-size: 18px;
 }
-.profil-action-bouton:hover {
+.profil-action-btn:hover {
   background: #2a2a4e;
 }
 
-.profil-info-bouton {
+.profil-info-btn {
   width: 100%;
   background: #1a1a2e;
   color: white;
@@ -1122,11 +1122,11 @@ body.paris-page .bouton-menu.active {
   transition: all 0.2s;
 }
 
-.profil-info-bouton:hover {
+.profil-info-btn:hover {
   background: #2a2a4e;
 }
 
-.profil-deconnexion-bouton {
+.profil-deconnexion-btn {
   width: 100%;
   background: #e53935;
   color: white;
@@ -1139,7 +1139,7 @@ body.paris-page .bouton-menu.active {
   transition: all 0.2s;
 }
 
-.profil-deconnexion-bouton:hover {
+.profil-deconnexion-btn:hover {
   background: #c62828;
 }
 
@@ -1158,7 +1158,7 @@ body.paris-page .bouton-menu.active {
   .paris-sous-barre {
     padding: 12px 16px 12px 60px;
   }
-  .paris-titre {
+  .paris-title {
     font-size: 16px;
   }
   .responsible-banner {

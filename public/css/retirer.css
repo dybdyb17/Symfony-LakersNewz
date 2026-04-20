@@ -12,7 +12,7 @@
   object-fit: contain;
 }
 
-.retirer-titre-error {
+.retirer-title-error {
   color: white !important;
 }
 
@@ -23,17 +23,17 @@
   margin-bottom: 20px;
 }
 
-.retirer-ok-bouton {
+.retirer-ok-btn {
   background: #F8CA23 !important;
   color: #1a1a2e !important;
 }
 
-.retirer-ok-bouton:hover {
+.retirer-ok-btn:hover {
   background: #e5b820 !important;
 }
 
 @media (min-width: 768px) {
-  .retirer-page .deposer-bouton-fermer {
+  .retirer-page .deposer-btn-fermer {
     font-size: 22px;
   }
 }

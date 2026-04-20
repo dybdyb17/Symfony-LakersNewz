@@ -1,24 +1,24 @@
-const burgerBtn = document.querySelector('.bouton-menu');
-const menuLateral = document.querySelector('.menu-lateral');
-const closeBtn = document.querySelector('.bouton-fermer');
+const burgerBtn = document.querySelector('.btn-menu');
+const sidebar = document.querySelector('.sidebar');
+const closeBtn = document.querySelector('.btn-fermer');
 
-if (burgerBtn && menuLateral) {
+if (burgerBtn && sidebar) {
   burgerBtn.addEventListener('click', () => {
-    menuLateral.classList.add('open');
+    sidebar.classList.add('open');
     burgerBtn.classList.add('active');
   });
 }
 
-if (closeBtn && menuLateral) {
+if (closeBtn && sidebar) {
   closeBtn.addEventListener('click', () => {
-    menuLateral.classList.remove('open');
+    sidebar.classList.remove('open');
     burgerBtn.classList.remove('active');
   });
 }
 
 
-const settingsDropdown = document.querySelector('.reglages-menu');
-const settingsBtn = document.querySelector('.bouton-reglages');
+const settingsDropdown = document.querySelector('.settings-menu');
+const settingsBtn = document.querySelector('.btn-settings');
 const dropdownMenu = document.querySelector('.sous-menu');
 
 if (settingsBtn && settingsDropdown) {
@@ -51,7 +51,7 @@ function normalize(text) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const tbody = document.querySelector('.calendrier-tableau tbody');
+  const tbody = document.querySelector('.calendrier-table tbody');
   const monthSelect = document.querySelector('select:nth-of-type(1)');
   let allMatches = [];
 

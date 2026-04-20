@@ -1,7 +1,7 @@
 ;(() => {
   const rosterGrid = document.getElementById("effectif-grille");
   const errorBox = document.getElementById("effectif-erreur");
-  const positionBtns = document.querySelectorAll(".bouton-poste");
+  const positionBtns = document.querySelectorAll(".btn-poste");
 
   if (!rosterGrid) return;
 
@@ -64,17 +64,17 @@
 
   const createPlayerCard = (player) => {
     return `
-      <div class="joueur-carte" data-position="${player.position}">
-        <div class="joueur-carte-entete">
+      <div class="joueur-card" data-position="${player.position}">
+        <div class="joueur-card-header">
           <span class="joueur-maillot">#${player.jersey}</span>
           <span class="joueur-poste">${player.position}</span>
         </div>
 
-        <div class="joueur-carte-image">
+        <div class="joueur-card-image">
           <img src="${player.headshot}" alt="${player.name}" loading="lazy">
         </div>
 
-        <div class="joueur-carte-info">
+        <div class="joueur-card-info">
           <h3 class="joueur-nom">${player.name}</h3>
 
           <div class="joueur-stats">
@@ -125,11 +125,11 @@
     }
   };
 
-  positionBtns.forEach(bouton => {
-    bouton.addEventListener("click", () => {
+  positionBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
       positionBtns.forEach(b => b.classList.remove("active"));
-      bouton.classList.add("active");
-      currentFilter = bouton.dataset.position;
+      btn.classList.add("active");
+      currentFilter = btn.dataset.position;
       filterPlayers(currentFilter);
     });
   });

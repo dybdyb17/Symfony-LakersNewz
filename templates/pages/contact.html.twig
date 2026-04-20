@@ -5,18 +5,18 @@
 {% block body %}
 <main class="contact-principal">
     <div class="contact-conteneur">
-        <div class="contact-entete">
+        <div class="contact-header">
             <div class="contact-icone"><i class="fa-solid fa-envelope"></i></div>
             <h1>Contacte moi</h1>
         </div>
-        <div class="contact-formulaireulaire-carte">
+        <div class="contact-formulaireulaire-card">
             <h2>Formulaire de contact</h2>
 
             {% if success %}
                 <div class="formulaire-succes show">
                     <div class="succes-icone"><i class="fa-solid fa-circle-check"></i></div>
                     <p>Merci ! Votre message a été envoyé avec succès.</p>
-                    <a href="{{ path('app_accueil') }}" class="bouton-retour-accueil">Retourner à la page d'accueil</a>
+                    <a href="{{ path('app_accueil') }}" class="btn-retour-accueil">Retourner à la page d'accueil</a>
                 </div>
             {% else %}
                 {{ form_start(contactForm, {'attr': {'class': 'contact-formulaire'}}) }}
@@ -41,26 +41,26 @@
                         {{ form_errors(contactForm.message) }}
                     </div>
 
-                    <button type="submit" class="bouton-envoyer">
+                    <button type="submit" class="btn-envoyer">
                         <i class="fa-solid fa-paper-plane"></i> Envoyer le message
                     </button>
 
                 {{ form_end(contactForm) }}
             {% endif %}
         </div>
-        <div class="contact-info-carte">
+        <div class="contact-info-card">
             <h2>Informations</h2>
             <div class="info-element">
                 <div class="info-icone"><i class="fa-solid fa-envelope"></i></div>
-                <div class="info-contenu"><h3>email</h3><p>dybrilboudiaf14@gmail.com</p></div>
+                <div class="info-content"><h3>email</h3><p>dybrilboudiaf14@gmail.com</p></div>
             </div>
             <div class="info-element">
                 <div class="info-icone"><i class="fa-solid fa-phone"></i></div>
-                <div class="info-contenu"><h3>Téléphone</h3><p>0627962735</p></div>
+                <div class="info-content"><h3>Téléphone</h3><p>0627962735</p></div>
             </div>
             <div class="info-element">
                 <div class="info-icone"><i class="fa-solid fa-location-dot"></i></div>
-                <div class="info-contenu"><h3>Adresse</h3><p>62 avenue du merlan<br>13014 Marseille, France</p></div>
+                <div class="info-content"><h3>Adresse</h3><p>62 avenue du merlan<br>13014 Marseille, France</p></div>
             </div>
             <div class="social-section">
                 <h3>Suis moi</h3>

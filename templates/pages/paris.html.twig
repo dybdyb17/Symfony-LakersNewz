@@ -12,17 +12,17 @@
 </div>
 
 <div class="paris-sous-barre">
-    <h1 class="paris-titre">Pariez sur la NBA</h1>
+    <h1 class="paris-title">Pariez sur la NBA</h1>
     <div class="paris-actions">
-        <button class="solde-bouton" id="soldeBtn">
+        <button class="solde-btn" id="soldeBtn">
             <i class="fa-solid fa-plus"></i>
             <span id="soldeDisplay">{% if user %}{{ user.solde|number_format(2, ',', ' ') }} €{% else %}0,00 €{% endif %}</span>
         </button>
-        <button class="panier-bouton" id="panierBtn">
+        <button class="panier-btn" id="panierBtn">
             <i class="fa-solid fa-cart-shopping"></i>
             <span class="panier-compteur" id="panierCount">0</span>
         </button>
-        <button class="profil-bouton" id="profilBtn">
+        <button class="profil-btn" id="profilBtn">
             <i class="fa-solid fa-user"></i>
         </button>
     </div>
@@ -38,9 +38,9 @@
         </div>
     </section>
     <aside class="coupon-panneau" id="couponSidebar">
-        <div class="coupon-entete">
+        <div class="coupon-header">
             <span class="coupon-compteur" id="couponCount">0 sélection</span>
-            <button class="coupon-options-bouton">
+            <button class="coupon-options-btn">
                 <i class="fa-solid fa-ellipsis"></i>
             </button>
         </div>
@@ -51,7 +51,7 @@
         <div class="coupon-vide" id="couponEmpty">
             <div class="coupon-vide-icone"></div>
             <i class="fas fa-basketball-ball"></i>
-            <p class="coupon-vide-titre">Placer un nouveau paris</p>
+            <p class="coupon-vide-title">Placer un nouveau paris</p>
             <p class="coupon-vide-sous">Bonne chance mon pote</p>
         </div>
         <div class="coupon-selections" id="couponSelections" style="display:none;">
@@ -63,19 +63,19 @@
         </div>
         <div class="coupon-footer">
             <div class="coupon-gains"><span>Gains possibles</span><span class="gains-montant" id="gainsAmount">0,00 €</span></div>
-            <button class="parier-bouton-principal" id="parierBtn">Parier</button>
+            <button class="parier-btn-principal" id="parierBtn">Parier</button>
         </div>
     </aside>
 </main>
 
 <div class="mes-paris-fond" id="mesParis" style="display:none;">
     <div class="mes-paris-interieur">
-        <div class="mes-paris-entete">
+        <div class="mes-paris-header">
             <h1>Mes paris</h1>
             <div class="mes-paris-actions">
-                <button class="solde-bouton"><i class="fa-solid fa-plus"></i><span id="mesParisSolde">{% if user %}{{ user.solde|number_format(2, ',', ' ') }} €{% else %}0,00 €{% endif %}</span></button>
-                <button class="mes-paris-bouton-retour" id="closeMesParis"><i class="fa-solid fa-chevron-left"></i></button>
-                <button class="profil-bouton"><i class="fa-solid fa-user"></i></button>
+                <button class="solde-btn"><i class="fa-solid fa-plus"></i><span id="mesParisSolde">{% if user %}{{ user.solde|number_format(2, ',', ' ') }} €{% else %}0,00 €{% endif %}</span></button>
+                <button class="mes-paris-btn-retour" id="closeMesParis"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="profil-btn"><i class="fa-solid fa-user"></i></button>
             </div>
         </div>
         <div class="mes-paris-onglets">
@@ -87,106 +87,106 @@
         <div class="mes-paris-vide" id="mesPariEmpty" style="display:none;">
             <i class="fa-solid fa-basketball"></i>
             <p>Vous n'avez actuellement<br>aucun paris en cours</p>
-            <button class="voir-paris-bouton" id="voirTousParis">Voir tous les paris</button>
+            <button class="voir-paris-btn" id="voirTousParis">Voir tous les paris</button>
         </div>
     </div>
 </div>
 
-<div class="modale-fond" id="profilModal">
-    <div class="modale profil-modale">
-        <button class="modale-fermer" id="closeProfilModal"><i class="fa-solid fa-xmark"></i></button>
+<div class="modal-fond" id="profilModal">
+    <div class="modal profil-modal">
+        <button class="modal-fermer" id="closeProfilModal"><i class="fa-solid fa-xmark"></i></button>
         <div class="profil-avatar"><i class="fa-solid fa-user"></i></div>
         <p class="profil-pseudo" id="profilPseudo">utilisateur</p>
         <p class="profil-solde-libelle">Solde disponible</p>
         <p class="profil-solde" id="profilSolde">0,00 €</p>
-        <div class="profil-boutons">
-            <button class="profil-action-bouton" id="openDeposerBtn"><i class="fa-solid fa-money-bill-wave"></i>Déposer</button>
-            <button class="profil-action-bouton" id="openRetirerBtn"><i class="fa-solid fa-hand-holding-dollar"></i>Retirer</button>
+        <div class="profil-btns">
+            <button class="profil-action-btn" id="openDeposerBtn"><i class="fa-solid fa-money-bill-wave"></i>Déposer</button>
+            <button class="profil-action-btn" id="openRetirerBtn"><i class="fa-solid fa-hand-holding-dollar"></i>Retirer</button>
         </div>
-        <button class="profil-info-bouton" id="mesParisProfil"><i class="fa-solid fa-list-check"></i> Mes paris</button>
-        <button class="profil-deconnexion-bouton" id="deconnecterBtn">Se déconnecter</button>
+        <button class="profil-info-btn" id="mesParisProfil"><i class="fa-solid fa-list-check"></i> Mes paris</button>
+        <button class="profil-deconnexion-btn" id="deconnecterBtn">Se déconnecter</button>
     </div>
 </div>
 
-<div class="modale-fond" id="deposerModal">
-    <div class="modale deposer-modal">
-        <button class="modale-fermer" id="closeDeposerModal"><i class="fa-solid fa-xmark"></i></button>
-        <h2 class="modale-titre">Déposer</h2>
+<div class="modal-fond" id="deposerModal">
+    <div class="modal deposer-modal">
+        <button class="modal-fermer" id="closeDeposerModal"><i class="fa-solid fa-xmark"></i></button>
+        <h2 class="modal-title">Déposer</h2>
         <div class="deposer-montant-case"><input type="number" id="deposerMontant" value="0" min="0"><span>€</span></div>
         <div class="deposer-valeurs-rapides">
-            <button class="valeur-rapide-bouton" data-amount="10">10 €</button>
-            <button class="valeur-rapide-bouton" data-amount="20">20 €</button>
-            <button class="valeur-rapide-bouton" data-amount="50">50 €</button>
-            <button class="valeur-rapide-bouton" data-amount="100">100 €</button>
+            <button class="valeur-rapide-btn" data-amount="10">10 €</button>
+            <button class="valeur-rapide-btn" data-amount="20">20 €</button>
+            <button class="valeur-rapide-btn" data-amount="50">50 €</button>
+            <button class="valeur-rapide-btn" data-amount="100">100 €</button>
         </div>
         <p class="deposer-conseil">Tu peux encore déposer jusqu'à <strong>5000 €</strong></p>
         <p class="paiement-libelle">Moyen de paiement</p>
         <div class="paiement-option-case"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i> Carte bancaire</div>
-        <div class="carte-formulaire" id="carteForm" style="display:none;">
+        <div class="card-formulaire" id="cardForm" style="display:none;">
             <h3>Ajoute ta carte bancaire</h3>
-            <input type="text" class="carte-champ" id="carteNumero" placeholder="Numéro de carte" maxlength="19">
-            <div class="carte-ligne">
-                <input type="text" class="carte-champ" id="carteExpiry" placeholder="Date d'expiration" maxlength="5">
-                <input type="text" class="carte-champ" id="carteCVV" placeholder="CVV" maxlength="3">
+            <input type="text" class="card-champ" id="cardNumero" placeholder="Numéro de carte" maxlength="19">
+            <div class="card-ligne">
+                <input type="text" class="card-champ" id="cardExpiry" placeholder="Date d'expiration" maxlength="5">
+                <input type="text" class="card-champ" id="cardCVV" placeholder="CVV" maxlength="3">
             </div>
-            <button class="continuer-bouton" id="validerCarteBtn">Continuer</button>
-            <button class="annuler-bouton" id="annulerCarteBtn">Annuler</button>
+            <button class="continuer-btn" id="validerCarteBtn">Continuer</button>
+            <button class="annuler-btn" id="annulerCarteBtn">Annuler</button>
         </div>
-        <button class="continuer-bouton" id="continuerDeposerBtn">Continuer</button>
+        <button class="continuer-btn" id="continuerDeposerBtn">Continuer</button>
         <p class="securise-texte"><i class="fa-solid fa-lock"></i> Paiement sécurisé</p>
     </div>
 </div>
 
-<div class="modale-fond" id="deposerConfirmModal">
-    <div class="modale confirmation-modale">
+<div class="modal-fond" id="deposerConfirmModal">
+    <div class="modal confirmation-modal">
         <div class="confirmation-icone succes-icone"><i class="fa-solid fa-circle-check"></i></div>
         <h2>Dépôt confirmé</h2>
         <p class="confirmation-montant" id="deposerConfirmAmount">0,00 €</p>
-        <button class="ok-bouton" id="okDeposerBtn">OK</button>
+        <button class="ok-btn" id="okDeposerBtn">OK</button>
     </div>
 </div>
 
-<div class="modale-fond" id="retirerModal">
-    <div class="modale deposer-modal">
-        <button class="modale-fermer" id="closeRetirerModal"><i class="fa-solid fa-xmark"></i></button>
-        <h2 class="modale-titre">Retirer</h2>
+<div class="modal-fond" id="retirerModal">
+    <div class="modal deposer-modal">
+        <button class="modal-fermer" id="closeRetirerModal"><i class="fa-solid fa-xmark"></i></button>
+        <h2 class="modal-title">Retirer</h2>
         <div class="deposer-montant-case"><input type="number" id="retirerMontant" value="0" min="0"><span>€</span></div>
         <div class="deposer-valeurs-rapides">
-            <button class="valeur-rapide-bouton retirer-preset" data-amount="10">10 €</button>
-            <button class="valeur-rapide-bouton retirer-preset" data-amount="20">20 €</button>
-            <button class="valeur-rapide-bouton retirer-preset" data-amount="50">50 €</button>
-            <button class="valeur-rapide-bouton retirer-preset" data-amount="100">100 €</button>
+            <button class="valeur-rapide-btn retirer-preset" data-amount="10">10 €</button>
+            <button class="valeur-rapide-btn retirer-preset" data-amount="20">20 €</button>
+            <button class="valeur-rapide-btn retirer-preset" data-amount="50">50 €</button>
+            <button class="valeur-rapide-btn retirer-preset" data-amount="100">100 €</button>
         </div>
-        <button class="continuer-bouton" id="continuerRetirerBtn">Continuer</button>
+        <button class="continuer-btn" id="continuerRetirerBtn">Continuer</button>
     </div>
 </div>
 
-<div class="modale-fond" id="depotNecessaireModal">
-    <div class="modale depot-necessaire-modale">
-        <h2 class="depot-titre">Dépôt nécessaire</h2>
+<div class="modal-fond" id="depotNecessaireModal">
+    <div class="modal depot-necessaire-modal">
+        <h2 class="depot-title">Dépôt nécessaire</h2>
         <p class="depot-texte">Le montant de ta mise est supérieur à ton solde.<br>Souhaites-tu effectuer un dépôt ?</p>
-        <button class="depot-faire-bouton" id="depotFaireBtn">Faire un Dépôt</button>
-        <button class="depot-plus-tard-bouton" id="depotPlusTardBtn">Plus tard</button>
+        <button class="depot-faire-btn" id="depotFaireBtn">Faire un Dépôt</button>
+        <button class="depot-plus-tard-btn" id="depotPlusTardBtn">Plus tard</button>
     </div>
 </div>
 
-<div class="modale-fond" id="retirerConfirmModal">
-    <div class="modale confirmation-modale">
+<div class="modal-fond" id="retirerConfirmModal">
+    <div class="modal confirmation-modal">
         <div class="confirmation-icone succes-icone"><i class="fa-solid fa-circle-check"></i></div>
         <h2>Retrait confirmé</h2>
         <p class="confirmation-montant" id="retirerConfirmAmount">0,00 €</p>
-        <button class="ok-bouton" id="okRetirerBtn">OK</button>
+        <button class="ok-btn" id="okRetirerBtn">OK</button>
     </div>
 </div>
 
-<div class="modale-fond" id="pariBetModal">
-    <div class="modale confirmation-modale">
+<div class="modal-fond" id="pariBetModal">
+    <div class="modal confirmation-modal">
         <div class="confirmation-icone succes-icone">
             <i class="fa-solid fa-circle-check"></i>
         </div>
         <h2>le pari a été enregistré</h2>
         <p class="confirmation-texte" id="pariBetText">Votre pari a bien été pris en compte.</p>
-        <button class="ok-bouton" id="okPariBetBtn">OK</button>
+        <button class="ok-btn" id="okPariBetBtn">OK</button>
     </div>
 </div>
 

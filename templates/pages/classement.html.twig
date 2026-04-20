@@ -4,16 +4,16 @@
 {% block body_class %}classement-page{% endblock %}
 {% block body %}
 <main class="classement-main">
-    <section class="classement-carte">
+    <section class="classement-card">
         <h1>Classement NBA 2025/2026</h1>
         <div class="conference-filtres">
-            <button class="conf-bouton active" data-conf="all">Toutes les équipes</button>
-            <button class="conf-bouton" data-conf="west">Conférence Ouest</button>
-            <button class="conf-bouton" data-conf="east">Conférence Est</button>
+            <button class="conf-btn active" data-conf="all">Toutes les équipes</button>
+            <button class="conf-btn" data-conf="west">Conférence Ouest</button>
+            <button class="conf-btn" data-conf="east">Conférence Est</button>
         </div>
         <div id="standings-error" class="message-erreur"></div>
-        <div class="classement-tableau-conteneur">
-            <table class="classement-tableau">
+        <div class="classement-table-conteneur">
+            <table class="classement-table">
                 <thead>
                     <tr>
                         <th>#</th>

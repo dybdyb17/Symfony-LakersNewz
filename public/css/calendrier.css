@@ -12,12 +12,12 @@ body.calendrier-page::before {
   z-index: -1;
 }
 
-body.calendrier-page .barre-nav {
+body.calendrier-page .navbar {
   background: rgba(0, 0, 0, 0.65);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-body.calendrier-page .bouton-menu {
+body.calendrier-page .btn-menu {
   color: #f5f5f5;
 }
 
@@ -73,7 +73,7 @@ body.calendrier-page .bouton-menu {
   line-height: 1.6;
 }
 
-.calendrier-carte {
+.calendrier-card {
   background: rgba(12, 12, 26, 0.82);
   border-radius: 20px;
   padding: 32px;
@@ -81,7 +81,7 @@ body.calendrier-page .bouton-menu {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.calendrier-carte-entete {
+.calendrier-card-header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -90,12 +90,12 @@ body.calendrier-page .bouton-menu {
   margin-bottom: 28px;
 }
 
-.calendrier-carte-entete h2 {
+.calendrier-card-header h2 {
   font-size: 28px;
   margin-bottom: 4px;
 }
 
-.calendrier-carte-sous-titre {
+.calendrier-card-sous-title {
   color: rgba(245, 245, 245, 0.7);
 }
 
@@ -128,7 +128,7 @@ body.calendrier-page .bouton-menu {
   box-shadow: 0 0 0 2px rgba(253, 185, 39, 0.25);
 }
 
-.calendrier-tableau-conteneur {
+.calendrier-table-conteneur {
   width: 100%;
   display: block;
   max-height: none;
@@ -136,14 +136,14 @@ body.calendrier-page .bouton-menu {
   overflow-y: visible;
 }
 
-.calendrier-tableau {
+.calendrier-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
   min-width: unset;
 }
 
-.calendrier-tableau thead th {
+.calendrier-table thead th {
   text-align: left;
   background: rgba(253, 185, 39, 0.08);
   color: #fdb927;
@@ -153,20 +153,20 @@ body.calendrier-page .bouton-menu {
   border-bottom: 2px solid rgba(253, 185, 39, 0.35);
 }
 
-.calendrier-tableau tbody tr {
+.calendrier-table tbody tr {
   transition: background 0.2s ease;
   background: rgba(255, 255, 255, 0.02);
 }
 
-.calendrier-tableau tbody tr:nth-child(even) {
+.calendrier-table tbody tr:nth-child(even) {
   background: rgba(255, 255, 255, 0.04);
 }
 
-.calendrier-tableau tbody tr:hover {
+.calendrier-table tbody tr:hover {
   background: rgba(253, 185, 39, 0.12);
 }
 
-.calendrier-tableau td {
+.calendrier-table td {
   padding: 16px 18px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 15px;
@@ -203,7 +203,7 @@ body.calendrier-page .bouton-menu {
   font-size: 14px;
 }
 
-.calendrier-tableau img.logo {
+.calendrier-table img.logo {
   width: 24px;
   height: 24px;
   vertical-align: middle;
@@ -246,11 +246,11 @@ body.calendrier-page .bouton-menu {
     font-size: 36px;
   }
 
-  .calendrier-carte {
+  .calendrier-card {
     padding: 24px 20px;
   }
 
-  .calendrier-carte-entete {
+  .calendrier-card-header {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -266,26 +266,26 @@ body.calendrier-page .bouton-menu {
 }
 
 @media (max-width: 600px) {
-  .calendrier-tableau {
+  .calendrier-table {
     min-width: 100%;
   }
 
-  .calendrier-tableau thead {
+  .calendrier-table thead {
     display: none;
   }
 
-  .calendrier-tableau tr {
+  .calendrier-table tr {
     display: grid;
     gap: 8px 16px;
     padding: 18px 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .calendrier-tableau td {
+  .calendrier-table td {
     padding: 0;
   }
 
-  .calendrier-tableau td::before {
+  .calendrier-table td::before {
     content: attr(data-label);
     display: block;
     font-size: 12px;

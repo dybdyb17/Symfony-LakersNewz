@@ -19,7 +19,7 @@ body.classement-page {
   width: 100%;
 }
 
-.classement-carte {
+.classement-card {
   background-color: rgba(0, 0, 0, 0.85);
   border-radius: 20px;
   padding: 2.5rem;
@@ -29,7 +29,7 @@ body.classement-page {
   border: 2px solid rgba(253, 185, 39, 0.3);
 }
 
-.classement-carte h1 {
+.classement-card h1 {
   text-align: center;
   color: #fcd34d;
   font-size: 2.5rem;
@@ -46,7 +46,7 @@ body.classement-page {
   flex-wrap: wrap;
 }
 
-.conf-bouton {
+.conf-btn {
   background: rgba(85, 37, 131, 0.6);
   border: 2px solid rgba(253, 185, 39, 0.3);
   color: white;
@@ -61,26 +61,26 @@ body.classement-page {
   gap: 0.5rem;
 }
 
-.conf-bouton:hover {
+.conf-btn:hover {
   background: rgba(85, 37, 131, 0.9);
   border-color: #fcd34d;
 
   box-shadow: 0 5px 15px rgba(253, 185, 39, 0.4);
 }
 
-.conf-bouton.active {
+.conf-btn.active {
   background: linear-gradient(135deg, #552583, #fcd34d);
   border-color: #fcd34d;
   box-shadow: 0 5px 20px rgba(253, 185, 39, 0.5);
 }
 
-.classement-tableau-conteneur {
+.classement-table-conteneur {
   overflow-x: auto;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-.classement-tableau {
+.classement-table {
   width: 100%;
   border-collapse: collapse;
   text-align: center;
@@ -88,14 +88,14 @@ body.classement-page {
   background-color: rgba(20, 20, 40, 0.7);
 }
 
-.classement-tableau thead {
+.classement-table thead {
   background: linear-gradient(135deg, rgba(85, 37, 131, 0.95), rgba(253, 185, 39, 0.2));
   position: sticky;
   top: 0;
   z-index: 10;
 }
 
-.classement-tableau th {
+.classement-table th {
   padding: 1rem 0.8rem;
   color: #fcd34d;
   text-transform: uppercase;
@@ -105,24 +105,24 @@ body.classement-page {
   white-space: nowrap;
 }
 
-.classement-tableau td {
+.classement-table td {
   padding: 1rem 0.8rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.9);
 }
 
-.classement-tableau tbody tr:hover {
+.classement-table tbody tr:hover {
   background-color: rgba(250, 250, 97, 0.1);
   transition: all 0.2s ease;
 }
 
-.classement-tableau tr.lakers-ligne {
+.classement-table tr.lakers-ligne {
     background: rgba(85, 37, 131, 0.4) !important;
     border-left: 4px solid #fcd34d;
     font-weight: 600;
 }
 
-.classement-tableau tr.lakers-ligne:hover {
+.classement-table tr.lakers-ligne:hover {
     background: rgba(85, 37, 131, 0.9) !important;
     box-shadow: 0 0 20px rgba(253, 185, 39, 0.4);
 }
@@ -169,11 +169,11 @@ body.classement-page {
 }
 
 @media (max-width: 1200px) {
-  .classement-carte {
+  .classement-card {
     max-width: 95%;
   }
 
-  .classement-tableau {
+  .classement-table {
     font-size: 0.85rem;
   }
 }
@@ -183,11 +183,11 @@ body.classement-page {
     padding: 120px 1rem 2rem;
   }
 
-  .classement-carte {
+  .classement-card {
     padding: 1.5rem;
   }
 
-  .classement-carte h1 {
+  .classement-card h1 {
     font-size: 1.8rem;
   }
 
@@ -195,13 +195,13 @@ body.classement-page {
     flex-direction: column;
   }
 
-  .conf-bouton {
+  .conf-btn {
     width: 100%;
     justify-content: center;
   }
 
-  .classement-tableau th,
-  .classement-tableau td {
+  .classement-table th,
+  .classement-table td {
     padding: 0.6rem 0.4rem;
     font-size: 0.75rem;
   }
@@ -218,12 +218,12 @@ body.classement-page {
 }
 
 @media (max-width: 480px) {
-  .classement-carte h1 {
+  .classement-card h1 {
     font-size: 1.5rem;
   }
 
-  .classement-tableau th,
-  .classement-tableau td {
+  .classement-table th,
+  .classement-table td {
     padding: 0.5rem 0.3rem;
     font-size: 0.7rem;
   }

@@ -1,7 +1,7 @@
 ;(() => {
   const tbody = document.getElementById("nba-standings-body");
   const errBox = document.getElementById("standings-error");
-  const confButtons = document.querySelectorAll(".conf-bouton");
+  const confButtons = document.querySelectorAll(".conf-btn");
   
   if (!tbody) return;
 
@@ -162,11 +162,11 @@
     }
   };
 
-  confButtons.forEach(bouton => {
-    bouton.addEventListener("click", () => {
+  confButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
       confButtons.forEach(b => b.classList.remove("active"));
-      bouton.classList.add("active");
-      currentFilter = bouton.dataset.conf;
+      btn.classList.add("active");
+      currentFilter = btn.dataset.conf;
       filterTeams(currentFilter);
     });
   });

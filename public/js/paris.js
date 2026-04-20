@@ -38,18 +38,18 @@ function genererCote(base) {
 
 function renderMatchCard(match) {
   const card = document.createElement('div');
-  card.className = 'match-carte';
+  card.className = 'match-card';
   const logo1 = getLogoUrl(match.team1);
   const logo2 = getLogoUrl(match.team2);
   const abrev1 = match.team1.split(' ').pop().toUpperCase().slice(0, 7);
   const abrev2 = match.team2.split(' ').pop().toUpperCase().slice(0, 7);
 
   card.innerHTML = `
-    <div class="match-carte-haut">
-      <span class="match-carte-date">${match.date}</span>
-      <span class="match-carte-live">— — —</span>
+    <div class="match-card-haut">
+      <span class="match-card-date">${match.date}</span>
+      <span class="match-card-live">— — —</span>
     </div>
-    <div class="match-carte-equipes">
+    <div class="match-card-equipes">
       <div class="match-equipe">
         <div class="match-equipe-logo">
           <img src="${logo1}" alt="${match.team1}" onerror="this.src='https://via.placeholder.com/50x50/552583/FDB927?text=${match.team1.charAt(0)}'">
@@ -64,17 +64,17 @@ function renderMatchCard(match) {
         <span class="match-equipe-nom">${match.team2}</span>
       </div>
     </div>
-    <div class="match-carte-cotes">
-      <button class="cote-bouton" data-match-id="${match.id}" data-team="${match.team1}" data-cote="${match.cote1}" data-label="${match.team1} - ${match.team2}">
+    <div class="match-card-cotes">
+      <button class="cote-btn" data-match-id="${match.id}" data-team="${match.team1}" data-cote="${match.cote1}" data-label="${match.team1} - ${match.team2}">
         ${abrev1} (${match.cote1})
       </button>
-      <button class="cote-bouton" data-match-id="${match.id}" data-team="${match.team2}" data-cote="${match.cote2}" data-label="${match.team1} - ${match.team2}">
+      <button class="cote-btn" data-match-id="${match.id}" data-team="${match.team2}" data-cote="${match.cote2}" data-label="${match.team1} - ${match.team2}">
         ${abrev2} (${match.cote2})
       </button>
     </div>
   `;
-  card.querySelectorAll('.cote-bouton').forEach(bouton => {
-    bouton.addEventListener('click', () => toggleSelection(bouton));
+  card.querySelectorAll('.cote-btn').forEach(btn => {
+    btn.addEventListener('click', () => toggleSelection(btn));
   });
   return card;
 }
@@ -109,23 +109,23 @@ async function chargerMatchs() {
   }
 }
 
-function toggleSelection(bouton) {
-  const matchId = parseInt(bouton.dataset.matchId);
-  const team = bouton.dataset.team;
-  const cote = parseFloat(bouton.dataset.cote);
-  const label = bouton.dataset.label;
+function toggleSelection(btn) {
+  const matchId = parseInt(btn.dataset.matchId);
+  const team = btn.dataset.team;
+  const cote = parseFloat(btn.dataset.cote);
+  const label = btn.dataset.label;
   const existingIdx = selections.findIndex(s => s.matchId === matchId);
 
   if (existingIdx !== -1 && selections[existingIdx].teamName === team) {
     selections.splice(existingIdx, 1);
-    bouton.classList.remove('selected');
+    btn.classList.remove('selected');
   } else {
     if (existingIdx !== -1) {
       selections.splice(existingIdx, 1);
-      document.querySelectorAll(`.cote-bouton[data-match-id="${matchId}"]`).forEach(b => b.classList.remove('selected'));
+      document.querySelectorAll(`.cote-btn[data-match-id="${matchId}"]`).forEach(b => b.classList.remove('selected'));
     }
     selections.push({ matchId, teamName: team, cote, matchLabel: label, mise: 0 });
-    bouton.classList.add('selected');
+    btn.classList.add('selected');
   }
   updateCoupon();
 }
@@ -167,7 +167,7 @@ function renderCouponItems() {
       const item = document.createElement('div');
       item.className = 'coupon-element';
       item.innerHTML = `
-        <div class="coupon-element-entete">
+        <div class="coupon-element-header">
           <span class="coupon-element-match">${sel.matchLabel}</span>
           <span class="coupon-element-cote">${sel.cote}</span>
           <button class="coupon-element-supprimer" data-idx="${idx}">×</button>
@@ -192,7 +192,7 @@ function renderCouponItems() {
       const item = document.createElement('div');
       item.className = 'coupon-element';
       item.innerHTML = `
-        <div class="coupon-element-entete">
+        <div class="coupon-element-header">
           <span class="coupon-element-match">${sel.matchLabel}</span>
           <span class="coupon-element-cote">${sel.cote}</span>
           <button class="coupon-element-supprimer" data-idx="${idx}">×</button>
@@ -214,7 +214,7 @@ function renderCouponItems() {
 
 function removeSelection(idx) {
   const sel = selections[idx];
-  document.querySelectorAll(`.cote-bouton[data-match-id="${sel.matchId}"]`).forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll(`.cote-btn[data-match-id="${sel.matchId}"]`).forEach(b => b.classList.remove('selected'));
   selections.splice(idx, 1);
   updateCoupon();
 }
@@ -376,7 +376,7 @@ async function renderMesParis(filtre) {
 
   filtered.forEach(pari => {
     const card = document.createElement('div');
-    card.className = 'mes-paris-carte';
+    card.className = 'mes-paris-card';
     pari.selections.forEach(sel => {
       const item = document.createElement('div');
       item.className = 'mes-paris-element';

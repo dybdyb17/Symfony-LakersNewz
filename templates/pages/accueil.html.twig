@@ -12,37 +12,37 @@
 <div class="img"></div>
 <main class="accueil-principal">
     <section class="bandeau-section">
-        <div class="bandeau-contenu">
-            <h1 class="bandeau-titre">
-                <span class="bandeau-sous-titre">Bienvenue sur</span>
+        <div class="bandeau-content">
+            <h1 class="bandeau-title">
+                <span class="bandeau-sous-title">Bienvenue sur</span>
                 Lakers Newz
             </h1>
             <p class="bandeau-description">
                 Toute l'actualité des Los Angeles Lakers en temps réel
             </p>
-            <a href="#actualites-section" class="bandeau-bouton">
+            <a href="#news-section" class="bandeau-btn">
                 <i class="fa-solid fa-arrow-down"></i>
                 Découvrir les news
             </a>
         </div>
     </section>
 
-    <section id="actualites-section" class="actualites-section">
-        <div class="actualites-conteneur">
-            <div class="actualites-entete">
+    <section id="news-section" class="news-section">
+        <div class="news-conteneur">
+            <div class="news-header">
                 <h2><i class="fa-solid fa-newspaper"></i> Dernières actualités</h2>
                 <p>Restez informé des dernières nouvelles des Lakers</p>
             </div>
 
-            <div class="actualites-grille">
+            <div class="news-grille">
                 {% if articles is empty %}
                     <div>
                         <p>Aucun article pour le moment</p>
                     </div>
                 {% else %}
                     {% for article in articles %}
-                        <article class="actualite-carte">
-                            <div class="actualite-carte-image">
+                        <article class="news-card">
+                            <div class="news-card-image">
                                 <img src="{{ article.image ?? 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&h=600&fit=crop' }}" alt="{{ article.titre }}" loading="lazy">
                                 <span class="news-category {% if article.categorie == 'rumeurs' %}category-rumeurs
                                 {% elseif article.categorie == 'interviews' %}category-interviews
@@ -50,19 +50,19 @@
                                 {% endif %}">{{ article.categorie|default('News')|capitalize }}
                                 </span>
                             </div>
-                            <div class="actualite-carte-contenu">
-                                <div class="actualite-carte-date">
+                            <div class="news-card-content">
+                                <div class="news-card-date">
                                     <i class="fa-solid fa-calendar"></i>
                                     {{ article.createdAt|date('d F Y') }}
                                 </div>
-                                <h3 class="actualite-carte-titre">{{ article.titre }}</h3>
-                                <p class="actualite-carte-extrait">{{ article.contenu|length > 150 ? article.contenu|slice(0, 150) ~ '...' : article.contenu }}</p>
-                                <div class="actualite-carte-pied">
-                                    <span class="actualite-carte-auteur">
+                                <h3 class="news-card-title">{{ article.titre }}</h3>
+                                <p class="news-card-extrait">{{ article.contenu|length > 150 ? article.contenu|slice(0, 150) ~ '...' : article.contenu }}</p>
+                                <div class="news-card-footer">
+                                    <span class="news-card-auteur">
                                         <i class="fa-solid fa-user"></i>
                                         {{ article.auteur|default('Lakers Newz') }}
                                     </span>
-                                    <a href="#" class="actualite-carte-lire-plus">
+                                    <a href="#" class="news-card-lire-plus">
                                         Lire la suite
                                         <i class="fa-solid fa-arrow-right"></i>
                                     </a>

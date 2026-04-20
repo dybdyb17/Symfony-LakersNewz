@@ -4,7 +4,7 @@
 {% block body_class %}admin{% endblock %}
 {% block body %}
 <main class="admin-page admin-page-petite">
-    <h1 class="admin-titre">Créer un match</h1>
+    <h1 class="admin-title">Créer un match</h1>
 
     <div class="admin-formulaireulaire-conteneur">
         {{ form_start(form, {'attr': {'class': 'admin-formulaire'}}) }}
@@ -30,7 +30,7 @@
                 {{ form_label(form.dateMatch) }}
                 {{ form_widget(form.dateMatch) }}
             </div>
-            <button type="submit" class="admin-bouton-valider">Créer le match</button>
+            <button type="submit" class="admin-btn-valider">Créer le match</button>
         {{ form_end(form) }}
     </div>
 

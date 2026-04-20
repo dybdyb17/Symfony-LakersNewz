@@ -46,7 +46,7 @@ body.effectif-page {
   border: 2px solid rgba(253, 185, 39, 0.3);
 }
 
-.effectif-bandeau-contenu h1 {
+.effectif-bandeau-content h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
   color: #fdb927;
@@ -56,7 +56,7 @@ body.effectif-page {
   gap: 1rem;
 }
 
-.effectif-bandeau-contenu p {
+.effectif-bandeau-content p {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.9);
 }
@@ -70,7 +70,7 @@ body.effectif-page {
   flex-wrap: wrap;
 }
 
-.bouton-poste {
+.btn-poste {
   background: rgba(85, 37, 131, 0.5);
   border: 2px solid rgba(253, 185, 39, 0.3);
   color: white;
@@ -85,13 +85,13 @@ body.effectif-page {
   gap: 0.5rem;
 }
 
-.bouton-poste:hover {
+.btn-poste:hover {
   background: rgba(85, 37, 131, 0.8);
   border-color: #fdb927;
   box-shadow: 0 5px 15px rgba(253, 185, 39, 0.4);
 }
 
-.bouton-poste.active {
+.btn-poste.active {
   background: linear-gradient(135deg, #552583, #fdb927);
   border-color: #fdb927;
   box-shadow: 0 5px 20px rgba(253, 185, 39, 0.5);
@@ -127,10 +127,10 @@ body.effectif-page {
   padding: 1rem 0;
 }
 
-/* les cartes des joueurs */
+/* les cards des joueurs */
 
 
-.joueur-carte {
+.joueur-card {
   background: linear-gradient(135deg, rgba(85, 37, 131, 0.9), rgba(23, 64, 139, 0.9));
   border-radius: 16px;
   overflow: hidden;
@@ -140,12 +140,12 @@ body.effectif-page {
   position: relative;
 }
 
-.joueur-carte:hover {
+.joueur-card:hover {
   border-color: #fdb927;
   box-shadow: 0 15px 40px rgba(253, 185, 39, 0.4);
 }
 
-.joueur-carte-entete {
+.joueur-card-header {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
@@ -168,7 +168,7 @@ body.effectif-page {
   border: 1px solid rgba(253, 185, 39, 0.4);
 }
 
-.joueur-carte-image {
+.joueur-card-image {
   width: 100%;
   height: 280px;
   overflow: hidden;
@@ -178,7 +178,7 @@ body.effectif-page {
   justify-content: center;
 }
 
-.joueur-carte-image img {
+.joueur-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -187,7 +187,7 @@ body.effectif-page {
 }
 
 
-.joueur-carte-info {
+.joueur-card-info {
   padding: 1.5rem;
   background: rgba(0, 0, 0, 0.4);
 }
@@ -274,13 +274,13 @@ body.effectif-page {
     padding: 100px 1rem 2rem;
   }
 
-  .effectif-bandeau-contenu h1 {
+  .effectif-bandeau-content h1 {
     font-size: 2rem;
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  .effectif-bandeau-contenu p {
+  .effectif-bandeau-content p {
     font-size: 1rem;
   }
 
@@ -288,7 +288,7 @@ body.effectif-page {
     flex-direction: column;
   }
 
-  .bouton-poste {
+  .btn-poste {
     width: 100%;
     justify-content: center;
   }
@@ -298,7 +298,7 @@ body.effectif-page {
     gap: 1.5rem;
   }
 
-  .joueur-carte-image {
+  .joueur-card-image {
     height: 240px;
   }
 }

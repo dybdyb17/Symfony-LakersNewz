@@ -47,14 +47,14 @@ body.page-accueil .img::before {
   position: relative;
 }
 
-.bandeau-contenu {
+.bandeau-content {
   text-align: center;
   color: white;
   max-width: 800px;
   animation: fadeInUp 1s ease-out;
 }
 
-.bandeau-sous-titre {
+.bandeau-sous-title {
   display: block;
   font-size: 1.5rem;
   font-weight: 400;
@@ -63,7 +63,7 @@ body.page-accueil .img::before {
   text-transform: uppercase;
 }
 
-.bandeau-titre {
+.bandeau-title {
   font-size: 5rem;
   font-weight: 900;
   margin-bottom: 1.5rem;
@@ -76,7 +76,7 @@ body.page-accueil .img::before {
   color: rgba(255, 255, 255, 0.9);
 }
 
-.bandeau-bouton {
+.bandeau-btn {
   background: linear-gradient(135deg, #552583, #fdb927);
   color: white;
   border: none;
@@ -92,7 +92,7 @@ body.page-accueil .img::before {
   box-shadow: 0 10px 30px rgba(253, 185, 39, 0.4);
 }
 
-.bandeau-bouton:hover {
+.bandeau-btn:hover {
   opacity: 0.9;
   box-shadow: 0 15px 40px rgba(253, 185, 39, 0.6);
 }
@@ -108,24 +108,24 @@ body.page-accueil .img::before {
   }
 }
 
-.actualites-section {
+.news-section {
   background: linear-gradient(180deg, rgba(253,185,39, 1.0) 0%, rgba(78, 4, 147, 0.98) 100%);
   padding: 4rem 2rem;
   position: relative;
 }
 
-.actualites-conteneur {
+.news-conteneur {
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.actualites-entete {
+.news-header {
   text-align: center;
   margin-bottom: 3rem;
   color: white;
 }
 
-.actualites-entete h2 {
+.news-header h2 {
   font-size: 3rem;
   margin-bottom: 1rem;
   color: #010101;
@@ -135,18 +135,18 @@ body.page-accueil .img::before {
   gap: 1rem;
 }
 
-.actualites-entete p {
+.news-header p {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
 }
 
-.actualites-grille {
+.news-grille {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;
 }
 
-.actualite-carte {
+.news-card {
   background: rgba(0, 0, 0, 0.6);
   border-radius: 16px;
   overflow: hidden;
@@ -157,20 +157,20 @@ body.page-accueil .img::before {
   flex-direction: column;
 }
 
-.actualite-carte:hover {
+.news-card:hover {
   opacity: 0.9;
   border-color: #fdb927;
   box-shadow: 0 15px 40px rgba(253, 185, 39, 0.3);
 }
 
-.actualite-carte-image {
+.news-card-image {
   width: 100%;
   height: 220px;
   overflow: hidden;
   position: relative;
 }
 
-.actualite-carte-image img {
+.news-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -205,14 +205,14 @@ body.page-accueil .img::before {
   color: #fff;
 }
 
-.actualite-carte-contenu {
+.news-card-content {
   padding: 1.5rem;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.actualite-carte-date {
+.news-card-date {
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.9rem;
   margin-bottom: 0.8rem;
@@ -221,7 +221,7 @@ body.page-accueil .img::before {
   gap: 0.5rem;
 }
 
-.actualite-carte-titre {
+.news-card-title {
   font-size: 1.4rem;
   font-weight: 700;
   color: white;
@@ -229,7 +229,7 @@ body.page-accueil .img::before {
   line-height: 1.4;
 }
 
-.actualite-carte-extrait {
+.news-card-extrait {
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.95rem;
   line-height: 1.6;
@@ -237,7 +237,7 @@ body.page-accueil .img::before {
   flex: 1;
 }
 
-.actualite-carte-pied {
+.news-card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -245,7 +245,7 @@ body.page-accueil .img::before {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.actualite-carte-auteur {
+.news-card-auteur {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -253,7 +253,7 @@ body.page-accueil .img::before {
   font-size: 0.9rem;
 }
 
-.actualite-carte-lire-plus {
+.news-card-lire-plus {
   color: #fdb927;
   font-weight: 600;
   display: flex;
@@ -262,16 +262,16 @@ body.page-accueil .img::before {
   transition: gap 0.3s ease;
 }
 
-.actualite-carte:hover .actualite-carte-lire-plus {
+.news-card:hover .news-card-lire-plus {
   gap: 1rem;
 }
 
 @media (max-width: 768px) {
-  .bandeau-titre {
+  .bandeau-title {
     font-size: 3rem;
   }
 
-  .bandeau-sous-titre {
+  .bandeau-sous-title {
     font-size: 1.2rem;
   }
 
@@ -279,22 +279,22 @@ body.page-accueil .img::before {
     font-size: 1.2rem;
   }
 
-  .actualites-entete h2 {
+  .news-header h2 {
     font-size: 2rem;
   }
 
-  .actualites-grille {
+  .news-grille {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .bandeau-titre {
+  .bandeau-title {
     font-size: 2.5rem;
   }
 
-  .bandeau-bouton {
+  .bandeau-btn {
     padding: 1rem 2rem;
     font-size: 1rem;
   }
