@@ -136,8 +136,7 @@
 
   async function loadRoster() {
     const urls = [
-      "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/13/roster",
-      "https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/teams/13/athletes?limit=50"
+      "http://127.0.0.1:8000/api/cache/roster"
     ];
 
     for (let url of urls) {

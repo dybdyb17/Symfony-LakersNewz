@@ -16,7 +16,19 @@
             <table class="classement-tableau">
                 <thead>
                     <tr>
-                        <th>#</th><th>Équipe</th><th>W</th><th>L</th><th>PCT</th><th>GB</th><th>HOME</th><th>AWAY</th><th>PPG</th><th>OPP PPG</th><th>DIFF</th><th>STRK</th><th>L10</th>
+                        <th>#</th>
+                        <th>Équipe</th>
+                        <th>W</th>
+                        <th>L</th>
+                        <th>PCT</th>
+                        <th>GB</th>
+                        <th>HOME</th>
+                        <th>AWAY</th>
+                        <th>PPG</th>
+                        <th>OPP PPG</th>
+                        <th>DIFF</th>
+                        <th>STRK</th>
+                        <th>L10</th>
                     </tr>
                 </thead>
                 <tbody id="nba-standings-body">
@@ -34,4 +46,6 @@
     </section>
 </main>
 {% endblock %}
-{% block javascripts %}<script defer src="{{ asset('js/classement.js') }}"></script>{% endblock %}
+
+{% block javascripts %}<script defer src="{{ asset('js/classement.js') }}"></script>
+{% endblock %}

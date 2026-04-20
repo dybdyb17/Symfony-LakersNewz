@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let allMatches = [];
 
   if (tbody) {
-    fetch('https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/13/schedule')
+    fetch('http://127.0.0.1:8000/api/cache/calendrier')
       .then(response => response.json())
       .then(data => {
         const events = data.events || [];

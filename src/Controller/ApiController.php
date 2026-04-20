@@ -82,8 +82,14 @@ class ApiController extends AbstractController
         $pari->setUser($user);
 
         if ($estCombine) {
-            $equipes = array_map(fn($s) => $this->sanitize($s['equipe']), $selections);
-            $coteCombinee = array_reduce($selections, fn($carry, $s) => $carry * (float) $s['cote'], 1.0);
+            $equipes = [];
+            foreach ($selections as $s) {
+                $equipes[] = $this->sanitize($s['equipe']);
+            }
+            $coteCombinee = 1.0;
+            foreach ($selections as $s) {
+                $coteCombinee = $coteCombinee * (float) $s['cote'];
+            }
             $pari->setEquipe(implode(' + ', $equipes));
             $pari->setCote($coteCombinee);
 
@@ -122,7 +128,11 @@ class ApiController extends AbstractController
         }
         $paris = $pariRepository->findBy(['user' => $user]);
 
-        return $this->json(array_map([$this, 'serializePari'], $paris));
+        $result = [];
+        foreach ($paris as $pari) {
+            $result[] = $this->serializePari($pari);
+        }
+        return $this->json($result);
     }
 
     #[Route('/articles', methods: ['GET'])]
@@ -130,16 +140,20 @@ class ApiController extends AbstractController
     {
         $articles = $articleRepository->findBy([], ['createdAt' => 'DESC']);
 
-        return $this->json(array_map(fn($article) => [
-            'id'        => $article->getId(),
-            'titre'     => $article->getTitre(),
-            'contenu'   => $article->getContenu(),
-            'categorie' => $article->getCategorie(),
-            'image'     => $article->getImage(),
-            'auteur'    => $article->getAuteur(),
-            'createdAt' => $article->getCreatedAt()?->format('Y-m-d H:i:s'),
-            'updatedAt' => $article->getUpdatedAt()?->format('Y-m-d H:i:s'),
-        ], $articles));
+        $result = [];
+        foreach ($articles as $article) {
+            $result[] = [
+                'id'        => $article->getId(),
+                'titre'     => $article->getTitre(),
+                'contenu'   => $article->getContenu(),
+                'categorie' => $article->getCategorie(),
+                'image'     => $article->getImage(),
+                'auteur'    => $article->getAuteur(),
+                'createdAt' => $article->getCreatedAt()?->format('Y-m-d H:i:s'),
+                'updatedAt' => $article->getUpdatedAt()?->format('Y-m-d H:i:s'),
+            ];
+        }
+        return $this->json($result);
     }
 
     #[Route('/matchs', methods: ['GET'])]
@@ -147,15 +161,19 @@ class ApiController extends AbstractController
     {
         $matchs = $matchNbaRepository->findBy(['statut' => 'a_venir']);
 
-        return $this->json(array_map(fn($match) => [
-            'id'        => $match->getId(),
-            'team1'     => $match->getTeam1(),
-            'team2'     => $match->getTeam2(),
-            'cote1'     => $match->getCote1(),
-            'cote2'     => $match->getCote2(),
-            'dateMatch' => $match->getDateMatch()?->format('Y-m-d H:i'),
-            'statut'    => $match->getStatut(),
-        ], $matchs));
+        $result = [];
+        foreach ($matchs as $match) {
+            $result[] = [
+                'id'        => $match->getId(),
+                'team1'     => $match->getTeam1(),
+                'team2'     => $match->getTeam2(),
+                'cote1'     => $match->getCote1(),
+                'cote2'     => $match->getCote2(),
+                'dateMatch' => $match->getDateMatch()?->format('Y-m-d H:i'),
+                'statut'    => $match->getStatut(),
+            ];
+        }
+        return $this->json($result);
     }
 
     private function sanitize(string $input): string
@@ -165,6 +183,18 @@ class ApiController extends AbstractController
 
     private function serializePari(Pari $pari): array
     {
+        $selectionsData = [];
+        foreach ($pari->getSelections() as $s) {
+            $selectionsData[] = [
+                'id'               => $s->getId(),
+                'equipeChoisie'    => $s->getEquipeChoisie(),
+                'cote'             => $s->getCote(),
+                'typePari'         => $s->getTypePari(),
+                'miseIndividuelle' => $s->getMiseIndividuelle(),
+                'resultat'         => $s->getResultat(),
+            ];
+        }
+
         return [
             'id'         => $pari->getId(),
             'equipe'     => $pari->getEquipe(),
@@ -173,14 +203,7 @@ class ApiController extends AbstractController
             'gains'      => $pari->getGains(),
             'statut'     => $pari->getStatut(),
             'createdAt'  => $pari->getCreatedAt()?->format('Y-m-d H:i:s'),
-            'selections' => array_map(fn($s) => [
-                'id'               => $s->getId(),
-                'equipeChoisie'    => $s->getEquipeChoisie(),
-                'cote'             => $s->getCote(),
-                'typePari'         => $s->getTypePari(),
-                'miseIndividuelle' => $s->getMiseIndividuelle(),
-                'resultat'         => $s->getResultat(),
-            ], $pari->getSelections()->toArray()),
+            'selections' => $selectionsData,
         ];
     }
 }

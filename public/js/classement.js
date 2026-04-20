@@ -173,9 +173,7 @@
 
   async function loadStandings() {
     const urls = [
-      "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/standings?season=2026",
-      "https://site.web.api.espn.com/apis/v2/sports/basketball/nba/standings?season=2026",
-      "https://cdn.espn.com/core/nba/standings?xhr=1&season=2026"
+      "http://127.0.0.1:8000/api/cache/classement"
     ];
 
     for (let url of urls) {

@@ -83,7 +83,7 @@ async function chargerMatchs() {
   const container = document.getElementById('matchs-container');
   if (!container) return;
   try {
-    const res = await fetch('https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard');
+    const res = await fetch('http://127.0.0.1:8000/api/cache/matchs');
     if (!res.ok) throw new Error('API ko');
     const data = await res.json();
     const events = (data.events || []).slice(0, 12);
@@ -203,7 +203,10 @@ function renderCouponItems() {
       item.querySelector('.coupon-element-supprimer').addEventListener('click', () => removeSelection(idx));
       itemsEl.appendChild(item);
     });
-    const coteTotale = selections.reduce((acc, s) => acc * s.cote, 1);
+    let coteTotale = 1;
+    for (let i = 0; i < selections.length; i++) {
+      coteTotale = coteTotale * selections[i].cote;
+    }
     const combineCoteEl = document.getElementById('combineCote');
     if (combineCoteEl) combineCoteEl.textContent = coteTotale.toFixed(2);
   }
@@ -221,10 +224,15 @@ function calculerGains() {
   if (!gainsEl) return;
   let gains = 0;
   if (tabActif === 'simple') {
-    gains = selections.reduce((acc, s) => acc + s.mise * s.cote, 0);
+    for (let i = 0; i < selections.length; i++) {
+      gains = gains + selections[i].mise * selections[i].cote;
+    }
   } else {
     const mise = parseFloat(document.getElementById('combineMiseInput')?.value) || 0;
-    const cote = selections.reduce((acc, s) => acc * s.cote, 1);
+    let cote = 1;
+    for (let i = 0; i < selections.length; i++) {
+      cote = cote * selections[i].cote;
+    }
     gains = mise * cote;
   }
   gainsEl.textContent = gains.toFixed(2).replace('.', ',') + ' €';
@@ -247,7 +255,9 @@ document.getElementById('parierBtn')?.addEventListener('click', async () => {
 
   let mise = 0;
   if (tabActif === 'simple') {
-    mise = selections.reduce((acc, s) => acc + s.mise, 0);
+    for (let i = 0; i < selections.length; i++) {
+      mise = mise + selections[i].mise;
+    }
   } else {
     mise = parseFloat(document.getElementById('combineMiseInput')?.value) || 0;
   }
@@ -277,7 +287,10 @@ document.getElementById('parierBtn')?.addEventListener('click', async () => {
       }
     }
   } else {
-    const cote = selections.reduce((acc, s) => acc * s.cote, 1);
+    let cote = 1;
+    for (let i = 0; i < selections.length; i++) {
+      cote = cote * selections[i].cote;
+    }
     const equipe = selections.map(s => s.teamName).join(' + ');
     const body = {
       equipe,
