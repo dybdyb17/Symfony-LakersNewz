@@ -74,25 +74,11 @@
             </div>
 
             {% if totalPages > 1 %}
-            <div class="pagination">
-                {% if currentPage > 1 %}
-                    <a href="{{ path('app_accueil', {'page': currentPage - 1}) }}" class="pagination-btn">
-                        <i class="fa-solid fa-chevron-left"></i> Précédent
-                    </a>
-                {% endif %}
-
-                {% for i in 1..totalPages %}
-                    <a href="{{ path('app_accueil', {'page': i}) }}" class="pagination-num {{ currentPage == i ? 'active' : '' }}">
-                        {{ i }}
-                    </a>
-                {% endfor %}
-
-                {% if currentPage < totalPages %}
-                    <a href="{{ path('app_accueil', {'page': currentPage + 1}) }}" class="pagination-btn">
-                        Suivant <i class="fa-solid fa-chevron-right"></i>
-                    </a>
-                {% endif %}
-            </div>
+                {% include 'partials/_pagination.html.twig' with {
+                    currentPage: currentPage,
+                    totalPages: totalPages,
+                    routeName: 'app_accueil'
+                } %}
             {% endif %}
         </div>
     </section>

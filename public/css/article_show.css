@@ -63,7 +63,7 @@ body.page-article-show {
   color: #fff;
 }
 
-.article-show-titre {
+.article-show-title {
   font-size: 2.6rem;
   font-weight: 800;
   line-height: 1.25;
@@ -125,7 +125,7 @@ body.page-article-show {
     height: 260px;
   }
 
-  .article-show-titre {
+  .article-show-title {
     font-size: 1.8rem;
   }
 

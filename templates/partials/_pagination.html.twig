@@ -1,0 +1,19 @@
+<div class="pagination">
+    {% if currentPage > 1 %}
+        <a href="{{ path(routeName, {'page': currentPage - 1}) }}#news-section" class="pagination-btn">
+            <i class="fa-solid fa-chevron-left"></i> Précédent
+        </a>
+    {% endif %}
+
+    {% for i in 1..totalPages %}
+        <a href="{{ path(routeName, {'page': i}) }}#news-section" class="pagination-num {{ currentPage == i ? 'active' : '' }}">
+            {{ i }}
+        </a>
+    {% endfor %}
+
+    {% if currentPage < totalPages %}
+        <a href="{{ path(routeName, {'page': currentPage + 1}) }}#news-section" class="pagination-btn">
+            Suivant <i class="fa-solid fa-chevron-right"></i>
+        </a>
+    {% endif %}
+</div>
