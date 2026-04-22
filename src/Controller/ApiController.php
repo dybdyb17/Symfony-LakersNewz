@@ -18,10 +18,8 @@ use Symfony\Component\Routing\Attribute\Route;
 class ApiController extends AbstractController
 {
     #[Route('/pari', methods: ['POST'])]
-    public function placerPari(
-        Request $request,
-        EntityManagerInterface $em
-    ): JsonResponse {
+    public function placerPari(Request $request, EntityManagerInterface $em): JsonResponse
+    {
         $user = $this->getUser();
         if (!$user) {
             return $this->json(['error' => 'Non authentifié'], 401);

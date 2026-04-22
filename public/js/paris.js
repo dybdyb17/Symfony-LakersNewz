@@ -23,14 +23,6 @@ function getLogoUrl(teamName) {
   return `https://via.placeholder.com/55x55/552583/FDB927?text=${teamName.charAt(0)}`;
 }
 
-const MATCHS_DEMO = [
-  { id:1, date:'19:00, 05 février', team1:'Cleveland Cavaliers', team2:'Brooklyn Nets', cote1:2.14, cote2:2.27 },
-  { id:2, date:'19:00, 05 février', team1:'Philadelphia 76ers', team2:'Atlanta Hawks', cote1:1.96, cote2:2.22 },
-  { id:3, date:'19:00, 05 février', team1:'Washington Wizards', team2:'Indiana Pacers', cote1:2.04, cote2:1.92 },
-  { id:4, date:'01:30, 05 février', team1:'New York Knicks', team2:'Detroit Pistons', cote1:1.89, cote2:2.06 },
-  { id:5, date:'02:00, 05 février', team1:'Chicago Bulls', team2:'Toronto Raptors', cote1:2.09, cote2:2.01 },
-  { id:6, date:'02:00, 05 février', team1:'Los Angeles Lakers', team2:'Golden State Warriors', cote1:1.75, cote2:2.10 },
-];
 
 function genererCote(base) {
   return parseFloat((base + (Math.random() * 0.4 - 0.1)).toFixed(2));
@@ -96,16 +88,11 @@ async function chargerMatchs() {
       const dateStr = dateObj.toLocaleString('fr-FR', { hour: '2-digit', minute: '2-digit', day: 'numeric', month: 'long' });
       return { id: i + 1, date: dateStr, dateObj, team1: t1.team.displayName, team2: t2.team.displayName, cote1: genererCote(1.75), cote2: genererCote(1.90) };
     });
-    const matchsFuturs = matchs.filter(m => m.dateObj > new Date());
-    if (matchsFuturs.length === 0) {
-      container.innerHTML = '<p class="no-matchs-msg">Aucun match disponible pour le moment, revenez plus tard !</p>';
-      return;
-    }
+    const matchsFuturs = matchs;
     container.innerHTML = '';
     matchsFuturs.forEach(m => container.appendChild(renderMatchCard(m)));
   } catch {
-    container.innerHTML = '';
-    MATCHS_DEMO.forEach(m => container.appendChild(renderMatchCard(m)));
+    container.innerHTML = '<p style="text-align:center; color:rgba(255,255,255,0.6); padding:2rem;">Aucun match disponible pour le moment.</p>';
   }
 }
 
@@ -325,7 +312,7 @@ async function openMesParis(filtre = 'en_cours') {
   const overlay = document.getElementById('mesParis');
   if (!overlay) return;
   overlay.style.display = 'block';
-  document.querySelectorAll('.mp-onglet').forEach(tab => {
+  document.querySelectorAll('.mes-paris-onglet').forEach(tab => {
     tab.classList.toggle('active', tab.dataset.filter === filtre);
   });
   await renderMesParis(filtre);
@@ -336,9 +323,9 @@ document.getElementById('closeMesParis')?.addEventListener('click', () => {
   if (overlay) overlay.style.display = 'none';
 });
 
-document.querySelectorAll('.mp-onglet').forEach(tab => {
+document.querySelectorAll('.mes-paris-onglet').forEach(tab => {
   tab.addEventListener('click', () => {
-    document.querySelectorAll('.mp-onglet').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.mes-paris-onglet').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     renderMesParis(tab.dataset.filter);
   });

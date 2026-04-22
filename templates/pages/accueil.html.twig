@@ -62,7 +62,7 @@
                                         <i class="fa-solid fa-user"></i>
                                         {{ article.auteur|default('Lakers Newz') }}
                                     </span>
-                                    <a href="#" class="news-card-lire-plus">
+                                    <a href="{{ path('app_article_show', {'id': article.id}) }}" class="news-card-lire-plus">
                                         Lire la suite
                                         <i class="fa-solid fa-arrow-right"></i>
                                     </a>
@@ -72,6 +72,28 @@
                     {% endfor %}
                 {% endif %}
             </div>
+
+            {% if totalPages > 1 %}
+            <div class="pagination">
+                {% if currentPage > 1 %}
+                    <a href="{{ path('app_accueil', {'page': currentPage - 1}) }}" class="pagination-btn">
+                        <i class="fa-solid fa-chevron-left"></i> Précédent
+                    </a>
+                {% endif %}
+
+                {% for i in 1..totalPages %}
+                    <a href="{{ path('app_accueil', {'page': i}) }}" class="pagination-num {{ currentPage == i ? 'active' : '' }}">
+                        {{ i }}
+                    </a>
+                {% endfor %}
+
+                {% if currentPage < totalPages %}
+                    <a href="{{ path('app_accueil', {'page': currentPage + 1}) }}" class="pagination-btn">
+                        Suivant <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                {% endif %}
+            </div>
+            {% endif %}
         </div>
     </section>
 </main>

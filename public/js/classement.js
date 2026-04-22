@@ -2,7 +2,7 @@
   const tbody = document.getElementById("nba-standings-body");
   const errBox = document.getElementById("standings-error");
   const confButtons = document.querySelectorAll(".conf-btn");
-  
+
   if (!tbody) return;
 
   let allTeams = [];
@@ -10,7 +10,7 @@
 
   const conferences = {
     west: [
-      "Lakers", "Clippers", "Warriors", "Kings", "Suns", "Mavericks", 
+      "Lakers", "Clippers", "Warriors", "Kings", "Suns", "Mavericks",
       "Rockets", "Grizzlies", "Pelicans", "Spurs", "Thunder", "Timberwolves",
       "Trail Blazers", "Nuggets", "Jazz"
     ],
@@ -39,7 +39,7 @@
   const parseStandings = (data) => {
     try {
       let entries = [];
-      
+
       if (data.children) {
         entries = data.children.flatMap(c => c?.standings?.entries || []);
       } else if (data.standings?.entries) {
@@ -75,7 +75,7 @@
         const gb = s.gamesBehind ?? s.gamesBack ?? "-";
         const home = s.home ?? s.homeRecord ?? "-";
         const away = s.road ?? s.away ?? s.roadRecord ?? "-";
-        
+
         const pf = parseFloat(s.avgPointsFor ?? s.pointsFor ?? 0);
         const pa = parseFloat(s.avgPointsAgainst ?? s.pointsAgainst ?? 0);
         const diff = isFinite(pf) && isFinite(pa) ? pf - pa : parseFloat(s.differential ?? 0);
@@ -119,11 +119,11 @@
 
     tbody.innerHTML = "";
     teams.forEach((team, i) => {
-      const diffStr = isFinite(team.diff) ? 
+      const diffStr = isFinite(team.diff) ?
         (team.diff > 0 ? "+" : "") + team.diff.toFixed(1) : "-";
-      
+
       const pctStr = (team.pct * 100 / 100).toFixed(3).slice(1);
-      
+
       const isLakers = team.name.toLowerCase().includes("lakers");
       const rowClass = isLakers ? 'lakers-ligne' : '';
 
@@ -180,10 +180,10 @@
       try {
         const response = await fetch(url);
         if (!response.ok) continue;
-        
+
         const data = await response.json();
         const teams = parseStandings(data);
-        
+
         if (teams.length > 0) {
           allTeams = teams;
           render(allTeams);
@@ -196,7 +196,7 @@
       }
     }
 
-    showError("Impossible de charger le classement nba, veuillez réessayer plus tard.");
+    showError("c'est impossible de charger le classement revenez plus tard merci.");
   }
 
   loadStandings();

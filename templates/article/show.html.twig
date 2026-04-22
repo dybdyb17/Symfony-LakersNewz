@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.titre }} - Lakers Newz{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/article_show.css') }}">
+{% endblock %}
+
+{% block body_class %}page-article-show{% endblock %}
+
+{% block body %}
+<main class="article-show-main">
+    <div class="article-show-hero">
+        <img
+            src="{{ article.image ?? 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1200&h=600&fit=crop' }}"
+            alt="{{ article.titre }}"
+            class="article-show-hero-img"
+        >
+        <div class="article-show-hero-overlay"></div>
+    </div>
+
+    <div class="article-show-conteneur">
+        <div class="article-show-meta">
+            <span class="article-show-badge {% if article.categorie == 'rumeurs' %}badge-rumeurs
+                {% elseif article.categorie == 'interviews' %}badge-interviews
+                {% elseif article.categorie == 'analyses' %}badge-analyses
+                {% endif %}">
+                {{ article.categorie|default('News')|capitalize }}
+            </span>
+        </div>
+
+        <h1 class="article-show-titre">{{ article.titre }}</h1>
+
+        <div class="article-show-infos">
+            <span class="article-show-date">
+                <i class="fa-solid fa-calendar"></i>
+                {{ article.createdAt|date('d F Y') }}
+            </span>
+            <span class="article-show-auteur">
+                <i class="fa-solid fa-user"></i>
+                {{ article.auteur|default('Lakers Newz') }}
+            </span>
+        </div>
+
+        <div class="article-show-contenu">
+            {{ article.contenu|nl2br }}
+        </div>
+
+        <div class="article-show-retour">
+            <a href="{{ path('app_accueil') }}" class="article-show-btn-retour">
+                <i class="fa-solid fa-arrow-left"></i>
+                Retour à l'accueil
+            </a>
+        </div>
+    </div>
+</main>
+{% endblock %}

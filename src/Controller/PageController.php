@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,37 +13,52 @@ use Symfony\Component\Routing\Attribute\Route;
 class PageController extends AbstractController
 {
     #[Route('/', name: 'app_accueil')]
-    public function home(ArticleRepository $articleRepository): Response
+    public function home(ArticleRepository $articleRepository, Request $request): Response
     {
-        $articles = $articleRepository->findBy([], ['createdAt' => 'DESC']);
+        $page = $request->query->getInt('page', 1);
+        $limit = 6;
+        $totalArticles = $articleRepository->count([]);
+        $totalPages = ceil($totalArticles / $limit);
+
+        $articles = $articleRepository->findBy([], ['createdAt' => 'DESC'], $limit, ($page - 1) * $limit);
 
         return $this->render('pages/accueil.html.twig', [
             'articles' => $articles,
+            'currentPage' => $page,
+            'totalPages' => $totalPages,
+        ]);
+    }
+
+    #[Route('/article/{id}', name: 'app_article_show')]
+    public function articleShow(Article $article): Response
+    {
+        return $this->render('article/show.html.twig', [
+            'article' => $article,
         ]);
     }
 
     #[Route('/calendrier', name: 'app_calendrier')]
     public function calendrier(): Response
     {
-        return $this->render('pages/calendrier.html.twig');
+        return $this->render('nba/calendrier.html.twig');
     }
 
     #[Route('/classement', name: 'app_classement')]
     public function classement(): Response
     {
-        return $this->render('pages/classement.html.twig');
+        return $this->render('nba/classement.html.twig');
     }
 
     #[Route('/roster', name: 'app_roster')]
     public function roster(): Response
     {
-        return $this->render('pages/roster.html.twig');
+        return $this->render('nba/roster.html.twig');
     }
 
     #[Route('/paris', name: 'app_paris')]
     public function paris(): Response
     {
-        return $this->render('pages/paris.html.twig', [
+        return $this->render('paris/paris.html.twig', [
             'user' => $this->getUser(),
         ]);
     }
@@ -55,7 +71,7 @@ class PageController extends AbstractController
             return $this->redirectToRoute('app_connexion');
         }
 
-        return $this->render('pages/profil.html.twig', [
+        return $this->render('profil/profil.html.twig', [
             'user' => $user,
         ]);
     }
@@ -78,7 +94,7 @@ class PageController extends AbstractController
             return $this->redirectToRoute('app_profil');
         }
 
-        return $this->render('pages/profil_modifier.html.twig', [
+        return $this->render('profil/profil_modifier.html.twig', [
             'profilForm' => $form,
             'user' => $user,
         ]);
@@ -123,7 +139,7 @@ class PageController extends AbstractController
             return $this->redirectToRoute('app_connexion');
         }
 
-        return $this->render('pages/deposer.html.twig', [
+        return $this->render('paris/deposer.html.twig', [
             'success' => false,
             'montant' => 0,
             'solde' => $user->getSolde(),
@@ -166,7 +182,7 @@ class PageController extends AbstractController
             }
         }
 
-        return $this->render('pages/retirer.html.twig', [
+        return $this->render('paris/retirer.html.twig', [
             'success' => $success,
             'insuffisant' => $insuffisant,
             'montant' => $montant,
