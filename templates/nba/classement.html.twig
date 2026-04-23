@@ -1,51 +1,73 @@
 {% extends 'base.html.twig' %}
-{% block title %}Classement NBA 2025/2026{% endblock %}
-{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/classement.css') }}">{% endblock %}
-{% block body_class %}classement-page{% endblock %}
-{% block body %}
-<main class="classement-main">
-    <section class="classement-card">
-        <h1>Classement NBA 2025/2026</h1>
-        <div class="conference-filtres">
-            <button class="conf-btn active" data-conf="all">Toutes les équipes</button>
-            <button class="conf-btn" data-conf="west">Conférence Ouest</button>
-            <button class="conf-btn" data-conf="east">Conférence Est</button>
-        </div>
-        <div id="standings-error" class="message-erreur"></div>
-        <div class="classement-table-conteneur">
-            <table class="classement-table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Équipe</th>
-                        <th>W</th>
-                        <th>L</th>
-                        <th>PCT</th>
-                        <th>GB</th>
-                        <th>HOME</th>
-                        <th>AWAY</th>
-                        <th>PPG</th>
-                        <th>OPP PPG</th>
-                        <th>DIFF</th>
-                        <th>STRK</th>
-                        <th>L10</th>
-                    </tr>
-                </thead>
-                <tbody id="nba-standings-body">
-                    <tr class="chargement-ligne">
-                        <td colspan="13">
-                            <div class="chargement-icone">
-                                <i class="fa-solid fa-spinner fa-spin"></i>
-                                <p>Chargement du classement...</p>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-</main>
-{% endblock %}
 
-{% block javascripts %}<script defer src="{{ asset('js/classement.js') }}"></script>
+{% block title %}Classement NBA{% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/classement.css') }}">{% endblock %}
+
+{% block body %}
+<body class="classement-page">
+    <main class="classement-main">
+        <section class="classement-card">
+            <h1>Classement NBA 2025/2026</h1>
+
+            <div class="conference-filtres">
+                <a href="{{ path('app_classement', {'conf': 'all'}) }}" class="conf-btn {{ filtre == 'all' ? 'active' : '' }}">Toutes les équipes</a>
+                <a href="{{ path('app_classement', {'conf': 'west'}) }}" class="conf-btn {{ filtre == 'west' ? 'active' : '' }}">Conférence Ouest</a>
+                <a href="{{ path('app_classement', {'conf': 'east'}) }}" class="conf-btn {{ filtre == 'east' ? 'active' : '' }}">Conférence Est</a>
+            </div>
+
+            {% for conference in conferences %}
+                {% if filtre != 'all' %}
+                    <h2 style="color: #fcd34d; margin: 1.5rem 0 1rem; font-size: 1.5rem;">{{ conference.nom }}</h2>
+                {% endif %}
+                <div class="classement-table-conteneur">
+                    <table class="classement-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Équipe</th>
+                                <th>W</th>
+                                <th>L</th>
+                                <th>PCT</th>
+                                <th>GB</th>
+                                <th>HOME</th>
+                                <th>AWAY</th>
+                                <th>PPG</th>
+                                <th>OPP PPG</th>
+                                <th>DIFF</th>
+                                <th>STRK</th>
+                                <th>L10</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for equipe in conference.equipes %}
+                                <tr class="{{ 'Lakers' in equipe.nom ? 'lakers-ligne' : '' }}">
+                                    <td class="rang-cellule">{{ loop.index }}</td>
+                                    <td>
+                                        <div class="equipe-cellule">
+                                            <img src="{{ equipe.logo }}" alt="{{ equipe.nom }}" class="equipe-logo">
+                                            <span class="{{ 'Lakers' in equipe.nom ? 'lakers-nom' : '' }}">{{ equipe.nom }}</span>
+                                        </div>
+                                    </td>
+                                    <td>{{ equipe.victoires }}</td>
+                                    <td>{{ equipe.defaites }}</td>
+                                    <td>{{ equipe.pourcentage }}</td>
+                                    <td>{{ equipe.gamesBehind }}</td>
+                                    <td>{{ equipe.domicile }}</td>
+                                    <td>{{ equipe.exterieur }}</td>
+                                    <td>{{ equipe.ppg }}</td>
+                                    <td>{{ equipe.oppPpg }}</td>
+                                    <td>{{ equipe.diff }}</td>
+                                    <td>{{ equipe.serie }}</td>
+                                    <td>{{ equipe.dix_derniers }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endfor %}
+
+        </section>
+    </main>
+</body>
 {% endblock %}

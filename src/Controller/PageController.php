@@ -37,24 +37,6 @@ class PageController extends AbstractController
         ]);
     }
 
-    #[Route('/calendrier', name: 'app_calendrier')]
-    public function calendrier(): Response
-    {
-        return $this->render('nba/calendrier.html.twig');
-    }
-
-    #[Route('/classement', name: 'app_classement')]
-    public function classement(): Response
-    {
-        return $this->render('nba/classement.html.twig');
-    }
-
-    #[Route('/roster', name: 'app_roster')]
-    public function roster(): Response
-    {
-        return $this->render('nba/roster.html.twig');
-    }
-
     #[Route('/paris', name: 'app_paris')]
     public function paris(): Response
     {

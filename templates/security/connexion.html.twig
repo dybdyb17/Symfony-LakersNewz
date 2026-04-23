@@ -20,6 +20,7 @@
                     <label for="email">Adresse e-mail</label>
                     <input type="email" id="email" name="email" value="{{ last_username }}" placeholder="Entre ton adresse mail" required>
                 </div>
+
                 <div class="formulaire-groupe">
                     <div class="libelle-ligne">
                         <label for="password">Mot de passe</label>
@@ -30,14 +31,17 @@
                         <button type="button" class="btn-voir-mdp"><i class="fa-solid fa-eye-slash"></i></button>
                     </div>
                 </div>
+
                 <div class="formulaire-cases">
                     <label>
                         <input type="checkbox" id="remember" name="_remember_me">
                         Me souvenir
                     </label>
                 </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                 <button type="submit" class="auth-btn">Se connecter</button>
             </form>
+
             <div class="auth-footer">
                 <p>Pas de compte ? <a href="{{ path('app_inscription') }}">Inscris toi</a></p>
             </div>
