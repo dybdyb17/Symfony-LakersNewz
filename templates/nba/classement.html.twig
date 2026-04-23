@@ -4,8 +4,9 @@
 
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/classement.css') }}">{% endblock %}
 
+{% block body_class %}classement-page{% endblock %}
+
 {% block body %}
-<body class="classement-page">
     <main class="classement-main">
         <section class="classement-card">
             <h1>Classement NBA 2025/2026</h1>
@@ -69,5 +70,4 @@
 
         </section>
     </main>
-</body>
 {% endblock %}

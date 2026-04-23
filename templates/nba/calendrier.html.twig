@@ -1,53 +1,80 @@
 {% extends 'base.html.twig' %}
-{% block title %}Lakers Newz - Calendrier{% endblock %}
+
+{% block title %}Calendrier Lakers - Lakers Newz{% endblock %}
+
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/calendrier.css') }}">{% endblock %}
+
 {% block body_class %}calendrier-page{% endblock %}
+
 {% block body %}
-<main class="calendrier-principal">
-    <section class="calendrier-bandeau">
-        <div class="calendrier-bandeau-fond">
-            <span class="calendrier-bandeau-etiquette"><i class="fa-solid fa-calendar"></i> Calendrier NBA</span>
-            <h1>Lakers 2025/2026</h1>
-            <p>Retrouver les 82 matchs de la saison régulière des Los Angeles Lakers.</p>
-        </div>
-    </section>
-    <section class="calendrier-card">
-        <header class="calendrier-card-header">
-            <div>
-                <h2>Programme de la saison</h2>
-                <p class="calendrier-card-sous-title">Du 22 octobre 2025 au 13 avril 2026</p>
+    <main class="calendrier-principal">
+        <div class="calendrier-bandeau">
+            <div class="calendrier-bandeau-fond">
+                <h1>Calendrier des Lakers</h1>
+                <p>Saison 2025/2026</p>
             </div>
-            <div class="calendrier-filtres">
-                <label class="filter">
-                    <span>Mois</span>
-                    <select name="month" id="month-filter">
-                        <option value="all">Tous</option>
-                        <option value="octobre">Octobre</option>
-                        <option value="novembre">Novembre</option>
-                        <option value="decembre">Décembre</option>
-                        <option value="janvier">Janvier</option>
-                        <option value="fevrier">Février</option>
-                        <option value="mars">Mars</option>
-                        <option value="avril">Avril</option>
-                    </select>
-                </label>
-            </div>
-        </header>
-        <div class="calendrier-table-conteneur">
-            <table class="calendrier-table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Heure (PT)</th>
-                        <th>Adversaire</th>
-                        <th>Lieu</th>
-                        <th>Résultat</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
         </div>
-    </section>
-</main>
+
+        <div class="calendrier-card">
+            <div class="calendrier-card-header">
+                <div>
+                    <h2>Matchs des Lakers</h2>
+                    <span class="calendrier-card-sous-title">Saison régulière et Playoffs</span>
+                </div>
+                <div class="calendrier-filtres">
+                    <div class="filtre">
+                        <select onchange="window.location.href='{{ path('app_calendrier') }}?mois=' + this.value">
+                            <option value="all" {{ filtreMois == 'all' ? 'selected' : '' }}>Tous les mois</option>
+                            {% for cle, label in moisDisponibles %}
+                                <option value="{{ cle }}" {{ filtreMois == cle ? 'selected' : '' }}>{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calendrier-table-conteneur">
+                <table class="calendrier-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Heure</th>
+                            <th>Adversaire</th>
+                            <th>Lieu</th>
+                            <th>Résultat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for match in matchs %}
+                            <tr>
+                                <td>
+                                    <span class="calendrier-jour">{{ match.date|date('D d M', 'America/Los_Angeles') }}</span>
+                                </td>
+                                <td>
+                                    <span class="calendrier-heure">{{ match.date|date('H:i', 'America/Los_Angeles') }}</span>
+                                </td>
+                                <td>
+                                    <span class="calendrier-confrontation">
+                                        <span>{{ match.domicileExterieur }}</span>
+                                        <img src="{{ match.logo }}" alt="{{ match.adversaire }}" class="logo">
+                                        {{ match.adversaire }}
+                                    </span>
+                                </td>
+                                <td>{{ match.lieu }}</td>
+                                <td>
+                                    <span class="resultat {{ match.resultat == 'W' ? 'victoire' : (match.resultat == 'L' ? 'defaite' : '') }}">
+                                        {{ match.score }} {{ match.resultat }}
+                                    </span>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5" style="text-align:center; padding:2rem; color:rgba(255,255,255,0.6);">Aucun match pour ce mois.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
 {% endblock %}
-{% block javascripts %}<script defer src="{{ asset('js/script.js') }}"></script>{% endblock %}

@@ -88,7 +88,7 @@ class AppController extends AbstractController
     }
 
     #[Route('/roster', name: 'app_roster', methods: ['GET'])]
-    public function roster(HttpClientInterface $client, CacheInterface $cache): Response
+    public function roster(HttpClientInterface $client, CacheInterface $cache, Request $request): Response
     {
         $url = 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/lal/roster';
         $roster = $cache->get('espn_roster', function (ItemInterface $item) use ($client, $url) {
@@ -97,13 +97,41 @@ class AppController extends AbstractController
             return $response->toArray();
         });
 
+        $joueurs = [];
+        foreach ($roster['athletes'] as $athlete) {
+            $joueurs[] = [
+                'nom' => $athlete['displayName'] ?? '',
+                'maillot' => $athlete['jersey'] ?? '',
+                'poste' => $athlete['position']['displayName'] ?? '',
+                'posteAbrev' => $athlete['position']['abbreviation'] ?? '',
+                'photo' => $athlete['headshot']['href'] ?? '',
+                'taille' => $athlete['displayHeight'] ?? '',
+                'poids' => $athlete['displayWeight'] ?? '',
+                'age' => $athlete['age'] ?? '',
+                'experience' => $athlete['experience']['years'] ?? 0,
+                'pays' => $athlete['birthPlace']['city'] ?? '',
+            ];
+        }
+
+        $filtre = $request->query->get('poste', 'all');
+        if ($filtre !== 'all') {
+            $joueursFiltres = [];
+            foreach ($joueurs as $joueur) {
+                if ($joueur['posteAbrev'] === $filtre) {
+                    $joueursFiltres[] = $joueur;
+                }
+            }
+            $joueurs = $joueursFiltres;
+        }
+
         return $this->render('nba/roster.html.twig', [
-            'roster' => $roster,
+            'joueurs' => $joueurs,
+            'filtre' => $filtre,
         ]);
     }
 
     #[Route('/calendrier', name: 'app_calendrier', methods: ['GET'])]
-    public function calendrier(HttpClientInterface $client, CacheInterface $cache): Response
+    public function calendrier(HttpClientInterface $client, CacheInterface $cache, Request $request): Response
     {
         $url = 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/13/schedule';
         $calendrier = $cache->get('espn_calendrier', function (ItemInterface $item) use ($client, $url) {
@@ -112,8 +140,76 @@ class AppController extends AbstractController
             return $response->toArray();
         });
 
+        $matchs = [];
+        foreach ($calendrier['events'] as $event) {
+            $comp = $event['competitions'][0];
+            $competitors = $comp['competitors'];
+
+            $lakers = null;
+            $adversaire = null;
+            foreach ($competitors as $c) {
+                if ($c['team']['id'] === '13') {
+                    $lakers = $c;
+                } else {
+                    $adversaire = $c;
+                }
+            }
+
+            if (!$lakers || !$adversaire) continue;
+
+            $dateObj = new \DateTime($event['date']);
+            $lieu = '';
+            if (isset($comp['venue'])) {
+                $lieu = $comp['venue']['fullName'] ?? '';
+                if (isset($comp['venue']['address']['city'])) {
+                    $lieu .= ', ' . $comp['venue']['address']['city'];
+                }
+            }
+
+            $scoreLakers = $lakers['score']['displayValue'] ?? '';
+            $scoreAdversaire = $adversaire['score']['displayValue'] ?? '';
+            $score = '';
+            $resultat = '';
+            if ($scoreLakers !== '' && $scoreAdversaire !== '') {
+                $score = $scoreLakers . ' — ' . $scoreAdversaire;
+                $resultat = (isset($lakers['winner']) && $lakers['winner']) ? 'W' : 'L';
+            }
+
+            $matchs[] = [
+                'date' => $dateObj,
+                'mois' => strtolower($dateObj->format('F')),
+                'domicileExterieur' => ($lakers['homeAway'] === 'home') ? 'vs' : '@',
+                'adversaire' => $adversaire['team']['displayName'] ?? '',
+                'logo' => $adversaire['team']['logos'][0]['href'] ?? '',
+                'lieu' => $lieu,
+                'score' => $score,
+                'resultat' => $resultat,
+            ];
+        }
+
+        $filtreMois = $request->query->get('mois', 'all');
+        if ($filtreMois !== 'all') {
+            $matchsFiltres = [];
+            foreach ($matchs as $match) {
+                if ($match['mois'] === $filtreMois) {
+                    $matchsFiltres[] = $match;
+                }
+            }
+            $matchs = $matchsFiltres;
+        }
+
+        $moisDisponibles = [];
+        foreach ($calendrier['events'] as $event) {
+            $d = new \DateTime($event['date']);
+            $moisKey = strtolower($d->format('F'));
+            $moisLabel = $d->format('F Y');
+            $moisDisponibles[$moisKey] = $moisLabel;
+        }
+
         return $this->render('nba/calendrier.html.twig', [
-            'calendrier' => $calendrier,
+            'matchs' => $matchs,
+            'filtreMois' => $filtreMois,
+            'moisDisponibles' => $moisDisponibles,
         ]);
     }
 

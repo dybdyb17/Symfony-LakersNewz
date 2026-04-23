@@ -1,28 +1,78 @@
 {% extends 'base.html.twig' %}
-{% block title %}Roster 2025/2026 - Los Angeles Lakers{% endblock %}
+
+{% block title %}Effectif Lakers - Lakers Newz{% endblock %}
+
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/roster.css') }}">{% endblock %}
+
 {% block body_class %}effectif-page{% endblock %}
+
 {% block body %}
-<main class="effectif-principal">
-    <section class="effectif-bandeau">
-        <div class="effectif-bandeau-content">
-            <h1><i class="fa-solid fa-users"></i> Effectif 2025/2026</h1>
-            <p>Découvrez tous les joueurs des Los Angeles Lakers</p>
+    <main class="effectif-principal">
+        <div class="effectif-bandeau">
+            <div class="effectif-bandeau-content">
+                <h1><i class="fa-solid fa-basketball"></i> Effectif des Lakers</h1>
+                <p>Los Angeles Lakers - Saison 2025/2026</p>
+            </div>
         </div>
-    </section>
-    <section class="effectif-filtres">
-        <button class="btn-poste active" data-position="all"><i class="fa-solid fa-layer-group"></i> Tous</button>
-        <button class="btn-poste" data-position="G"><i class="fa-solid fa-basketball"></i> Guards</button>
-        <button class="btn-poste" data-position="F"><i class="fa-solid fa-running"></i> Forwards</button>
-        <button class="btn-poste" data-position="C"><i class="fa-solid fa-hands"></i> Centers</button>
-    </section>
-    <div id="effectif-erreur" class="message-erreur"></div>
-    <section class="effectif-grille" id="effectif-grille">
-        <div class="effectif-chargement">
-            <i class="fa-solid fa-spinner fa-spin"></i>
-            <p>Chargement de l'effectif...</p>
+
+        <div class="effectif-filtres">
+            <a href="{{ path('app_roster', {'poste': 'all'}) }}" class="btn-poste {{ filtre == 'all' ? 'active' : '' }}">
+                <i class="fa-solid fa-layer-group"></i> Tous
+            </a>
+            <a href="{{ path('app_roster', {'poste': 'G'}) }}" class="btn-poste {{ filtre == 'G' ? 'active' : '' }}">
+                <i class="fa-solid fa-basketball"></i> Guards
+            </a>
+            <a href="{{ path('app_roster', {'poste': 'F'}) }}" class="btn-poste {{ filtre == 'F' ? 'active' : '' }}">
+                <i class="fa-solid fa-running"></i> Forwards
+            </a>
+            <a href="{{ path('app_roster', {'poste': 'C'}) }}" class="btn-poste {{ filtre == 'C' ? 'active' : '' }}">
+                <i class="fa-solid fa-hands"></i> Centers
+            </a>
         </div>
-    </section>
-</main>
+
+        <div class="effectif-grille">
+            {% for joueur in joueurs %}
+                <div class="joueur-card">
+                    <div class="joueur-card-header">
+                        <span class="joueur-maillot">#{{ joueur.maillot }}</span>
+                        <span class="joueur-poste">{{ joueur.poste }}</span>
+                    </div>
+                    <div class="joueur-card-image">
+                        <img src="{{ joueur.photo }}" alt="{{ joueur.nom }}">
+                    </div>
+                    <div class="joueur-card-info">
+                        <h3 class="joueur-nom">{{ joueur.nom }}</h3>
+                        <div class="joueur-stats">
+                            <div class="stat-element">
+                                <i class="fa-solid fa-ruler-vertical"></i>
+                                <span>{{ joueur.taille }}</span>
+                            </div>
+                            <div class="stat-element">
+                                <i class="fa-solid fa-weight-scale"></i>
+                                <span>{{ joueur.poids }}</span>
+                            </div>
+                            <div class="stat-element">
+                                <i class="fa-solid fa-calendar"></i>
+                                <span>{{ joueur.age }} ans</span>
+                            </div>
+                        </div>
+                        <div class="joueur-details">
+                            <div class="detail-ligne">
+                                <span class="label">Expérience</span>
+                                <span class="value">{{ joueur.experience }} ans</span>
+                            </div>
+                            <div class="detail-ligne">
+                                <span class="label">Origine</span>
+                                <span class="value">{{ joueur.pays }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="aucun-joueur">
+                    <p>Aucun joueur trouvé pour ce poste.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
 {% endblock %}
-{% block javascripts %}<script defer src="{{ asset('js/roster.js') }}"></script>{% endblock %}
