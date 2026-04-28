@@ -101,9 +101,40 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function eraseCredentials(): void
+    public function eraseCredentials(): void {}
+
+    public function __serialize(): array
     {
-        // Si tu stockes des données temporaires sensibles, efface-les ici
+        return [
+            'id'          => $this->id,
+            'email'       => $this->email,
+            'roles'       => $this->roles,
+            'password'    => $this->password,
+            'firstname'   => $this->firstname,
+            'lastname'    => $this->lastname,
+            'pseudo'      => $this->pseudo,
+            'solde'       => $this->solde,
+            'createdAt'   => $this->createdAt,
+            'dateNaissance' => $this->dateNaissance,
+            'telephone'   => $this->telephone,
+            'lieuNaissance' => $this->lieuNaissance,
+        ];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        $this->id             = $data['id'];
+        $this->email          = $data['email'];
+        $this->roles          = $data['roles'];
+        $this->password       = $data['password'];
+        $this->firstname      = $data['firstname'];
+        $this->lastname       = $data['lastname'];
+        $this->pseudo         = $data['pseudo'];
+        $this->solde          = $data['solde'];
+        $this->createdAt      = $data['createdAt'];
+        $this->dateNaissance  = $data['dateNaissance'];
+        $this->telephone      = $data['telephone'];
+        $this->lieuNaissance  = $data['lieuNaissance'];
     }
 
     public function getFirstname(): ?string
