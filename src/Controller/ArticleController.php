@@ -35,4 +35,20 @@ class ArticleController extends AbstractController
             'article' => $article,
         ]);
     }
+
+    #[Route('/recherche', name: 'app_recherche')]
+    public function recherche(Request $request, ArticleRepository $articleRepository): Response
+    {
+        $terme = $request->query->get('q', '');
+        $articles = [];
+
+        if ($terme !== '') {
+            $articles = $articleRepository->rechercher($terme);
+        }
+
+        return $this->render('article/recherche.html.twig', [
+            'articles' => $articles,
+            'terme' => $terme,
+        ]);
+    }
 }

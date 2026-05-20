@@ -31,6 +31,17 @@
         window.isLoggedIn = {{ app.user ? 'true' : 'false' }};
         window.userPseudo = '{{ app.user ? app.user.pseudo|e('js') : '' }}';
     </script>
+    <div class="modale-recherche" id="searchModal" style="display:none;">
+        <div class="modale-recherche-fond" id="closeSearchModal"></div>
+        <div class="modale-recherche-contenu">
+            <form action="{{ path('app_recherche') }}" method="get" class="modale-recherche-form">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" name="q" placeholder="Rechercher un article..." autofocus>
+                <button type="submit">Rechercher</button>
+            </form>
+        </div>
+    </div>
+
     <script src="{{ asset('js/script.js') }}"></script>
     {% block javascripts %}{% endblock %}
 </body>

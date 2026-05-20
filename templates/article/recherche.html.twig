@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche - Lakers Newz{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/accueil.css') }}">
+{% endblock %}
+
+{% block body_class %}page-accueil{% endblock %}
+
+{% block body %}
+<main class="accueil-principal">
+    <section id="news-section" class="news-section">
+        <div class="news-conteneur">
+            <div class="news-header">
+                <h2><i class="fa-solid fa-magnifying-glass"></i> Recherche : "{{ terme }}"</h2>
+                <p>{{ articles|length }} résultat(s) trouvé(s)</p>
+            </div>
+
+            <div class="news-grille">
+                {% for article in articles %}
+                    <article class="news-card">
+                        <div class="news-card-image">
+                            <img src="{{ article.image ?? 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&h=600&fit=crop' }}" alt="{{ article.titre }}" loading="lazy">
+                            <span class="news-category {% if article.categorie == 'rumeurs' %}category-rumeurs
+                            {% elseif article.categorie == 'interviews' %}category-interviews
+                            {% elseif article.categorie == 'analyses' %}category-analyses
+                            {% endif %}">{{ article.categorie|default('News')|capitalize }}
+                            </span>
+                        </div>
+                        <div class="news-card-content">
+                            <div class="news-card-date">
+                                <i class="fa-solid fa-calendar"></i>
+                                {{ article.createdAt|date('d F Y') }}
+                            </div>
+                            <h3 class="news-card-title">{{ article.titre }}</h3>
+                            <p class="news-card-extrait">{{ article.contenu|length > 150 ? article.contenu|slice(0, 150) ~ '...' : article.contenu }}</p>
+                            <div class="news-card-footer">
+                                <span class="news-card-auteur">
+                                    <i class="fa-solid fa-user"></i>
+                                    {{ article.auteur|default('Lakers Newz') }}
+                                </span>
+                                <a href="{{ path('app_article_show', {'id': article.id}) }}" class="news-card-lire-plus">
+                                    Lire la suite
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                {% else %}
+                    <p style="color: rgba(255,255,255,0.6); text-align: center; grid-column: 1 / -1; padding: 2rem;">
+                        Aucun article trouvé pour "{{ terme }}"
+                    </p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

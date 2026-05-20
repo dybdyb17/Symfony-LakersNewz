@@ -44,3 +44,26 @@ if (settingsBtn && settingsDropdown) {
 function logout() {
   window.location.href = '/logout';
 }
+
+const openSearchBtn = document.getElementById('openSearchModal');
+const searchModal = document.getElementById('searchModal');
+const closeSearchBg = document.getElementById('closeSearchModal');
+
+if (openSearchBtn && searchModal) {
+  openSearchBtn.addEventListener('click', () => {
+    searchModal.style.display = 'flex';
+    searchModal.querySelector('input').focus();
+  });
+}
+
+if (closeSearchBg) {
+  closeSearchBg.addEventListener('click', () => {
+    searchModal.style.display = 'none';
+  });
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && searchModal) {
+    searchModal.style.display = 'none';
+  }
+});
