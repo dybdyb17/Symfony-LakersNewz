@@ -123,18 +123,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __unserialize(array $data): void
     {
-        $this->id             = $data['id'];
-        $this->email          = $data['email'];
-        $this->roles          = $data['roles'];
-        $this->password       = $data['password'];
-        $this->firstname      = $data['firstname'];
-        $this->lastname       = $data['lastname'];
-        $this->pseudo         = $data['pseudo'];
-        $this->solde          = $data['solde'];
-        $this->createdAt      = $data['createdAt'];
-        $this->dateNaissance  = $data['dateNaissance'];
-        $this->telephone      = $data['telephone'];
-        $this->lieuNaissance  = $data['lieuNaissance'];
+        $this->id             = $data['id']             ?? null;
+        $this->email          = $data['email']          ?? null;
+        $this->roles          = $data['roles']          ?? [];
+        $this->password       = $data['password']       ?? null;
+        $this->firstname      = $data['firstname']      ?? null;
+        $this->lastname       = $data['lastname']       ?? null;
+        $this->pseudo         = $data['pseudo']         ?? null;
+        $this->solde          = $data['solde']          ?? 0;
+        $this->createdAt      = $data['createdAt']      ?? null;
+        $this->dateNaissance  = $data['dateNaissance']  ?? null;
+        $this->telephone      = $data['telephone']      ?? null;
+        $this->lieuNaissance  = $data['lieuNaissance']  ?? null;
     }
 
     public function getFirstname(): ?string

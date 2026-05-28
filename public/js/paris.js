@@ -388,3 +388,31 @@ document.getElementById('deconnecterBtn')?.addEventListener('click', () => { win
 document.addEventListener('DOMContentLoaded', () => {
   chargerMatchs();
 });
+
+// === COUPON MOBILE ===
+const couponSidebar = document.getElementById('couponSidebar');
+const couponOverlay = document.getElementById('couponOverlay');
+const mobileOuvrirBtn = document.getElementById('mobileOuvrirCoupon');
+const mobileBarre = document.getElementById('couponMobileBarre');
+
+function ouvrirCouponMobile() {
+    if (couponSidebar) couponSidebar.classList.add('mobile-ouvert');
+    if (couponOverlay) couponOverlay.classList.add('visible');
+}
+
+function fermerCouponMobile() {
+    if (couponSidebar) couponSidebar.classList.remove('mobile-ouvert');
+    if (couponOverlay) couponOverlay.classList.remove('visible');
+}
+
+if (mobileOuvrirBtn) {
+    mobileOuvrirBtn.addEventListener('click', function() {
+        ouvrirCouponMobile();
+    });
+}
+
+if (couponOverlay) {
+    couponOverlay.addEventListener('click', function() {
+        fermerCouponMobile();
+    });
+}
