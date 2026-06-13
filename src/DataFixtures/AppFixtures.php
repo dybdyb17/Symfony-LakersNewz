@@ -4,6 +4,10 @@ namespace App\DataFixtures;
 
 use App\Entity\Article;
 use App\Entity\User;
+use App\Entity\MatchNba;
+use App\Entity\Pari;
+use App\Entity\Selection;
+use App\Entity\Transaction;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -26,18 +30,117 @@ class AppFixtures extends Fixture
         $admin->setLastname('Lakers');
         $admin->setPseudo('AdminLN');
         $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setSolde(0);
         $manager->persist($admin);
 
         $user = new User();
         $user->setEmail('user@lakersnewz.com');
         $user->setPassword($this->hasher->hashPassword($user, 'user123'));
         $user->setFirstname('Dybril');
-        $user->setLastname('Test');
-        $user->setPseudo('DybTest');
-        $user->setSolde(100.00);
+        $user->setLastname('Boudiaf');
+        $user->setPseudo('DybLakers');
+        $user->setSolde(247.50);
         $manager->persist($user);
 
-        // Images Lakers pour les articles
+        $transactionsData = [
+            ['type' => 'depot', 'montant' => 50.00, 'jours' => 90],
+            ['type' => 'depot', 'montant' => 100.00, 'jours' => 75],
+            ['type' => 'retrait', 'montant' => 30.00, 'jours' => 60],
+            ['type' => 'depot', 'montant' => 75.00, 'jours' => 45],
+            ['type' => 'depot', 'montant' => 50.00, 'jours' => 30],
+            ['type' => 'retrait', 'montant' => 20.00, 'jours' => 15],
+        ];
+
+        foreach ($transactionsData as $td) {
+            $transaction = new Transaction();
+            $transaction->setType($td['type']);
+            $transaction->setMontant($td['montant']);
+            $transaction->setUser($user);
+            $date = new \DateTime();
+            $date->modify('-' . $td['jours'] . ' days');
+            $transaction->setCreatedAt($date);
+            $manager->persist($transaction);
+        }
+
+        $matchsTermines = [
+            ['team1' => 'Los Angeles Lakers', 'team2' => 'Golden State Warriors', 'cote1' => 1.85, 'cote2' => 2.10, 'score1' => 118, 'score2' => 105, 'jours' => 120],
+            ['team1' => 'Los Angeles Lakers', 'team2' => 'Boston Celtics', 'cote1' => 2.30, 'cote2' => 1.65, 'score1' => 102, 'score2' => 110, 'jours' => 100],
+            ['team1' => 'Denver Nuggets', 'team2' => 'Los Angeles Lakers', 'cote1' => 1.75, 'cote2' => 2.20, 'score1' => 98, 'score2' => 112, 'jours' => 85],
+            ['team1' => 'Los Angeles Lakers', 'team2' => 'Phoenix Suns', 'cote1' => 1.90, 'cote2' => 1.95, 'score1' => 125, 'score2' => 119, 'jours' => 70],
+            ['team1' => 'Milwaukee Bucks', 'team2' => 'Los Angeles Lakers', 'cote1' => 1.80, 'cote2' => 2.05, 'score1' => 108, 'score2' => 99, 'jours' => 55],
+            ['team1' => 'Los Angeles Lakers', 'team2' => 'Dallas Mavericks', 'cote1' => 1.70, 'cote2' => 2.25, 'score1' => 130, 'score2' => 121, 'jours' => 40],
+        ];
+
+        $matchEntities = [];
+        foreach ($matchsTermines as $m) {
+            $match = new MatchNba();
+            $match->setTeam1($m['team1']);
+            $match->setTeam2($m['team2']);
+            $match->setCote1($m['cote1']);
+            $match->setCote2($m['cote2']);
+            $match->setScoreTeam1($m['score1']);
+            $match->setScoreTeam2($m['score2']);
+            $match->setStatut('termine');
+            $match->setResultat($m['score1'] > $m['score2'] ? $m['team1'] : $m['team2']);
+            $date = new \DateTime();
+            $date->modify('-' . $m['jours'] . ' days');
+            $match->setDateMatch($date);
+            $manager->persist($match);
+            $matchEntities[] = $match;
+        }
+
+        $matchsFuturs = [
+            ['team1' => 'Los Angeles Lakers', 'team2' => 'Oklahoma City Thunder', 'cote1' => 2.40, 'cote2' => 1.60, 'jours' => -2],
+            ['team1' => 'Los Angeles Lakers', 'team2' => 'Cleveland Cavaliers', 'cote1' => 1.95, 'cote2' => 1.90, 'jours' => -5],
+            ['team1' => 'New York Knicks', 'team2' => 'Los Angeles Lakers', 'cote1' => 1.85, 'cote2' => 2.00, 'jours' => -8],
+        ];
+
+        foreach ($matchsFuturs as $m) {
+            $match = new MatchNba();
+            $match->setTeam1($m['team1']);
+            $match->setTeam2($m['team2']);
+            $match->setCote1($m['cote1']);
+            $match->setCote2($m['cote2']);
+            $match->setStatut('a_venir');
+            $date = new \DateTime();
+            $date->modify($m['jours'] . ' days');
+            $match->setDateMatch($date);
+            $manager->persist($match);
+        }
+
+        $parisData = [
+            ['equipe' => 'Los Angeles Lakers', 'cote' => 1.85, 'mise' => 20.00, 'statut' => 'gagne', 'gains' => 37.00, 'jours' => 120],
+            ['equipe' => 'Los Angeles Lakers', 'cote' => 2.30, 'mise' => 15.00, 'statut' => 'perdu', 'gains' => 0, 'jours' => 100],
+            ['equipe' => 'Los Angeles Lakers', 'cote' => 2.20, 'mise' => 25.00, 'statut' => 'gagne', 'gains' => 55.00, 'jours' => 85],
+            ['equipe' => 'Phoenix Suns', 'cote' => 1.95, 'mise' => 10.00, 'statut' => 'perdu', 'gains' => 0, 'jours' => 70],
+            ['equipe' => 'Milwaukee Bucks', 'cote' => 1.80, 'mise' => 30.00, 'statut' => 'gagne', 'gains' => 54.00, 'jours' => 55],
+            ['equipe' => 'Los Angeles Lakers', 'cote' => 1.70, 'mise' => 20.00, 'statut' => 'gagne', 'gains' => 34.00, 'jours' => 40],
+        ];
+
+        foreach ($parisData as $pd) {
+            $pari = new Pari();
+            $pari->setEquipe($pd['equipe']);
+            $pari->setCote($pd['cote']);
+            $pari->setMise($pd['mise']);
+            $pari->setGains($pd['gains']);
+            $pari->setStatut($pd['statut']);
+            $pari->setUser($user);
+            $date = new \DateTime();
+            $date->modify('-' . $pd['jours'] . ' days');
+            $pari->setCreatedAt($date);
+
+            $selection = new Selection();
+            $selection->setEquipeChoisie($pd['equipe']);
+            $selection->setCote($pd['cote']);
+            $selection->setTypePari('simple');
+            $selection->setMiseIndividuelle($pd['mise']);
+            $selection->setResultat($pd['statut'] === 'gagne' ? 'gagne' : 'perdu');
+            $selection->setPari($pari);
+            $manager->persist($selection);
+
+            $manager->persist($pari);
+        }
+
         $images = [
             'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800',
             'https://images.unsplash.com/photo-1504450758481-7338bbe75c8e?w=800',

@@ -75,22 +75,24 @@ async function chargerMatchs() {
   const container = document.getElementById('matchs-container');
   if (!container) return;
   try {
-    const res = await fetch('http://127.0.0.1:8000/api/cache/matchs');
+    const res = await fetch('/api/matchs');
     if (!res.ok) throw new Error('API ko');
-    const data = await res.json();
-    const events = (data.events || []).slice(0, 12);
-    if (events.length === 0) throw new Error('Aucun match');
-    const matchs = events.map((event, i) => {
-      const comp = event.competitions[0];
-      const t1 = comp.competitors[0];
-      const t2 = comp.competitors[1];
-      const dateObj = new Date(event.date);
-      const dateStr = dateObj.toLocaleString('fr-FR', { hour: '2-digit', minute: '2-digit', day: 'numeric', month: 'long' });
-      return { id: i + 1, date: dateStr, dateObj, team1: t1.team.displayName, team2: t2.team.displayName, cote1: genererCote(1.75), cote2: genererCote(1.90) };
-    });
-    const matchsFuturs = matchs;
+    const matchs = await res.json();
+    if (matchs.length === 0) throw new Error('Aucun match');
     container.innerHTML = '';
-    matchsFuturs.forEach(m => container.appendChild(renderMatchCard(m)));
+    matchs.forEach(m => {
+      const dateObj = new Date(m.dateMatch);
+      const dateStr = dateObj.toLocaleString('fr-FR', { hour: '2-digit', minute: '2-digit', day: 'numeric', month: 'long' });
+      const match = {
+        id: m.id,
+        date: dateStr,
+        team1: m.team1,
+        team2: m.team2,
+        cote1: m.cote1,
+        cote2: m.cote2
+      };
+      container.appendChild(renderMatchCard(match));
+    });
   } catch {
     container.innerHTML = '<p style="text-align:center; color:rgba(255,255,255,0.6); padding:2rem;">Aucun match disponible pour le moment.</p>';
   }
