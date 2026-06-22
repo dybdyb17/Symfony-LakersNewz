@@ -39,7 +39,7 @@ class AppFixtures extends Fixture
         $user->setFirstname('Dybril');
         $user->setLastname('Boudiaf');
         $user->setPseudo('DybLakers');
-        $user->setSolde(247.50);
+        $user->setSolde(100.00);
         $manager->persist($user);
 
         $transactionsData = [
