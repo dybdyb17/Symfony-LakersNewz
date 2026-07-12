@@ -67,12 +67,16 @@ class AdminMatchController extends AbstractController
             $em->flush();
 
             $paris = $em->getRepository(Pari::class)->findBy(['statut' => 'en_cours']);
+
             foreach ($paris as $pari) {
                 $equipes = explode(' + ', $pari->getEquipe());
                 $concerne = in_array($match->getTeam1(), $equipes) || in_array($match->getTeam2(), $equipes);
 
-                if (!$concerne) continue;
+                if (!$concerne) {
+                    continue;
+                }
 
+                // PARI SIMPLE : une seule equipe choisie
                 if (count($equipes) === 1) {
                     if ($pari->getEquipe() === $match->getResultat()) {
                         $pari->setStatut('gagne');
@@ -82,7 +86,46 @@ class AdminMatchController extends AbstractController
                         $pari->setStatut('perdu');
                         $pari->setGains(0);
                     }
+                    continue;
                 }
+
+                // PARI COMBINE : on met a jour uniquement la selection liee a CE match precis
+                foreach ($pari->getSelections() as $selection) {
+                    $selectionMatch = $selection->getMatchNba();
+
+                    if ($selectionMatch !== null && $selectionMatch->getId() === $match->getId()) {
+                        if ($selection->getEquipeChoisie() === $match->getResultat()) {
+                            $selection->setResultat('gagne');
+                        } else {
+                            $selection->setResultat('perdu');
+                        }
+                    }
+                }
+
+                // On regarde l'etat de toutes les selections du pari combine
+                $auMoinsUnePerdue = false;
+                $toutesGagnees = true;
+
+                foreach ($pari->getSelections() as $selection) {
+                    if ($selection->getResultat() === 'perdu') {
+                        $auMoinsUnePerdue = true;
+                    }
+                    if ($selection->getResultat() !== 'gagne') {
+                        $toutesGagnees = false;
+                    }
+                }
+
+                if ($auMoinsUnePerdue) {
+                    // Une seule selection perdue suffit a faire perdre le combine
+                    $pari->setStatut('perdu');
+                    $pari->setGains(0);
+                } elseif ($toutesGagnees) {
+                    // Toutes les selections sont gagnees : le combine est gagne
+                    $pari->setStatut('gagne');
+                    $pari->setGains($pari->getMise() * $pari->getCote());
+                    $pari->getUser()->setSolde($pari->getUser()->getSolde() + $pari->getGains());
+                }
+                // Sinon : il reste des matchs a jouer, le pari reste en_cours
             }
 
             $em->flush();

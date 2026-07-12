@@ -55,25 +55,6 @@ class ApiController extends AbstractController
             }
         }
 
-        if ($estCombine && isset($data['matchs'])) {
-            foreach ($data['matchs'] as $matchData) {
-                $existingMatch = $em->getRepository(MatchNba::class)->findOneBy([
-                    'team1' => $matchData['team1'],
-                    'team2' => $matchData['team2'],
-                    'statut' => 'a_venir',
-                ]);
-                if (!$existingMatch) {
-                    $match = new MatchNba();
-                    $match->setTeam1($matchData['team1']);
-                    $match->setTeam2($matchData['team2']);
-                    $match->setCote1((float) ($matchData['cote1'] ?? 1.50));
-                    $match->setCote2((float) ($matchData['cote2'] ?? 1.50));
-                    $match->setStatut('a_venir');
-                    $em->persist($match);
-                }
-            }
-        }
-
         $pari = new Pari();
         $pari->setMise($mise);
         $pari->setStatut('en_cours');
@@ -93,12 +74,33 @@ class ApiController extends AbstractController
 
             $em->persist($pari);
 
-            foreach ($selections as $selData) {
+            foreach ($selections as $i => $selData) {
+                // Retrouve (ou cree) le match precis correspondant a cette selection
+                $matchEntity = null;
+                $matchData = $data['matchs'][$i] ?? null;
+                if ($matchData) {
+                    $matchEntity = $em->getRepository(MatchNba::class)->findOneBy([
+                        'team1' => $matchData['team1'],
+                        'team2' => $matchData['team2'],
+                        'statut' => 'a_venir',
+                    ]);
+                    if (!$matchEntity) {
+                        $matchEntity = new MatchNba();
+                        $matchEntity->setTeam1($matchData['team1']);
+                        $matchEntity->setTeam2($matchData['team2']);
+                        $matchEntity->setCote1((float) ($matchData['cote1'] ?? 1.50));
+                        $matchEntity->setCote2((float) ($matchData['cote2'] ?? 1.50));
+                        $matchEntity->setStatut('a_venir');
+                        $em->persist($matchEntity);
+                    }
+                }
+
                 $selection = new Selection();
                 $selection->setEquipeChoisie($selData['equipe']);
                 $selection->setCote((float) $selData['cote']);
                 $selection->setTypePari($selData['typePari'] ?? 'Vainqueur du match');
                 $selection->setMiseIndividuelle(null);
+                $selection->setMatchNba($matchEntity);
                 $pari->addSelection($selection);
                 $em->persist($selection);
             }

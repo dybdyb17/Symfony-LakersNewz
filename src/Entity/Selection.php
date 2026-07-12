@@ -32,6 +32,9 @@ class Selection
     #[ORM\JoinColumn(nullable: false)]
     private ?Pari $pari = null;
 
+    #[ORM\ManyToOne]
+    private ?MatchNba $matchNba = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +108,18 @@ class Selection
     public function setPari(?Pari $pari): static
     {
         $this->pari = $pari;
+
+        return $this;
+    }
+
+    public function getMatchNba(): ?MatchNba
+    {
+        return $this->matchNba;
+    }
+
+    public function setMatchNba(?MatchNba $matchNba): static
+    {
+        $this->matchNba = $matchNba;
 
         return $this;
     }
