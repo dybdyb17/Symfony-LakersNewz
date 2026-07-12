@@ -372,7 +372,7 @@ async function renderMesParis(filtre) {
       item.innerHTML = `
         <div class="mes-paris-element-gauche">
           <span class="mes-paris-element-match">${sel.typePari}</span>
-          <span class="mes-paris-element-equipe${pari.statut === 'gagne' ? ' gagne' : pari.statut === 'perdu' ? ' perdu' : ''}">${sel.equipeChoisie.toUpperCase()}</span>
+          <span class="mes-paris-element-equipe${sel.resultat === 'gagne' ? ' gagne' : sel.resultat === 'perdu' ? ' perdu' : ''}">${sel.equipeChoisie.toUpperCase()}</span>
           <span class="mes-paris-element-type">Résultat du match (temps réglementaire)</span>
         </div>
         <span class="mes-paris-element-cote">${sel.cote}</span>

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\MatchNba;
 use App\Entity\Pari;
+use App\Entity\Selection;
 use App\Form\MatchFormType;
 use App\Repository\MatchNbaRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -66,6 +67,19 @@ class AdminMatchController extends AbstractController
 
             $em->flush();
 
+            // 1) On resout le resultat de CHAQUE selection liee a ce match precis,
+            //    meme si son pari combine est deja decide (pour afficher chaque
+            //    selection avec sa vraie couleur : vert = gagne, rouge = perdu)
+            $selectionsDuMatch = $em->getRepository(Selection::class)->findBy(['matchNba' => $match]);
+            foreach ($selectionsDuMatch as $selection) {
+                if ($selection->getEquipeChoisie() === $match->getResultat()) {
+                    $selection->setResultat('gagne');
+                } else {
+                    $selection->setResultat('perdu');
+                }
+            }
+
+            // 2) On met a jour le statut et les gains des paris encore en cours
             $paris = $em->getRepository(Pari::class)->findBy(['statut' => 'en_cours']);
 
             foreach ($paris as $pari) {
@@ -89,20 +103,7 @@ class AdminMatchController extends AbstractController
                     continue;
                 }
 
-                // PARI COMBINE : on met a jour uniquement la selection liee a CE match precis
-                foreach ($pari->getSelections() as $selection) {
-                    $selectionMatch = $selection->getMatchNba();
-
-                    if ($selectionMatch !== null && $selectionMatch->getId() === $match->getId()) {
-                        if ($selection->getEquipeChoisie() === $match->getResultat()) {
-                            $selection->setResultat('gagne');
-                        } else {
-                            $selection->setResultat('perdu');
-                        }
-                    }
-                }
-
-                // On regarde l'etat de toutes les selections du pari combine
+                // PARI COMBINE : on evalue l'etat des selections (deja resolues a l'etape 1)
                 $auMoinsUnePerdue = false;
                 $toutesGagnees = true;
 
