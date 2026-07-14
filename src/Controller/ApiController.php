@@ -75,7 +75,7 @@ class ApiController extends AbstractController
             $em->persist($pari);
 
             foreach ($selections as $i => $selData) {
-                // Retrouve (ou cree) le match precis correspondant a cette selection
+                // Match lie a la selection
                 $matchEntity = null;
                 $matchData = $data['matchs'][$i] ?? null;
                 if ($matchData) {

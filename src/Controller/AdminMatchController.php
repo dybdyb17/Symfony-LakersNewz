@@ -67,9 +67,7 @@ class AdminMatchController extends AbstractController
 
             $em->flush();
 
-            // 1) On resout le resultat de CHAQUE selection liee a ce match precis,
-            //    meme si son pari combine est deja decide (pour afficher chaque
-            //    selection avec sa vraie couleur : vert = gagne, rouge = perdu)
+            // Resout le resultat de chaque selection liee a ce match (pour l'affichage vert/rouge)
             $selectionsDuMatch = $em->getRepository(Selection::class)->findBy(['matchNba' => $match]);
             foreach ($selectionsDuMatch as $selection) {
                 if ($selection->getEquipeChoisie() === $match->getResultat()) {
@@ -79,7 +77,6 @@ class AdminMatchController extends AbstractController
                 }
             }
 
-            // 2) On met a jour le statut et les gains des paris encore en cours
             $paris = $em->getRepository(Pari::class)->findBy(['statut' => 'en_cours']);
 
             foreach ($paris as $pari) {
@@ -90,7 +87,7 @@ class AdminMatchController extends AbstractController
                     continue;
                 }
 
-                // PARI SIMPLE : une seule equipe choisie
+                // Pari simple
                 if (count($equipes) === 1) {
                     if ($pari->getEquipe() === $match->getResultat()) {
                         $pari->setStatut('gagne');
@@ -103,7 +100,7 @@ class AdminMatchController extends AbstractController
                     continue;
                 }
 
-                // PARI COMBINE : on evalue l'etat des selections (deja resolues a l'etape 1)
+                // Pari combine
                 $auMoinsUnePerdue = false;
                 $toutesGagnees = true;
 
@@ -117,16 +114,13 @@ class AdminMatchController extends AbstractController
                 }
 
                 if ($auMoinsUnePerdue) {
-                    // Une seule selection perdue suffit a faire perdre le combine
                     $pari->setStatut('perdu');
                     $pari->setGains(0);
                 } elseif ($toutesGagnees) {
-                    // Toutes les selections sont gagnees : le combine est gagne
                     $pari->setStatut('gagne');
                     $pari->setGains($pari->getMise() * $pari->getCote());
                     $pari->getUser()->setSolde($pari->getUser()->getSolde() + $pari->getGains());
                 }
-                // Sinon : il reste des matchs a jouer, le pari reste en_cours
             }
 
             $em->flush();
