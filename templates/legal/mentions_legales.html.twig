@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+{% block title %}Mentions légales & Politique de confidentialité - Lakers Newz{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/legal.css') }}">{% endblock %}
+{% block body_class %}legal-page{% endblock %}
+{% block body %}
+<main class="legal-principal">
+    <div class="legal-conteneur">
+        <div class="legal-header">
+            <div class="legal-icone"><i class="fa-solid fa-shield-halved"></i></div>
+            <h1>Mentions légales &amp; Politique de confidentialité</h1>
+        </div>
+
+        <section class="legal-section">
+            <h2>Éditeur du site</h2>
+            <p>
+                Ce site est un projet pédagogique réalisé par <strong>Dybril Boudiaf</strong>
+                dans le cadre de la formation DWWM (M2i Marseille). Il s'agit d'un site fictif,
+                sans finalité commerciale.
+            </p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Données personnelles collectées</h2>
+            <p>
+                Lors de l'inscription, le site collecte une <strong>adresse email</strong>, un
+                <strong>pseudo</strong>, un <strong>nom</strong> et un <strong>prénom</strong>.
+                Ces données servent uniquement à la gestion du compte utilisateur.
+            </p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Finalité</h2>
+            <p>
+                Les données ne sont ni vendues, ni transmises à des tiers. Elles servent
+                exclusivement au fonctionnement du site : authentification, gestion du solde
+                virtuel et historique des paris.
+            </p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Sécurité</h2>
+            <p>
+                Les mots de passe sont <strong>hachés</strong> et ne sont jamais stockés en clair.
+            </p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Droit à l'effacement (RGPD)</h2>
+            <p>
+                L'utilisateur peut supprimer son compte à tout moment depuis son profil. Cette
+                suppression efface définitivement son compte et toutes les données associées
+                (paris, transactions).
+            </p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Monnaie virtuelle</h2>
+            <p>
+                Le site utilise une monnaie fictive : aucun paiement réel n'est effectué et aucune
+                donnée bancaire réelle n'est stockée (les paiements Stripe sont en mode test).
+            </p>
+        </section>
+    </div>
+</main>
+{% endblock %}
