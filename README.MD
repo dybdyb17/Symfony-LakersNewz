@@ -4,6 +4,11 @@ Plateforme web d'actualités et de paris sportifs virtuels autour des Los Angele
 
 Le site propose deux modules : un module d'actualités (articles, classement NBA, calendrier, effectif) et un module de paris virtuels en monnaie fictive (paris simples et combinés, gestion d'un solde, historique).
 
+## Documentation
+
+- [Spécifications fonctionnelles](./functional_documentation.md)
+- [Documentation technique](./technical_documentation.md)
+
 ## Stack technique
 
 - **Symfony 7.4** (PHP 8.2+)
@@ -64,7 +69,6 @@ php bin/console doctrine:migrations:migrate
 php bin/console doctrine:fixtures:load
 ```
 
-> Attention : cette commande vide la base avant de la remplir.
 
 6. **Démarrer Redis**
 
